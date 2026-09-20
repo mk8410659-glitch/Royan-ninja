@@ -1,0 +1,21 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "royal-ninja-68760",
+          "appId": "1:244573240913:android:43b45930aaf92689948270",
+          "fileOutput": "android/app/google-services.json"
+        }
+      }
+    },
+    "dart": {
+      "lib/services/firebase_options.dart": {
+        "projectId": "royal-ninja-68760",
+        "configurations": {
+          "android": "1:244573240913:android:43b45930aaf92689948270"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "244573240913",
+    "project_id": "royal-ninja-68760",
+    "storage_bucket": "royal-ninja-68760.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244573240913:android:43b45930aaf92689948270",
+        "android_client_info": {
+          "package_name": "com.royalninja.games"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "244573240913-ajb08h6fdonk76fsse7c0pg0t4avcdou.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.royalninja.games",
+            "certificate_hash": "daa8e849a5cec007448496a2bc394d4957233d3d"
+          }
+        },
+        {
+          "client_id": "244573240913-rjp9pu6u5k25u730hj6q2jnojo6j6sd9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkM2eKOBsUOvS0rGdrJv3ovXJLiLiBqrc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "244573240913-rjp9pu6u5k25u730hj6q2jnojo6j6sd9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
