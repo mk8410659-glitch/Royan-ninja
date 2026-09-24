@@ -176,6 +176,9 @@ class HomeBody extends HookConsumerWidget {
                                           userId: userId,
                                           email: email,
                                           country: country,
+                                          streak: streak,
+                                          streakClaimed: streakClaimed,
+                                          coins: coins,
                                         ),
                                       );
                                     },
@@ -256,15 +259,22 @@ class HomeBody extends HookConsumerWidget {
               width: double.infinity,
               height: 124.h,
               decoration: BoxDecoration(
-                color: Colors.white,
+                gradient: const LinearGradient(
+                  colors: [
+                    Color(0xFF362187),
+                    Color(0xFF0D0821),
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
                 borderRadius: BorderRadius.circular(22.r),
                 border: Border.all(
-                  color: const Color(0xFFF1F5F9),
+                  color: Colors.white.withValues(alpha: 0.12),
                   width: 1.2,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                    color: const Color(0xFF0D0821).withValues(alpha: 0.45),
                     blurRadius: 18,
                     offset: const Offset(0, 4),
                   ),
@@ -274,145 +284,163 @@ class HomeBody extends HookConsumerWidget {
                 borderRadius: BorderRadius.circular(22.r),
                 child: Stack(
                   children: [
-                    // 1. Right Side Soft Purple Dome Backdrop
+                    // 1. Right White Card Shape (Mirrored like Daily Challenge left card)
                     Positioned(
                       right: 0,
                       top: 0,
                       bottom: 0,
-                      width: 140.w,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              const Color(0xFFAB31DE).withValues(alpha: 0.12),
-                              const Color(0xFFAB31DE).withValues(alpha: 0.03),
+                      width: 116.w,
+                      child: Transform.flip(
+                        flipX: true,
+                        child: Image.asset(
+                          'assets/icons_2/image 97.png',
+                          fit: BoxFit.fill,
+                          filterQuality: FilterQuality.high,
+                        ),
+                      ),
+                    ),
+
+                    // 2. Right Yellow Card Shape (Mirrored like Daily Challenge left card)
+                    Positioned(
+                      right: 0,
+                      top: 0,
+                      bottom: 0,
+                      width: 108.w,
+                      child: Transform.flip(
+                        flipX: true,
+                        child: Image.asset(
+                          'assets/icons_2/image 96.png',
+                          fit: BoxFit.fill,
+                          filterQuality: FilterQuality.high,
+                        ),
+                      ),
+                    ),
+
+                    // 3. Social Media Badges (Centered over the right yellow card shape)
+                    Positioned(
+                      right: 4.w,
+                      top: 0,
+                      bottom: 0,
+                      width: 102.w,
+                      child: Center(
+                        child: SizedBox(
+                          width: 72.w,
+                          child: Wrap(
+                            spacing: 6.w,
+                            runSpacing: 6.h,
+                            alignment: WrapAlignment.center,
+                            children: [
+                              _buildSocialBadge('assets/icons/telegram.png'),
+                              _buildSocialBadge('assets/icons/instagram.png'),
+                              _buildSocialBadge('assets/icons/youtube.png'),
+                              _buildSocialBadge('assets/icons/whatsapp.png'),
                             ],
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                          ),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(55.r),
-                            bottomLeft: Radius.circular(55.r),
-                            topRight: Radius.circular(22.r),
-                            bottomRight: Radius.circular(22.r),
                           ),
                         ),
                       ),
                     ),
 
-                    // 2. Foreground Row Content
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
-                      child: Row(
+                    // 4. Left Content: Community Tag + Title + Subtitle + Action Button
+                    // (Strictly bounded with right: 122.w so text never overlaps or hides under the right card)
+                    Positioned(
+                      left: 14.w,
+                      top: 12.h,
+                      bottom: 12.h,
+                      right: 122.w,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          // Left Section: VIP Badge + Title + Subtitle + Action Button
-                          Expanded(
-                            flex: 13,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(height: 16.h),
-                                    Text(
-                                      'Join Our Social Media',
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: GoogleFonts.poppins(
-                                        color: const Color(0xFF1E1B4B),
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.w700,
-                                        letterSpacing: 0.1,
-                                      ),
-                                    ),
-                                    SizedBox(height: 1.h),
-                                    Text(
-                                      'Unlock exclusive daily giveaway codes & extra coins!',
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: GoogleFonts.poppins(
-                                        color: const Color(0xFF64748B),
-                                        fontSize: 8.5.sp,
-                                        fontWeight: FontWeight.w400,
-                                        height: 1.2,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-
-                                 Container(
-                                   padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 5.5.h),
-                                   decoration: BoxDecoration(
-                                     gradient: const LinearGradient(
-                                       begin: Alignment.topCenter,
-                                       end: Alignment.bottomCenter,
-                                       colors: [
-                                         Color(0xFFE39FFF),
-                                         Color(0xFFAB31DE),
-                                       ],
-                                     ),
-                                     borderRadius: BorderRadius.circular(10.r),
-                                     boxShadow: [
-                                       BoxShadow(
-                                         color: const Color(0xFFAB31DE).withValues(alpha: 0.30),
-                                         blurRadius: 8,
-                                         offset: const Offset(0, 2),
-                                       ),
-                                     ],
-                                   ),
-                                   child: Row(
-                                     mainAxisSize: MainAxisSize.min,
-                                     children: [
-                                       Text(
-                                         'Join Now',
-                                         style: GoogleFonts.poppins(
-                                           color: Colors.white,
-                                           fontSize: 11.5.sp,
-                                           fontWeight: FontWeight.w700,
-                                           letterSpacing: 0.2,
-                                         ),
-                                       ),
-                                       SizedBox(width: 4.w),
-                                       Icon(
-                                         Icons.arrow_forward_ios_rounded,
-                                         color: Colors.white,
-                                         size: 10.5.sp,
-                                       ),
-                                     ],
-                                   ),
-                                 ),
-                              ],
-                            ),
-                          ),
-
-                          // Right Section: Glassmorphic Container with 4 Social Icons
-                          Expanded(
-                            flex: 8,
-                            child: Center(
-                              child: Container(
-                                padding: EdgeInsets.all(7.w),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 2.h),
+                                margin: EdgeInsets.only(bottom: 5.h),
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFAB31DE).withValues(alpha: 0.05),
-                                  borderRadius: BorderRadius.circular(16.r),
-                                  border: Border.all(
-                                    color: const Color(0xFFAB31DE).withValues(alpha: 0.15),
-                                    width: 1.0,
+                                  color: const Color(0xFFFFF100),
+                                  borderRadius: BorderRadius.circular(5.r),
+                                ),
+                                child: Text(
+                                  'COMMUNITY',
+                                  style: GoogleFonts.poppins(
+                                    color: const Color(0xFF362187),
+                                    fontSize: 7.5.sp,
+                                    fontWeight: FontWeight.w800,
+                                    letterSpacing: 0.4,
                                   ),
                                 ),
-                                child: Wrap(
-                                  spacing: 6.w,
-                                  runSpacing: 6.h,
-                                  alignment: WrapAlignment.center,
-                                  children: [
-                                    _buildSocialBadge('assets/icons/telegram.png'),
-                                    _buildSocialBadge('assets/icons/instagram.png'),
-                                    _buildSocialBadge('assets/icons/youtube.png'),
-                                    _buildSocialBadge('assets/icons/whatsapp.png'),
-                                  ],
+                              ),
+                              Text(
+                                'Join Our Social Media',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 0.1,
                                 ),
                               ),
+                              SizedBox(height: 3.h),
+                              Text(
+                                'Unlock exclusive daily giveaway codes & extra coins!',
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.poppins(
+                                  color: Colors.white.withValues(alpha: 0.72),
+                                  fontSize: 8.2.sp,
+                                  fontWeight: FontWeight.w400,
+                                  height: 1.25,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 5.5.h),
+                            decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color(0xFF5635C7),
+                                  Color(0xFF362187),
+                                ],
+                              ),
+                              borderRadius: BorderRadius.circular(10.r),
+                              border: Border.all(
+                                color: Colors.white.withValues(alpha: 0.2),
+                                width: 1,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: const Color(0xFF362187).withValues(alpha: 0.35),
+                                  blurRadius: 8,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  'Join Now',
+                                  style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontSize: 11.sp,
+                                    fontWeight: FontWeight.w700,
+                                    letterSpacing: 0.2,
+                                  ),
+                                ),
+                                SizedBox(width: 4.w),
+                                Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  color: Colors.white,
+                                  size: 9.5.sp,
+                                ),
+                              ],
                             ),
                           ),
                         ],
@@ -430,31 +458,30 @@ class HomeBody extends HookConsumerWidget {
 
   Widget _buildSocialBadge(String imageAsset) {
     return Container(
-      width: 36.w,
-      height: 36.w,
+      width: 32.w,
+      height: 32.w,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(11.r),
-        border: Border.all(
-          color: const Color(0xFFF1F5F9),
-          width: 1.0,
-        ),
+        borderRadius: BorderRadius.circular(9.r),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF0F172A).withValues(alpha: 0.06),
+            color: const Color(0xFF2E1777).withValues(alpha: 0.16),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
         ],
       ),
-      padding: EdgeInsets.all(6.5.w),
-      child: Image.asset(
-        imageAsset,
-        fit: BoxFit.contain,
-        errorBuilder: (_, __, ___) => Icon(
-          Icons.share_rounded,
-          color: const Color(0xFFAB31DE),
-          size: 18.sp,
+      child: Center(
+        child: Image.asset(
+          imageAsset,
+          width: 17.w,
+          height: 17.w,
+          fit: BoxFit.contain,
+          errorBuilder: (_, __, ___) => Icon(
+            Icons.share_rounded,
+            color: const Color(0xFF362187),
+            size: 16.sp,
+          ),
         ),
       ),
     );
@@ -877,157 +904,132 @@ class _PlayGamesHeroBanner extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.w),
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: () async {
-          HapticFeedback.lightImpact();
-          if (!SplashService.isScreenEnabled('dailyChallenge')) {
-            CustomStatusPopup.showComingSoon(context: context);
-            return;
-          }
-          await AutoRouter.of(context).push(const DailyChallengeScreenRoute());
-          ref.invalidate(DashboardService.userDataProvider(userId));
-        },
-        child: Container(
-          width: double.infinity,
-          height: 126.h,
-          clipBehavior: Clip.hardEdge,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20.r),
-              bottomLeft: Radius.circular(20.r),
-              topRight: Radius.circular(16.r),
-              bottomRight: Radius.circular(16.r),
-            ),
-            border: Border.all(
-              color: Colors.white,
-              width: 2.0,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
-                blurRadius: 16,
-                offset: const Offset(0, 6),
-              ),
-            ],
-          ),
-          child: Stack(
-            clipBehavior: Clip.hardEdge,
-            children: [
-              // 1. Glassmorphic Heavy Blurred Daily Challenge Asset Backdrop (Directly behind foreground artwork)
-              Positioned(
-                right: -24.w,
-                top: -20.h,
-                bottom: -10.h,
-                width: 190.w,
-                child: Opacity(
-                  opacity: 0.60,
-                  child: ImageFiltered(
-                    imageFilter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+      padding: EdgeInsets.symmetric(horizontal: 14.w),
+      child: Center(
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () async {
+            HapticFeedback.lightImpact();
+            if (!SplashService.isScreenEnabled('dailyChallenge')) {
+              CustomStatusPopup.showComingSoon(context: context);
+              return;
+            }
+            await AutoRouter.of(context).push(const DailyChallengeScreenRoute());
+            ref.invalidate(DashboardService.userDataProvider(userId));
+          },
+          child: SizedBox(
+            width: 362.w,
+            height: 76.h,
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                // 1. Main Purple Card with Cutout
+                Positioned.fill(
+                  child: Image.asset(
+                    'assets/icons_2/Rectangle 73.png',
+                    width: 362.w,
+                    height: 76.h,
+                    fit: BoxFit.fill,
+                    filterQuality: FilterQuality.high,
+                  ),
+                ),
+
+                // 2. Left White Card Shape
+                Positioned(
+                  left: 0,
+                  top: 0,
+                  bottom: 0,
+                  width: 107.5.w,
+                  child: Image.asset(
+                    'assets/icons_2/image 97.png',
+                    fit: BoxFit.fill,
+                    filterQuality: FilterQuality.high,
+                  ),
+                ),
+
+                // 3. Left Yellow Card Shape
+                Positioned(
+                  left: 0,
+                  top: 0,
+                  bottom: 0,
+                  width: 100.w,
+                  child: Image.asset(
+                    'assets/icons_2/image 96.png',
+                    fit: BoxFit.fill,
+                    filterQuality: FilterQuality.high,
+                  ),
+                ),
+
+                // 4. 3D Dartboard Target with Arrow & Trophy
+                Positioned(
+                  left: 8.w,
+                  top: 0,
+                  bottom: 0,
+                  width: 84.w,
+                  child: Center(
                     child: Image.asset(
-                      'assets/icons/dailychallange.png',
+                      'assets/icons_2/success-business-strategy-target-achievement-dartboard-arrow-in-bullseye-3d-icon-png 1.png',
                       fit: BoxFit.contain,
-                      alignment: Alignment.topRight,
+                      filterQuality: FilterQuality.high,
                     ),
                   ),
                 ),
-              ),
 
-              // 2. Left Text Area
-              Positioned(
-                left: 22.w,
-                top: 14.h,
-                bottom: 14.h,
-                right: 138.w,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Heading: Daily Challenge
-                    Text(
-                      'Daily Challenge',
-                      style: GoogleFonts.poppins(
-                        color: const Color(0xFF1E1B4B),
-                        fontSize: 21.sp,
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: 0.2,
-                        height: 1.1,
-                      ),
-                    ),
-                    SizedBox(height: 5.h),
-
-                    // Description
-                    Text(
-                      'Complete simple tasks, play games and unlock exciting rewards every day',
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.poppins(
-                        color: const Color(0xFF475569),
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w400,
-                        height: 1.2,
-                      ),
-                    ),
-                    SizedBox(height: 7.h),
-
-                    // Interactive Action Button
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
+                // 5. Text Information (Daily Challenge & Subtitle)
+                Positioned(
+                  left: 114.w,
+                  right: 44.w,
+                  top: 0,
+                  bottom: 0,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Daily Challenge',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 15.5.sp,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0.2,
+                          height: 1.15,
                         ),
-                        borderRadius: BorderRadius.circular(10.r),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.30),
-                            blurRadius: 6,
-                            offset: const Offset(0, 2),
-                          ),
-                        ],
                       ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'Play & Earn',
-                            style: GoogleFonts.poppins(
-                              color: Colors.white,
-                              fontSize: 9.5.sp,
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: 0.2,
-                            ),
-                          ),
-                          SizedBox(width: 4.w),
-                          Icon(
-                            Icons.arrow_forward_rounded,
-                            color: Colors.white,
-                            size: 10.5.sp,
-                          ),
-                        ],
+                      SizedBox(height: 2.h),
+                      Text(
+                        "Complete today's set of tasks to earn bonus coins",
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.poppins(
+                          color: Colors.white.withValues(alpha: 0.90),
+                          fontSize: 8.8.sp,
+                          fontWeight: FontWeight.w400,
+                          height: 1.25,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
 
-              // 3. Foreground Crisp 3D Daily Challenge Icon on top
-              Positioned(
-                right: -2.w,
-                bottom: 0.h,
-                top: 4.h,
-                width: 140.w,
-                child: Image.asset(
-                  'assets/icons/dailychallange.png',
-                  fit: BoxFit.contain,
-                  alignment: Alignment.centerRight,
+                // 6. Right Arrow Button inside the Cutout Notch (Moved outward to the right)
+                Positioned(
+                  right: -12.w,
+                  top: 0,
+                  bottom: 0,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/icons_2/arrow_button.png',
+                      width: 28.w,
+                      height: 28.w,
+                      fit: BoxFit.contain,
+                      filterQuality: FilterQuality.high,
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -1824,108 +1826,88 @@ class _HomeQuickShortcutGridState extends State<_HomeQuickShortcutGrid> {
     final lightColor = iconColors.first;
     final bool isTagActive = _activeTagIndex == itemIndex;
 
-    return GestureDetector(
+    return _PopScaleButton(
       onTap: onTap,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          Container(
-            width: 68.w,
-            height: 74.h,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(18.r),
-              border: Border.all(
-                color: Colors.white,
-                width: 1.8,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
-                  blurRadius: 12,
-                  offset: const Offset(0, 4),
+          SizedBox(
+            width: 82.w,
+            height: 94.h,
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                // 1. Purple Card Base: Rectangle 75.png
+                Positioned(
+                  top: 15.h,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: Image.asset(
+                    'assets/icons_2/Rectangle 75.png',
+                    fit: BoxFit.fill,
+                    filterQuality: FilterQuality.high,
+                  ),
+                ),
+
+                // 2. Yellow 3D Diamond: Frame 31.png
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/icons_2/Frame 31.png',
+                      width: 44.w,
+                      height: 44.w,
+                      fit: BoxFit.contain,
+                      filterQuality: FilterQuality.high,
+                    ),
+                  ),
+                ),
+
+                // 3. Icon inside the Yellow Diamond
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: 44.w,
+                  child: Center(
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: 2.h),
+                      child: Icon(
+                        iconData,
+                        color: const Color(0xFF2E1B7A),
+                        size: 23.sp,
+                      ),
+                    ),
+                  ),
+                ),
+
+                // 4. White Title Text at Bottom
+                Positioned(
+                  bottom: 6.h,
+                  left: 3.w,
+                  right: 3.w,
+                  child: SizedBox(
+                    height: 24.h,
+                    child: Center(
+                      child: Text(
+                        label,
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 9.8.sp,
+                          fontWeight: FontWeight.w700,
+                          height: 1.1,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ],
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(18.r),
-              child: Stack(
-                children: [
-                  // Top Center Light Pastel Tint Pillar
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      width: 44.w,
-                      height: 40.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.vertical(
-                          bottom: Radius.circular(14.r),
-                        ),
-                        color: lightColor.withValues(alpha: 0.14),
-                      ),
-                    ),
-                  ),
-
-                  // 3D Material Icon in the Center of Pillar
-                  Positioned(
-                    top: 7.h,
-                    left: 0,
-                    right: 0,
-                    child: Center(
-                      child: Container(
-                        width: 32.w,
-                        height: 32.w,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          gradient: LinearGradient(
-                            colors: [lightColor, primaryColor],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: primaryColor.withValues(alpha: 0.40),
-                              blurRadius: 6,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Center(
-                          child: Icon(
-                            iconData,
-                            color: Colors.white,
-                            size: 18.sp,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  // Bottom Label
-                  Positioned(
-                    bottom: 6.h,
-                    left: 4.w,
-                    right: 4.w,
-                    child: SizedBox(
-                      height: 22.h,
-                      child: Center(
-                        child: Text(
-                          label,
-                          textAlign: TextAlign.center,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.poppins(
-                            color: const Color(0xFF1E1B4B),
-                            fontSize: 9.sp,
-                            fontWeight: FontWeight.w700,
-                            height: 1.1,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
             ),
           ),
 

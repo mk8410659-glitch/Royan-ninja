@@ -142,65 +142,39 @@ class OfferPartnersSection extends HookConsumerWidget {
       children: [
         // 1. Header Row: Title on Left + Context-Aware "View More" Button on Top-Right
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          padding: EdgeInsets.only(top: 22.h, right: 16.w, bottom: 12.h),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Left Section Header Title
-              Row(
-                children: [
-                  ShaderMask(
-                    shaderCallback: (bounds) => const LinearGradient(
-                      colors: [
-                        Color(0xFFE39FFF),
-                        Color(0xFFAB31DE),
-                      ],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                    ).createShader(bounds),
-                    child: Icon(
-                      Icons.stars_rounded,
-                      color: Colors.white,
-                      size: 24.sp,
+              // Left Section Header Capsule: Rectangle 85.png
+              SizedBox(
+                width: 148.w,
+                height: 31.h,
+                child: Stack(
+                  alignment: Alignment.centerLeft,
+                  children: [
+                    Image.asset(
+                      'assets/icons_2/Rectangle 85.png',
+                      width: 148.w,
+                      height: 31.h,
+                      fit: BoxFit.fill,
+                      filterQuality: FilterQuality.high,
                     ),
-                  ),
-                  SizedBox(width: 8.w),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
+                    Padding(
+                      padding: EdgeInsets.only(left: 14.w),
+                      child: Text(
                         'Offer Partners',
-                        maxLines: 1,
-                        softWrap: false,
                         style: GoogleFonts.poppins(
-                          color: const Color(0xFF1E1B4B),
-                          fontSize: 16.5.sp,
+                          color: Colors.white,
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.w700,
                           letterSpacing: 0.2,
                         ),
                       ),
-                      SizedBox(height: 3.h),
-                      Container(
-                        width: 110.w,
-                        height: 2.h,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(1.r),
-                          gradient: const LinearGradient(
-                            colors: [
-                              Color(0xFFAB31DE),
-                              Color(0xFFE39FFF),
-                              Colors.transparent,
-                            ],
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            stops: [0.0, 0.6, 1.0],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
 
               // Right Section: Context-Aware "View More" Pill Button
@@ -262,7 +236,7 @@ class OfferPartnersSection extends HookConsumerWidget {
                         offset: Offset(-2.5, -2.5),
                       ),
                       BoxShadow(
-                        color: const Color(0xFFAB31DE).withValues(alpha: 0.18),
+                        color: const Color(0xFF362187).withValues(alpha: 0.18),
                         blurRadius: 6,
                         offset: const Offset(2.5, 2.5),
                       ),
@@ -274,7 +248,7 @@ class OfferPartnersSection extends HookConsumerWidget {
                       Text(
                         'View More',
                         style: GoogleFonts.poppins(
-                          color: const Color(0xFF89009E),
+                          color: const Color(0xFF362187),
                           fontSize: 11.sp,
                           fontWeight: FontWeight.w700,
                           letterSpacing: 0.3,
@@ -283,7 +257,7 @@ class OfferPartnersSection extends HookConsumerWidget {
                       SizedBox(width: 4.w),
                       Icon(
                         Icons.arrow_forward_rounded,
-                        color: const Color(0xFFAB31DE),
+                        color: const Color(0xFF362187),
                         size: 12.sp,
                       ),
                     ],
@@ -328,7 +302,7 @@ class OfferPartnersSection extends HookConsumerWidget {
         // 3. Truly Unbounded Infinite Forward-Sliding PageView Carousel
         if (displayedOffers.isNotEmpty) ...[
           SizedBox(
-            height: 148.h,
+            height: 98.h,
             child: PageView.builder(
               controller: pageController,
               onPageChanged: (index) {
@@ -365,8 +339,8 @@ class OfferPartnersSection extends HookConsumerWidget {
                 height: 6.h,
                 decoration: BoxDecoration(
                   color: isSelected
-                      ? const Color(0xFFAB31DE)
-                      : const Color(0xFFAB31DE).withValues(alpha: 0.20),
+                      ? const Color(0xFF362187)
+                      : const Color(0xFF362187).withValues(alpha: 0.20),
                   borderRadius: BorderRadius.circular(3.r),
                 ),
               );
@@ -413,8 +387,8 @@ class OfferPartnersSection extends HookConsumerWidget {
         padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 7.h),
         decoration: BoxDecoration(
           color: isSelected
-              ? const Color(0xFFAB31DE)
-              : const Color(0xFFAB31DE).withValues(alpha: 0.08),
+              ? const Color(0xFF362187)
+              : const Color(0xFF362187).withValues(alpha: 0.08),
           borderRadius: BorderRadius.circular(20.r),
         ),
         child: Text(
@@ -429,7 +403,7 @@ class OfferPartnersSection extends HookConsumerWidget {
     );
   }
 
-  // 1-to-1 Replica with loginicon.png Asset & Depth Blur Effect
+  // Custom Card using Rectangle 71.png & Rectangle 72 (2).png
   Widget _buildToroxExactOfferCard({
     required BuildContext context,
     required _QuickOfferItem item,
@@ -439,7 +413,6 @@ class OfferPartnersSection extends HookConsumerWidget {
   }) {
     final offer = item.offer;
     final bool isSurvey = item.categoryLabel == 'SURVEY';
-    final palette = _themePalettes[index % _themePalettes.length];
 
     return _PopScaleButton(
       scaleDown: 0.96,
@@ -456,242 +429,145 @@ class OfferPartnersSection extends HookConsumerWidget {
         }
       },
       child: Container(
-        height: 148.h,
+        height: 98.h,
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(26.r),
+          borderRadius: BorderRadius.circular(20.r),
+          gradient: const LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color(0xFF382392),
+              Color(0xFF2B1974),
+            ],
+          ),
           border: Border.all(
-            color: const Color(0xFFF1F5F9),
-            width: 1.5,
+            color: Colors.white.withValues(alpha: 0.08),
+            width: 1.0,
           ),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFF0F172A).withValues(alpha: 0.05),
-              blurRadius: 18,
-              offset: const Offset(0, 4),
+              color: const Color(0xFF2B1974).withValues(alpha: 0.45),
+              blurRadius: 14,
+              offset: const Offset(0, 5),
             ),
           ],
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(26.r),
+          borderRadius: BorderRadius.circular(20.r),
           child: Stack(
             children: [
-              // 1. Layer A: Outer Soft Dual-Tone Glow Layer (Unique Theme Color)
+
+              // 2. Yellow Shape Container on Left: Rectangle 72 (2).png + Partner Logo
               Positioned(
-                right: 0,
-                top: 0,
-                bottom: 0,
-                width: 172.w,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: palette.outerGlowColor.withValues(alpha: 0.65),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(110.r),
-                      bottomLeft: Radius.circular(110.r),
-                      topRight: Radius.circular(26.r),
-                      bottomRight: Radius.circular(26.r),
-                    ),
-                  ),
-                ),
-              ),
-
-              // 2. Layer B: Primary Solid Dome/Arch Container (Unique Theme Color)
-              Positioned(
-                right: 0,
-                top: 0,
-                bottom: 0,
-                width: 152.w,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: palette.innerDomeColor,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(125.r),
-                      bottomLeft: Radius.circular(105.r),
-                      topRight: Radius.circular(26.r),
-                      bottomRight: Radius.circular(26.r),
-                    ),
-                  ),
-                ),
-              ),
-
-              // 3. Right Side 3D Graphic Artwork (panda 2.png tucked even deeper inside card)
-              Positioned(
-                right: -8.w,
-                bottom: -22.h,
-                width: 134.w,
-                height: 144.h,
-                child: Center(
-                  child: Hero(
-                    tag: 'partner_graphic_${offer.name}_${item.categoryLabel}',
-                    child: Stack(
-                      fit: StackFit.expand,
-                      children: [
-                        // Layer 1: Sharp Upper & Middle 3D Graphic (Body, Head & Arms Sharp)
-                        ShaderMask(
-                          shaderCallback: (rect) {
-                            return const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Colors.black,
-                                Colors.black,
-                                Colors.transparent,
-                              ],
-                              stops: [0.0, 0.65, 0.90],
-                            ).createShader(rect);
-                          },
-                          blendMode: BlendMode.dstIn,
-                          child: Image.asset(
-                            'assets/icons/panda 2.png',
-                            fit: BoxFit.contain,
-                            errorBuilder: (_, __, ___) => Icon(
-                              isSurvey
-                                  ? Icons.assignment_turned_in_rounded
-                                  : Icons.auto_awesome_rounded,
-                              color: palette.accentArrowColor,
-                              size: 56.w,
-                            ),
-                          ),
-                        ),
-
-                        // Layer 2: Subtly Blurred Feet Base of Graphic (Pushed lower)
-                        ShaderMask(
-                          shaderCallback: (rect) {
-                            return const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Colors.transparent,
-                                Colors.black,
-                                Colors.black,
-                              ],
-                              stops: [0.60, 0.85, 1.0],
-                            ).createShader(rect);
-                          },
-                          blendMode: BlendMode.dstIn,
-                          child: ImageFiltered(
-                            imageFilter: ImageFilter.blur(sigmaX: 4.5, sigmaY: 4.5),
-                            child: Image.asset(
-                              'assets/icons/panda 2.png',
-                              fit: BoxFit.contain,
-                              errorBuilder: (_, __, ___) => const SizedBox.shrink(),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-
-              // 4. Left Side Content Layout (Square Logo + Title/Subtitle + Circle Arrow Button)
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                left: 10.w,
+                top: 8.h,
+                bottom: 8.h,
+                width: 78.w,
+                child: Stack(
+                  alignment: Alignment.center,
                   children: [
-                    // Left Column: Logo Badge on Top, Arrow Button on Bottom
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // Soft Rounded Square Logo Badge Container (Unique Theme Tint)
-                        Container(
-                          width: 62.w,
-                          height: 62.w,
-                          padding: EdgeInsets.all(9.w),
-                          decoration: BoxDecoration(
-                            color: palette.logoBadgeBg,
-                            borderRadius: BorderRadius.circular(18.r),
-                            border: Border.all(
-                              color: palette.outerGlowColor,
-                              width: 1.0,
-                            ),
-                          ),
-                          child: Image.asset(
-                            offer.logoImage,
-                            fit: BoxFit.contain,
-                            errorBuilder: (_, __, ___) => Icon(
-                              Icons.grid_view_rounded,
-                              color: palette.accentArrowColor,
-                              size: 26.w,
-                            ),
-                          ),
-                        ),
-
-                        // Bottom-Left Circular Action Arrow Button (Unique Accent Color)
-                        Container(
+                    Positioned.fill(
+                      child: Image.asset(
+                        'assets/icons_2/Rectangle 72 (2).png',
+                        fit: BoxFit.contain,
+                        filterQuality: FilterQuality.high,
+                      ),
+                    ),
+                    Center(
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 6.w, bottom: 4.h),
+                        child: Image.asset(
+                          offer.logoImage,
                           width: 38.w,
                           height: 38.w,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white,
-                            border: Border.all(
-                              color: palette.outerGlowColor,
-                              width: 1.5,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: palette.accentArrowColor.withValues(alpha: 0.12),
-                                blurRadius: 6,
-                                offset: const Offset(0, 2),
-                              ),
-                            ],
+                          fit: BoxFit.contain,
+                          errorBuilder: (_, __, ___) => Icon(
+                            isSurvey
+                                ? Icons.assignment_turned_in_rounded
+                                : Icons.grid_view_rounded,
+                            color: const Color(0xFF362187),
+                            size: 28.w,
                           ),
-                          child: Center(
-                            child: Icon(
-                              offer.enabled
-                                  ? Icons.arrow_forward_rounded
-                                  : Icons.lock_rounded,
-                              color: palette.accentArrowColor,
-                              size: 18.sp,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    SizedBox(width: 14.w),
-
-                    // Middle Column: Title & Subtitle
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(right: 98.w), // Leaves room for right 3D artwork
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SizedBox(height: 2.h),
-                            Text(
-                              offer.name,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.poppins(
-                                color: const Color(0xFF0F172A),
-                                fontSize: 17.sp,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: -0.2,
-                              ),
-                            ),
-                            SizedBox(height: 3.h),
-                            Text(
-                              'Complete offers\nand earn exciting\nrewards.',
-                              maxLines: 3,
-                              overflow: TextOverflow.ellipsis,
-                              style: GoogleFonts.poppins(
-                                color: const Color(0xFF64748B),
-                                fontSize: 11.sp,
-                                fontWeight: FontWeight.w400,
-                                height: 1.25,
-                              ),
-                            ),
-                          ],
                         ),
                       ),
                     ),
                   ],
                 ),
               ),
+
+              // 3. Middle Text Content: Title & Subtitle
+              Positioned(
+                left: 98.w,
+                right: 36.w,
+                top: 0,
+                bottom: 0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      offer.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontSize: 15.5.sp,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 0.1,
+                      ),
+                    ),
+                    SizedBox(height: 3.h),
+                    Text(
+                      isSurvey
+                          ? 'Complete surveys and\nearn exciting rewards.'
+                          : 'Complete offers and\nearn exciting rewards.',
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.poppins(
+                        color: Colors.white.withValues(alpha: 0.88),
+                        fontSize: 9.5.sp,
+                        fontWeight: FontWeight.w400,
+                        height: 1.25,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // 4. Floating Coin at Bottom-Right
+              Positioned(
+                right: 18.w,
+                bottom: 12.h,
+                child: Transform.rotate(
+                  angle: -0.25,
+                  child: Image.asset(
+                    'assets/icons/coin.png',
+                    width: 16.w,
+                    height: 16.w,
+                    fit: BoxFit.contain,
+                    filterQuality: FilterQuality.high,
+                  ),
+                ),
+              ),
+
+              // 5. Lock Icon if Disabled
+              if (!offer.enabled)
+                Positioned(
+                  top: 10.h,
+                  right: 12.w,
+                  child: Container(
+                    padding: EdgeInsets.all(4.w),
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.45),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.lock_rounded,
+                      color: Colors.white,
+                      size: 14.sp,
+                    ),
+                  ),
+                ),
             ],
           ),
         ),

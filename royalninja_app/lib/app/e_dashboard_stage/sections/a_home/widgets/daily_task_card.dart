@@ -8,6 +8,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../../../utils/helper/helper.dart';
 import '../../../../../utils/routes/routes_import.gr.dart';
@@ -16,6 +17,7 @@ import '../../../../../widgets/common/internet_image.dart';
 import '../../../../../widgets/common/shimmer_tag.dart';
 import '../daily_task/daily_task_model.dart';
 import '../../../../b_splash_stage/splash_service.dart';
+import 'daily_checkin_sheet.dart';
 
 class HomeDailyTaskSection extends HookConsumerWidget {
   const HomeDailyTaskSection({
@@ -24,12 +26,18 @@ class HomeDailyTaskSection extends HookConsumerWidget {
     required this.userId,
     required this.email,
     required this.country,
+    this.streak = 0,
+    this.streakClaimed = false,
+    this.coins = 0,
   });
 
   final List<DailyTaskModel> offers;
   final String userId;
   final String email;
   final String country;
+  final int streak;
+  final bool streakClaimed;
+  final double coins;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -68,87 +76,34 @@ class HomeDailyTaskSection extends HookConsumerWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
+                SizedBox(
                   width: 148.w,
                   height: 31.h,
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.only(left: 14.w),
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      stops: [0.2874, 0.9995],
-                      colors: [
-                        Color(0xFF362187),
-                        Color(0x00362187),
-                      ],
-                    ),
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(30.r),
-                    ),
-                  ),
-                  child: Text(
-                    SplashService.dailyTaskTitle.isNotEmpty && SplashService.dailyTaskTitle != 'Daily Task'
-                        ? SplashService.dailyTaskTitle
-                        : 'Hot Offers',
-                    style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0.2,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(right: 16.w),
-                  child: GestureDetector(
-                    onTap: () {
-                      HapticFeedback.lightImpact();
-                      AutoRouter.of(context).push(
-                        DailyTaskScreenRoute(
-                          userId: userId,
-                          email: email,
-                          country: country,
-                        ),
-                      );
-                    },
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 5.h),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10.r),
-                        border: Border.all(
-                          color: const Color(0xFF2B1055).withValues(alpha: 0.18),
-                          width: 1.0,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0xFF2B1055).withValues(alpha: 0.08),
-                            blurRadius: 6,
-                            offset: const Offset(0, 2),
-                          ),
-                        ],
+                  child: Stack(
+                    alignment: Alignment.centerLeft,
+                    children: [
+                      Image.asset(
+                        'assets/icons_2/Rectangle 85.png',
+                        width: 148.w,
+                        height: 31.h,
+                        fit: BoxFit.fill,
+                        filterQuality: FilterQuality.high,
                       ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'View All',
-                            style: GoogleFonts.poppins(
-                              color: const Color(0xFF2B1055),
-                              fontSize: 11.sp,
-                              fontWeight: FontWeight.w700,
-                            ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 14.w),
+                        child: Text(
+                          SplashService.dailyTaskTitle.isNotEmpty && SplashService.dailyTaskTitle != 'Daily Task'
+                              ? SplashService.dailyTaskTitle
+                              : 'Hot Offers',
+                          style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 0.2,
                           ),
-                          SizedBox(width: 4.w),
-                          Icon(
-                            Icons.arrow_forward_ios_rounded,
-                            color: const Color(0xFF2B1055),
-                            size: 9.5.sp,
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ],
@@ -213,10 +168,473 @@ class HomeDailyTaskSection extends HookConsumerWidget {
               ],
             ),
           ),
+
+          SizedBox(height: 14.h),
+
+          // 3. Daily Check-in Card below both hot offer cards
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 14.w),
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () {
+                HapticFeedback.lightImpact();
+                DailyCheckInPopup.show(
+                  context: context,
+                  streak: streak,
+                  streakClaimed: streakClaimed,
+                  userId: userId,
+                  coins: coins.toInt(),
+                );
+              },
+              child: AspectRatio(
+                aspectRatio: 668 / 226,
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final bannerWidth = constraints.maxWidth;
+                    final bannerHeight = constraints.maxHeight;
+                    final yellowWidth = bannerWidth * (295.0 / 668.0);
+
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(22.r),
+                      child: Stack(
+                        children: [
+                          // Base Layer: Purple Card
+                          Positioned.fill(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF362187),
+                                borderRadius: BorderRadius.circular(22.r),
+                              ),
+                            ),
+                          ),
+
+                          // Left Layer: Yellow Accent Card
+                          Positioned(
+                            left: 0,
+                            top: 0,
+                            bottom: 0,
+                            width: yellowWidth,
+                            child: Image.asset(
+                              'assets/icons_2/Rectangle 70.png',
+                              fit: BoxFit.fill,
+                              filterQuality: FilterQuality.high,
+                            ),
+                          ),
+
+                          // Left Icon: 3D Check-in Icon on Yellow Accent Card
+                          Positioned(
+                            left: 6.w,
+                            top: 4.h,
+                            bottom: 4.h,
+                            width: yellowWidth - 12.w,
+                            child: Center(
+                              child: Image.asset(
+                                'assets/icons_2/daily_checkin.png',
+                                fit: BoxFit.contain,
+                                filterQuality: FilterQuality.high,
+                              ),
+                            ),
+                          ),
+
+                          // Crisp Foreground: Daily Check-in Text
+                          Positioned(
+                            right: bannerWidth * 0.08,
+                            top: 0,
+                            bottom: 0,
+                            child: Center(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Daily',
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 20.sp,
+                                      fontWeight: FontWeight.w900,
+                                      color: Colors.white,
+                                      shadows: [
+                                        const Shadow(
+                                          color: Color(0xFFFFF100),
+                                          offset: Offset(0, 1.8),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 48.w,
+                                    height: 2.2.h,
+                                    margin: EdgeInsets.only(top: 1.h, bottom: 2.h),
+                                    color: const Color(0xFFFFF100),
+                                  ),
+                                  Text(
+                                    'Check-in',
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 20.sp,
+                                      fontWeight: FontWeight.w900,
+                                      color: const Color(0xFFFFF100),
+                                      shadows: [
+                                        const Shadow(
+                                          color: Color(0xFFFFF100),
+                                          offset: Offset(0, 1.8),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 80.w,
+                                    height: 2.2.h,
+                                    margin: EdgeInsets.only(top: 1.h),
+                                    color: const Color(0xFFFFF100),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ),
+
+          SizedBox(height: 20.h),
+
+          // 4. Regular Offers Header Banner
+          Padding(
+            padding: EdgeInsets.only(bottom: 12.h),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                width: 168.w,
+                height: 31.h,
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.only(left: 14.w),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    stops: [0.2874, 0.9995],
+                    colors: [
+                      Color(0xFF362187),
+                      Color(0x00362187),
+                    ],
+                  ),
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(30.r),
+                  ),
+                ),
+                child: Text(
+                  'Regular Offers',
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.2,
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          // 5. Two Regular Offers Cards Side by Side
+          // 5. Regular Offers Cards (2 Rows x 2 Cards)
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 14.w),
+            child: Column(
+              children: [
+                // Row 1: Ninja Catch & Super Offers
+                Row(
+                  children: [
+                    Expanded(
+                      child: _RegularOfferCard(
+                        title: 'Ninja Catch',
+                        subtitle: 'Play & earn coins',
+                        coins: 500,
+                        circleContent: Image.asset(
+                          'assets/icons/panda1.png',
+                          fit: BoxFit.contain,
+                          filterQuality: FilterQuality.high,
+                        ),
+                        onTap: () {
+                          HapticFeedback.lightImpact();
+                          final config = SplashService.superOfferConfig;
+                          AutoRouter.of(context).push(
+                            DiamondCatchScreenRoute(
+                              userId: userId,
+                              installGems: (config['installGems'] as num?)?.toInt() ?? 2,
+                              gameGems: (config['gameGems'] as num?)?.toInt() ?? 1,
+                              dailyGemsForInstall: (config['dailyGemsForInstall'] as num?)?.toInt() ?? 10,
+                              gemsRequired: (config['gemsRequired'] as num?)?.toInt() ?? 0,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(width: 12.w),
+                    Expanded(
+                      child: _RegularOfferCard(
+                        title: 'Super Offers',
+                        subtitle: 'Complete & earn coins',
+                        coins: 500,
+                        circleContent: Image.asset(
+                          'assets/icons_2/Group 87.png',
+                          fit: BoxFit.contain,
+                          filterQuality: FilterQuality.high,
+                        ),
+                        onTap: () {
+                          HapticFeedback.lightImpact();
+                          if (!SplashService.isScreenEnabled('superOffer')) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Super Offer is currently unavailable'),
+                                duration: Duration(seconds: 2),
+                              ),
+                            );
+                            return;
+                          }
+                          AutoRouter.of(context).push(
+                            SuperOfferScreenRoute(userId: userId),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 14.h),
+                // Row 2: Play Games & Watch Video (Shifted from below)
+                Row(
+                  children: [
+                    Expanded(
+                      child: _RegularOfferCard(
+                        title: 'Play Games',
+                        subtitle: 'Play & earn coins',
+                        coins: 500,
+                        circleContent: Image.asset(
+                          'assets/icons/playtimegame.png',
+                          fit: BoxFit.contain,
+                          filterQuality: FilterQuality.high,
+                        ),
+                        onTap: () {
+                          HapticFeedback.lightImpact();
+                          if (!SplashService.isScreenEnabled('playGames')) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Play Games is currently unavailable'),
+                                duration: Duration(seconds: 2),
+                              ),
+                            );
+                            return;
+                          }
+                          AutoRouter.of(context).push(
+                            PlayGamesScreenRoute(userId: userId),
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(width: 12.w),
+                    Expanded(
+                      child: _RegularOfferCard(
+                        title: 'Watch Video',
+                        subtitle: 'Watch & earn coins',
+                        coins: 500,
+                        circleContent: Lottie.asset(
+                          'assets/icons/Audio And Video Animation.json',
+                          fit: BoxFit.contain,
+                          repeat: true,
+                          animate: true,
+                          errorBuilder: (_, __, ___) => const Icon(
+                            Icons.play_circle_fill_rounded,
+                            color: Color(0xFFF59E0B),
+                            size: 40,
+                          ),
+                        ),
+                        onTap: () {
+                          HapticFeedback.lightImpact();
+                          if (!SplashService.isScreenEnabled('watchAndEarn')) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Watch Video is currently unavailable'),
+                                duration: Duration(seconds: 2),
+                              ),
+                            );
+                            return;
+                          }
+                          AutoRouter.of(context).push(
+                            WatchVideoScreenRoute(
+                              email: email,
+                              userId: userId,
+                              country: country,
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
   }
+}
+
+class _RegularOfferCard extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final int coins;
+  final Widget? circleContent;
+  final VoidCallback? onTap;
+
+  const _RegularOfferCard({
+    required this.title,
+    required this.subtitle,
+    required this.coins,
+    this.circleContent,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: onTap,
+      child: AspectRatio(
+        aspectRatio: 163.63 / 193.77,
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final cardWidth = constraints.maxWidth;
+            final cardHeight = constraints.maxHeight;
+            final circleSize = cardWidth * (97.96 / 163.63);
+            final circleTop = cardHeight * (12.0 / 193.77);
+
+          return Stack(
+            clipBehavior: Clip.none,
+            children: [
+              // 1. Base Main Card (Rectangle 64.png)
+              Positioned.fill(
+                child: Image.asset(
+                  'assets/icons_2/Rectangle 64.png',
+                  fit: BoxFit.fill,
+                  filterQuality: FilterQuality.high,
+                ),
+              ),
+
+              // 2. Top Round Gola 70 (Ellipse 70.png) - clipped so icon never spills out
+              Positioned(
+                top: circleTop,
+                left: (cardWidth - circleSize) / 2,
+                width: circleSize,
+                height: circleSize,
+                child: ClipOval(
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/icons_2/Ellipse 70.png',
+                        fit: BoxFit.contain,
+                        filterQuality: FilterQuality.high,
+                      ),
+                      if (circleContent != null)
+                        Center(
+                          child: Padding(
+                            padding: EdgeInsets.all(circleSize * 0.12),
+                            child: circleContent!,
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              ),
+
+              // 3. Texts and Info (Positioned with clean clearance below round gola)
+              Positioned(
+                left: 6.w,
+                right: 6.w,
+                bottom: 8.h,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.poppins(
+                        fontSize: 13.sp,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                        letterSpacing: 0.1,
+                      ),
+                    ),
+                    SizedBox(height: 2.h),
+                    Text(
+                      subtitle,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.poppins(
+                        fontSize: 7.5.sp,
+                        fontWeight: FontWeight.w400,
+                        color: const Color(0xFFC4B5FD),
+                        height: 1.15,
+                      ),
+                    ),
+                    SizedBox(height: 4.h),
+                    Text(
+                      'Win upto',
+                      style: GoogleFonts.poppins(
+                        fontSize: 8.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(height: 1.h),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Image.asset(
+                          'assets/icons/coin.png',
+                          width: 11.w,
+                          height: 11.w,
+                        ),
+                        SizedBox(width: 3.w),
+                        Text(
+                          '$coins',
+                          style: GoogleFonts.poppins(
+                            fontSize: 11.5.sp,
+                            fontWeight: FontWeight.w800,
+                            color: const Color(0xFFFFF100),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              // 4. Yellow Arrow Button in bottom-right notch (moved outward & down)
+              Positioned(
+                right: -5.w,
+                bottom: -5.h,
+                width: 29.w,
+                height: 29.w,
+                child: Image.asset(
+                  'assets/icons_2/arrow_button.png',
+                  fit: BoxFit.contain,
+                  filterQuality: FilterQuality.high,
+                ),
+              ),
+            ],
+          );
+        },
+      ),
+    ),
+  );
+}
 }
 
 class _GlowLightingSpinner extends StatefulWidget {
@@ -1716,7 +2134,7 @@ class _HomeDailyTaskItemCard extends StatelessWidget {
         builder: (context, constraints) {
           final cardWidth = constraints.maxWidth;
           final cardHeight = 172.h;
-          final uperCardWidth = cardWidth * (141.52 / 158.39);
+          final uperCardWidth = cardWidth * (425.0 / 467.0);
           final rightStripWidth = cardWidth - uperCardWidth;
 
           return SizedBox(
@@ -1725,7 +2143,7 @@ class _HomeDailyTaskItemCard extends StatelessWidget {
             child: Stack(
               clipBehavior: Clip.none,
               children: [
-                // 1. Base Main Card: fills cardWidth x cardHeight, radius 21.77px (#362187)
+                // 1. Base Main Card: fills cardWidth x cardHeight (Figma exact high-res Rectangle 62.png)
                 // Left Card (Yellow Theme) -> #362187 base
                 // Right Card (Blue Theme) -> #FFF100 base
                 Positioned(
@@ -1733,24 +2151,23 @@ class _HomeDailyTaskItemCard extends StatelessWidget {
                   top: 0,
                   width: cardWidth,
                   height: cardHeight,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(21.77.r),
-                    child: isPurpleTheme
-                        ? ColorFiltered(
-                            colorFilter: const ColorFilter.mode(yellowColor, BlendMode.srcIn),
-                            child: Image.asset(
-                              'assets/icons_2/Rectangle 62.png',
-                              fit: BoxFit.fill,
-                            ),
-                          )
-                        : ColorFiltered(
-                            colorFilter: const ColorFilter.mode(purpleColor, BlendMode.srcIn),
-                            child: Image.asset(
-                              'assets/icons_2/Rectangle 62.png',
-                              fit: BoxFit.fill,
-                            ),
+                  child: isPurpleTheme
+                      ? ColorFiltered(
+                          colorFilter: const ColorFilter.mode(yellowColor, BlendMode.srcIn),
+                          child: Image.asset(
+                            'assets/icons_2/Rectangle 62.png',
+                            fit: BoxFit.fill,
+                            filterQuality: FilterQuality.high,
                           ),
-                  ),
+                        )
+                      : ColorFiltered(
+                          colorFilter: const ColorFilter.mode(purpleColor, BlendMode.srcIn),
+                          child: Image.asset(
+                            'assets/icons_2/Rectangle 62.png',
+                            fit: BoxFit.fill,
+                            filterQuality: FilterQuality.high,
+                          ),
+                        ),
                 ),
 
                 // 2. Right Vertical "HOT" Text positioned at bottom right space
@@ -1778,7 +2195,7 @@ class _HomeDailyTaskItemCard extends StatelessWidget {
                   ),
                 ),
 
-                // 3. Front Card (Middle Layer): uperCardWidth x cardHeight, radius 21.77px (#FFF100)
+                // 3. Front Card (Middle Layer): uperCardWidth x cardHeight (Figma exact high-res Rectangle 63.png)
                 // Left Card (Yellow Theme) -> #FFF100 front
                 // Right Card (Blue Theme) -> #362187 front
                 Positioned(
@@ -1786,24 +2203,23 @@ class _HomeDailyTaskItemCard extends StatelessWidget {
                   top: 0,
                   width: uperCardWidth,
                   height: cardHeight,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(21.77.r),
-                    child: isPurpleTheme
-                        ? ColorFiltered(
-                            colorFilter: const ColorFilter.mode(purpleColor, BlendMode.srcIn),
-                            child: Image.asset(
-                              'assets/icons_2/Rectangle 63.png',
-                              fit: BoxFit.fill,
-                            ),
-                          )
-                        : ColorFiltered(
-                            colorFilter: const ColorFilter.mode(yellowColor, BlendMode.srcIn),
-                            child: Image.asset(
-                              'assets/icons_2/Rectangle 63.png',
-                              fit: BoxFit.fill,
-                            ),
+                  child: isPurpleTheme
+                      ? ColorFiltered(
+                          colorFilter: const ColorFilter.mode(purpleColor, BlendMode.srcIn),
+                          child: Image.asset(
+                            'assets/icons_2/Rectangle 63.png',
+                            fit: BoxFit.fill,
+                            filterQuality: FilterQuality.high,
                           ),
-                  ),
+                        )
+                      : ColorFiltered(
+                          colorFilter: const ColorFilter.mode(yellowColor, BlendMode.srcIn),
+                          child: Image.asset(
+                            'assets/icons_2/Rectangle 63.png',
+                            fit: BoxFit.fill,
+                            filterQuality: FilterQuality.high,
+                          ),
+                        ),
                 ),
 
                 // 4. Top White Frame (Top Layer): Frame 27.png inside uper card
@@ -1818,6 +2234,7 @@ class _HomeDailyTaskItemCard extends StatelessWidget {
                         child: Image.asset(
                           'assets/icons_2/Frame 27.png',
                           fit: BoxFit.fill,
+                          filterQuality: FilterQuality.high,
                         ),
                       ),
                       Positioned.fill(

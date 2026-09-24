@@ -30,60 +30,38 @@ class MoreWaysSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Section Header: "More Ways to Earn" matching Offer Partners & Top Recommended style
+        // Section Header: "More Ways" Capsule: Rectangle 85.png
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          padding: EdgeInsets.only(top: 10.h, bottom: 12.h),
           child: Row(
             children: [
-              ShaderMask(
-                shaderCallback: (bounds) => const LinearGradient(
-                  colors: [
-                    Color(0xFFE39FFF),
-                    Color(0xFFAB31DE),
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ).createShader(bounds),
-                child: Icon(
-                  Icons.auto_awesome_rounded,
-                  color: Colors.white,
-                  size: 24.sp,
-                ),
-              ),
-              SizedBox(width: 8.w),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'More Ways',
-                    maxLines: 1,
-                    softWrap: false,
-                    style: GoogleFonts.poppins(
-                      color: const Color(0xFF1E1B4B),
-                      fontSize: 16.5.sp,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0.2,
+              SizedBox(
+                width: 148.w,
+                height: 31.h,
+                child: Stack(
+                  alignment: Alignment.centerLeft,
+                  children: [
+                    Image.asset(
+                      'assets/icons_2/Rectangle 85.png',
+                      width: 148.w,
+                      height: 31.h,
+                      fit: BoxFit.fill,
+                      filterQuality: FilterQuality.high,
                     ),
-                  ),
-                  SizedBox(height: 3.h),
-                  Container(
-                    width: 120.w,
-                    height: 2.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(1.r),
-                      gradient: const LinearGradient(
-                        colors: [
-                          Color(0xFFAB31DE),
-                          Color(0xFFE39FFF),
-                          Colors.transparent,
-                        ],
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        stops: [0.0, 0.6, 1.0],
+                    Padding(
+                      padding: EdgeInsets.only(left: 14.w),
+                      child: Text(
+                        'More Ways',
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0.2,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
@@ -158,17 +136,24 @@ class MoreWaysSection extends StatelessWidget {
         height: 76.h,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.white,
+          gradient: const LinearGradient(
+            colors: [
+              Color(0xFF362187),
+              Color(0xFF0D0821),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
           borderRadius: BorderRadius.circular(18.r),
           border: Border.all(
-            color: const Color(0xFFF1F5F9),
+            color: Colors.white.withValues(alpha: 0.12),
             width: 1.2,
           ),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFF0F172A).withValues(alpha: 0.04),
+              color: const Color(0xFF0D0821).withValues(alpha: 0.40),
               blurRadius: 14,
-              offset: const Offset(0, 3),
+              offset: const Offset(0, 4),
             ),
           ],
         ),
@@ -186,8 +171,8 @@ class MoreWaysSection extends StatelessWidget {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        themeColor.withValues(alpha: 0.14),
-                        themeColor.withValues(alpha: 0.03),
+                        themeColor.withValues(alpha: 0.22),
+                        Colors.transparent,
                       ],
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
@@ -226,25 +211,37 @@ class MoreWaysSection extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
                 child: Row(
                   children: [
-                    // Left Soft Rounded Square Icon Container
-                    Container(
-                      width: 44.w,
-                      height: 44.w,
-                      padding: EdgeInsets.all(7.w),
-                      decoration: BoxDecoration(
-                        color: themeColor.withValues(alpha: 0.10),
-                        borderRadius: BorderRadius.circular(12.r),
-                      ),
-                      child: Center(
-                        child: Image.asset(
-                          iconPath,
-                          fit: BoxFit.contain,
-                          errorBuilder: (_, __, ___) => Icon(
-                            fallbackIcon,
-                            color: themeColor,
-                            size: 26.sp,
+                    // Left Badge Shape (Frame 31.png) with Icon on top
+                    SizedBox(
+                      width: 54.w,
+                      height: 54.w,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/icons_2/Frame 31.png',
+                            width: 54.w,
+                            height: 54.w,
+                            fit: BoxFit.contain,
+                            filterQuality: FilterQuality.high,
                           ),
-                        ),
+                          Center(
+                            child: Padding(
+                              padding: EdgeInsets.only(bottom: 2.h),
+                              child: Image.asset(
+                                iconPath,
+                                width: 29.w,
+                                height: 29.w,
+                                fit: BoxFit.contain,
+                                errorBuilder: (_, __, ___) => Icon(
+                                  fallbackIcon,
+                                  color: const Color(0xFF0D0821),
+                                  size: 25.sp,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     SizedBox(width: 12.w),
@@ -260,7 +257,7 @@ class MoreWaysSection extends StatelessWidget {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.poppins(
-                              color: const Color(0xFF1E1B4B),
+                              color: Colors.white,
                               fontSize: 13.5.sp,
                               fontWeight: FontWeight.w600,
                               letterSpacing: 0.1,
@@ -272,7 +269,7 @@ class MoreWaysSection extends StatelessWidget {
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.poppins(
-                              color: const Color(0xFF64748B),
+                              color: Colors.white.withValues(alpha: 0.70),
                               fontSize: 9.5.sp,
                               fontWeight: FontWeight.w400,
                               height: 1.22,
@@ -288,24 +285,24 @@ class MoreWaysSection extends StatelessWidget {
                       height: 36.w,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.white,
+                        color: Colors.white.withValues(alpha: 0.12),
                         border: Border.all(
-                          color: themeColor.withValues(alpha: 0.20),
+                          color: Colors.white.withValues(alpha: 0.22),
                           width: 1.2,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: themeColor.withValues(alpha: 0.10),
-                            blurRadius: 8,
-                            offset: const Offset(0, 3),
+                            color: Colors.black.withValues(alpha: 0.20),
+                            blurRadius: 6,
+                            offset: const Offset(0, 2),
                           ),
                         ],
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Icon(
                           Icons.arrow_forward_rounded,
-                          color: themeColor,
-                          size: 18.sp,
+                          color: Colors.white,
+                          size: 18,
                         ),
                       ),
                     ),

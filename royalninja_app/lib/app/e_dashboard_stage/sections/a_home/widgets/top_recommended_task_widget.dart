@@ -43,38 +43,8 @@ class TopRecommendedTaskWidget extends StatelessWidget {
 
     return Column(
       children: [
-        // 1. Top Slanted Pair: royal_ninja (Left) & Super Offer (Right - Super Mission)
-        if (!hidePlayGames && !hideSuperOffer)
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: _LeftToRightShimmerSheen(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: _buildDiamondCatchCard(context),
-                  ),
-                  SizedBox(width: 12.w),
-                  Expanded(
-                    child: _buildMegaOfferCard(context),
-                  ),
-                ],
-              ),
-            ),
-          )
-        else if (!hidePlayGames)
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: _buildDiamondCatchCard(context),
-          )
-        else if (!hideSuperOffer)
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: _buildMegaOfferCard(context),
-          ),
-
-        // 2. Daily Challenge & Quick Shortcut Grid (Positioned JUST below Super Mission)
+        // 2. Daily Challenge & Quick Shortcut Grid
         if (dailyChallengeWidget != null) ...[
-          SizedBox(height: 14.h),
           dailyChallengeWidget!,
         ],
         if (quickShortcutGridWidget != null) ...[
@@ -97,27 +67,6 @@ class TopRecommendedTaskWidget extends StatelessWidget {
           _PlayTimeBannerWidget(userId: userId, email: email),
         ],
 
-        // 4. New Slanted Pair below PlayTime: Play Games (Left) & Watch Video (Right)
-        if (!hidePlayGames || !hideWatchAndEarn) ...[
-          SizedBox(height: 44.h),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: Row(
-              children: [
-                if (!hidePlayGames)
-                  Expanded(
-                    child: _buildPlayGamesSlantedCard(context),
-                  ),
-                if (!hidePlayGames && !hideWatchAndEarn)
-                  SizedBox(width: 12.w),
-                if (!hideWatchAndEarn)
-                  Expanded(
-                    child: _buildWatchVideoSlantedCard(context),
-                  ),
-              ],
-            ),
-          ),
-        ],
       ],
     );
   }
@@ -353,7 +302,7 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                       Text(
                         'Start',
                         style: GoogleFonts.poppins(
-                          color: const Color(0xFF89009E),
+                          color: const Color(0xFF362187),
                           fontSize: 11.5.sp,
                           fontWeight: FontWeight.w700,
                           letterSpacing: 0.3,
@@ -362,7 +311,7 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                       SizedBox(width: 4.w),
                       Icon(
                         Icons.arrow_forward_rounded,
-                        color: const Color(0xFFAB31DE),
+                        color: const Color(0xFF362187),
                         size: 13.sp,
                       ),
                     ],
@@ -660,19 +609,22 @@ class TopRecommendedTaskWidget extends StatelessWidget {
         width: double.infinity,
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             colors: [
-              const Color(0xFFAB31DE).withValues(alpha: 0.22),
-              const Color(0xFFE39FFF).withValues(alpha: 0.08),
-              Colors.white.withValues(alpha: 0.0),
+              Color(0xFF362187),
+              Color(0xFF2A196B),
             ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
           borderRadius: BorderRadius.circular(22.r),
+          border: Border.all(
+            color: Colors.white.withValues(alpha: 0.15),
+            width: 1.2,
+          ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.06),
+              color: const Color(0xFF362187).withValues(alpha: 0.35),
               blurRadius: 16,
               offset: const Offset(0, 4),
             ),
@@ -683,29 +635,6 @@ class TopRecommendedTaskWidget extends StatelessWidget {
           child: Stack(
             clipBehavior: Clip.antiAlias,
             children: [
-              // Bottom Gradient Fade Overlay on Card
-              Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                height: 52.h,
-                child: IgnorePointer(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.white.withValues(alpha: 0.0),
-                          Colors.white.withValues(alpha: 0.45),
-                          Colors.white.withValues(alpha: 0.85),
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-
               // Glassmorphism aura behind Panda icon
               Positioned(
                 left: 0.w,
@@ -720,17 +649,18 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                         shape: BoxShape.circle,
                         gradient: RadialGradient(
                           colors: [
-                            Colors.white.withValues(alpha: 0.38),
-                            Colors.white.withValues(alpha: 0.06),
+                            const Color(0xFFFFF100).withValues(alpha: 0.35),
+                            const Color(0xFFFFF100).withValues(alpha: 0.08),
+                            Colors.transparent,
                           ],
                         ),
                         border: Border.all(
-                          color: Colors.white.withValues(alpha: 0.5),
-                          width: 1.5,
+                          color: const Color(0xFFFFF100).withValues(alpha: 0.35),
+                          width: 1.2,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.white.withValues(alpha: 0.25),
+                            color: const Color(0xFFFFF100).withValues(alpha: 0.25),
                             blurRadius: 20,
                             spreadRadius: 4,
                           ),
@@ -741,15 +671,15 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                 ),
               ),
 
-              // Tilted & Enlarged Panda Icon shifted rightward (with Bottom Fade)
+              // Enlarged Battle Ninja Graphic (with Bottom Fade)
               Positioned(
-                left: -10.w,
-                bottom: -32.h,
+                left: -8.w,
+                bottom: -22.h,
                 child: Transform.rotate(
-                  angle: 0.22,
+                  angle: 0.08,
                   child: SizedBox(
-                    width: 185.w,
-                    height: 185.w,
+                    width: 175.w,
+                    height: 175.w,
                     child: Hero(
                       tag: 'battle_ninja_lottie',
                       child: ShaderMask(
@@ -760,23 +690,19 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                               Colors.black,
                               Colors.transparent,
                             ],
-                            stops: [0.0, 0.55, 0.95],
+                            stops: [0.0, 0.65, 0.98],
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                           ).createShader(bounds);
                         },
                         blendMode: BlendMode.dstIn,
                         child: Image.asset(
-                          'assets/icons/battle.png',
+                          'assets/icons_2/Battle ninja.png',
                           fit: BoxFit.contain,
-                          errorBuilder: (_, __, ___) => Image.asset(
-                            'assets/icons/battle game.png',
-                            fit: BoxFit.contain,
-                            errorBuilder: (_, __, ___) => Icon(
-                              Icons.sports_esports_rounded,
-                              color: const Color(0xFFC084FC),
-                              size: 54.w,
-                            ),
+                          errorBuilder: (_, __, ___) => Icon(
+                            Icons.sports_esports_rounded,
+                            color: const Color(0xFFFFF100),
+                            size: 54.w,
                           ),
                         ),
                       ),
@@ -799,7 +725,7 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.poppins(
-                        color: const Color(0xFF1E1B4B),
+                        color: Colors.white,
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w800,
                         letterSpacing: 0.2,
@@ -813,7 +739,7 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.poppins(
-                        color: const Color(0xFF64748B),
+                        color: const Color(0xFF94A3B8),
                         fontSize: 9.sp,
                         fontWeight: FontWeight.w400,
                         height: 1.2,
@@ -848,15 +774,15 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                         begin: Alignment.centerRight,
                         end: Alignment.centerLeft,
                         colors: [
-                          Colors.white,
-                          Colors.white.withValues(alpha: 0.35),
+                          const Color(0xFFFFF100),
+                          const Color(0xFFFFF100).withValues(alpha: 0.35),
                           Colors.transparent,
                         ],
                         stops: const [0.0, 0.35, 1.0],
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.white.withValues(alpha: 0.35),
+                          color: const Color(0xFFFFF100).withValues(alpha: 0.25),
                           blurRadius: 8,
                           offset: const Offset(-2, 2),
                         ),
@@ -868,16 +794,16 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                         Text(
                           'Play Now',
                           style: GoogleFonts.poppins(
-                            color: const Color(0xFF89009E),
+                            color: const Color(0xFF0D0821),
                             fontSize: 11.5.sp,
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w800,
                             letterSpacing: 0.3,
                           ),
                         ),
                         SizedBox(width: 4.w),
                         Icon(
                           Icons.arrow_forward_rounded,
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF0D0821),
                           size: 13.sp,
                         ),
                       ],
@@ -1022,7 +948,7 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                                 offset: Offset(-2.5, -2.5),
                               ),
                               BoxShadow(
-                                color: const Color(0xFFAB31DE).withValues(alpha: 0.18),
+                                color: const Color(0xFF362187).withValues(alpha: 0.18),
                                 blurRadius: 6,
                                 offset: const Offset(2.5, 2.5),
                               ),
@@ -1034,7 +960,7 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                               Text(
                                 'Play',
                                 style: GoogleFonts.poppins(
-                                  color: const Color(0xFF89009E),
+                                  color: const Color(0xFF362187),
                                   fontSize: 11.sp,
                                   fontWeight: FontWeight.w700,
                                   letterSpacing: 0.3,
@@ -1043,7 +969,7 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                               SizedBox(width: 4.w),
                               Icon(
                                 Icons.arrow_forward_rounded,
-                                color: const Color(0xFFAB31DE),
+                                color: const Color(0xFF362187),
                                 size: 12.sp,
                               ),
                             ],
@@ -1217,7 +1143,7 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                                 offset: Offset(-2.5, -2.5),
                               ),
                               BoxShadow(
-                                color: const Color(0xFFAB31DE).withValues(alpha: 0.18),
+                                color: const Color(0xFF362187).withValues(alpha: 0.18),
                                 blurRadius: 6,
                                 offset: const Offset(2.5, 2.5),
                               ),
@@ -1229,7 +1155,7 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                               Text(
                                 'Watch',
                                 style: GoogleFonts.poppins(
-                                  color: const Color(0xFF89009E),
+                                  color: const Color(0xFF362187),
                                   fontSize: 11.sp,
                                   fontWeight: FontWeight.w700,
                                   letterSpacing: 0.3,
@@ -1238,7 +1164,7 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                               SizedBox(width: 4.w),
                               Icon(
                                 Icons.arrow_forward_rounded,
-                                color: const Color(0xFFAB31DE),
+                                color: const Color(0xFF362187),
                                 size: 12.sp,
                               ),
                             ],
@@ -1718,19 +1644,22 @@ class _PlayTimeBannerWidget extends HookWidget {
           width: double.infinity,
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               colors: [
-                const Color(0xFF10B981).withValues(alpha: 0.22),
-                const Color(0xFF6EE7B7).withValues(alpha: 0.08),
-                Colors.white.withValues(alpha: 0.0),
+                Color(0xFF362187),
+                Color(0xFF2A196B),
               ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
             borderRadius: BorderRadius.circular(22.r),
+            border: Border.all(
+              color: Colors.white.withValues(alpha: 0.15),
+              width: 1.2,
+            ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.06),
+                color: const Color(0xFF362187).withValues(alpha: 0.35),
                 blurRadius: 16,
                 offset: const Offset(0, 4),
               ),
@@ -1741,29 +1670,6 @@ class _PlayTimeBannerWidget extends HookWidget {
             child: Stack(
               clipBehavior: Clip.antiAlias,
               children: [
-                // Bottom Gradient Fade Overlay on Card
-                Positioned(
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  height: 52.h,
-                  child: IgnorePointer(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.white.withValues(alpha: 0.0),
-                            Colors.white.withValues(alpha: 0.45),
-                            Colors.white.withValues(alpha: 0.85),
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-
                 // Glassmorphism aura behind PlayTime icon
                 Positioned(
                   left: 0.w,
@@ -1778,17 +1684,18 @@ class _PlayTimeBannerWidget extends HookWidget {
                           shape: BoxShape.circle,
                           gradient: RadialGradient(
                             colors: [
-                              Colors.white.withValues(alpha: 0.38),
-                              Colors.white.withValues(alpha: 0.06),
+                              const Color(0xFFFFF100).withValues(alpha: 0.35),
+                              const Color(0xFFFFF100).withValues(alpha: 0.08),
+                              Colors.transparent,
                             ],
                           ),
                           border: Border.all(
-                            color: Colors.white.withValues(alpha: 0.5),
-                            width: 1.5,
+                            color: const Color(0xFFFFF100).withValues(alpha: 0.35),
+                            width: 1.2,
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.white.withValues(alpha: 0.25),
+                              color: const Color(0xFFFFF100).withValues(alpha: 0.25),
                               blurRadius: 20,
                               spreadRadius: 4,
                             ),
@@ -1799,44 +1706,22 @@ class _PlayTimeBannerWidget extends HookWidget {
                   ),
                 ),
 
-                // Tilted & Enlarged PlayTime Icon shifted rightward (with Bottom Fade)
+                // PlayTime Joystick Icon centered inside circular aura
                 Positioned(
-                  left: -10.w,
-                  bottom: -32.h,
-                  child: Transform.rotate(
-                    angle: 0.22,
-                    child: SizedBox(
-                      width: 185.w,
-                      height: 185.w,
-                      child: Hero(
-                        tag: 'playtime_banner_graphic',
-                        child: ShaderMask(
-                          shaderCallback: (Rect bounds) {
-                            return const LinearGradient(
-                              colors: [
-                                Colors.black,
-                                Colors.black,
-                                Colors.transparent,
-                              ],
-                              stops: [0.0, 0.55, 0.95],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                            ).createShader(bounds);
-                          },
-                          blendMode: BlendMode.dstIn,
-                          child: Image.asset(
-                            'assets/icons/playtimegame.png',
-                            fit: BoxFit.contain,
-                            errorBuilder: (_, __, ___) => Image.asset(
-                              'assets/icons/playtimegame.png',
-                              fit: BoxFit.contain,
-                              errorBuilder: (_, __, ___) => Icon(
-                                Icons.sports_esports_rounded,
-                                color: const Color(0xFF10B981),
-                                size: 54.w,
-                              ),
-                            ),
-                          ),
+                  left: 22.w,
+                  top: 15.h,
+                  child: SizedBox(
+                    width: 98.w,
+                    height: 98.w,
+                    child: Hero(
+                      tag: 'playtime_banner_graphic',
+                      child: Image.asset(
+                        'assets/icons_2/joystick.png',
+                        fit: BoxFit.contain,
+                        errorBuilder: (_, __, ___) => Icon(
+                          Icons.sports_esports_rounded,
+                          color: const Color(0xFFFFF100),
+                          size: 48.w,
                         ),
                       ),
                     ),
@@ -1857,7 +1742,7 @@ class _PlayTimeBannerWidget extends HookWidget {
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.poppins(
-                          color: const Color(0xFF1E1B4B),
+                          color: Colors.white,
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w800,
                           letterSpacing: 0.2,
@@ -1871,7 +1756,7 @@ class _PlayTimeBannerWidget extends HookWidget {
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.poppins(
-                          color: const Color(0xFF64748B),
+                          color: const Color(0xFF94A3B8),
                           fontSize: 9.sp,
                           fontWeight: FontWeight.w400,
                           height: 1.2,
@@ -1910,15 +1795,15 @@ class _PlayTimeBannerWidget extends HookWidget {
                           begin: Alignment.centerRight,
                           end: Alignment.centerLeft,
                           colors: [
-                            Colors.white,
-                            Colors.white.withValues(alpha: 0.35),
+                            const Color(0xFFFFF100),
+                            const Color(0xFFFFF100).withValues(alpha: 0.35),
                             Colors.transparent,
                           ],
                           stops: const [0.0, 0.35, 1.0],
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.white.withValues(alpha: 0.35),
+                            color: const Color(0xFFFFF100).withValues(alpha: 0.25),
                             blurRadius: 8,
                             offset: const Offset(-2, 2),
                           ),
@@ -1930,16 +1815,16 @@ class _PlayTimeBannerWidget extends HookWidget {
                           Text(
                             'Play Now',
                             style: GoogleFonts.poppins(
-                              color: const Color(0xFF059669),
+                              color: const Color(0xFF0D0821),
                               fontSize: 11.5.sp,
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.w800,
                               letterSpacing: 0.3,
                             ),
                           ),
                           SizedBox(width: 4.w),
                           Icon(
                             Icons.arrow_forward_rounded,
-                            color: const Color(0xFF10B981),
+                            color: const Color(0xFF0D0821),
                             size: 13.sp,
                           ),
                         ],

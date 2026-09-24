@@ -344,8 +344,8 @@ class _MoreAppHomeCardState extends State<_MoreAppHomeCard> {
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [
-                      Color(0xFFE39FFF),
-                      Color(0xFFAB31DE),
+                      Color(0xFF5635C7),
+                      Color(0xFF362187),
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
@@ -353,7 +353,7 @@ class _MoreAppHomeCardState extends State<_MoreAppHomeCard> {
                   borderRadius: BorderRadius.circular(100.r),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFFAB31DE).withValues(alpha: 0.28),
+                      color: const Color(0xFF362187).withValues(alpha: 0.35),
                       blurRadius: 6,
                       offset: const Offset(0, 2),
                     ),

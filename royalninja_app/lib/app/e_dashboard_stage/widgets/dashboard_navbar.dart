@@ -125,9 +125,9 @@ class DashboardNavbar extends StatelessWidget {
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: [
-                                    Colors.white,
-                                    Color(0xFFF3E8FF),
-                                    Color(0xFFEADBFF),
+                                    Color(0xFF362187),
+                                    Color(0xFF281466),
+                                    Color(0xFF190C45),
                                   ],
                                 ),
                               ),
@@ -174,7 +174,7 @@ class DashboardNavbar extends StatelessWidget {
                                     child: Icon(
                                       item.icon,
                                       size: 21.sp,
-                                      color: const Color(0xFF6B657D),
+                                      color: Colors.white.withValues(alpha: 0.65),
                                     ),
                                   ),
                                 ),
@@ -252,7 +252,7 @@ class _ElevatedCenterButton extends StatelessWidget {
                 icon,
                 key: ValueKey(icon),
                 size: 20.5.sp,
-                color: Colors.white,
+                color: const Color(0xFF362187),
               ),
             ),
           ),
@@ -271,15 +271,15 @@ class _Realistic3DHomeButtonPainter extends CustomPainter {
     final outerRadius = size.width / 2;
     final innerRadius = outerRadius * 0.77;
 
-    // 1. Outer Sunken Dish with Custom Purple ambient gradient
+    // 1. Outer Sunken Dish with Vibrant Yellow Gradient
     final outerRect = Rect.fromCircle(center: center, radius: outerRadius);
     final outerPaint = Paint()
       ..shader = const LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [
-          Color(0xFFE39FFF),
-          Color(0xFFAB31DE),
+          Color(0xFFFFF768),
+          Color(0xFFFFD200),
         ],
       ).createShader(outerRect);
 
@@ -292,7 +292,7 @@ class _Realistic3DHomeButtonPainter extends CustomPainter {
         radius: 0.95,
         colors: [
           Colors.transparent,
-          const Color(0xFFAB31DE).withValues(alpha: 0.20),
+          const Color(0xFFD97706).withValues(alpha: 0.30),
         ],
         stops: const [0.60, 1.0],
       ).createShader(outerRect);
@@ -303,22 +303,23 @@ class _Realistic3DHomeButtonPainter extends CustomPainter {
       ..addOval(Rect.fromCircle(center: Offset(center.dx, center.dy + 1.4), radius: innerRadius));
     canvas.drawShadow(
       innerPath,
-      const Color(0xFFAB31DE).withValues(alpha: 0.25),
+      const Color(0xFFD97706).withValues(alpha: 0.35),
       4.0,
       true,
     );
 
-    // 4. Inner Convex Dome Button
+    // 4. Inner Convex Dome Button (Glowing Golden Yellow)
     final innerRect = Rect.fromCircle(center: center, radius: innerRadius);
     final innerPaint = Paint()
       ..shader = RadialGradient(
         center: const Alignment(0, -0.45),
         radius: 0.85,
         colors: const [
-          Color(0xFFE39FFF),
-          Color(0xFFAB31DE),
+          Color(0xFFFFFDE0),
+          Color(0xFFFFF100),
+          Color(0xFFFFB800),
         ],
-        stops: const [0.0, 0.80],
+        stops: const [0.0, 0.45, 1.0],
       ).createShader(innerRect);
 
     canvas.drawCircle(center, innerRadius, innerPaint);
@@ -438,7 +439,7 @@ class _NotchedNavPainter extends CustomPainter {
       center: Alignment((cx / size.width) * 2 - 1, -1.0),
       radius: 0.35,
       colors: [
-        const Color(0xFF8B5CF6).withValues(alpha: 0.18),
+        const Color(0xFFFFF100).withValues(alpha: 0.22),
         Colors.transparent,
       ],
     ).createShader(Rect.fromLTWH(0, 0, size.width, size.height));
@@ -453,8 +454,8 @@ class _NotchedNavPainter extends CustomPainter {
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: [
-        const Color(0xFFAB31DE).withValues(alpha: 0.20),
-        const Color(0xFFAB31DE).withValues(alpha: 0.10),
+        Colors.white.withValues(alpha: 0.25),
+        Colors.white.withValues(alpha: 0.08),
         Colors.transparent,
       ],
       stops: const [0.0, 0.4, 1.0],
