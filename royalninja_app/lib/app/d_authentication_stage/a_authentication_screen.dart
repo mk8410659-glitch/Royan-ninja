@@ -94,7 +94,7 @@ class AuthenticationScreen extends HookWidget {
                         children: [
                           // Top Hero Section: App Logo + Welcome Text + Subtitle
                           Padding(
-                            padding: EdgeInsets.only(left: 24.w, right: 0.w),
+                            padding: EdgeInsets.symmetric(horizontal: 24.w),
                             child: const _AuthSingleHeroSection(),
                           ),
 
@@ -106,20 +106,20 @@ class AuthenticationScreen extends HookWidget {
                             child: Row(
                               children: [
                                 Container(
-                                  width: 6.w,
+                                  width: 5.w,
                                   height: 20.h,
-                                  decoration: const BoxDecoration(
-                                    color: Colors.black,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF7C3AED),
+                                    borderRadius: BorderRadius.circular(3.r),
                                   ),
                                 ),
                                 SizedBox(width: 8.w),
                                 Text(
                                   'Authentication',
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.black,
-                                    letterSpacing: 0.2,
+                                  style: GoogleFonts.russoOne(
+                                    fontSize: 17.sp,
+                                    color: const Color(0xFF1E1B4B),
+                                    letterSpacing: 0.3,
                                   ),
                                 ),
                               ],
@@ -133,7 +133,7 @@ class AuthenticationScreen extends HookWidget {
                             padding: EdgeInsets.symmetric(horizontal: 24.w),
                             child: Column(
                               children: [
-                              // 1. Google Login (Signature Daily Task Claim-Style Button)
+                              // 1. Google Login (Signature Royal Home Card Style)
                               Center(
                                 child: GestureDetector(
                                   onTapDown: (_) {
@@ -158,17 +158,21 @@ class AuthenticationScreen extends HookWidget {
                                     duration: const Duration(milliseconds: 100),
                                     curve: Curves.easeInOut,
                                     child: Container(
-                                      width: 220.w,
+                                      width: 230.w,
                                       height: 52.h,
                                       decoration: BoxDecoration(
                                         color: Colors.white,
-                                        borderRadius: BorderRadius.circular(14.r),
+                                        borderRadius: BorderRadius.circular(16.r),
+                                        border: Border.all(
+                                          color: const Color(0xFFE2E8F0),
+                                          width: 1.4,
+                                        ),
                                         boxShadow: [
                                           BoxShadow(
-                                            color: Colors.black.withValues(
-                                              alpha: isGooglePressed.value ? 0.05 : 0.08,
+                                            color: const Color(0xFF7C3AED).withValues(
+                                              alpha: isGooglePressed.value ? 0.08 : 0.14,
                                             ),
-                                            blurRadius: isGooglePressed.value ? 6 : 12,
+                                            blurRadius: isGooglePressed.value ? 6 : 14,
                                             offset: Offset(0, isGooglePressed.value ? 2 : 4),
                                           ),
                                         ],
@@ -180,33 +184,32 @@ class AuthenticationScreen extends HookWidget {
                                             const GlowLightingSpinner(
                                               size: 20,
                                               colors: [
-                                                Color(0xFFAB31DE),
-                                                Color(0xFFAB31DE),
-                                                Color(0xFF5C1B78),
-                                                Color(0xFFAB31DE),
+                                                Color(0xFFA855F7),
+                                                Color(0xFF7C3AED),
+                                                Color(0xFF5B21B6),
+                                                Color(0xFFA855F7),
                                               ],
                                             ),
                                           ] else ...[
                                             Image.asset(
                                               'assets/icons/google.png',
-                                              height: 20.h,
+                                              height: 22.h,
                                             ),
                                           ],
                                           const Spacer(),
                                           Text(
                                             'Google',
-                                            style: GoogleFonts.poppins(
+                                            style: GoogleFonts.russoOne(
                                               fontSize: 15.sp,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.black87,
-                                              letterSpacing: 0.2,
+                                              color: const Color(0xFF1E1B4B),
+                                              letterSpacing: 0.3,
                                             ),
                                           ),
                                           const Spacer(),
                                           Icon(
                                             Icons.arrow_forward_ios_rounded,
                                             size: 13.sp,
-                                            color: Colors.black54,
+                                            color: const Color(0xFF94A3B8),
                                           ),
                                           SizedBox(width: 16.w),
                                         ],
@@ -218,7 +221,7 @@ class AuthenticationScreen extends HookWidget {
 
                               SizedBox(height: 14.h),
 
-                              // 2. Guest Login (Frosted Dark Violet Glass Button)
+                              // 2. Guest Login (Signature Royal Home Card Style)
                               Center(
                                 child: GestureDetector(
                                   onTapDown: (_) {
@@ -243,17 +246,21 @@ class AuthenticationScreen extends HookWidget {
                                     duration: const Duration(milliseconds: 100),
                                     curve: Curves.easeInOut,
                                     child: Container(
-                                      width: 220.w,
+                                      width: 230.w,
                                       height: 52.h,
                                       decoration: BoxDecoration(
                                         color: Colors.white,
-                                        borderRadius: BorderRadius.circular(14.r),
+                                        borderRadius: BorderRadius.circular(16.r),
+                                        border: Border.all(
+                                          color: const Color(0xFFE2E8F0),
+                                          width: 1.4,
+                                        ),
                                         boxShadow: [
                                           BoxShadow(
-                                            color: Colors.black.withValues(
-                                              alpha: isGuestPressed.value ? 0.05 : 0.08,
+                                            color: const Color(0xFF7C3AED).withValues(
+                                              alpha: isGuestPressed.value ? 0.08 : 0.14,
                                             ),
-                                            blurRadius: isGuestPressed.value ? 6 : 12,
+                                            blurRadius: isGuestPressed.value ? 6 : 14,
                                             offset: Offset(0, isGuestPressed.value ? 2 : 4),
                                           ),
                                         ],
@@ -265,26 +272,34 @@ class AuthenticationScreen extends HookWidget {
                                             const GlowLightingSpinner(
                                               size: 20,
                                               colors: [
-                                                Color(0xFFAB31DE),
-                                                Color(0xFFAB31DE),
-                                                Color(0xFF5C1B78),
-                                                Color(0xFFAB31DE),
+                                                Color(0xFFA855F7),
+                                                Color(0xFF7C3AED),
+                                                Color(0xFF5B21B6),
+                                                Color(0xFFA855F7),
                                               ],
                                             ),
                                           ] else ...[
-                                            Icon(
-                                              Icons.person_outline_rounded,
-                                              color: Colors.black87,
-                                              size: 20.sp,
+                                            Container(
+                                              width: 26.w,
+                                              height: 26.w,
+                                              decoration: const BoxDecoration(
+                                                color: Color(0xFFEDE9FE),
+                                                shape: BoxShape.circle,
+                                              ),
+                                              alignment: Alignment.center,
+                                              child: Icon(
+                                                Icons.person_rounded,
+                                                color: const Color(0xFF7C3AED),
+                                                size: 16.sp,
+                                              ),
                                             ),
                                           ],
                                           const Spacer(),
                                           Text(
                                             'Guest',
-                                            style: GoogleFonts.poppins(
-                                              fontSize: 14.5.sp,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.black87,
+                                            style: GoogleFonts.russoOne(
+                                              fontSize: 15.sp,
+                                              color: const Color(0xFF1E1B4B),
                                               letterSpacing: 0.3,
                                             ),
                                           ),
@@ -292,7 +307,7 @@ class AuthenticationScreen extends HookWidget {
                                           Icon(
                                             Icons.arrow_forward_ios_rounded,
                                             size: 13.sp,
-                                            color: Colors.black54,
+                                            color: const Color(0xFF94A3B8),
                                           ),
                                           SizedBox(width: 16.w),
                                         ],
@@ -334,9 +349,9 @@ class AuthenticationScreen extends HookWidget {
                                         style: GoogleFonts.poppins(
                                           fontSize: 12.sp,
                                           fontWeight: FontWeight.w700,
-                                          color: const Color(0xFFAB31DE),
+                                          color: const Color(0xFF7C3AED),
                                           decoration: TextDecoration.underline,
-                                          decorationColor: const Color(0xFFAB31DE),
+                                          decorationColor: const Color(0xFF7C3AED),
                                         ),
                                       ),
                                     ],
@@ -361,9 +376,9 @@ class AuthenticationScreen extends HookWidget {
                                         recognizer: termsRecognizer,
                                         style: GoogleFonts.poppins(
                                           fontWeight: FontWeight.w600,
-                                          color: const Color(0xFFAB31DE),
+                                          color: const Color(0xFF7C3AED),
                                           decoration: TextDecoration.underline,
-                                          decorationColor: const Color(0xFFAB31DE),
+                                          decorationColor: const Color(0xFF7C3AED),
                                         ),
                                       ),
                                       const TextSpan(text: ' & '),
@@ -372,9 +387,9 @@ class AuthenticationScreen extends HookWidget {
                                         recognizer: privacyRecognizer,
                                         style: GoogleFonts.poppins(
                                           fontWeight: FontWeight.w600,
-                                          color: const Color(0xFFAB31DE),
+                                          color: const Color(0xFF7C3AED),
                                           decoration: TextDecoration.underline,
-                                          decorationColor: const Color(0xFFAB31DE),
+                                          decorationColor: const Color(0xFF7C3AED),
                                         ),
                                       ),
                                     ],
@@ -405,51 +420,57 @@ class _AuthSingleHeroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Expanded(
-          flex: 6,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Brand Gaming Title
-              Text(
-                'royal_ninja',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontFamily: 'Neogen',
-                  fontSize: 28.sp,
-                  fontWeight: FontWeight.w800,
-                  color: const Color(0xFFAB31DE),
-                  letterSpacing: 0.2,
-                ),
-              ),
-
-              SizedBox(height: 6.h),
-
-              // Description
-              Text(
-                'Play exciting games, complete tasks, compete on the leaderboard, and have fun every day!',
-                textAlign: TextAlign.left,
-                style: GoogleFonts.poppins(
-                  fontSize: 11.sp,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.black54,
-                  height: 1.35,
-                ),
-              ),
-
-            ],
+        // Top Centered Ninja Mascot Image
+        Center(
+          child: Image.asset(
+            'assets/icons_2/Battle ninja.png',
+            height: 140.h,
+            fit: BoxFit.contain,
           ),
         ),
-        SizedBox(width: 8.w),
-        Expanded(
-          flex: 5,
-          child: Image.asset(
-            'assets/icons/loginicon.png',
-            fit: BoxFit.contain,
+
+        SizedBox(height: 12.h),
+
+        // Brand Gaming Title (Centered with Royal Violet Theme)
+        ShaderMask(
+          shaderCallback: (bounds) => const LinearGradient(
+            colors: [
+              Color(0xFF5B21B6),
+              Color(0xFF7C3AED),
+              Color(0xFF9333EA),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ).createShader(bounds),
+          child: Text(
+            'royal_ninja',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.russoOne(
+              fontSize: 28.sp,
+              color: Colors.white,
+              letterSpacing: 0.8,
+            ),
+          ),
+        ),
+
+        SizedBox(height: 8.h),
+
+        // Centered Subtitle / Description
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: Text(
+            'Play exciting games, complete tasks, compete on the leaderboard, and have fun every day!',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.poppins(
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w400,
+              color: const Color(0xFF64748B),
+              height: 1.4,
+            ),
           ),
         ),
       ],

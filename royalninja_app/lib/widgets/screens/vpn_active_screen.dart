@@ -28,24 +28,24 @@ class VpnActiveScreen extends StatelessWidget {
             child: Center(
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                padding: EdgeInsets.symmetric(horizontal: 22.w, vertical: 20.h),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // 1. Top System Badge
+                    // 1. Top Security Alert Badge
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 6.h),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFFAF5FF),
-                        borderRadius: BorderRadius.circular(20.r),
+                        color: const Color(0xFFFEF2F2),
+                        borderRadius: BorderRadius.circular(100.r),
                         border: Border.all(
-                          color: const Color(0xFFE9D5FF),
+                          color: const Color(0xFFFECACA),
                           width: 1.2,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                            color: const Color(0xFFEF4444).withValues(alpha: 0.08),
                             blurRadius: 8,
                             offset: const Offset(0, 2),
                           ),
@@ -58,17 +58,17 @@ class VpnActiveScreen extends StatelessWidget {
                             width: 8.w,
                             height: 8.w,
                             decoration: const BoxDecoration(
-                              color: Color(0xFFAB31DE),
+                              color: Color(0xFFEF4444),
                               shape: BoxShape.circle,
                             ),
                           ),
                           SizedBox(width: 8.w),
                           Text(
                             'VPN DETECTED',
-                            style: GoogleFonts.outfit(
-                              fontSize: 11.sp,
-                              fontWeight: FontWeight.w800,
-                              color: const Color(0xFFAB31DE),
+                            style: GoogleFonts.poppins(
+                              fontSize: 10.5.sp,
+                              fontWeight: FontWeight.w700,
+                              color: const Color(0xFFDC2626),
                               letterSpacing: 0.5,
                             ),
                           ),
@@ -76,89 +76,105 @@ class VpnActiveScreen extends StatelessWidget {
                       ),
                     ),
 
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 28.h),
 
-                    // 2. VPN Hero Artwork (assets/icons/vpn.png)
+                    // 2. VPN Hero Artwork with Royal Ambient Glow
                     Container(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.12),
-                            blurRadius: 30,
-                            spreadRadius: 10,
+                            color: const Color(0xFF362187).withValues(alpha: 0.12),
+                            blurRadius: 36,
+                            spreadRadius: 8,
+                          ),
+                          BoxShadow(
+                            color: const Color(0xFFEF4444).withValues(alpha: 0.08),
+                            blurRadius: 20,
+                            spreadRadius: 4,
                           ),
                         ],
                       ),
                       child: Image.asset(
-                        'assets/icons/vpn.png',
-                        width: 230.w,
-                        height: 230.w,
+                        'assets/icons_2/vpn (1).png',
+                        width: 220.w,
+                        height: 220.w,
                         fit: BoxFit.contain,
                       ),
                     ),
 
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 26.h),
 
                     // 3. Headline & Subtitle
                     Text(
                       'VPN Detected!',
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.outfit(
+                      style: GoogleFonts.poppins(
                         color: const Color(0xFF1E1B4B),
-                        fontSize: 26.sp,
+                        fontSize: 23.sp,
                         fontWeight: FontWeight.w800,
                         letterSpacing: -0.3,
                       ),
                     ),
 
-                    SizedBox(height: 8.h),
+                    SizedBox(height: 10.h),
 
-                    Text(
-                      'You are currently connected to a VPN or proxy service. Please turn off your VPN connection to continue using the app safely.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.outfit(
-                        color: const Color(0xFF64748B),
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.w500,
-                        height: 1.4,
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.w),
+                      child: Text(
+                        'You are currently connected to a VPN or proxy service. Please turn off your VPN connection to continue using the app safely.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                          color: const Color(0xFF64748B),
+                          fontSize: 12.5.sp,
+                          fontWeight: FontWeight.w400,
+                          height: 1.5,
+                        ),
                       ),
                     ),
 
-                    SizedBox(height: 28.h),
+                    SizedBox(height: 26.h),
 
                     // 4. Info Card: Security Policy Requirement
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFFAF5FF),
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(18.r),
                         border: Border.all(
-                          color: const Color(0xFFE9D5FF),
+                          color: const Color(0xFFF1F5F9),
                           width: 1.2,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.05),
-                            blurRadius: 10,
-                            offset: const Offset(0, 3),
+                            color: const Color(0xFF362187).withValues(alpha: 0.06),
+                            blurRadius: 16,
+                            offset: const Offset(0, 4),
                           ),
                         ],
                       ),
                       child: Row(
                         children: [
                           Container(
-                            width: 40.w,
-                            height: 40.w,
-                            decoration: const BoxDecoration(
-                              color: Color(0xFFF3E8FF),
-                              shape: BoxShape.circle,
+                            width: 42.w,
+                            height: 42.w,
+                            decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                colors: [Color(0xFFFEE2E2), Color(0xFFFEF2F2)],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              borderRadius: BorderRadius.circular(13.r),
+                              border: Border.all(
+                                color: const Color(0xFFFECACA),
+                                width: 1,
+                              ),
                             ),
                             alignment: Alignment.center,
                             child: Icon(
                               Icons.vpn_lock_rounded,
-                              color: const Color(0xFFAB31DE),
-                              size: 20.sp,
+                              color: const Color(0xFFDC2626),
+                              size: 22.sp,
                             ),
                           ),
                           SizedBox(width: 12.w),
@@ -168,19 +184,19 @@ class VpnActiveScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   'Security Policy Requirement',
-                                  style: GoogleFonts.outfit(
+                                  style: GoogleFonts.poppins(
                                     color: const Color(0xFF1E1B4B),
                                     fontSize: 13.5.sp,
-                                    fontWeight: FontWeight.w800,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                                 SizedBox(height: 2.h),
                                 Text(
                                   'VPNs & proxies are strictly prohibited',
-                                  style: GoogleFonts.outfit(
+                                  style: GoogleFonts.poppins(
                                     color: const Color(0xFF64748B),
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: 11.5.sp,
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
                               ],
@@ -190,28 +206,28 @@ class VpnActiveScreen extends StatelessWidget {
                       ),
                     ),
 
-                    SizedBox(height: 28.h),
+                    SizedBox(height: 26.h),
 
-                    // 5. Open Settings Action Button
+                    // 5. Open Settings Action Button (Royal Ninja Purple Gradient)
                     GestureDetector(
                       onTap: () {
                         HapticFeedback.lightImpact();
                         AppSettings.openAppSettings(type: AppSettingsType.vpn);
                       },
                       child: Container(
-                        height: 50.h,
+                        height: 52.h,
                         width: double.infinity,
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
-                            colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                            colors: [Color(0xFF362187), Color(0xFF5B34C4)],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
-                          borderRadius: BorderRadius.circular(18.r),
+                          borderRadius: BorderRadius.circular(16.r),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
-                              blurRadius: 12,
+                              color: const Color(0xFF362187).withValues(alpha: 0.35),
+                              blurRadius: 14,
                               offset: const Offset(0, 4),
                             ),
                           ],
@@ -228,10 +244,10 @@ class VpnActiveScreen extends StatelessWidget {
                               SizedBox(width: 8.w),
                               Text(
                                 'Check Settings',
-                                style: GoogleFonts.outfit(
+                                style: GoogleFonts.poppins(
                                   color: Colors.white,
-                                  fontSize: 15.sp,
-                                  fontWeight: FontWeight.w800,
+                                  fontSize: 14.5.sp,
+                                  fontWeight: FontWeight.w700,
                                   letterSpacing: 0.3,
                                 ),
                               ),
@@ -243,7 +259,7 @@ class VpnActiveScreen extends StatelessWidget {
 
                     SizedBox(height: 12.h),
 
-                    // Close App Option
+                    // 6. Close App Option
                     TextButton(
                       onPressed: () {
                         HapticFeedback.lightImpact();
@@ -254,7 +270,7 @@ class VpnActiveScreen extends StatelessWidget {
                       ),
                       child: Text(
                         'Close Application',
-                        style: GoogleFonts.outfit(
+                        style: GoogleFonts.poppins(
                           color: const Color(0xFF94A3B8),
                           fontSize: 12.5.sp,
                           fontWeight: FontWeight.w600,

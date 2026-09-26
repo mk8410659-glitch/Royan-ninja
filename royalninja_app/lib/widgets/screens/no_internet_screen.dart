@@ -28,7 +28,7 @@ class NoInternetScreen extends StatelessWidget {
           child: Center(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -37,17 +37,17 @@ class NoInternetScreen extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 6.h),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFFAF5FF),
-                      borderRadius: BorderRadius.circular(20.r),
+                      color: const Color(0xFFFEF2F2),
+                      borderRadius: BorderRadius.circular(100.r),
                       border: Border.all(
-                        color: const Color(0xFFE9D5FF),
+                        color: const Color(0xFFFCA5A5),
                         width: 1.2,
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
+                          color: const Color(0xFFEF4444).withValues(alpha: 0.10),
+                          blurRadius: 10,
+                          offset: const Offset(0, 3),
                         ),
                       ],
                     ),
@@ -55,28 +55,28 @@ class NoInternetScreen extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
-                          width: 8.w,
-                          height: 8.w,
+                          width: 7.w,
+                          height: 7.w,
                           decoration: const BoxDecoration(
-                            color: Color(0xFFEF4444),
+                            color: Color(0xFFDC2626),
                             shape: BoxShape.circle,
                           ),
                         ),
-                        SizedBox(width: 8.w),
+                        SizedBox(width: 7.w),
                         Text(
                           'NETWORK DISCONNECTED',
-                          style: GoogleFonts.outfit(
-                            fontSize: 11.sp,
-                            fontWeight: FontWeight.w800,
-                            color: const Color(0xFFAB31DE),
-                            letterSpacing: 0.5,
+                          style: GoogleFonts.poppins(
+                            fontSize: 10.5.sp,
+                            fontWeight: FontWeight.w700,
+                            color: const Color(0xFFDC2626),
+                            letterSpacing: 0.6,
                           ),
                         ),
                       ],
                     ),
                   ),
 
-                  SizedBox(height: 24.h),
+                  SizedBox(height: 28.h),
 
                   // 2. Wifi Hero Artwork
                   Container(
@@ -84,103 +84,108 @@ class NoInternetScreen extends StatelessWidget {
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFFAB31DE).withValues(alpha: 0.12),
-                          blurRadius: 30,
-                          spreadRadius: 10,
+                          color: const Color(0xFF362187).withValues(alpha: 0.12),
+                          blurRadius: 36,
+                          spreadRadius: 8,
+                          offset: const Offset(0, 8),
                         ),
                       ],
                     ),
                     child: Image.asset(
-                      'assets/icons/wifi.png',
-                      width: 230.w,
-                      height: 230.w,
+                      'assets/icons_2/No Internet screen.jpg',
+                      width: 220.w,
+                      height: 220.w,
                       fit: BoxFit.contain,
-                    ),
-                  ),
-
-                  SizedBox(height: 24.h),
-
-                  // 3. Headline & Subtitle
-                  Text(
-                    'No Internet Connection',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.outfit(
-                      color: const Color(0xFF1E1B4B),
-                      fontSize: 25.sp,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: -0.3,
-                    ),
-                  ),
-
-                  SizedBox(height: 8.h),
-
-                  Text(
-                    'We couldn’t connect to the internet. Please check your Wi-Fi or mobile network connection and try again.',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.outfit(
-                      color: const Color(0xFF64748B),
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.w500,
-                      height: 1.4,
                     ),
                   ),
 
                   SizedBox(height: 28.h),
 
+                  // 3. Headline & Subtitle
+                  Text(
+                    'No Internet Connection',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      color: const Color(0xFF1E1B4B),
+                      fontSize: 23.sp,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: -0.3,
+                    ),
+                  ),
+
+                  SizedBox(height: 10.h),
+
+                  Text(
+                    'We couldn’t connect to the internet. Please check your Wi-Fi or mobile network and try again.',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      color: const Color(0xFF64748B),
+                      fontSize: 12.5.sp,
+                      fontWeight: FontWeight.w400,
+                      height: 1.5,
+                    ),
+                  ),
+
+                  SizedBox(height: 26.h),
+
                   // 4. Info Card: Connection Offline Status
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFFAF5FF),
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(18.r),
                       border: Border.all(
-                        color: const Color(0xFFE9D5FF),
+                        color: const Color(0xFFF1F5F9),
                         width: 1.2,
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFFAB31DE).withValues(alpha: 0.05),
-                          blurRadius: 10,
-                          offset: const Offset(0, 3),
+                          color: const Color(0xFF362187).withValues(alpha: 0.06),
+                          blurRadius: 16,
+                          offset: const Offset(0, 4),
                         ),
                       ],
                     ),
                     child: Row(
                       children: [
                         Container(
-                          width: 40.w,
-                          height: 40.w,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFF3E8FF),
-                            shape: BoxShape.circle,
+                          width: 42.w,
+                          height: 42.w,
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFF362187), Color(0xFF5B34C4)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(12.r),
                           ),
                           alignment: Alignment.center,
                           child: Icon(
                             Icons.wifi_off_rounded,
-                            color: const Color(0xFFAB31DE),
+                            color: Colors.white,
                             size: 20.sp,
                           ),
                         ),
-                        SizedBox(width: 12.w),
+                        SizedBox(width: 14.w),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 'Connection Offline',
-                                style: GoogleFonts.outfit(
+                                style: GoogleFonts.poppins(
                                   color: const Color(0xFF1E1B4B),
                                   fontSize: 13.5.sp,
-                                  fontWeight: FontWeight.w800,
+                                  fontWeight: FontWeight.w700,
                                 ),
                               ),
                               SizedBox(height: 2.h),
                               Text(
                                 'Please ensure mobile data or Wi-Fi is active',
-                                style: GoogleFonts.outfit(
+                                style: GoogleFonts.poppins(
                                   color: const Color(0xFF64748B),
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w500,
+                                  fontSize: 11.5.sp,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
                             ],
@@ -203,20 +208,20 @@ class NoInternetScreen extends StatelessWidget {
                       }
                     },
                     child: Container(
-                      height: 50.h,
+                      height: 52.h,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                          colors: [Color(0xFF362187), Color(0xFF5B34C4)],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
-                        borderRadius: BorderRadius.circular(18.r),
+                        borderRadius: BorderRadius.circular(16.r),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
-                            blurRadius: 12,
-                            offset: const Offset(0, 4),
+                            color: const Color(0xFF362187).withValues(alpha: 0.35),
+                            blurRadius: 14,
+                            offset: const Offset(0, 5),
                           ),
                         ],
                       ),
@@ -232,10 +237,10 @@ class NoInternetScreen extends StatelessWidget {
                             SizedBox(width: 8.w),
                             Text(
                               onRetry != null ? 'Retry Connection' : 'Open Settings',
-                              style: GoogleFonts.outfit(
+                              style: GoogleFonts.poppins(
                                 color: Colors.white,
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w800,
+                                fontSize: 14.5.sp,
+                                fontWeight: FontWeight.w700,
                                 letterSpacing: 0.3,
                               ),
                             ),
@@ -246,7 +251,7 @@ class NoInternetScreen extends StatelessWidget {
                   ),
 
                   if (onRetry != null) ...[
-                    SizedBox(height: 12.h),
+                    SizedBox(height: 10.h),
                     TextButton(
                       onPressed: () {
                         HapticFeedback.lightImpact();
@@ -257,8 +262,8 @@ class NoInternetScreen extends StatelessWidget {
                       ),
                       child: Text(
                         'Open Network Settings',
-                        style: GoogleFonts.outfit(
-                          color: const Color(0xFFAB31DE),
+                        style: GoogleFonts.poppins(
+                          color: const Color(0xFF362187),
                           fontSize: 13.sp,
                           fontWeight: FontWeight.w700,
                         ),
@@ -266,7 +271,7 @@ class NoInternetScreen extends StatelessWidget {
                     ),
                   ],
 
-                  SizedBox(height: 4.h),
+                  SizedBox(height: 6.h),
 
                   // Close App Option
                   TextButton(
@@ -279,7 +284,7 @@ class NoInternetScreen extends StatelessWidget {
                     ),
                     child: Text(
                       'Close Application',
-                      style: GoogleFonts.outfit(
+                      style: GoogleFonts.poppins(
                         color: const Color(0xFF94A3B8),
                         fontSize: 12.5.sp,
                         fontWeight: FontWeight.w600,

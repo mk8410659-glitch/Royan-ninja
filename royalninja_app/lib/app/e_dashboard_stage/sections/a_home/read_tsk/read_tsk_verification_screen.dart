@@ -167,7 +167,7 @@ class ReadTskVerificationScreen extends HookConsumerWidget {
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                    color: const Color(0xFF362187).withValues(alpha: 0.08),
                                     blurRadius: 10,
                                     offset: const Offset(0, 3),
                                   ),
@@ -175,7 +175,7 @@ class ReadTskVerificationScreen extends HookConsumerWidget {
                               ),
                               child: Icon(
                                 Icons.arrow_back_rounded,
-                                color: const Color(0xFFAB31DE),
+                                color: const Color(0xFF362187),
                                 size: 22.sp,
                               ),
                             ),
@@ -197,7 +197,7 @@ class ReadTskVerificationScreen extends HookConsumerWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Image.asset(
-                                  'assets/icons/coin.png',
+                                  'assets/icons_2/coin.png',
                                   width: 14.w,
                                   height: 14.w,
                                   fit: BoxFit.contain,
@@ -206,7 +206,7 @@ class ReadTskVerificationScreen extends HookConsumerWidget {
                                 Text(
                                   '+${offer.coins.formatCoins()}',
                                   style: GoogleFonts.outfit(
-                                    color: const Color(0xFFAB31DE),
+                                    color: const Color(0xFF362187),
                                     fontSize: 12.5.sp,
                                     fontWeight: FontWeight.w800,
                                   ),
@@ -242,7 +242,7 @@ class ReadTskVerificationScreen extends HookConsumerWidget {
                                       ),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: const Color(0xFFAB31DE).withValues(alpha: 0.1),
+                                          color: const Color(0xFF362187).withValues(alpha: 0.1),
                                           blurRadius: 10,
                                           offset: const Offset(0, 3),
                                         ),
@@ -250,13 +250,13 @@ class ReadTskVerificationScreen extends HookConsumerWidget {
                                     ),
                                     alignment: Alignment.center,
                                     child: Image.asset(
-                                      'assets/icons/coin.png',
+                                      'assets/icons_2/coin.png',
                                       width: 36.w,
                                       height: 36.w,
                                       fit: BoxFit.contain,
                                       errorBuilder: (_, __, ___) => Icon(
                                         Icons.monetization_on_rounded,
-                                        color: const Color(0xFFAB31DE),
+                                        color: const Color(0xFF362187),
                                         size: 28.sp,
                                       ),
                                     ),
@@ -363,12 +363,12 @@ class ReadTskVerificationScreen extends HookConsumerWidget {
                       height: 50.h,
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                          colors: [Color(0xFF5B34C4), Color(0xFF362187)],
                         ),
                         borderRadius: BorderRadius.circular(25.r),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
+                            color: const Color(0xFF362187).withValues(alpha: 0.35),
                             blurRadius: 10,
                             offset: const Offset(0, 4),
                           ),
@@ -424,8 +424,8 @@ class ReadTskVerificationScreen extends HookConsumerWidget {
                   shape: BoxShape.circle,
                   gradient: LinearGradient(
                     colors: [
-                      Color(0xFFE39FFF),
-                      Color(0xFFAB31DE),
+                      Color(0xFF5B34C4),
+                      Color(0xFF362187),
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
@@ -522,8 +522,8 @@ class ReadTskVerificationScreen extends HookConsumerWidget {
                   shape: BoxShape.circle,
                   gradient: LinearGradient(
                     colors: [
-                      Color(0xFFE39FFF),
-                      Color(0xFFAB31DE),
+                      Color(0xFF5B34C4),
+                      Color(0xFF362187),
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
@@ -593,7 +593,7 @@ class ReadTskVerificationScreen extends HookConsumerWidget {
                         Expanded(
                           child: TextField(
                             controller: urlController,
-                            cursorColor: const Color(0xFFAB31DE),
+                            cursorColor: const Color(0xFF362187),
                             style: GoogleFonts.outfit(
                               color: const Color(0xFF1E1B4B),
                               fontSize: 12.5.sp,
@@ -633,7 +633,7 @@ class ReadTskVerificationScreen extends HookConsumerWidget {
                             child: Text(
                               'PASTE',
                               style: GoogleFonts.outfit(
-                                color: const Color(0xFFAB31DE),
+                                color: const Color(0xFF362187),
                                 fontSize: 11.sp,
                                 fontWeight: FontWeight.w800,
                               ),
@@ -722,8 +722,8 @@ class ReadTskVerificationScreen extends HookConsumerWidget {
                         gradient: isTimerCompleted.value
                             ? const LinearGradient(
                                 colors: [
-                                  Color(0xFFE39FFF),
-                                  Color(0xFFAB31DE),
+                                  Color(0xFF5B34C4),
+                                  Color(0xFF362187),
                                 ],
                               )
                             : null,
@@ -733,7 +733,7 @@ class ReadTskVerificationScreen extends HookConsumerWidget {
                         borderRadius: BorderRadius.circular(12.r),
                         border: Border.all(
                           color: isTimerCompleted.value
-                              ? const Color(0xFFAB31DE)
+                              ? const Color(0xFF362187)
                               : const Color(0xFFE2E8F0),
                           width: 1,
                         ),

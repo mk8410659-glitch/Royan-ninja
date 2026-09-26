@@ -516,28 +516,32 @@ class CustomStatusPopup extends StatelessWidget {
       orbSize: 76.w,
       centerIcon: Center(
         child: Container(
-          width: 44.w,
-          height: 44.w,
+          width: 52.w,
+          height: 52.w,
           decoration: BoxDecoration(
-            color: Colors.white,
             shape: BoxShape.circle,
+            gradient: const LinearGradient(
+              colors: [Color(0xFFEDE9FE), Color(0xFFDDD6FE)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
             border: Border.all(
-              color: const Color(0xFFAB31DE).withValues(alpha: 0.15),
-              width: 1.2,
+              color: const Color(0xFFC4B5FD),
+              width: 1.5,
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.05),
-                blurRadius: 6,
-                offset: const Offset(0, 2),
+                color: const Color(0xFF7C3AED).withValues(alpha: 0.2),
+                blurRadius: 10,
+                offset: const Offset(0, 3),
               ),
             ],
           ),
           alignment: Alignment.center,
           child: Icon(
             Icons.description_rounded,
-            color: const Color(0xFFAB31DE),
-            size: 24.sp,
+            color: const Color(0xFF7C3AED),
+            size: 26.sp,
           ),
         ),
       ),
@@ -561,7 +565,7 @@ class CustomStatusPopup extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(14.r),
               border: Border.all(
-                color: const Color(0xFFAB31DE).withValues(alpha: 0.15),
+                color: const Color(0xFFDDD6FE),
                 width: 1.2,
               ),
               boxShadow: [
@@ -583,11 +587,11 @@ class CustomStatusPopup extends StatelessWidget {
                   child: Text(
                     'Privacy Policy',
                     style: GoogleFonts.poppins(
-                      color: const Color(0xFFAB31DE),
+                      color: const Color(0xFF7C3AED),
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w700,
                       decoration: TextDecoration.underline,
-                      decorationColor: const Color(0xFFAB31DE),
+                      decorationColor: const Color(0xFF7C3AED),
                     ),
                   ),
                 ),
@@ -604,11 +608,11 @@ class CustomStatusPopup extends StatelessWidget {
                   child: Text(
                     'Terms of Service',
                     style: GoogleFonts.poppins(
-                      color: const Color(0xFFAB31DE),
+                      color: const Color(0xFF7C3AED),
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w700,
                       decoration: TextDecoration.underline,
-                      decorationColor: const Color(0xFFAB31DE),
+                      decorationColor: const Color(0xFF7C3AED),
                     ),
                   ),
                 ),
@@ -618,6 +622,12 @@ class CustomStatusPopup extends StatelessWidget {
         ],
       ),
       primaryButtonText: 'CONTINUE',
+      primaryButtonColor: const Color(0xFF7C3AED),
+      primaryButtonGradient: const LinearGradient(
+        colors: [Color(0xFFA855F7), Color(0xFF7C3AED), Color(0xFF5B21B6)],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      ),
       onPrimaryTap: () {
         accepted = true;
       },
@@ -646,28 +656,32 @@ class CustomStatusPopup extends StatelessWidget {
       orbSize: 76.w,
       centerIcon: Center(
         child: Container(
-          width: 44.w,
-          height: 44.w,
+          width: 52.w,
+          height: 52.w,
           decoration: BoxDecoration(
-            color: Colors.white,
             shape: BoxShape.circle,
+            gradient: const LinearGradient(
+              colors: [Color(0xFFEDE9FE), Color(0xFFDDD6FE)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
             border: Border.all(
-              color: const Color(0xFFAB31DE).withValues(alpha: 0.15),
-              width: 1.2,
+              color: const Color(0xFFC4B5FD),
+              width: 1.5,
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.05),
-                blurRadius: 6,
-                offset: const Offset(0, 2),
+                color: const Color(0xFF7C3AED).withValues(alpha: 0.2),
+                blurRadius: 10,
+                offset: const Offset(0, 3),
               ),
             ],
           ),
           alignment: Alignment.center,
           child: Icon(
             Icons.explore_rounded,
-            color: const Color(0xFFAB31DE),
-            size: 24.sp,
+            color: const Color(0xFF7C3AED),
+            size: 26.sp,
           ),
         ),
       ),
@@ -689,7 +703,7 @@ class CustomStatusPopup extends StatelessWidget {
             'To securely save your actual data and rewards, we highly recommend signing in with Google.',
             textAlign: TextAlign.center,
             style: GoogleFonts.poppins(
-              color: const Color(0xFFAB31DE),
+              color: const Color(0xFF7C3AED),
               fontSize: 12.5.sp,
               fontWeight: FontWeight.w700,
               height: 1.45,
@@ -698,6 +712,12 @@ class CustomStatusPopup extends StatelessWidget {
         ],
       ),
       primaryButtonText: 'CONTINUE GUEST',
+      primaryButtonColor: const Color(0xFF7C3AED),
+      primaryButtonGradient: const LinearGradient(
+        colors: [Color(0xFFA855F7), Color(0xFF7C3AED), Color(0xFF5B21B6)],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      ),
       onPrimaryTap: () {
         accepted = true;
       },
@@ -963,7 +983,7 @@ class CustomStatusPopup extends StatelessWidget {
                               width: double.infinity,
                               height: 48.h,
                               decoration: BoxDecoration(
-                                color: const Color(0xFFAB31DE),
+                                color: const Color(0xFF7C3AED),
                                 borderRadius: BorderRadius.circular(14.r),
                               ),
                               child: Center(
@@ -1158,11 +1178,11 @@ class CustomStatusPopup extends StatelessWidget {
 
       case StatusPopupType.info:
       case StatusPopupType.permission:
-        iconBgLight = const Color(0xFFFAF5FF); // Soft lavender
-        iconBgInner = const Color(0xFFF3E8FF);
-        iconColor = const Color(0xFFAB31DE);
+        iconBgLight = const Color(0xFFF5F3FF); // Soft lavender
+        iconBgInner = const Color(0xFFEDE9FE);
+        iconColor = const Color(0xFF7C3AED);
         iconData = Icons.info_outline_rounded;
-        primaryBtnColor = const Color(0xFFAB31DE);
+        primaryBtnColor = const Color(0xFF7C3AED);
         defaultTag = '';
         defaultTitle = 'Notice';
         defaultButtonText = 'Understand';
@@ -1266,10 +1286,9 @@ class CustomStatusPopup extends StatelessWidget {
                     Text(
                       effectiveTag,
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.outfit(
+                      style: GoogleFonts.russoOne(
                         color: const Color(0xFF94A3B8),
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 11.sp,
                         letterSpacing: 0.3,
                       ),
                     ),
@@ -1280,10 +1299,9 @@ class CustomStatusPopup extends StatelessWidget {
                   Text(
                     effectiveTitle,
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.outfit(
+                    style: GoogleFonts.russoOne(
                       color: const Color(0xFF1E1B4B),
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.w700,
+                      fontSize: 19.sp,
                       height: 1.2,
                     ),
                   ),
@@ -1296,11 +1314,11 @@ class CustomStatusPopup extends StatelessWidget {
                       child: Text(
                         message!,
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.outfit(
+                        style: GoogleFonts.poppins(
                           color: const Color(0xFF64748B),
                           fontSize: 13.sp,
                           fontWeight: FontWeight.w400,
-                          height: 1.4,
+                          height: 1.45,
                         ),
                       ),
                     ),
@@ -1342,10 +1360,9 @@ class CustomStatusPopup extends StatelessWidget {
                               ),
                               child: Text(
                                 secondaryButtonText!,
-                                style: GoogleFonts.outfit(
+                                style: GoogleFonts.russoOne(
                                   color: const Color(0xFF64748B),
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w600,
+                                  fontSize: 13.5.sp,
                                 ),
                               ),
                             ),
@@ -1378,7 +1395,7 @@ class CustomStatusPopup extends StatelessWidget {
                                 boxShadow: primaryButtonGradient != null
                                     ? [
                                         BoxShadow(
-                                          color: (primaryButtonColor ?? const Color(0xFFAB31DE)).withValues(alpha: 0.3),
+                                          color: (primaryButtonColor ?? const Color(0xFF7C3AED)).withValues(alpha: 0.3),
                                           blurRadius: 8,
                                           offset: const Offset(0, 3),
                                         ),
@@ -1387,10 +1404,9 @@ class CustomStatusPopup extends StatelessWidget {
                               ),
                               child: Text(
                                 effectiveButtonText,
-                                style: GoogleFonts.outfit(
+                                style: GoogleFonts.russoOne(
                                   color: Colors.white,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w700,
+                                  fontSize: 13.5.sp,
                                 ),
                               ),
                             ),
@@ -1423,7 +1439,7 @@ class CustomStatusPopup extends StatelessWidget {
                           boxShadow: primaryButtonGradient != null
                               ? [
                                   BoxShadow(
-                                    color: (primaryButtonColor ?? const Color(0xFFAB31DE)).withValues(alpha: 0.3),
+                                    color: (primaryButtonColor ?? const Color(0xFF7C3AED)).withValues(alpha: 0.3),
                                     blurRadius: 8,
                                     offset: const Offset(0, 3),
                                   ),
@@ -1432,10 +1448,9 @@ class CustomStatusPopup extends StatelessWidget {
                         ),
                         child: Text(
                           effectiveButtonText,
-                          style: GoogleFonts.outfit(
+                          style: GoogleFonts.russoOne(
                             color: Colors.white,
-                            fontSize: 14.5.sp,
-                            fontWeight: FontWeight.w700,
+                            fontSize: 14.sp,
                           ),
                         ),
                       ),

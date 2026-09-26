@@ -51,7 +51,7 @@ class BalanceCard extends StatelessWidget {
             offset: const Offset(0, 6),
           ),
           BoxShadow(
-            color: const Color(0xFFAB31DE).withValues(alpha: 0.04),
+            color: const Color(0xFF362187).withValues(alpha: 0.04),
             blurRadius: 12,
             offset: const Offset(0, 8),
           ),
@@ -102,7 +102,7 @@ class BalanceCard extends StatelessWidget {
                 ),
                 child: Center(
                   child: Image.asset(
-                    'assets/icons/panda 4.png',
+                    'assets/icons_2/Battle ninja.png',
                     fit: BoxFit.contain,
                     errorBuilder: (_, __, ___) => const SizedBox.shrink(),
                   ),
@@ -139,7 +139,7 @@ class BalanceCard extends StatelessWidget {
                                 ),
                                 child: Center(
                                   child: Image.asset(
-                                    'assets/icons/coin.png',
+                                    'assets/icons_2/coin.png',
                                     width: 24.w,
                                     height: 24.w,
                                     fit: BoxFit.contain,
@@ -149,7 +149,7 @@ class BalanceCard extends StatelessWidget {
                               Positioned.fill(
                                 child: CustomPaint(
                                   painter: _CircularArcPainter(
-                                    color: const Color(0xFFAB31DE),
+                                    color: const Color(0xFF362187),
                                     strokeWidth: 3.w,
                                     startAngle: -1.2,
                                     sweepAngle: 2.2,
@@ -181,7 +181,7 @@ class BalanceCard extends StatelessWidget {
                                 coins: coins,
                                 formatAsK: false,
                                 style: GoogleFonts.poppins(
-                                  color: const Color(0xFFAB31DE),
+                                  color: const Color(0xFF362187),
                                   fontSize: 18.sp,
                                   fontWeight: FontWeight.w800,
                                   letterSpacing: -0.4,
@@ -206,7 +206,7 @@ class BalanceCard extends StatelessWidget {
                         ),
                         Icon(
                           Icons.chevron_right_rounded,
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           size: 18.sp,
                         ),
                       ],

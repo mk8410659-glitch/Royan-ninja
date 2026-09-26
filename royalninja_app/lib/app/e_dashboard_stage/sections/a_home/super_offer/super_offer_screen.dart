@@ -40,7 +40,7 @@ class SuperOfferScreen extends HookConsumerWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24.r),
           side: BorderSide(
-            color: const Color(0xFFAB31DE).withValues(alpha: 0.3),
+            color: const Color(0xFF362187).withValues(alpha: 0.3),
             width: 1.2,
           ),
         ),
@@ -55,7 +55,7 @@ class SuperOfferScreen extends HookConsumerWidget {
                 children: [
                   Icon(
                     Icons.task_alt_rounded,
-                    color: const Color(0xFFAB31DE),
+                    color: const Color(0xFF362187),
                     size: 24.sp,
                   ),
                   SizedBox(width: 8.w),
@@ -89,8 +89,8 @@ class SuperOfferScreen extends HookConsumerWidget {
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       colors: [
-                        Color(0xFFE39FFF),
-                        Color(0xFFAB31DE),
+                        Color(0xFF5B34C4),
+                        Color(0xFF362187),
                       ],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
@@ -252,7 +252,7 @@ class SuperOfferScreen extends HookConsumerWidget {
                                                   ),
                                                   boxShadow: [
                                                     BoxShadow(
-                                                      color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                                      color: const Color(0xFF362187).withValues(alpha: 0.08),
                                                       blurRadius: 10,
                                                       offset: const Offset(0, 3),
                                                     ),
@@ -260,7 +260,7 @@ class SuperOfferScreen extends HookConsumerWidget {
                                                 ),
                                                 child: Icon(
                                                   Icons.arrow_back_rounded,
-                                                  color: const Color(0xFFAB31DE),
+                                                  color: const Color(0xFF362187),
                                                   size: 22.sp,
                                                 ),
                                               ),
@@ -372,8 +372,8 @@ class SuperOfferScreen extends HookConsumerWidget {
                                             data: (DiamondCatchSet diamondCatch) {
                                               return _buildTaskCard(
                                                 context: context,
-                                                iconPath: 'assets/icons/playtimegame.png',
-                                                title: 'Ninja Catch',
+                                                iconPath: 'assets/icons_2/Battle ninja.png',
+                                                title: 'Ninja Runner',
                                                 subtitle: '+${diamondCatch.gameGems} Gems',
                                                 buttonText: _translate('play-now', 'Play Now'),
                                                 onTap: () => AutoRouter.of(context).push(
@@ -390,8 +390,8 @@ class SuperOfferScreen extends HookConsumerWidget {
                                             },
                                             error: (_, __) => _buildTaskCard(
                                               context: context,
-                                              iconPath: 'assets/icons/playtimegame.png',
-                                              title: 'Ninja Catch',
+                                              iconPath: 'assets/icons_2/Battle ninja.png',
+                                              title: 'Ninja Runner',
                                               subtitle: '+1 Gems',
                                               buttonText: _translate('play-now', 'Play Now'),
                                               onTap: () => AutoRouter.of(context).push(
@@ -410,8 +410,8 @@ class SuperOfferScreen extends HookConsumerWidget {
                                                   (config['gameGems'] as num?)?.toInt() ?? 1;
                                               return _buildTaskCard(
                                                 context: context,
-                                                iconPath: 'assets/icons/playtimegame.png',
-                                                title: 'Ninja Catch',
+                                                iconPath: 'assets/icons_2/Battle ninja.png',
+                                                title: 'Ninja Runner',
                                                 subtitle: '+$gameGems Gems',
                                                 buttonText: _translate('play-now', 'Play Now'),
                                                 onTap: () {},
@@ -506,7 +506,7 @@ class SuperOfferScreen extends HookConsumerWidget {
                       fit: BoxFit.contain,
                       errorBuilder: (_, __, ___) => const Icon(
                         Icons.task_alt_rounded,
-                        color: Color(0xFFAB31DE),
+                        color: Color(0xFF362187),
                         size: 20,
                       ),
                     ),
@@ -544,7 +544,7 @@ class SuperOfferScreen extends HookConsumerWidget {
                             SizedBox(width: 3.w),
                             Icon(
                               Icons.info_outline_rounded,
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.7),
+                              color: const Color(0xFF362187).withValues(alpha: 0.7),
                               size: 11.sp,
                             ),
                           ],
@@ -717,7 +717,7 @@ class SuperOfferScreen extends HookConsumerWidget {
             ),
             if (count > 0)
               BoxShadow(
-                color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                color: const Color(0xFF362187).withValues(alpha: 0.08),
                 blurRadius: 12,
                 offset: const Offset(0, 3),
               ),
@@ -729,16 +729,16 @@ class SuperOfferScreen extends HookConsumerWidget {
               width: 44.w,
               height: 44.w,
               decoration: BoxDecoration(
-                color: count > 0 ? const Color(0xFFFAF5FF) : const Color(0xFFF8FAFC),
+                color: count > 0 ? const Color(0xFFF5F3FF) : const Color(0xFFF8FAFC),
                 borderRadius: BorderRadius.circular(14.r),
                 border: Border.all(
-                  color: count > 0 ? const Color(0xFFE39FFF).withValues(alpha: 0.6) : const Color(0xFFE2E8F0),
+                  color: count > 0 ? const Color(0xFF5B34C4).withValues(alpha: 0.4) : const Color(0xFFE2E8F0),
                   width: 1.2,
                 ),
               ),
               child: Icon(
                 Icons.pending_actions_rounded,
-                color: count > 0 ? const Color(0xFFAB31DE) : const Color(0xFF94A3B8),
+                color: count > 0 ? const Color(0xFF362187) : const Color(0xFF94A3B8),
                 size: 22.sp,
               ),
             ),
@@ -817,7 +817,7 @@ class SuperOfferScreen extends HookConsumerWidget {
               fit: BoxFit.contain,
               errorBuilder: (_, __, ___) => Icon(
                 Icons.local_fire_department_rounded,
-                color: const Color(0xFFAB31DE),
+                color: const Color(0xFF362187),
                 size: 48.sp,
               ),
             ),
@@ -841,8 +841,8 @@ class SuperOfferScreen extends HookConsumerWidget {
               borderRadius: BorderRadius.circular(2.r),
               gradient: const LinearGradient(
                 colors: [
-                  Color(0xFFE39FFF),
-                  Color(0xFFAB31DE),
+                  Color(0xFF5B34C4),
+                  Color(0xFF362187),
                 ],
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
@@ -878,7 +878,7 @@ class SuperOfferScreen extends HookConsumerWidget {
           Icon(
             Icons.assignment_late_outlined,
             size: 42.sp,
-            color: const Color(0xFFAB31DE),
+            color: const Color(0xFF362187),
           ),
           SizedBox(height: 10.h),
           Text(

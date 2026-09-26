@@ -96,7 +96,7 @@ class ServicesScreen extends HookWidget {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                              color: const Color(0xFF362187).withValues(alpha: 0.08),
                               blurRadius: 10,
                               offset: const Offset(0, 3),
                             ),
@@ -104,7 +104,7 @@ class ServicesScreen extends HookWidget {
                         ),
                         child: Icon(
                           Icons.arrow_back_rounded,
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           size: 22.sp,
                         ),
                       ),
@@ -136,15 +136,15 @@ class ServicesScreen extends HookWidget {
                         height: 40.w,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: activeTab.value == 1 ? const Color(0xFFF3E8FF) : Colors.white,
+                          color: activeTab.value == 1 ? const Color(0xFFE9E3FE) : Colors.white,
                           borderRadius: BorderRadius.circular(15.r),
                           border: Border.all(
-                            color: activeTab.value == 1 ? const Color(0xFFAB31DE) : const Color(0xFFF1F5F9),
+                            color: activeTab.value == 1 ? const Color(0xFF362187) : const Color(0xFFF1F5F9),
                             width: 1.2,
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                              color: const Color(0xFF362187).withValues(alpha: 0.08),
                               blurRadius: 10,
                               offset: const Offset(0, 3),
                             ),
@@ -152,7 +152,7 @@ class ServicesScreen extends HookWidget {
                         ),
                         child: Icon(
                           activeTab.value == 1 ? Icons.add_task_rounded : Icons.history_rounded,
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           size: 22.sp,
                         ),
                       ),
@@ -279,15 +279,15 @@ class ServicesScreen extends HookWidget {
             Container(
               padding: EdgeInsets.all(18.w),
               decoration: BoxDecoration(
-                color: const Color(0xFFFAF5FF),
+                color: const Color(0xFFF6F4FE),
                 borderRadius: BorderRadius.circular(22.r),
                 border: Border.all(
-                  color: const Color(0xFFE9D5FF),
+                  color: const Color(0xFFE9E3FE),
                   width: 1.2,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFAB31DE).withValues(alpha: 0.05),
+                    color: const Color(0xFF362187).withValues(alpha: 0.05),
                     blurRadius: 10,
                     offset: const Offset(0, 3),
                   ),
@@ -303,13 +303,13 @@ class ServicesScreen extends HookWidget {
                         width: 44.w,
                         height: 44.w,
                         decoration: const BoxDecoration(
-                          color: Color(0xFFF3E8FF),
+                          color: Color(0xFFE9E3FE),
                           shape: BoxShape.circle,
                         ),
                         alignment: Alignment.center,
                         child: Icon(
                           Icons.miscellaneous_services_rounded,
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           size: 22.sp,
                         ),
                       ),
@@ -372,7 +372,7 @@ class ServicesScreen extends HookWidget {
                               ),
                               child: CountryPickerDialog(
                                 titlePadding: const EdgeInsets.all(12),
-                                searchCursorColor: const Color(0xFFAB31DE),
+                                searchCursorColor: const Color(0xFF362187),
                                 searchInputDecoration: InputDecoration(
                                   hintText: 'Search country...',
                                   hintStyle: GoogleFonts.outfit(color: const Color(0xFF94A3B8)),
@@ -430,7 +430,7 @@ class ServicesScreen extends HookWidget {
                             ),
                             const Icon(
                               Icons.arrow_drop_down_rounded,
-                              color: Color(0xFFAB31DE),
+                              color: Color(0xFF362187),
                             ),
                             SizedBox(width: 6.w),
                           ],
@@ -450,7 +450,7 @@ class ServicesScreen extends HookWidget {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(14.r),
                         borderSide: const BorderSide(
-                          color: Color(0xFFAB31DE),
+                          color: Color(0xFF362187),
                           width: 1.5,
                         ),
                       ),
@@ -483,7 +483,7 @@ class ServicesScreen extends HookWidget {
                       ),
                       prefixIcon: Icon(
                         Icons.currency_rupee_rounded,
-                        color: const Color(0xFFAB31DE),
+                        color: const Color(0xFF362187),
                         size: 18.sp,
                       ),
                       fillColor: Colors.white,
@@ -500,7 +500,7 @@ class ServicesScreen extends HookWidget {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(14.r),
                         borderSide: const BorderSide(
-                          color: Color(0xFFAB31DE),
+                          color: Color(0xFF362187),
                           width: 1.5,
                         ),
                       ),
@@ -531,7 +531,7 @@ class ServicesScreen extends HookWidget {
                           isExpanded: true,
                           icon: const Icon(
                             Icons.keyboard_arrow_down_rounded,
-                            color: Color(0xFFAB31DE),
+                            color: Color(0xFF362187),
                           ),
                           dropdownColor: Colors.white,
                           style: GoogleFonts.outfit(
@@ -585,7 +585,7 @@ class ServicesScreen extends HookWidget {
                       ),
                       prefixIcon: Icon(
                         Icons.title_rounded,
-                        color: const Color(0xFFAB31DE),
+                        color: const Color(0xFF362187),
                         size: 18.sp,
                       ),
                       fillColor: Colors.white,
@@ -602,7 +602,7 @@ class ServicesScreen extends HookWidget {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(14.r),
                         borderSide: const BorderSide(
-                          color: Color(0xFFAB31DE),
+                          color: Color(0xFF362187),
                           width: 1.5,
                         ),
                       ),
@@ -635,7 +635,7 @@ class ServicesScreen extends HookWidget {
                       ),
                       prefixIcon: Icon(
                         Icons.link_rounded,
-                        color: const Color(0xFFAB31DE),
+                        color: const Color(0xFF362187),
                         size: 18.sp,
                       ),
                       fillColor: Colors.white,
@@ -652,7 +652,7 @@ class ServicesScreen extends HookWidget {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(14.r),
                         borderSide: const BorderSide(
-                          color: Color(0xFFAB31DE),
+                          color: Color(0xFF362187),
                           width: 1.5,
                         ),
                       ),
@@ -711,7 +711,7 @@ class ServicesScreen extends HookWidget {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(14.r),
                         borderSide: const BorderSide(
-                          color: Color(0xFFAB31DE),
+                          color: Color(0xFF362187),
                           width: 1.5,
                         ),
                       ),
@@ -785,14 +785,14 @@ class ServicesScreen extends HookWidget {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                          colors: [Color(0xFF4C2CA3), Color(0xFF362187)],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
                         borderRadius: BorderRadius.circular(16.r),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.3),
+                            color: const Color(0xFF362187).withValues(alpha: 0.3),
                             blurRadius: 10,
                             offset: const Offset(0, 4),
                           ),
@@ -844,7 +844,7 @@ class ServicesScreen extends HookWidget {
   }) {
     return RefreshIndicator(
       onRefresh: loadHistory,
-      color: const Color(0xFFAB31DE),
+      color: const Color(0xFF362187),
       backgroundColor: Colors.white,
       child: isLoadingHistory.value
           ? const Center(
@@ -862,17 +862,17 @@ class ServicesScreen extends HookWidget {
                             width: 68.w,
                             height: 68.w,
                             decoration: BoxDecoration(
-                              color: const Color(0xFFFAF5FF),
+                              color: const Color(0xFFF6F4FE),
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: const Color(0xFFE9D5FF),
+                                color: const Color(0xFFE9E3FE),
                                 width: 1.2,
                               ),
                             ),
                             child: Icon(
                               Icons.history_toggle_off_rounded,
                               size: 30.sp,
-                              color: const Color(0xFFAB31DE),
+                              color: const Color(0xFF362187),
                             ),
                           ),
                           SizedBox(height: 14.h),
@@ -965,10 +965,10 @@ class ServicesScreen extends HookWidget {
                               Container(
                                 padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFFAF5FF),
+                                  color: const Color(0xFFF6F4FE),
                                   borderRadius: BorderRadius.circular(8.r),
                                   border: Border.all(
-                                    color: const Color(0xFFE9D5FF),
+                                    color: const Color(0xFFE9E3FE),
                                     width: 1,
                                   ),
                                 ),
@@ -977,7 +977,7 @@ class ServicesScreen extends HookWidget {
                                   style: GoogleFonts.outfit(
                                     fontSize: 11.sp,
                                     fontWeight: FontWeight.w700,
-                                    color: const Color(0xFFAB31DE),
+                                    color: const Color(0xFF362187),
                                   ),
                                 ),
                               ),
@@ -1028,10 +1028,10 @@ class ServicesScreen extends HookWidget {
                               width: double.infinity,
                               padding: EdgeInsets.all(12.w),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFFAF5FF),
+                                color: const Color(0xFFF6F4FE),
                                 borderRadius: BorderRadius.circular(14.r),
                                 border: Border.all(
-                                  color: const Color(0xFFE9D5FF),
+                                  color: const Color(0xFFE9E3FE),
                                   width: 1.0,
                                 ),
                               ),
@@ -1042,7 +1042,7 @@ class ServicesScreen extends HookWidget {
                                     children: [
                                       Icon(
                                         Icons.verified_user_rounded,
-                                        color: const Color(0xFFAB31DE),
+                                        color: const Color(0xFF362187),
                                         size: 15.sp,
                                       ),
                                       SizedBox(width: 6.w),
@@ -1051,7 +1051,7 @@ class ServicesScreen extends HookWidget {
                                         style: GoogleFonts.outfit(
                                           fontSize: 12.sp,
                                           fontWeight: FontWeight.w800,
-                                          color: const Color(0xFFAB31DE),
+                                          color: const Color(0xFF362187),
                                         ),
                                       ),
                                     ],
@@ -1120,16 +1120,16 @@ class _TypeCard extends HookWidget {
         width: double.infinity,
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
-          color: isSelected ? const Color(0xFFFAF5FF) : Colors.white,
+          color: isSelected ? const Color(0xFFF6F4FE) : Colors.white,
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
-            color: isSelected ? const Color(0xFFAB31DE) : const Color(0xFFE2E8F0),
+            color: isSelected ? const Color(0xFF362187) : const Color(0xFFE2E8F0),
             width: isSelected ? 1.8 : 1.0,
           ),
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: const Color(0xFFAB31DE).withValues(alpha: 0.16),
+                    color: const Color(0xFF362187).withValues(alpha: 0.16),
                     blurRadius: 12,
                     offset: const Offset(0, 4),
                   ),
@@ -1152,7 +1152,7 @@ class _TypeCard extends HookWidget {
               decoration: BoxDecoration(
                 gradient: isSelected
                     ? const LinearGradient(
-                        colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                        colors: [Color(0xFF4C2CA3), Color(0xFF362187)],
                       )
                     : null,
                 color: isSelected ? null : Colors.transparent,
@@ -1169,7 +1169,7 @@ class _TypeCard extends HookWidget {
                     decoration: BoxDecoration(
                       gradient: isSelected
                           ? const LinearGradient(
-                              colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                              colors: [Color(0xFF4C2CA3), Color(0xFF362187)],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             )
@@ -1179,7 +1179,7 @@ class _TypeCard extends HookWidget {
                       boxShadow: isSelected
                           ? [
                               BoxShadow(
-                                color: const Color(0xFFAB31DE).withValues(alpha: 0.3),
+                                color: const Color(0xFF362187).withValues(alpha: 0.3),
                                 blurRadius: 6,
                                 offset: const Offset(0, 2),
                               ),

@@ -558,7 +558,7 @@ class QuizResultReportScreen extends ConsumerWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Image.asset(
-                  'assets/icons/coin.png',
+                  'assets/icons_2/coin.png',
                   width: 15.w,
                   height: 15.w,
                 ),
@@ -779,7 +779,7 @@ class QuizResultReportScreen extends ConsumerWidget {
                       ),
                       SizedBox(width: 8.w),
                       Image.asset(
-                        'assets/icons/coin.png',
+                        'assets/icons_2/coin.png',
                         width: 12.w,
                         height: 12.w,
                       ),

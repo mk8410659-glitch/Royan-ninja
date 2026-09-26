@@ -86,7 +86,7 @@ class RedeemHistoryScreen extends HookConsumerWidget {
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                    color: const Color(0xFF362187).withValues(alpha: 0.08),
                                     blurRadius: 10,
                                     offset: const Offset(0, 3),
                                   ),
@@ -94,7 +94,7 @@ class RedeemHistoryScreen extends HookConsumerWidget {
                               ),
                               child: Icon(
                                 Icons.arrow_back_rounded,
-                                color: const Color(0xFFAB31DE),
+                                color: const Color(0xFF362187),
                                 size: 22.sp,
                               ),
                             ),
@@ -163,12 +163,12 @@ class RedeemHistoryScreen extends HookConsumerWidget {
                                           width: 64.w,
                                           height: 64.w,
                                           decoration: const BoxDecoration(
-                                            color: Color(0xFFFAF5FF),
+                                            color: Color(0xFFF6F4FE),
                                             shape: BoxShape.circle,
                                           ),
                                           child: Icon(
                                             Icons.receipt_long_outlined,
-                                            color: const Color(0xFFAB31DE),
+                                            color: const Color(0xFF362187),
                                             size: 32.sp,
                                           ),
                                         ),
@@ -222,7 +222,7 @@ class RedeemHistoryScreen extends HookConsumerWidget {
                               child: Padding(
                                 padding: EdgeInsets.symmetric(vertical: 50.h),
                                 child: const CircularProgressIndicator(
-                                  color: Color(0xFFAB31DE),
+                                  color: Color(0xFF362187),
                                 ),
                               ),
                             ),
@@ -275,7 +275,7 @@ class RedeemHistoryScreen extends HookConsumerWidget {
               offset: const Offset(0, 5),
             ),
             BoxShadow(
-              color: const Color(0xFFAB31DE).withValues(alpha: 0.03),
+              color: const Color(0xFF362187).withValues(alpha: 0.03),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -294,10 +294,10 @@ class RedeemHistoryScreen extends HookConsumerWidget {
                   height: 46.w,
                   padding: EdgeInsets.all(8.w),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFFAF5FF),
+                    color: const Color(0xFFF6F4FE),
                     borderRadius: BorderRadius.circular(15.r),
                     border: Border.all(
-                      color: const Color(0xFFF3E8FF),
+                      color: const Color(0xFFE9E3FE),
                       width: 1.2,
                     ),
                   ),
@@ -308,7 +308,7 @@ class RedeemHistoryScreen extends HookConsumerWidget {
                         )
                       : Icon(
                           Icons.receipt_long_rounded,
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           size: 22.sp,
                         ),
                 ),
@@ -424,10 +424,10 @@ class RedeemHistoryScreen extends HookConsumerWidget {
                           child: Container(
                             padding: EdgeInsets.symmetric(horizontal: 9.w, vertical: 4.h),
                             decoration: BoxDecoration(
-                              color: const Color(0xFFFAF5FF),
+                              color: const Color(0xFFF6F4FE),
                               borderRadius: BorderRadius.circular(8.r),
                               border: Border.all(
-                                color: const Color(0xFFAB31DE).withValues(alpha: 0.25),
+                                color: const Color(0xFF362187).withValues(alpha: 0.25),
                                 width: 1,
                               ),
                             ),
@@ -436,7 +436,7 @@ class RedeemHistoryScreen extends HookConsumerWidget {
                               children: [
                                 Icon(
                                   Icons.confirmation_number_rounded,
-                                  color: const Color(0xFFAB31DE),
+                                  color: const Color(0xFF362187),
                                   size: 12.sp,
                                 ),
                                 SizedBox(width: 4.w),
@@ -444,7 +444,7 @@ class RedeemHistoryScreen extends HookConsumerWidget {
                                   child: Text(
                                     payout.redeemCode,
                                     style: GoogleFonts.outfit(
-                                      color: const Color(0xFFAB31DE),
+                                      color: const Color(0xFF362187),
                                       fontSize: 12.sp,
                                       fontWeight: FontWeight.w700,
                                       letterSpacing: 0.2,
@@ -456,7 +456,7 @@ class RedeemHistoryScreen extends HookConsumerWidget {
                                 SizedBox(width: 4.w),
                                 Icon(
                                   Icons.copy_rounded,
-                                  color: const Color(0xFFAB31DE),
+                                  color: const Color(0xFF362187),
                                   size: 11.sp,
                                 ),
                               ],
@@ -501,7 +501,7 @@ class RedeemHistoryScreen extends HookConsumerWidget {
                     Text(
                       formattedCoins,
                       style: GoogleFonts.outfit(
-                        color: const Color(0xFFAB31DE),
+                        color: const Color(0xFF362187),
                         fontSize: 13.sp,
                         fontWeight: FontWeight.w700,
                       ),
@@ -587,7 +587,7 @@ class RedeemHistoryScreen extends HookConsumerWidget {
         break;
       case null:
         icon = Icons.grid_view_rounded;
-        accentColor = const Color(0xFFAB31DE);
+        accentColor = const Color(0xFF362187);
         break;
     }
 
@@ -605,8 +605,8 @@ class RedeemHistoryScreen extends HookConsumerWidget {
           gradient: isSelected
               ? const LinearGradient(
                   colors: [
-                    Color(0xFFE39FFF),
-                    Color(0xFFAB31DE),
+                    Color(0xFF4C2CA3),
+                    Color(0xFF362187),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -621,7 +621,7 @@ class RedeemHistoryScreen extends HookConsumerWidget {
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: const Color(0xFFAB31DE).withValues(alpha: 0.25),
+                    color: const Color(0xFF362187).withValues(alpha: 0.25),
                     blurRadius: 8,
                     offset: const Offset(0, 3),
                   ),
@@ -665,22 +665,22 @@ class RedeemHistoryScreen extends HookConsumerWidget {
               width: 100.w,
               height: 100.w,
               decoration: BoxDecoration(
-                color: const Color(0xFFFAF5FF),
+                color: const Color(0xFFF6F4FE),
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: const Color(0xFFF3E8FF),
+                  color: const Color(0xFFE9E3FE),
                   width: 2,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFAB31DE).withValues(alpha: 0.12),
+                    color: const Color(0xFF362187).withValues(alpha: 0.12),
                     blurRadius: 20,
                   ),
                 ],
               ),
               child: Icon(
                 Icons.receipt_long_rounded,
-                color: const Color(0xFFAB31DE),
+                color: const Color(0xFF362187),
                 size: 46.sp,
               ),
             ),

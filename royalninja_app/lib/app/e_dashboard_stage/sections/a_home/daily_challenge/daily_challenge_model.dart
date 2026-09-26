@@ -36,10 +36,10 @@ class DailyChallengeTaskItem {
           resolvedIcon = 'assets/icons/suprerofferdhn.png';
           break;
         case 'read_and_earn':
-          resolvedIcon = 'assets/icons/reaadnowo.png';
+          resolvedIcon = 'assets/icons_2/book (1).png';
           break;
         case 'battle_arena':
-          resolvedIcon = 'assets/icons/battle.png';
+          resolvedIcon = 'assets/icons_2/Battle ninja.png';
           break;
         case 'daily_task':
           resolvedIcon = 'assets/icons/daily task blur.png';

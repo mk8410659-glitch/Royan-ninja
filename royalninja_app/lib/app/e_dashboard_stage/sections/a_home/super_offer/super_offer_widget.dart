@@ -157,7 +157,7 @@ class SuperOfferWidget extends HookConsumerWidget {
       title: 'Not Enough Gems',
       message: 'You need more gems to unlock Super Offer. Play games to get more gems!',
       primaryButtonText: 'PLAY GAME',
-      primaryButtonColor: const Color(0xFFAB31DE),
+      primaryButtonColor: const Color(0xFF362187),
       onPrimaryTap: () {
         AutoRouter.of(context).push(
           DiamondCatchScreenRoute(
@@ -645,7 +645,7 @@ class SuperOfferWidget extends HookConsumerWidget {
             offset: const Offset(0, 5),
           ),
           BoxShadow(
-            color: const Color(0xFFAB31DE).withValues(alpha: 0.03),
+            color: const Color(0xFF362187).withValues(alpha: 0.03),
             blurRadius: 8,
             offset: const Offset(0, 3),
           ),
@@ -664,7 +664,7 @@ class SuperOfferWidget extends HookConsumerWidget {
                     center: Alignment.bottomLeft,
                     radius: 1.70,
                     colors: [
-                      const Color(0xFFAB31DE).withValues(alpha: 0.65),
+                      const Color(0xFF362187).withValues(alpha: 0.65),
                       const Color(0xFFC046F4).withValues(alpha: 0.35),
                       const Color(0xFFFAF5FF).withValues(alpha: 0.15),
                       Colors.white,
@@ -702,7 +702,7 @@ class SuperOfferWidget extends HookConsumerWidget {
                       center: Alignment.bottomLeft,
                       radius: 1.40,
                       colors: [
-                        const Color(0xFFAB31DE).withValues(alpha: 0.35),
+                        const Color(0xFF362187).withValues(alpha: 0.35),
                         const Color(0xFFC046F4).withValues(alpha: 0.15),
                         Colors.white.withValues(alpha: 0.0),
                       ],
@@ -730,7 +730,7 @@ class SuperOfferWidget extends HookConsumerWidget {
                             'SUPER REWARD',
                           maxLines: 1,
                           style: GoogleFonts.outfit(
-                            color: const Color(0xFFAB31DE),
+                            color: const Color(0xFF362187),
                             fontSize: 10.sp,
                             fontWeight: FontWeight.w800,
                             letterSpacing: 0.8,
@@ -773,7 +773,7 @@ class SuperOfferWidget extends HookConsumerWidget {
                             child: LinearProgressIndicator(
                               value: progressVal,
                               backgroundColor: const Color(0xFFF1F5F9),
-                              valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFFAB31DE)),
+                              valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF362187)),
                             ),
                           ),
                         ),
@@ -815,7 +815,7 @@ class SuperOfferWidget extends HookConsumerWidget {
                         height: 24.h,
                         padding: EdgeInsets.symmetric(horizontal: 8.w),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           borderRadius: BorderRadius.circular(100.r),
                           border: Border.all(
                             color: const Color(0xFFE9D5FF),
@@ -871,8 +871,8 @@ class SuperOfferWidget extends HookConsumerWidget {
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
                           colors: [
-                            Color(0xFFE39FFF),
-                            Color(0xFFAB31DE),
+                            Color(0xFF5B34C4),
+                            Color(0xFF362187),
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -880,7 +880,7 @@ class SuperOfferWidget extends HookConsumerWidget {
                         borderRadius: BorderRadius.circular(12.r),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.28),
+                            color: const Color(0xFF362187).withValues(alpha: 0.28),
                             blurRadius: 8,
                             offset: const Offset(0, 3),
                           ),

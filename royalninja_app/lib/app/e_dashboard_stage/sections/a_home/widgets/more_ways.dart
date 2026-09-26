@@ -80,9 +80,9 @@ class MoreWaysSection extends StatelessWidget {
                   context: context,
                   title: 'Read Articles',
                   subtitle: 'Read articles & earn coins',
-                  iconPath: 'assets/icons/reaadnowo.png',
-                  fallbackIcon: Icons.menu_book_rounded,
-                  themeColor: const Color(0xFF0EA5E9), // Soft Sky Blue
+                  leftWidget: _buildReadArticleLeftIcon(),
+                  rightWidget: _buildReadArticleRightGraphic(),
+                  themeColor: const Color(0xFF6366F1), // Royal Indigo
                   onTap: () {
                     HapticFeedback.lightImpact();
                     if (!SplashService.isScreenEnabled('readTask') && !SplashService.isScreenEnabled('readAndEarn')) {
@@ -99,14 +99,14 @@ class MoreWaysSection extends StatelessWidget {
                 SizedBox(height: 8.h),
               ],
 
-              // 3. Invite Friends
+              // 2. Invite Friends
               _buildListItemCard(
                 context: context,
                 title: 'Invite Friends',
                 subtitle: 'Invite your friends & earn coins per referral!',
-                iconPath: 'assets/icons/invite.png',
-                fallbackIcon: Icons.group_add_rounded,
-                themeColor: const Color(0xFF10B981), // Soft Emerald Green
+                leftWidget: _buildInviteFriendsLeftIcon(),
+                rightWidget: _buildInviteFriendsRightGraphic(),
+                themeColor: const Color(0xFF6366F1), // Matches Read Articles exactly
                 onTap: () {
                   HapticFeedback.lightImpact();
                   currentIndex.value = 1;
@@ -119,13 +119,107 @@ class MoreWaysSection extends StatelessWidget {
     );
   }
 
+  // Left Icon Badge for Read Articles (Frame 31.png with book (1).png on top)
+  Widget _buildReadArticleLeftIcon() {
+    return SizedBox(
+      width: 52.w,
+      height: 52.w,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Image.asset(
+            'assets/icons_2/Frame 31.png',
+            width: 52.w,
+            height: 52.w,
+            fit: BoxFit.contain,
+            filterQuality: FilterQuality.high,
+          ),
+          Center(
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 2.h),
+              child: Image.asset(
+                'assets/icons_2/book (1).png',
+                width: 27.w,
+                height: 27.w,
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Right Side Graphic for Read Articles
+  Widget _buildReadArticleRightGraphic() {
+    return SizedBox(
+      width: 64.w,
+      height: 64.h,
+      child: Center(
+        child: Image.asset(
+          'assets/icons_2/book (1).png',
+          width: 50.w,
+          height: 50.h,
+          fit: BoxFit.contain,
+        ),
+      ),
+    );
+  }
+
+  // Left Icon Badge for Invite Friends (Frame 31.png with invite.png on top)
+  Widget _buildInviteFriendsLeftIcon() {
+    return SizedBox(
+      width: 52.w,
+      height: 52.w,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Image.asset(
+            'assets/icons_2/Frame 31.png',
+            width: 52.w,
+            height: 52.w,
+            fit: BoxFit.contain,
+            filterQuality: FilterQuality.high,
+          ),
+          Center(
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 2.h),
+              child: Image.asset(
+                'assets/icons/invite.png',
+                width: 27.w,
+                height: 27.w,
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Right Side Graphic for Invite Friends
+  Widget _buildInviteFriendsRightGraphic() {
+    return SizedBox(
+      width: 64.w,
+      height: 64.h,
+      child: Center(
+        child: Image.asset(
+          'assets/icons/invite.png',
+          width: 48.w,
+          height: 48.h,
+          fit: BoxFit.contain,
+        ),
+      ),
+    );
+  }
+
   // 1-to-1 Replica Card Layout from Reference Image
   Widget _buildListItemCard({
     required BuildContext context,
     required String title,
     required String subtitle,
-    required String iconPath,
-    required IconData fallbackIcon,
+    required Widget leftWidget,
+    required Widget rightWidget,
     required Color themeColor,
     required VoidCallback onTap,
   }) {
@@ -166,7 +260,7 @@ class MoreWaysSection extends StatelessWidget {
                 right: 0,
                 top: 0,
                 bottom: 0,
-                width: 110.w,
+                width: 95.w,
                 child: Container(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
@@ -187,127 +281,95 @@ class MoreWaysSection extends StatelessWidget {
                 ),
               ),
 
-              // 2. Right Side 3D Graphic Artwork
+              // 2. Right Side Graphic Artwork
               Positioned(
-                right: 2.w,
-                top: 2.h,
-                bottom: 2.h,
-                width: 80.w,
+                right: 6.w,
+                top: 6.h,
+                bottom: 6.h,
+                width: 64.w,
                 child: Center(
-                  child: Image.asset(
-                    iconPath,
-                    fit: BoxFit.contain,
-                    errorBuilder: (_, __, ___) => Icon(
-                      fallbackIcon,
-                      color: themeColor,
-                      size: 34.sp,
+                  child: rightWidget,
+                ),
+              ),
+
+              // 3. Circular Arrow Action Button (Positioned cleanly without overlapping artwork)
+              Positioned(
+                right: 76.w,
+                top: 0,
+                bottom: 0,
+                child: Center(
+                  child: Container(
+                    width: 30.w,
+                    height: 30.w,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white.withValues(alpha: 0.14),
+                      border: Border.all(
+                        color: Colors.white.withValues(alpha: 0.25),
+                        width: 1.2,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.20),
+                          blurRadius: 6,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.arrow_forward_rounded,
+                        color: Colors.white,
+                        size: 15,
+                      ),
                     ),
                   ),
                 ),
               ),
 
-              // 3. Foreground Content Row (Left Icon Box + Text Column + Circular Arrow Button)
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
-                child: Row(
-                  children: [
-                    // Left Badge Shape (Frame 31.png) with Icon on top
-                    SizedBox(
-                      width: 54.w,
-                      height: 54.w,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/icons_2/Frame 31.png',
-                            width: 54.w,
-                            height: 54.w,
-                            fit: BoxFit.contain,
-                            filterQuality: FilterQuality.high,
-                          ),
-                          Center(
-                            child: Padding(
-                              padding: EdgeInsets.only(bottom: 2.h),
-                              child: Image.asset(
-                                iconPath,
-                                width: 29.w,
-                                height: 29.w,
-                                fit: BoxFit.contain,
-                                errorBuilder: (_, __, ___) => Icon(
-                                  fallbackIcon,
-                                  color: const Color(0xFF0D0821),
-                                  size: 25.sp,
-                                ),
+              // 4. Foreground Content (Left Icon + Middle Text) - No overflow guarantee
+              Positioned.fill(
+                child: Padding(
+                  padding: EdgeInsets.only(left: 12.w, right: 114.w, top: 8.h, bottom: 8.h),
+                  child: Row(
+                    children: [
+                      leftWidget,
+                      SizedBox(width: 10.w),
+
+                      // Middle Text Column: Title & Subtitle
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              title,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontSize: 13.5.sp,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 0.1,
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: 12.w),
-
-                    // Middle Text Column: Title & Subtitle
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            title,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.poppins(
-                              color: Colors.white,
-                              fontSize: 13.5.sp,
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 0.1,
+                            SizedBox(height: 2.h),
+                            Text(
+                              subtitle,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.poppins(
+                                color: Colors.white.withValues(alpha: 0.70),
+                                fontSize: 9.5.sp,
+                                fontWeight: FontWeight.w400,
+                                height: 1.22,
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 2.h),
-                          Text(
-                            subtitle,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.poppins(
-                              color: Colors.white.withValues(alpha: 0.70),
-                              fontSize: 9.5.sp,
-                              fontWeight: FontWeight.w400,
-                              height: 1.22,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    // Circular Arrow Action Button
-                    Container(
-                      width: 36.w,
-                      height: 36.w,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white.withValues(alpha: 0.12),
-                        border: Border.all(
-                          color: Colors.white.withValues(alpha: 0.22),
-                          width: 1.2,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.20),
-                            blurRadius: 6,
-                            offset: const Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      child: const Center(
-                        child: Icon(
-                          Icons.arrow_forward_rounded,
-                          color: Colors.white,
-                          size: 18,
+                          ],
                         ),
                       ),
-                    ),
-                    SizedBox(width: 54.w), // Space for right dome artwork so button sits right at front of dome
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],

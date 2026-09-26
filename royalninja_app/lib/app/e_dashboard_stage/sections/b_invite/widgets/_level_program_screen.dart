@@ -99,7 +99,7 @@ class LevelProgramScreen extends ConsumerWidget {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                              color: const Color(0xFF362187).withValues(alpha: 0.08),
                               blurRadius: 10,
                               offset: const Offset(0, 3),
                             ),
@@ -107,7 +107,7 @@ class LevelProgramScreen extends ConsumerWidget {
                         ),
                         child: Icon(
                           Icons.arrow_back_rounded,
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           size: 22.sp,
                         ),
                       ),
@@ -154,14 +154,14 @@ class LevelProgramScreen extends ConsumerWidget {
                             padding: EdgeInsets.all(18.w),
                             decoration: BoxDecoration(
                               gradient: const LinearGradient(
-                                colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                                colors: [Color(0xFF4C2CA3), Color(0xFF362187)],
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
                               ),
                               borderRadius: BorderRadius.circular(24.r),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
+                                  color: const Color(0xFF362187).withValues(alpha: 0.30),
                                   blurRadius: 14,
                                   offset: const Offset(0, 5),
                                 ),
@@ -463,7 +463,7 @@ class LevelProgramScreen extends ConsumerWidget {
                     );
                   },
                   loading: () => const Center(
-                    child: LoadingInfoWidget(color: Color(0xFFAB31DE)),
+                    child: LoadingInfoWidget(color: Color(0xFF362187)),
                   ),
                   error: (err, stack) => Center(
                     child: Text(
@@ -509,7 +509,7 @@ class LevelProgramScreen extends ConsumerWidget {
                   width: 36.w,
                   height: 36.w,
                   decoration: BoxDecoration(
-                    color: isCompleted ? const Color(0xFFA855F7) : const Color(0xFF94A3B8),
+                    color: isCompleted ? const Color(0xFF4C2CA3) : const Color(0xFF94A3B8),
                     shape: BoxShape.circle,
                   ),
                   alignment: Alignment.center,

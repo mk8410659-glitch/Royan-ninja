@@ -144,7 +144,7 @@ class _BattleArenaSplashScreenState extends State<BattleArenaSplashScreen>
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                          color: const Color(0xFFAB31DE).withValues(alpha: (1.0 - val) * 0.4),
+                                          color: const Color(0xFF7C3AED).withValues(alpha: (1.0 - val) * 0.4),
                                           width: 1.5,
                                         ),
                                       ),
@@ -162,7 +162,7 @@ class _BattleArenaSplashScreenState extends State<BattleArenaSplashScreen>
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                          color: const Color(0xFFAB31DE).withValues(alpha: (1.0 - val) * 0.2),
+                                          color: const Color(0xFF7C3AED).withValues(alpha: (1.0 - val) * 0.2),
                                           width: 1.5,
                                         ),
                                       ),
@@ -185,12 +185,12 @@ class _BattleArenaSplashScreenState extends State<BattleArenaSplashScreen>
                                     ),
                                     borderRadius: BorderRadius.circular(24.r),
                                     border: Border.all(
-                                      color: const Color(0xFFAB31DE).withValues(alpha: 0.5),
+                                      color: const Color(0xFF7C3AED).withValues(alpha: 0.5),
                                       width: 1.5,
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: const Color(0xFFAB31DE).withValues(alpha: 0.3),
+                                        color: const Color(0xFF7C3AED).withValues(alpha: 0.3),
                                         blurRadius: 15,
                                         spreadRadius: 2,
                                       ),
@@ -204,14 +204,14 @@ class _BattleArenaSplashScreenState extends State<BattleArenaSplashScreen>
                           );
                         },
                         child: Image.asset(
-                          'assets/icons/battle.png',
+                          'assets/icons_2/Battle ninja.png',
                           fit: BoxFit.contain,
                           errorBuilder: (_, __, ___) => Image.asset(
-                            'assets/icons/battle game.png',
+                            'assets/icons/battle.png',
                             fit: BoxFit.contain,
                             errorBuilder: (_, __, ___) => Icon(
                               Icons.sports_esports_rounded,
-                              color: const Color(0xFFAB31DE),
+                              color: const Color(0xFF7C3AED),
                               size: 48.sp,
                             ),
                           ),
@@ -225,11 +225,9 @@ class _BattleArenaSplashScreenState extends State<BattleArenaSplashScreen>
                     Text(
                       'Battle Ninja',
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'Neogen',
-                        color: const Color(0xFFAB31DE),
+                      style: GoogleFonts.russoOne(
+                        color: const Color(0xFF7C3AED),
                         fontSize: 28.sp,
-                        fontWeight: FontWeight.w800,
                         letterSpacing: 0.2,
                       ),
                     ),
@@ -262,12 +260,12 @@ class _BattleArenaSplashScreenState extends State<BattleArenaSplashScreen>
                             color: const Color(0xFF140D2B),
                             borderRadius: BorderRadius.circular(10.r),
                             border: Border.all(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.4),
+                              color: const Color(0xFF7C3AED).withValues(alpha: 0.4),
                               width: 1,
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: const Color(0xFFAB31DE).withValues(alpha: 0.3),
+                                color: const Color(0xFF7C3AED).withValues(alpha: 0.3),
                                 blurRadius: 12,
                                 spreadRadius: 1,
                               ),
@@ -284,11 +282,11 @@ class _BattleArenaSplashScreenState extends State<BattleArenaSplashScreen>
                                     decoration: BoxDecoration(
                                       gradient: const LinearGradient(
                                         colors: [
-                                          Color(0xFFAB31DE),
+                                          Color(0xFF7C3AED),
                                           Color(0xFFA78BFA),
                                           Colors.white,
                                           Color(0xFFA78BFA),
-                                          Color(0xFFAB31DE),
+                                          Color(0xFF7C3AED),
                                         ],
                                         begin: Alignment.centerLeft,
                                         end: Alignment.centerRight,

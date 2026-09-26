@@ -94,7 +94,7 @@ class DailyTaskHistoryScreen extends HookConsumerWidget {
             // 2. Main Scrollable Content
             Positioned.fill(
               child: RefreshIndicator(
-                color: const Color(0xFFAB31DE),
+                color: const Color(0xFF362187),
                 backgroundColor: Colors.white,
                 edgeOffset: topPadding + 60.h,
                 onRefresh: () async {
@@ -134,7 +134,7 @@ class DailyTaskHistoryScreen extends HookConsumerWidget {
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                      color: const Color(0xFF362187).withValues(alpha: 0.08),
                                       blurRadius: 10,
                                       offset: const Offset(0, 3),
                                     ),
@@ -142,7 +142,7 @@ class DailyTaskHistoryScreen extends HookConsumerWidget {
                                 ),
                                 child: Icon(
                                   Icons.arrow_back_rounded,
-                                  color: const Color(0xFFAB31DE),
+                                  color: const Color(0xFF362187),
                                   size: 22.sp,
                                 ),
                               ),
@@ -236,7 +236,7 @@ class DailyTaskHistoryScreen extends HookConsumerWidget {
                                   color: const Color(0xFFFAF5FF),
                                   borderRadius: BorderRadius.circular(24.r),
                                   border: Border.all(
-                                    color: const Color(0xFFE39FFF).withValues(alpha: 0.6),
+                                    color: const Color(0xFF5B34C4).withValues(alpha: 0.6),
                                     width: 1,
                                   ),
                                 ),
@@ -254,8 +254,8 @@ class DailyTaskHistoryScreen extends HookConsumerWidget {
                                             gradient: selectedTab.value == 0
                                                 ? const LinearGradient(
                                                     colors: [
-                                                      Color(0xFFE39FFF),
-                                                      Color(0xFFAB31DE),
+                                                      Color(0xFF5B34C4),
+                                                      Color(0xFF362187),
                                                     ],
                                                     begin: Alignment.topCenter,
                                                     end: Alignment.bottomCenter,
@@ -269,7 +269,7 @@ class DailyTaskHistoryScreen extends HookConsumerWidget {
                                             boxShadow: selectedTab.value == 0
                                                 ? [
                                                     BoxShadow(
-                                                      color: const Color(0xFFAB31DE).withValues(alpha: 0.25),
+                                                      color: const Color(0xFF362187).withValues(alpha: 0.25),
                                                       blurRadius: 8,
                                                       offset: const Offset(0, 3),
                                                     ),
@@ -318,8 +318,8 @@ class DailyTaskHistoryScreen extends HookConsumerWidget {
                                             gradient: selectedTab.value == 1
                                                 ? const LinearGradient(
                                                     colors: [
-                                                      Color(0xFFE39FFF),
-                                                      Color(0xFFAB31DE),
+                                                      Color(0xFF5B34C4),
+                                                      Color(0xFF362187),
                                                     ],
                                                     begin: Alignment.topCenter,
                                                     end: Alignment.bottomCenter,
@@ -333,7 +333,7 @@ class DailyTaskHistoryScreen extends HookConsumerWidget {
                                             boxShadow: selectedTab.value == 1
                                                 ? [
                                                     BoxShadow(
-                                                      color: const Color(0xFFAB31DE).withValues(alpha: 0.25),
+                                                      color: const Color(0xFF362187).withValues(alpha: 0.25),
                                                       blurRadius: 8,
                                                       offset: const Offset(0, 3),
                                                     ),
@@ -582,7 +582,7 @@ class _OverviewStatsCard extends StatelessWidget {
             offset: const Offset(0, 4),
           ),
           BoxShadow(
-            color: const Color(0xFFAB31DE).withValues(alpha: 0.05),
+            color: const Color(0xFF362187).withValues(alpha: 0.05),
             blurRadius: 8,
             offset: const Offset(0, 3),
           ),
@@ -596,10 +596,10 @@ class _OverviewStatsCard extends StatelessWidget {
               value: '$activeCount Active',
               iconBg: const Color(0xFFFAF5FF),
               iconBorder: const Color(0xFFF3E8FF),
-              labelColor: const Color(0xFFAB31DE),
+              labelColor: const Color(0xFF362187),
               icon: Icon(
                 Icons.timelapse_rounded,
-                color: const Color(0xFFAB31DE),
+                color: const Color(0xFF362187),
                 size: 18.sp,
               ),
             ),
@@ -628,12 +628,12 @@ class _OverviewStatsCard extends StatelessWidget {
               iconBorder: const Color(0xFFFEF3C7),
               labelColor: const Color(0xFFD97706),
               icon: Image.asset(
-                'assets/icons/coin.png',
+                'assets/icons_2/coin.png',
                 width: 18.w,
                 height: 18.w,
                 fit: BoxFit.contain,
                 errorBuilder: (_, __, ___) => Image.asset(
-                  'assets/icons/coin.png',
+                  'assets/icons_2/coin.png',
                   width: 18.w,
                   height: 18.w,
                   fit: BoxFit.contain,
@@ -701,7 +701,7 @@ class _ActiveTaskCard extends StatelessWidget {
               offset: const Offset(0, 4),
             ),
             BoxShadow(
-              color: const Color(0xFFAB31DE).withValues(alpha: 0.04),
+              color: const Color(0xFF362187).withValues(alpha: 0.04),
               blurRadius: 8,
               offset: const Offset(0, 3),
             ),
@@ -744,7 +744,7 @@ class _ActiveTaskCard extends StatelessWidget {
                     color: const Color(0xFFFAF5FF),
                     borderRadius: BorderRadius.circular(12.r),
                     border: Border.all(
-                      color: const Color(0xFFE39FFF).withValues(alpha: 0.5),
+                      color: const Color(0xFF5B34C4).withValues(alpha: 0.5),
                       width: 0.8,
                     ),
                   ),
@@ -752,7 +752,7 @@ class _ActiveTaskCard extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Image.asset(
-                        'assets/icons/coin.png',
+                        'assets/icons_2/coin.png',
                         width: 11.w,
                         height: 11.w,
                         fit: BoxFit.contain,
@@ -798,7 +798,7 @@ class _ActiveTaskCard extends StatelessWidget {
                           ? 'Day $doneSteps/$totalSteps'
                           : 'Step $doneSteps/$totalSteps',
                       style: GoogleFonts.outfit(
-                        color: const Color(0xFFAB31DE),
+                        color: const Color(0xFF362187),
                         fontSize: 11.5.sp,
                         fontWeight: FontWeight.w700,
                       ),
@@ -817,7 +817,7 @@ class _ActiveTaskCard extends StatelessWidget {
                     child: Text(
                       badgeText,
                       style: GoogleFonts.outfit(
-                        color: isEligibleNextDay ? const Color(0xFF059669) : const Color(0xFFAB31DE),
+                        color: isEligibleNextDay ? const Color(0xFF059669) : const Color(0xFF362187),
                         fontSize: 9.5.sp,
                         fontWeight: FontWeight.w700,
                       ),
@@ -837,15 +837,15 @@ class _ActiveTaskCard extends StatelessWidget {
                 shape: BoxShape.circle,
                 gradient: const LinearGradient(
                   colors: [
-                    Color(0xFFE39FFF),
-                    Color(0xFFAB31DE),
+                    Color(0xFF5B34C4),
+                    Color(0xFF362187),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFAB31DE).withValues(alpha: 0.25),
+                    color: const Color(0xFF362187).withValues(alpha: 0.25),
                     blurRadius: 6,
                     offset: const Offset(0, 2),
                   ),
@@ -967,7 +967,7 @@ class _CompletedTaskCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Image.asset(
-                      'assets/icons/coin.png',
+                      'assets/icons_2/coin.png',
                       width: 11.w,
                       height: 11.w,
                       fit: BoxFit.contain,
@@ -1100,7 +1100,7 @@ class _FallbackTaskIcon extends StatelessWidget {
       child: Text(
         letter,
         style: GoogleFonts.outfit(
-          color: const Color(0xFFAB31DE),
+          color: const Color(0xFF362187),
           fontSize: 20.sp,
           fontWeight: FontWeight.w800,
         ),
@@ -1132,14 +1132,14 @@ class _EmptyActiveHistoryWidget extends StatelessWidget {
                 shape: BoxShape.circle,
                 color: const Color(0xFFFAF5FF),
                 border: Border.all(
-                  color: const Color(0xFFE39FFF).withValues(alpha: 0.6),
+                  color: const Color(0xFF5B34C4).withValues(alpha: 0.6),
                   width: 1.5,
                 ),
               ),
               child: Center(
                 child: Icon(
                   Icons.timelapse_rounded,
-                  color: const Color(0xFFAB31DE),
+                  color: const Color(0xFF362187),
                   size: 38.sp,
                 ),
               ),
@@ -1183,14 +1183,14 @@ class _EmptyActiveHistoryWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [
-                      Color(0xFFE39FFF),
-                      Color(0xFFAB31DE),
+                      Color(0xFF5B34C4),
+                      Color(0xFF362187),
                     ],
                   ),
                   borderRadius: BorderRadius.circular(14.r),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFFAB31DE).withValues(alpha: 0.25),
+                      color: const Color(0xFF362187).withValues(alpha: 0.25),
                       blurRadius: 8,
                       offset: const Offset(0, 3),
                     ),

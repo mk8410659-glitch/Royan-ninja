@@ -116,15 +116,15 @@ class NotificationScreen extends HookConsumerWidget {
                   child: Icon(
                     Icons.delete_outline_rounded,
                     color: const Color(0xFFEF4444),
-                    size: 30.sp,
+                    size: 28.sp,
                   ),
                 ),
                 SizedBox(height: 16.h),
                 Text(
                   'Delete Notification?',
-                  style: GoogleFonts.outfit(
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w800,
+                  style: GoogleFonts.poppins(
+                    fontSize: 17.sp,
+                    fontWeight: FontWeight.w700,
                     color: const Color(0xFF1E1B4B),
                   ),
                 ),
@@ -132,8 +132,8 @@ class NotificationScreen extends HookConsumerWidget {
                 Text(
                   'Are you sure you want to delete this notification?',
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.outfit(
-                    fontSize: 13.sp,
+                  style: GoogleFonts.poppins(
+                    fontSize: 12.5.sp,
                     color: const Color(0xFF64748B),
                     height: 1.4,
                   ),
@@ -153,8 +153,8 @@ class NotificationScreen extends HookConsumerWidget {
                         onPressed: () => Navigator.of(ctx).pop(false),
                         child: Text(
                           'Cancel',
-                          style: GoogleFonts.outfit(
-                            fontSize: 14.sp,
+                          style: GoogleFonts.poppins(
+                            fontSize: 13.5.sp,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF64748B),
                           ),
@@ -178,8 +178,8 @@ class NotificationScreen extends HookConsumerWidget {
                         },
                         child: Text(
                           'Delete',
-                          style: GoogleFonts.outfit(
-                            fontSize: 14.sp,
+                          style: GoogleFonts.poppins(
+                            fontSize: 13.5.sp,
                             fontWeight: FontWeight.w700,
                             color: Colors.white,
                           ),
@@ -218,15 +218,15 @@ class NotificationScreen extends HookConsumerWidget {
                   child: Icon(
                     Icons.delete_outline_rounded,
                     color: const Color(0xFFEF4444),
-                    size: 30.sp,
+                    size: 28.sp,
                   ),
                 ),
                 SizedBox(height: 16.h),
                 Text(
                   'Clear Notifications?',
-                  style: GoogleFonts.outfit(
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w800,
+                  style: GoogleFonts.poppins(
+                    fontSize: 17.sp,
+                    fontWeight: FontWeight.w700,
                     color: const Color(0xFF1E1B4B),
                   ),
                 ),
@@ -234,8 +234,8 @@ class NotificationScreen extends HookConsumerWidget {
                 Text(
                   'Are you sure you want to clear all your notifications? This action cannot be undone.',
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.outfit(
-                    fontSize: 13.sp,
+                  style: GoogleFonts.poppins(
+                    fontSize: 12.5.sp,
                     color: const Color(0xFF64748B),
                     height: 1.4,
                   ),
@@ -255,8 +255,8 @@ class NotificationScreen extends HookConsumerWidget {
                         onPressed: () => Navigator.of(ctx).pop(),
                         child: Text(
                           'Cancel',
-                          style: GoogleFonts.outfit(
-                            fontSize: 14.sp,
+                          style: GoogleFonts.poppins(
+                            fontSize: 13.5.sp,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF64748B),
                           ),
@@ -289,8 +289,8 @@ class NotificationScreen extends HookConsumerWidget {
                         },
                         child: Text(
                           'Clear All',
-                          style: GoogleFonts.outfit(
-                            fontSize: 14.sp,
+                          style: GoogleFonts.poppins(
+                            fontSize: 13.5.sp,
                             fontWeight: FontWeight.w700,
                             color: Colors.white,
                           ),
@@ -315,11 +315,11 @@ class NotificationScreen extends HookConsumerWidget {
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color(0xFFF8FAFC),
         body: SafeArea(
           child: Column(
             children: [
-              // 1. Executive Navigation Bar (Matching ContactSupportScreen 1-to-1)
+              // 1. Executive Navigation Bar (Royal Ninja Brand Style)
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
                 child: Row(
@@ -342,7 +342,7 @@ class NotificationScreen extends HookConsumerWidget {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                              color: const Color(0xFF362187).withValues(alpha: 0.08),
                               blurRadius: 10,
                               offset: const Offset(0, 3),
                             ),
@@ -350,7 +350,7 @@ class NotificationScreen extends HookConsumerWidget {
                         ),
                         child: Icon(
                           Icons.arrow_back_rounded,
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           size: 22.sp,
                         ),
                       ),
@@ -359,10 +359,11 @@ class NotificationScreen extends HookConsumerWidget {
                       child: Text(
                         'Notifications',
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.outfit(
+                        style: GoogleFonts.poppins(
                           color: const Color(0xFF1E1B4B),
                           fontSize: 18.sp,
-                          fontWeight: FontWeight.w800,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0.2,
                         ),
                       ),
                     ),
@@ -378,12 +379,12 @@ class NotificationScreen extends HookConsumerWidget {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(15.r),
                             border: Border.all(
-                              color: const Color(0xFFF1F5F9),
+                              color: const Color(0xFFFEE2E2),
                               width: 1.2,
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                color: const Color(0xFFEF4444).withValues(alpha: 0.10),
                                 blurRadius: 10,
                                 offset: const Offset(0, 3),
                               ),
@@ -402,7 +403,7 @@ class NotificationScreen extends HookConsumerWidget {
                 ),
               ),
 
-              // 2. Executive Category Filter Chips (Only show if received notifications have categories)
+              // 2. Executive Category Filter Chips (Royal Purple & Gold Brand Theme)
               if (availableCategories.length > 1) ...[
                 SizedBox(height: 6.h),
                 _buildCategoryFilterBar(
@@ -414,12 +415,12 @@ class NotificationScreen extends HookConsumerWidget {
                     selectedCategory.value = cat;
                   },
                 ),
-                SizedBox(height: 10.h),
+                SizedBox(height: 12.h),
               ] else ...[
-                SizedBox(height: 6.h),
+                SizedBox(height: 8.h),
               ],
 
-              // 3. Notification List or Empty State (Matching ContactSupportScreen)
+              // 3. Notification List or Empty State
               Expanded(
                 child: RefreshIndicator(
                   onRefresh: () async {
@@ -429,7 +430,7 @@ class NotificationScreen extends HookConsumerWidget {
                       ref.read(notificationsProvider.notifier).state = local;
                     } catch (_) {}
                   },
-                  color: const Color(0xFFAB31DE),
+                  color: const Color(0xFF362187),
                   backgroundColor: Colors.white,
                   child: filteredNotifications.isEmpty
                       ? _buildEmptyState(context, effectiveCategory)
@@ -481,7 +482,7 @@ class NotificationScreen extends HookConsumerWidget {
                                   children: [
                                     Text(
                                       'Delete',
-                                      style: GoogleFonts.outfit(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 13.sp,
                                         fontWeight: FontWeight.w700,
                                         color: Colors.white,
@@ -557,29 +558,32 @@ class NotificationScreen extends HookConsumerWidget {
               onTap: () => onSelect(key),
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 180),
-                padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 7.5.h),
+                padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 8.h),
                 decoration: BoxDecoration(
                   gradient: isSelected
                       ? const LinearGradient(
-                          colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                          colors: [
+                            Color(0xFF362187),
+                            Color(0xFF5B34C4),
+                          ],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         )
                       : null,
                   color: isSelected ? null : Colors.white,
-                  borderRadius: BorderRadius.circular(12.r),
+                  borderRadius: BorderRadius.circular(14.r),
                   border: Border.all(
                     color: isSelected
                         ? Colors.transparent
                         : const Color(0xFFE2E8F0),
-                    width: 1,
+                    width: 1.2,
                   ),
                   boxShadow: isSelected
                       ? [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.30),
-                            blurRadius: 8,
-                            offset: const Offset(0, 3),
+                            color: const Color(0xFF362187).withValues(alpha: 0.30),
+                            blurRadius: 10,
+                            offset: const Offset(0, 4),
                           ),
                         ]
                       : [
@@ -601,28 +605,28 @@ class NotificationScreen extends HookConsumerWidget {
                     SizedBox(width: 6.w),
                     Text(
                       cat['label']! as String,
-                      style: GoogleFonts.outfit(
+                      style: GoogleFonts.poppins(
                         fontSize: 12.5.sp,
-                        fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
+                        fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
                         color: isSelected ? Colors.white : const Color(0xFF64748B),
                       ),
                     ),
                     if (count > 0) ...[
-                      SizedBox(width: 5.w),
+                      SizedBox(width: 6.w),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 1.h),
+                        padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 1.5.h),
                         decoration: BoxDecoration(
                           color: isSelected
-                              ? Colors.white.withValues(alpha: 0.25)
+                              ? const Color(0xFFFFF100) // Royal Gold Badge
                               : const Color(0xFFF1F5F9),
-                          borderRadius: BorderRadius.circular(8.r),
+                          borderRadius: BorderRadius.circular(100.r),
                         ),
                         child: Text(
                           '$count',
-                          style: GoogleFonts.outfit(
+                          style: GoogleFonts.poppins(
                             fontSize: 10.sp,
-                            fontWeight: FontWeight.w700,
-                            color: isSelected ? Colors.white : const Color(0xFF475569),
+                            fontWeight: FontWeight.w800,
+                            color: isSelected ? const Color(0xFF362187) : const Color(0xFF475569),
                           ),
                         ),
                       ),
@@ -658,47 +662,48 @@ class NotificationScreen extends HookConsumerWidget {
     return ListView(
       physics: const AlwaysScrollableScrollPhysics(),
       children: [
-        SizedBox(height: 70.h),
+        SizedBox(height: 80.h),
         Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 68.w,
-                height: 68.w,
+                width: 72.w,
+                height: 72.w,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFAF5FF),
+                  color: const Color(0xFF362187).withValues(alpha: 0.08),
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: const Color(0xFFE9D5FF),
-                    width: 1.2,
+                    color: const Color(0xFF362187).withValues(alpha: 0.18),
+                    width: 1.5,
                   ),
                 ),
                 child: Icon(
                   Icons.notifications_none_rounded,
-                  size: 30.sp,
-                  color: const Color(0xFFAB31DE),
+                  size: 32.sp,
+                  color: const Color(0xFF362187),
                 ),
               ),
-              SizedBox(height: 14.h),
+              SizedBox(height: 16.h),
               Text(
                 title,
-                style: GoogleFonts.outfit(
+                style: GoogleFonts.poppins(
                   fontSize: 16.sp,
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.w700,
                   color: const Color(0xFF1E1B4B),
                 ),
               ),
-              SizedBox(height: 5.h),
+              SizedBox(height: 6.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40.w),
                 child: Text(
                   description,
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.outfit(
+                  style: GoogleFonts.poppins(
                     fontSize: 12.sp,
                     color: const Color(0xFF64748B),
                     fontWeight: FontWeight.w500,
+                    height: 1.4,
                   ),
                 ),
               ),
@@ -725,27 +730,48 @@ class _NotificationCard extends StatelessWidget {
 
       if (isFailed) {
         return const _CategoryMeta(
-          label: 'Redeem Declined',
-          iconEmoji: '❌',
+          label: 'REDEEM DECLINED',
           iconData: Icons.cancel_rounded,
-          primaryColor: Color(0xFFDC2626),
-          bgColor: Color(0xFFFEE2E2),
+          iconGradient: LinearGradient(
+            colors: [Color(0xFFF87171), Color(0xFFEF4444)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          primaryColor: Color(0xFFEF4444),
+          badgeBgColor: Color(0xFFFFF1F2),
+          badgeTextColor: Color(0xFFBE123C),
+          badgeBorderColor: Color(0xFFFECDD3),
+          accentColor: Color(0xFFEF4444),
         );
       } else if (isSuccess) {
         return const _CategoryMeta(
-          label: 'Redeem Success',
-          iconEmoji: '✅',
+          label: 'REDEEM SUCCESS',
           iconData: Icons.check_circle_rounded,
-          primaryColor: Color(0xFF16A34A),
-          bgColor: Color(0xFFDCFCE7),
+          iconGradient: LinearGradient(
+            colors: [Color(0xFF10B981), Color(0xFF059669)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          primaryColor: Color(0xFF059669),
+          badgeBgColor: Color(0xFFECFDF5),
+          badgeTextColor: Color(0xFF047857),
+          badgeBorderColor: Color(0xFFA7F3D0),
+          accentColor: Color(0xFF10B981),
         );
       } else {
         return const _CategoryMeta(
-          label: 'Redeem Pending',
-          iconEmoji: '⏳',
-          iconData: Icons.pending_actions_rounded,
+          label: 'REDEEM PENDING',
+          iconData: Icons.hourglass_top_rounded,
+          iconGradient: LinearGradient(
+            colors: [Color(0xFFFBBF24), Color(0xFFD97706)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
           primaryColor: Color(0xFFD97706),
-          bgColor: Color(0xFFFEF3C7),
+          badgeBgColor: Color(0xFFFFFBEB),
+          badgeTextColor: Color(0xFFB45309),
+          badgeBorderColor: Color(0xFFFDE68A),
+          accentColor: Color(0xFFF59E0B),
         );
       }
     }
@@ -753,28 +779,49 @@ class _NotificationCard extends StatelessWidget {
     switch (type) {
       case 'support':
         return const _CategoryMeta(
-          label: 'Support',
-          iconEmoji: '🎧',
+          label: 'SUPPORT',
           iconData: Icons.support_agent_rounded,
+          iconGradient: LinearGradient(
+            colors: [Color(0xFF38BDF8), Color(0xFF0284C7)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
           primaryColor: Color(0xFF0284C7),
-          bgColor: Color(0xFFE0F2FE),
+          badgeBgColor: Color(0xFFF0F9FF),
+          badgeTextColor: Color(0xFF0369A1),
+          badgeBorderColor: Color(0xFFBAE6FD),
+          accentColor: Color(0xFF0284C7),
         );
       case 'service':
         return const _CategoryMeta(
-          label: 'Service',
-          iconEmoji: '💼',
+          label: 'SERVICE',
           iconData: Icons.assignment_rounded,
-          primaryColor: Color(0xFFD97706),
-          bgColor: Color(0xFFFEF3C7),
+          iconGradient: LinearGradient(
+            colors: [Color(0xFF5B34C4), Color(0xFF362187)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          primaryColor: Color(0xFF362187),
+          badgeBgColor: Color(0xFFF5F3FF),
+          badgeTextColor: Color(0xFF5B34C4),
+          badgeBorderColor: Color(0xFFDDD6FE),
+          accentColor: Color(0xFF362187),
         );
       case 'personal':
       default:
         return const _CategoryMeta(
-          label: 'Personal',
-          iconEmoji: '✉️',
+          label: 'PERSONAL',
           iconData: Icons.mark_email_unread_rounded,
-          primaryColor: Color(0xFFAB31DE),
-          bgColor: Color(0xFFFAF5FF),
+          iconGradient: LinearGradient(
+            colors: [Color(0xFF5B34C4), Color(0xFF362187)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          primaryColor: Color(0xFF362187),
+          badgeBgColor: Color(0xFFF5F3FF),
+          badgeTextColor: Color(0xFF5B34C4),
+          badgeBorderColor: Color(0xFFDDD6FE),
+          accentColor: Color(0xFF362187),
         );
     }
   }
@@ -839,7 +886,7 @@ class _NotificationCard extends StatelessWidget {
         .replaceAll(RegExp(r'your\s+wallet', caseSensitive: false), 'your account')
         .replaceAll(RegExp(r'to\s+wallet', caseSensitive: false), 'to account');
 
-    final isFailedRedeem = meta.label == 'Redeem Declined' || meta.label == 'Redeem Failed';
+    final isFailedRedeem = meta.label == 'REDEEM DECLINED';
 
     // Extract actual failure reason if present
     String? failureReason;
@@ -869,157 +916,182 @@ class _NotificationCard extends StatelessWidget {
     } catch (_) {}
 
     return Container(
-      padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: isFailedRedeem ? const Color(0xFFFFF7F7) : Colors.white,
+        color: isFailedRedeem ? const Color(0xFFFFF8F8) : Colors.white,
         borderRadius: BorderRadius.circular(18.r),
         border: Border.all(
-          color: isFailedRedeem ? const Color(0xFFFCA5A5) : const Color(0xFFE2E8F0),
-          width: isFailedRedeem ? 1.2 : 1,
+          color: isFailedRedeem ? const Color(0xFFFECDD3) : const Color(0xFFF1F5F9),
+          width: 1.2,
         ),
         boxShadow: [
           BoxShadow(
             color: isFailedRedeem
-                ? const Color(0xFFEF4444).withValues(alpha: 0.06)
-                : Colors.black.withValues(alpha: 0.02),
-            blurRadius: 10,
-            offset: const Offset(0, 3),
+                ? const Color(0xFFEF4444).withValues(alpha: 0.08)
+                : const Color(0xFF362187).withValues(alpha: 0.06),
+            blurRadius: 14,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Top Row: Category Icon + Title and Category Status Pill
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(18.r),
+        child: IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(6.w),
-                      decoration: BoxDecoration(
-                        color: meta.bgColor,
-                        borderRadius: BorderRadius.circular(8.r),
-                      ),
-                      child: Icon(
-                        meta.iconData,
-                        color: meta.primaryColor,
-                        size: 15.sp,
-                      ),
-                    ),
-                    SizedBox(width: 8.w),
-                    Expanded(
-                      child: Text(
-                        displayTitle,
-                        style: GoogleFonts.outfit(
-                          fontSize: 14.5.sp,
-                          fontWeight: FontWeight.w800,
-                          color: isFailedRedeem ? const Color(0xFF991B1B) : const Color(0xFF1E1B4B),
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(width: 8.w),
+              // Left Accent indicator stripe matching Royal Ninja aesthetic
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 3.h),
-                decoration: BoxDecoration(
-                  color: meta.bgColor,
-                  borderRadius: BorderRadius.circular(6.r),
-                  border: isFailedRedeem ? Border.all(color: const Color(0xFFFCA5A5), width: 0.8) : null,
-                ),
-                child: Text(
-                  meta.label.toUpperCase(),
-                  style: GoogleFonts.outfit(
-                    fontSize: 9.5.sp,
-                    fontWeight: FontWeight.w800,
-                    color: meta.primaryColor,
-                    letterSpacing: 0.3,
-                  ),
-                ),
+                width: 4.w,
+                color: meta.accentColor,
               ),
-            ],
-          ),
-          SizedBox(height: 8.h),
-
-          // Message Body Text
-          Text(
-            displayBody,
-            style: GoogleFonts.outfit(
-              fontSize: 12.5.sp,
-              color: const Color(0xFF475569),
-              height: 1.35,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-
-          // Highlighted Failure Reason Box
-          if (isFailedRedeem && failureReason != null && failureReason.isNotEmpty) ...[
-            SizedBox(height: 8.h),
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
-              decoration: BoxDecoration(
-                color: const Color(0xFFFEE2E2),
-                borderRadius: BorderRadius.circular(8.r),
-                border: Border.all(
-                  color: const Color(0xFFFECACA),
-                  width: 0.8,
-                ),
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Icon(
-                    Icons.error_outline_rounded,
-                    color: const Color(0xFFDC2626),
-                    size: 13.5.sp,
-                  ),
-                  SizedBox(width: 6.w),
-                  Expanded(
-                    child: Text(
-                      'Reason: $failureReason',
-                      style: GoogleFonts.outfit(
-                        fontSize: 11.5.sp,
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xFF991B1B),
-                        height: 1.3,
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.all(14.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Top Row: Category Gradient Icon + Title + Status Badge Pill
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 36.w,
+                            height: 36.w,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              gradient: meta.iconGradient,
+                              borderRadius: BorderRadius.circular(11.r),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: meta.accentColor.withValues(alpha: 0.28),
+                                  blurRadius: 8,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: Icon(
+                              meta.iconData,
+                              color: Colors.white,
+                              size: 18.sp,
+                            ),
+                          ),
+                          SizedBox(width: 10.w),
+                          Expanded(
+                            child: Text(
+                              displayTitle,
+                              style: GoogleFonts.poppins(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w700,
+                                color: isFailedRedeem ? const Color(0xFF991B1B) : const Color(0xFF1E1B4B),
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          SizedBox(width: 8.w),
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 3.5.h),
+                            decoration: BoxDecoration(
+                              color: meta.badgeBgColor,
+                              borderRadius: BorderRadius.circular(100.r),
+                              border: Border.all(
+                                color: meta.badgeBorderColor,
+                                width: 0.9,
+                              ),
+                            ),
+                            child: Text(
+                              meta.label,
+                              style: GoogleFonts.poppins(
+                                fontSize: 9.sp,
+                                fontWeight: FontWeight.w800,
+                                color: meta.badgeTextColor,
+                                letterSpacing: 0.3,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
+                      SizedBox(height: 10.h),
+
+                      // Body Text
+                      Text(
+                        displayBody,
+                        style: GoogleFonts.poppins(
+                          fontSize: 12.sp,
+                          color: const Color(0xFF475569),
+                          height: 1.45,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+
+                      // Highlighted Failure Reason Box (if failed)
+                      if (isFailedRedeem && failureReason != null && failureReason.isNotEmpty) ...[
+                        SizedBox(height: 10.h),
+                        Container(
+                          width: double.infinity,
+                          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 7.h),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFFEE2E2),
+                            borderRadius: BorderRadius.circular(10.r),
+                            border: Border.all(
+                              color: const Color(0xFFFECACA),
+                              width: 0.9,
+                            ),
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.error_outline_rounded,
+                                color: const Color(0xFFDC2626),
+                                size: 14.sp,
+                              ),
+                              SizedBox(width: 6.w),
+                              Expanded(
+                                child: Text(
+                                  'Reason: $failureReason',
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 11.sp,
+                                    fontWeight: FontWeight.w600,
+                                    color: const Color(0xFF991B1B),
+                                    height: 1.35,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+
+                      SizedBox(height: 10.h),
+
+                      // Bottom Metadata (Timestamp)
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Icon(
+                            Icons.access_time_rounded,
+                            size: 12.sp,
+                            color: const Color(0xFF94A3B8),
+                          ),
+                          SizedBox(width: 4.w),
+                          Text(
+                            relativeTime,
+                            style: GoogleFonts.poppins(
+                              fontSize: 10.5.sp,
+                              color: const Color(0xFF94A3B8),
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-          ],
-
-          SizedBox(height: 8.h),
-
-          // Bottom Timestamp
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Icon(
-                Icons.access_time_rounded,
-                size: 12.sp,
-                color: const Color(0xFF94A3B8),
-              ),
-              SizedBox(width: 4.w),
-              Text(
-                relativeTime,
-                style: GoogleFonts.outfit(
-                  fontSize: 11.sp,
-                  color: const Color(0xFF94A3B8),
-                  fontWeight: FontWeight.w500,
                 ),
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }
@@ -1027,16 +1099,22 @@ class _NotificationCard extends StatelessWidget {
 
 class _CategoryMeta {
   final String label;
-  final String iconEmoji;
   final IconData iconData;
+  final LinearGradient iconGradient;
   final Color primaryColor;
-  final Color bgColor;
+  final Color badgeBgColor;
+  final Color badgeTextColor;
+  final Color badgeBorderColor;
+  final Color accentColor;
 
   const _CategoryMeta({
     required this.label,
-    required this.iconEmoji,
     required this.iconData,
+    required this.iconGradient,
     required this.primaryColor,
-    required this.bgColor,
+    required this.badgeBgColor,
+    required this.badgeTextColor,
+    required this.badgeBorderColor,
+    required this.accentColor,
   });
 }

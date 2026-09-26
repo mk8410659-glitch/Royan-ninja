@@ -60,7 +60,7 @@ class ChangeLanguageScreen extends HookWidget {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                              color: const Color(0xFF362187).withValues(alpha: 0.08),
                               blurRadius: 10,
                               offset: const Offset(0, 3),
                             ),
@@ -68,7 +68,7 @@ class ChangeLanguageScreen extends HookWidget {
                         ),
                         child: Icon(
                           Icons.arrow_back_rounded,
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           size: 22.sp,
                         ),
                       ),
@@ -159,16 +159,16 @@ class _LanguageCard extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 13.h),
         decoration: BoxDecoration(
-          color: isSelected ? const Color(0xFFFAF5FF) : Colors.white,
+          color: isSelected ? const Color(0xFFF6F4FE) : Colors.white,
           borderRadius: BorderRadius.circular(18.r),
           border: Border.all(
-            color: isSelected ? const Color(0xFFAB31DE) : const Color(0xFFE2E8F0),
+            color: isSelected ? const Color(0xFF362187) : const Color(0xFFE2E8F0),
             width: isSelected ? 1.5 : 1,
           ),
           boxShadow: [
             BoxShadow(
               color: isSelected
-                  ? const Color(0xFFAB31DE).withValues(alpha: 0.1)
+                  ? const Color(0xFF362187).withValues(alpha: 0.1)
                   : Colors.black.withValues(alpha: 0.02),
               blurRadius: 10,
               offset: const Offset(0, 3),
@@ -182,10 +182,10 @@ class _LanguageCard extends StatelessWidget {
               width: 44.w,
               height: 44.w,
               decoration: BoxDecoration(
-                color: isSelected ? const Color(0xFFF3E8FF) : const Color(0xFFF1F5F9),
+                color: isSelected ? const Color(0xFFE9E3FE) : const Color(0xFFF1F5F9),
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: isSelected ? const Color(0xFFE9D5FF) : const Color(0xFFE2E8F0),
+                  color: isSelected ? const Color(0xFFE9E3FE) : const Color(0xFFE2E8F0),
                   width: 1,
                 ),
               ),
@@ -215,7 +215,7 @@ class _LanguageCard extends StatelessWidget {
                   Text(
                     '${languageInfo.languageName.tr()} (${languageInfo.languageName.caps()})',
                     style: GoogleFonts.outfit(
-                      color: isSelected ? const Color(0xFFAB31DE) : const Color(0xFF1E1B4B),
+                      color: isSelected ? const Color(0xFF362187) : const Color(0xFF1E1B4B),
                       fontWeight: isSelected ? FontWeight.w800 : FontWeight.w700,
                       fontSize: 14.5.sp,
                     ),
@@ -224,7 +224,7 @@ class _LanguageCard extends StatelessWidget {
                   Text(
                     languageInfo.countryName,
                     style: GoogleFonts.outfit(
-                      color: isSelected ? const Color(0xFFAB31DE).withValues(alpha: 0.8) : const Color(0xFF64748B),
+                      color: isSelected ? const Color(0xFF362187).withValues(alpha: 0.8) : const Color(0xFF64748B),
                       fontSize: 11.5.sp,
                       fontWeight: FontWeight.w500,
                     ),
@@ -241,7 +241,7 @@ class _LanguageCard extends StatelessWidget {
                 shape: BoxShape.circle,
                 gradient: isSelected
                     ? const LinearGradient(
-                        colors: [Color(0xFFBA54EC), Color(0xFFAB31DE)],
+                        colors: [Color(0xFF5B32E8), Color(0xFF362187)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       )
@@ -254,7 +254,7 @@ class _LanguageCard extends StatelessWidget {
                 boxShadow: isSelected
                     ? [
                         BoxShadow(
-                          color: const Color(0xFFAB31DE).withValues(alpha: 0.3),
+                          color: const Color(0xFF362187).withValues(alpha: 0.3),
                           blurRadius: 6,
                           offset: const Offset(0, 2),
                         ),

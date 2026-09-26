@@ -529,7 +529,7 @@ class SuperOfferStep1Screen extends HookConsumerWidget {
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                color: const Color(0xFF362187).withValues(alpha: 0.08),
                                 blurRadius: 10,
                                 offset: const Offset(0, 3),
                               ),
@@ -537,7 +537,7 @@ class SuperOfferStep1Screen extends HookConsumerWidget {
                           ),
                           child: Icon(
                             Icons.arrow_back_rounded,
-                            color: const Color(0xFFAB31DE),
+                            color: const Color(0xFF362187),
                             size: 22.sp,
                           ),
                         ),
@@ -575,12 +575,12 @@ class SuperOfferStep1Screen extends HookConsumerWidget {
                             color: const Color(0xFFFAF5FF),
                             borderRadius: BorderRadius.circular(10.r),
                             border: Border.all(
-                              color: const Color(0xFFE39FFF).withValues(alpha: 0.8),
+                              color: const Color(0xFF5B34C4).withValues(alpha: 0.8),
                               width: 1,
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: const Color(0xFFAB31DE).withValues(alpha: 0.10),
+                                color: const Color(0xFF362187).withValues(alpha: 0.10),
                                 blurRadius: 6,
                                 offset: const Offset(0, 2),
                               ),
@@ -591,14 +591,14 @@ class SuperOfferStep1Screen extends HookConsumerWidget {
                             children: [
                               Icon(
                                 Icons.play_circle_fill_rounded,
-                                color: const Color(0xFFAB31DE),
+                                color: const Color(0xFF362187),
                                 size: 14.sp,
                               ),
                               SizedBox(width: 3.w),
                               Text(
                                 'Tutorial',
                                 style: GoogleFonts.outfit(
-                                  color: const Color(0xFFAB31DE),
+                                  color: const Color(0xFF362187),
                                   fontSize: 11.sp,
                                   fontWeight: FontWeight.w800,
                                 ),
@@ -745,7 +745,7 @@ class SuperOfferStep1Screen extends HookConsumerWidget {
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: const Color(0xFFAB31DE).withValues(alpha: 0.12),
+                                color: const Color(0xFF362187).withValues(alpha: 0.12),
                                 blurRadius: 14,
                                 offset: const Offset(0, 4),
                               ),
@@ -765,7 +765,7 @@ class SuperOfferStep1Screen extends HookConsumerWidget {
                                     ),
                                     child: Icon(
                                       Icons.sports_esports_rounded,
-                                      color: const Color(0xFFAB31DE),
+                                      color: const Color(0xFF362187),
                                       size: 22.sp,
                                     ),
                                   ),
@@ -831,7 +831,7 @@ class SuperOfferStep1Screen extends HookConsumerWidget {
                                 children: [
                                   Icon(
                                     Icons.insights_rounded,
-                                    color: const Color(0xFFAB31DE),
+                                    color: const Color(0xFF362187),
                                     size: 18.sp,
                                   ),
                                   SizedBox(width: 6.w),
@@ -1170,8 +1170,8 @@ class SuperOfferStep1Screen extends HookConsumerWidget {
                                     decoration: BoxDecoration(
                                       gradient: const LinearGradient(
                                         colors: [
-                                          Color(0xFFE39FFF),
-                                          Color(0xFFAB31DE),
+                                          Color(0xFF5B34C4),
+                                          Color(0xFF362187),
                                         ],
                                         begin: Alignment.topCenter,
                                         end: Alignment.bottomCenter,
@@ -1179,7 +1179,7 @@ class SuperOfferStep1Screen extends HookConsumerWidget {
                                       borderRadius: BorderRadius.circular(25.r),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
+                                          color: const Color(0xFF362187).withValues(alpha: 0.35),
                                           blurRadius: 12,
                                           offset: const Offset(0, 4),
                                         ),
@@ -1246,12 +1246,12 @@ class SuperOfferStep1Screen extends HookConsumerWidget {
                                       color: const Color(0xFFFAF5FF),
                                       borderRadius: BorderRadius.circular(25.r),
                                       border: Border.all(
-                                        color: const Color(0xFFAB31DE),
+                                        color: const Color(0xFF362187),
                                         width: 1.5,
                                       ),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: const Color(0xFFAB31DE).withValues(alpha: 0.12),
+                                          color: const Color(0xFF362187).withValues(alpha: 0.12),
                                           blurRadius: 8,
                                           offset: const Offset(0, 2),
                                         ),
@@ -1262,14 +1262,14 @@ class SuperOfferStep1Screen extends HookConsumerWidget {
                                       children: [
                                         Icon(
                                           Icons.sync_rounded,
-                                          color: const Color(0xFFAB31DE),
+                                          color: const Color(0xFF362187),
                                           size: 19.sp,
                                         ),
                                         SizedBox(width: 6.w),
                                         Text(
                                           'Check Usage',
                                           style: GoogleFonts.outfit(
-                                            color: const Color(0xFFAB31DE),
+                                            color: const Color(0xFF362187),
                                             fontSize: 14.sp,
                                             fontWeight: FontWeight.w800,
                                             letterSpacing: 0.1,
@@ -1301,13 +1301,13 @@ class SuperOfferStep1Screen extends HookConsumerWidget {
                                       color: const Color(0xFFFAF5FF),
                                       borderRadius: BorderRadius.circular(11.r),
                                       border: Border.all(
-                                        color: const Color(0xFFE39FFF).withValues(alpha: 0.5),
+                                        color: const Color(0xFF5B34C4).withValues(alpha: 0.5),
                                         width: 1,
                                       ),
                                     ),
                                     child: Icon(
                                       Icons.lock_open_rounded,
-                                      color: const Color(0xFFAB31DE),
+                                      color: const Color(0xFF362187),
                                       size: 19.sp,
                                     ),
                                   ),
@@ -1459,8 +1459,8 @@ class SuperOfferStep1Screen extends HookConsumerWidget {
                                       decoration: BoxDecoration(
                                         gradient: const LinearGradient(
                                           colors: [
-                                            Color(0xFFE39FFF),
-                                            Color(0xFFAB31DE),
+                                            Color(0xFF5B34C4),
+                                            Color(0xFF362187),
                                           ],
                                           begin: Alignment.topCenter,
                                           end: Alignment.bottomCenter,
@@ -1468,7 +1468,7 @@ class SuperOfferStep1Screen extends HookConsumerWidget {
                                         borderRadius: BorderRadius.circular(26.r),
                                         boxShadow: [
                                           BoxShadow(
-                                            color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
+                                            color: const Color(0xFF362187).withValues(alpha: 0.35),
                                             blurRadius: 12,
                                             offset: const Offset(0, 4),
                                           ),

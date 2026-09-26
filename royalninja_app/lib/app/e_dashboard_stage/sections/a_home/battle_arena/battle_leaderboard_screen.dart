@@ -80,7 +80,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                 height: 70.h,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: const Color(0xFFE39FFF).withValues(alpha: 0.22),
+                  color: const Color(0xFF4C2CA3).withValues(alpha: 0.22),
                 ),
               ),
               Image.asset(
@@ -131,10 +131,10 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
       height: 48.h,
       padding: EdgeInsets.all(4.w),
       decoration: BoxDecoration(
-        color: const Color(0xFFFAF5FF),
+        color: const Color(0xFFF6F4FE),
         borderRadius: BorderRadius.circular(24.r),
         border: Border.all(
-          color: const Color(0xFFF3E8FF),
+          color: const Color(0xFFE9E3FE),
           width: 1.2,
         ),
       ),
@@ -174,7 +174,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
           decoration: BoxDecoration(
             gradient: isSelected
                 ? const LinearGradient(
-                    colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                    colors: [Color(0xFF4C2CA3), Color(0xFF362187)],
                   )
                 : null,
             color: isSelected ? null : Colors.transparent,
@@ -182,7 +182,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
             boxShadow: isSelected
                 ? [
                     BoxShadow(
-                      color: const Color(0xFFAB31DE).withValues(alpha: 0.30),
+                      color: const Color(0xFF362187).withValues(alpha: 0.30),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),
@@ -219,15 +219,15 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
       width: double.infinity,
       padding: EdgeInsets.fromLTRB(20.w, 18.h, 20.w, 18.h),
       decoration: BoxDecoration(
-        color: const Color(0xFFFAF5FF),
+        color: const Color(0xFFF6F4FE),
         borderRadius: BorderRadius.circular(20.r),
         border: Border.all(
-          color: const Color(0xFFF3E8FF),
+          color: const Color(0xFFE9E3FE),
           width: 1.2,
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+            color: const Color(0xFF362187).withValues(alpha: 0.08),
             blurRadius: 14,
             offset: const Offset(0, 4),
           ),
@@ -245,7 +245,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
             ),
             padding: EdgeInsets.all(10.r),
             child: Image.asset(
-              'assets/icons/coin.png',
+              'assets/icons_2/coin.png',
               width: 32.w,
               height: 32.w,
               fit: BoxFit.contain,
@@ -256,7 +256,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
             'WIN HIGH REWARDS!',
             textAlign: TextAlign.center,
             style: GoogleFonts.outfit(
-              color: const Color(0xFFAB31DE),
+              color: const Color(0xFF362187),
               fontSize: 14.5.sp,
               fontWeight: FontWeight.w900,
               letterSpacing: 0.6,
@@ -398,11 +398,11 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
           margin: EdgeInsets.only(top: isCenter ? 10.h : 20.h),
           padding: EdgeInsets.only(bottom: 6.h),
           decoration: BoxDecoration(
-            color: const Color(0xFFC88BE2),
+            color: const Color(0xFF4C2CA3),
             borderRadius: BorderRadius.circular(20.r),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFFAB31DE).withValues(alpha: isCenter ? 0.15 : 0.08),
+                color: const Color(0xFF362187).withValues(alpha: isCenter ? 0.15 : 0.08),
                 blurRadius: isCenter ? 14 : 8,
                 offset: const Offset(0, 4),
               ),
@@ -443,7 +443,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                       ),
                       child: ClipOval(
                         child: Container(
-                          color: const Color(0xFFFAF5FF),
+                          color: const Color(0xFFF6F4FE),
                           child: (() {
                             if (isPrizePool) {
                               return Center(
@@ -454,13 +454,13 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                                         width: rank == 1 ? 36.r : 30.r,
                                         fit: BoxFit.contain,
                                         errorWidget: (_, __, ___) => Image.asset(
-                                          'assets/icons/coin.png',
+                                          'assets/icons_2/coin.png',
                                           height: rank == 1 ? 36.r : 30.r,
                                           width: rank == 1 ? 36.r : 30.r,
                                         ),
                                       )
                                     : Image.asset(
-                                        'assets/icons/coin.png',
+                                        'assets/icons_2/coin.png',
                                         height: rank == 1 ? 36.r : 30.r,
                                         width: rank == 1 ? 36.r : 30.r,
                                       ),
@@ -469,7 +469,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                             if (!hasPlayer) {
                               return Icon(
                                 Icons.person_rounded,
-                                color: const Color(0xFFAB31DE),
+                                color: const Color(0xFF362187),
                                 size: rank == 1 ? 26.sp : 22.sp,
                               );
                             }
@@ -483,7 +483,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                                     child: Text(
                                       name.substring(0, name.isNotEmpty ? 1 : 0).toUpperCase(),
                                       style: GoogleFonts.outfit(
-                                        color: const Color(0xFFAB31DE),
+                                        color: const Color(0xFF362187),
                                         fontSize: rank == 1 ? 18.sp : 15.sp,
                                         fontWeight: FontWeight.w900,
                                       ),
@@ -540,7 +540,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                           height: 13.w,
                           fit: BoxFit.contain,
                           errorWidget: (_, __, ___) => Image.asset(
-                            'assets/icons/coin.png',
+                            'assets/icons_2/coin.png',
                             width: 13.w,
                             height: 13.w,
                             fit: BoxFit.contain,
@@ -549,7 +549,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                       )
                     else ...[
                       Image.asset(
-                        'assets/icons/coin.png',
+                        'assets/icons_2/coin.png',
                         width: 13.w,
                         height: 13.w,
                         fit: BoxFit.contain,
@@ -607,7 +607,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
           Text(
             'Reward',
             style: GoogleFonts.outfit(
-              color: const Color(0xFFAB31DE),
+              color: const Color(0xFF362187),
               fontSize: 12.sp,
               fontWeight: FontWeight.w700,
             ),
@@ -655,9 +655,9 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                 ? customText
                 : '${_formatCoins(coins)} Coins';
 
-            Color rankColor = const Color(0xFFAB31DE);
-            Color bgColor = const Color(0xFFFAF5FF);
-            Color borderColor = const Color(0xFFF3E8FF);
+            Color rankColor = const Color(0xFF362187);
+            Color bgColor = const Color(0xFFF6F4FE);
+            Color borderColor = const Color(0xFFE9E3FE);
 
             if (start == 1) {
               rankColor = const Color(0xFFD97706);
@@ -727,7 +727,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                               height: 20.w,
                               fit: BoxFit.contain,
                               errorWidget: (_, __, ___) => Image.asset(
-                                'assets/icons/coin.png',
+                                'assets/icons_2/coin.png',
                                 width: 18.w,
                                 height: 18.w,
                               ),
@@ -735,7 +735,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                           )
                         else
                           Image.asset(
-                            'assets/icons/coin.png',
+                            'assets/icons_2/coin.png',
                             width: 18.w,
                             height: 18.w,
                           ),
@@ -780,16 +780,16 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
       margin: EdgeInsets.only(bottom: 8.h),
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
       decoration: BoxDecoration(
-        color: isMe ? const Color(0xFFFAF5FF) : Colors.white,
+        color: isMe ? const Color(0xFFF6F4FE) : Colors.white,
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
-          color: isMe ? const Color(0xFFAB31DE) : const Color(0xFFF1F5F9),
+          color: isMe ? const Color(0xFF362187) : const Color(0xFFF1F5F9),
           width: isMe ? 1.4 : 1.0,
         ),
         boxShadow: [
           BoxShadow(
             color: isMe
-                ? const Color(0xFFAB31DE).withValues(alpha: 0.12)
+                ? const Color(0xFF362187).withValues(alpha: 0.12)
                 : Colors.black.withValues(alpha: 0.03),
             blurRadius: 8,
             offset: const Offset(0, 2),
@@ -804,13 +804,13 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
             height: 28.w,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: isMe ? const Color(0xFFAB31DE) : const Color(0xFFFAF5FF),
+              color: isMe ? const Color(0xFF362187) : const Color(0xFFF6F4FE),
               shape: BoxShape.circle,
             ),
             child: Text(
               '$rankNum',
               style: GoogleFonts.outfit(
-                color: isMe ? Colors.white : const Color(0xFFAB31DE),
+                color: isMe ? Colors.white : const Color(0xFF362187),
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w800,
               ),
@@ -822,7 +822,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
           // User Avatar
           CircleAvatar(
             radius: 17.r,
-            backgroundColor: const Color(0xFFFAF5FF),
+            backgroundColor: const Color(0xFFF6F4FE),
             child: pAvatar.isNotEmpty && pAvatar != 'null'
                 ? ClipOval(
                     child: AvatarInternetImage(
@@ -833,7 +833,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                 : Text(
                     pName.substring(0, pName.isNotEmpty ? 1 : 0).toUpperCase(),
                     style: GoogleFonts.outfit(
-                      color: const Color(0xFFAB31DE),
+                      color: const Color(0xFF362187),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -882,7 +882,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                       height: 15.w,
                       fit: BoxFit.contain,
                       errorWidget: (_, __, ___) => Image.asset(
-                        'assets/icons/coin.png',
+                        'assets/icons_2/coin.png',
                         width: 14.w,
                         height: 14.w,
                         fit: BoxFit.contain,
@@ -891,7 +891,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                   )
                 else
                   Image.asset(
-                    'assets/icons/coin.png',
+                    'assets/icons_2/coin.png',
                     width: 14.w,
                     height: 14.w,
                     fit: BoxFit.contain,
@@ -933,15 +933,15 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
       ),
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
       decoration: BoxDecoration(
-        color: const Color(0xFFFAF5FF),
+        color: const Color(0xFFF6F4FE),
         borderRadius: BorderRadius.circular(22.r),
         border: Border.all(
-          color: const Color(0xFFE9D5FF),
+          color: const Color(0xFFE9E3FE),
           width: 1.5,
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFAB31DE).withValues(alpha: 0.14),
+            color: const Color(0xFF362187).withValues(alpha: 0.14),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -953,7 +953,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
           Text(
             userRank > 0 ? '$userRank' : '-',
             style: GoogleFonts.outfit(
-              color: const Color(0xFFAB31DE),
+              color: const Color(0xFF362187),
               fontSize: 22.sp,
               fontWeight: FontWeight.w900,
             ),
@@ -968,7 +968,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: const Color(0xFFAB31DE),
+                color: const Color(0xFF362187),
                 width: 1.5,
               ),
             ),
@@ -979,11 +979,11 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                       size: 36.w,
                     )
                   : CircleAvatar(
-                      backgroundColor: const Color(0xFFFAF5FF),
+                      backgroundColor: const Color(0xFFF6F4FE),
                       child: Text(
                         userName.substring(0, userName.isNotEmpty ? 1 : 0).toUpperCase(),
                         style: GoogleFonts.outfit(
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -1002,7 +1002,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                 Text(
                   'You',
                   style: GoogleFonts.outfit(
-                    color: const Color(0xFFAB31DE),
+                    color: const Color(0xFF362187),
                     fontSize: 15.sp,
                     fontWeight: FontWeight.w800,
                   ),
@@ -1024,7 +1024,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Image.asset(
-                'assets/icons/coin.png',
+                'assets/icons_2/coin.png',
                 width: 15.w,
                 height: 15.w,
                 fit: BoxFit.contain,
@@ -1113,7 +1113,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
 
   Widget _buildNoActiveLeaderboardState({required double topPadding, required double bottomPadding}) {
     return RefreshIndicator(
-      color: const Color(0xFFAB31DE),
+      color: const Color(0xFF362187),
       backgroundColor: Colors.white,
       edgeOffset: topPadding + 60.h,
       onRefresh: () async {
@@ -1156,7 +1156,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                          color: const Color(0xFF362187).withValues(alpha: 0.08),
                           blurRadius: 10,
                           offset: const Offset(0, 3),
                         ),
@@ -1164,7 +1164,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                     ),
                     child: Icon(
                       Icons.arrow_back_rounded,
-                      color: const Color(0xFFAB31DE),
+                      color: const Color(0xFF362187),
                       size: 22.sp,
                     ),
                   ),
@@ -1190,7 +1190,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                          color: const Color(0xFF362187).withValues(alpha: 0.08),
                           blurRadius: 10,
                           offset: const Offset(0, 3),
                         ),
@@ -1199,7 +1199,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                     child: Center(
                       child: Icon(
                         Icons.history_rounded,
-                        color: const Color(0xFFAB31DE),
+                        color: const Color(0xFF362187),
                         size: 21.sp,
                       ),
                     ),
@@ -1215,15 +1215,15 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
               width: double.infinity,
               padding: EdgeInsets.symmetric(horizontal: 22.w, vertical: 34.h),
               decoration: BoxDecoration(
-                color: const Color(0xFFFAF5FF),
+                color: const Color(0xFFF6F4FE),
                 borderRadius: BorderRadius.circular(28.r),
                 border: Border.all(
-                  color: const Color(0xFFF3E8FF),
+                  color: const Color(0xFFE9E3FE),
                   width: 1.5,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFAB31DE).withValues(alpha: 0.06),
+                    color: const Color(0xFF362187).withValues(alpha: 0.06),
                     blurRadius: 20,
                     offset: const Offset(0, 6),
                   ),
@@ -1241,7 +1241,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                         height: 110.w,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: const Color(0xFFE39FFF).withValues(alpha: 0.22),
+                          color: const Color(0xFF4C2CA3).withValues(alpha: 0.22),
                         ),
                       ),
                       Image.asset(
@@ -1251,7 +1251,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                         errorBuilder: (_, __, ___) => Icon(
                           Icons.leaderboard_rounded,
                           size: 60.sp,
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                         ),
                       ),
                     ],
@@ -1312,7 +1312,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                         children: [
                           Icon(
                             Icons.history_rounded,
-                            color: const Color(0xFFAB31DE),
+                            color: const Color(0xFF362187),
                             size: 16.sp,
                           ),
                           SizedBox(width: 6.w),
@@ -1348,12 +1348,12 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                 height: 50.h,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
-                    colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                    colors: [Color(0xFF4C2CA3), Color(0xFF362187)],
                   ),
                   borderRadius: BorderRadius.circular(16.r),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFFAB31DE).withValues(alpha: 0.30),
+                      color: const Color(0xFF362187).withValues(alpha: 0.30),
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),
@@ -1464,7 +1464,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                   final r3Icon = t3?['iconUrl']?.toString().trim();
 
                   return RefreshIndicator(
-                    color: const Color(0xFFAB31DE),
+                    color: const Color(0xFF362187),
                     backgroundColor: Colors.white,
                     edgeOffset: topPadding + 60.h,
                     onRefresh: () async {
@@ -1508,7 +1508,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                        color: const Color(0xFF362187).withValues(alpha: 0.08),
                                         blurRadius: 10,
                                         offset: const Offset(0, 3),
                                       ),
@@ -1516,7 +1516,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                                   ),
                                   child: Icon(
                                     Icons.arrow_back_rounded,
-                                    color: const Color(0xFFAB31DE),
+                                    color: const Color(0xFF362187),
                                     size: 22.sp,
                                   ),
                                 ),
@@ -1543,7 +1543,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                        color: const Color(0xFF362187).withValues(alpha: 0.08),
                                         blurRadius: 10,
                                         offset: const Offset(0, 3),
                                       ),
@@ -1552,7 +1552,7 @@ class _BattleLeaderboardScreenState extends State<BattleLeaderboardScreen> {
                                   child: Center(
                                     child: Icon(
                                       Icons.history_rounded,
-                                      color: const Color(0xFFAB31DE),
+                                      color: const Color(0xFF362187),
                                       size: 21.sp,
                                     ),
                                   ),
@@ -1754,10 +1754,10 @@ class _LeaderboardCountdownPillState extends State<_LeaderboardCountdownPill> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 6.h),
       decoration: BoxDecoration(
-        color: const Color(0xFFFAF5FF),
+        color: const Color(0xFFF6F4FE),
         borderRadius: BorderRadius.circular(100.r),
         border: Border.all(
-          color: const Color(0xFFF3E8FF),
+          color: const Color(0xFFE9E3FE),
           width: 1.2,
         ),
       ),
@@ -1766,7 +1766,7 @@ class _LeaderboardCountdownPillState extends State<_LeaderboardCountdownPill> {
         children: [
           Icon(
             Icons.access_time_filled_rounded,
-            color: const Color(0xFFAB31DE),
+            color: const Color(0xFF362187),
             size: 14.sp,
           ),
           SizedBox(width: 5.w),

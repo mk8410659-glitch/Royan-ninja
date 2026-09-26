@@ -299,7 +299,7 @@ class HowToUseScreen extends StatelessWidget {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                              color: const Color(0xFF362187).withValues(alpha: 0.08),
                               blurRadius: 10,
                               offset: const Offset(0, 3),
                             ),
@@ -307,7 +307,7 @@ class HowToUseScreen extends StatelessWidget {
                         ),
                         child: Icon(
                           Icons.arrow_back_rounded,
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           size: 22.sp,
                         ),
                       ),
@@ -400,17 +400,17 @@ class _TutorialCard extends StatelessWidget {
             width: 44.w,
             height: 44.w,
             decoration: BoxDecoration(
-              color: const Color(0xFFFAF5FF),
+              color: const Color(0xFFF6F4FE),
               shape: BoxShape.circle,
               border: Border.all(
-                color: const Color(0xFFE9D5FF),
+                color: const Color(0xFFE9E3FE),
                 width: 1,
               ),
             ),
             alignment: Alignment.center,
             child: Icon(
               tutorial['icon'] as IconData,
-              color: const Color(0xFFAB31DE),
+              color: const Color(0xFF362187),
               size: 22.sp,
             ),
           ),
@@ -433,7 +433,7 @@ class _TutorialCard extends StatelessWidget {
               ),
             ),
           ),
-          iconColor: const Color(0xFFAB31DE),
+          iconColor: const Color(0xFF362187),
           collapsedIconColor: const Color(0xFF94A3B8),
           childrenPadding: EdgeInsets.fromLTRB(14.w, 0, 14.w, 14.h),
           children: [
@@ -447,7 +447,7 @@ class _TutorialCard extends StatelessWidget {
                 Text(
                   'Step-by-Step Guide:',
                   style: GoogleFonts.outfit(
-                    color: const Color(0xFFAB31DE),
+                    color: const Color(0xFF362187),
                     fontWeight: FontWeight.w800,
                     fontSize: 13.sp,
                   ),
@@ -464,10 +464,10 @@ class _TutorialCard extends StatelessWidget {
                           width: 20.w,
                           height: 20.w,
                           decoration: BoxDecoration(
-                            color: const Color(0xFFFAF5FF),
+                            color: const Color(0xFFF6F4FE),
                             shape: BoxShape.circle,
                             border: Border.all(
-                              color: const Color(0xFFE9D5FF),
+                              color: const Color(0xFFE9E3FE),
                               width: 1,
                             ),
                           ),
@@ -477,7 +477,7 @@ class _TutorialCard extends StatelessWidget {
                             style: GoogleFonts.outfit(
                               fontSize: 10.sp,
                               fontWeight: FontWeight.w800,
-                              color: const Color(0xFFAB31DE),
+                              color: const Color(0xFF362187),
                             ),
                           ),
                         ),
@@ -515,14 +515,14 @@ class _TutorialCard extends StatelessWidget {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
-                        colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                        colors: [Color(0xFF4C2CA3), Color(0xFF362187)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
                       borderRadius: BorderRadius.circular(14.r),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFFAB31DE).withValues(alpha: 0.3),
+                          color: const Color(0xFF362187).withValues(alpha: 0.3),
                           blurRadius: 8,
                           offset: const Offset(0, 3),
                         ),

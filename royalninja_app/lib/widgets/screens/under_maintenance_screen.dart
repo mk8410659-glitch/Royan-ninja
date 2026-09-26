@@ -32,24 +32,24 @@ class UnderMaintenanceScreen extends StatelessWidget {
             child: Center(
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                padding: EdgeInsets.symmetric(horizontal: 22.w, vertical: 20.h),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // 1. Top Executive System Badge
+                    // 1. Top Maintenance Badge (Royal Amber/Gold)
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 6.h),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFFAF5FF),
-                        borderRadius: BorderRadius.circular(20.r),
+                        color: const Color(0xFFFFFBEB),
+                        borderRadius: BorderRadius.circular(100.r),
                         border: Border.all(
-                          color: const Color(0xFFE9D5FF),
+                          color: const Color(0xFFFDE68A),
                           width: 1.2,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                            color: const Color(0xFFF59E0B).withValues(alpha: 0.10),
                             blurRadius: 8,
                             offset: const Offset(0, 2),
                           ),
@@ -62,17 +62,17 @@ class UnderMaintenanceScreen extends StatelessWidget {
                             width: 8.w,
                             height: 8.w,
                             decoration: const BoxDecoration(
-                              color: Color(0xFFAB31DE),
+                              color: Color(0xFFD97706),
                               shape: BoxShape.circle,
                             ),
                           ),
                           SizedBox(width: 8.w),
                           Text(
-                            'SYSTEM MAINTENANCE',
-                            style: GoogleFonts.outfit(
-                              fontSize: 11.sp,
-                              fontWeight: FontWeight.w800,
-                              color: const Color(0xFFAB31DE),
+                            'SCHEDULED MAINTENANCE',
+                            style: GoogleFonts.poppins(
+                              fontSize: 10.5.sp,
+                              fontWeight: FontWeight.w700,
+                              color: const Color(0xFFB45309),
                               letterSpacing: 0.5,
                             ),
                           ),
@@ -80,88 +80,102 @@ class UnderMaintenanceScreen extends StatelessWidget {
                       ),
                     ),
 
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 28.h),
 
-                    // 2. Center Maintenance Hero Illustration
+                    // 2. Maintenance Hero Artwork with Royal Ambient Glow
                     Container(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.12),
-                            blurRadius: 30,
-                            spreadRadius: 10,
+                            color: const Color(0xFF362187).withValues(alpha: 0.12),
+                            blurRadius: 36,
+                            spreadRadius: 8,
                           ),
                         ],
                       ),
                       child: Image.asset(
-                        'assets/icons/maintance.png',
-                        width: 140.w,
-                        height: 140.w,
+                        'assets/icons_2/Maintenance.jpg',
+                        width: 210.w,
+                        height: 210.w,
                         fit: BoxFit.contain,
                       ),
                     ),
 
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 26.h),
 
                     // 3. Headline & Subtitle
                     Text(
                       'We’ll Be Back Soon!',
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.outfit(
+                      style: GoogleFonts.poppins(
                         color: const Color(0xFF1E1B4B),
-                        fontSize: 26.sp,
+                        fontSize: 23.sp,
                         fontWeight: FontWeight.w800,
                         letterSpacing: -0.3,
                       ),
                     ),
 
-                    SizedBox(height: 8.h),
+                    SizedBox(height: 10.h),
 
-                    Text(
-                      'Our system is currently under scheduled maintenance to bring you a faster and smoother experience.\nPlease check back shortly.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.outfit(
-                        color: const Color(0xFF64748B),
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.w500,
-                        height: 1.4,
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.w),
+                      child: Text(
+                        'Our system is currently under scheduled maintenance to bring you a faster and smoother experience.\nPlease check back shortly.',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                          color: const Color(0xFF64748B),
+                          fontSize: 12.5.sp,
+                          fontWeight: FontWeight.w400,
+                          height: 1.5,
+                        ),
                       ),
                     ),
 
-                    SizedBox(height: 28.h),
+                    SizedBox(height: 26.h),
 
                     // 4. Info Card 1: Estimated Completion Time
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFFAF5FF),
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(18.r),
                         border: Border.all(
-                          color: const Color(0xFFE9D5FF),
+                          color: const Color(0xFFF1F5F9),
                           width: 1.2,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.05),
-                            blurRadius: 10,
-                            offset: const Offset(0, 3),
+                            color: const Color(0xFF362187).withValues(alpha: 0.06),
+                            blurRadius: 16,
+                            offset: const Offset(0, 4),
                           ),
                         ],
                       ),
                       child: Row(
                         children: [
                           Container(
-                            width: 40.w,
-                            height: 40.w,
-                            decoration: const BoxDecoration(
-                              color: Color(0xFFF3E8FF),
-                              shape: BoxShape.circle,
+                            width: 42.w,
+                            height: 42.w,
+                            decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                colors: [Color(0xFFFBBF24), Color(0xFFD97706)],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              borderRadius: BorderRadius.circular(13.r),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: const Color(0xFFD97706).withValues(alpha: 0.25),
+                                  blurRadius: 8,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
                             ),
                             alignment: Alignment.center,
                             child: Icon(
                               Icons.timer_outlined,
-                              color: const Color(0xFFAB31DE),
+                              color: Colors.white,
                               size: 20.sp,
                             ),
                           ),
@@ -171,8 +185,8 @@ class UnderMaintenanceScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'ESTIMATED TIME',
-                                  style: GoogleFonts.outfit(
+                                  'ESTIMATED DURATION',
+                                  style: GoogleFonts.poppins(
                                     color: const Color(0xFF64748B),
                                     fontSize: 11.sp,
                                     fontWeight: FontWeight.w700,
@@ -182,7 +196,7 @@ class UnderMaintenanceScreen extends StatelessWidget {
                                 SizedBox(height: 1.h),
                                 Text(
                                   endTime.isNotEmpty ? endTime : '30–60 Minutes',
-                                  style: GoogleFonts.outfit(
+                                  style: GoogleFonts.poppins(
                                     color: const Color(0xFF1E1B4B),
                                     fontSize: 14.sp,
                                     fontWeight: FontWeight.w800,
@@ -201,33 +215,44 @@ class UnderMaintenanceScreen extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFFAF5FF),
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(18.r),
                         border: Border.all(
-                          color: const Color(0xFFE9D5FF),
+                          color: const Color(0xFFF1F5F9),
                           width: 1.2,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.05),
-                            blurRadius: 10,
-                            offset: const Offset(0, 3),
+                            color: const Color(0xFF362187).withValues(alpha: 0.06),
+                            blurRadius: 16,
+                            offset: const Offset(0, 4),
                           ),
                         ],
                       ),
                       child: Row(
                         children: [
                           Container(
-                            width: 40.w,
-                            height: 40.w,
-                            decoration: const BoxDecoration(
-                              color: Color(0xFFF3E8FF),
-                              shape: BoxShape.circle,
+                            width: 42.w,
+                            height: 42.w,
+                            decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                colors: [Color(0xFF5B34C4), Color(0xFF362187)],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              borderRadius: BorderRadius.circular(13.r),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: const Color(0xFF362187).withValues(alpha: 0.25),
+                                  blurRadius: 8,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
                             ),
                             alignment: Alignment.center,
                             child: Icon(
                               Icons.verified_user_rounded,
-                              color: const Color(0xFFAB31DE),
+                              color: Colors.white,
                               size: 20.sp,
                             ),
                           ),
@@ -237,20 +262,20 @@ class UnderMaintenanceScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Thank you for your patience!',
-                                  style: GoogleFonts.outfit(
+                                  'Thank You for Your Patience',
+                                  style: GoogleFonts.poppins(
                                     color: const Color(0xFF1E1B4B),
                                     fontSize: 13.5.sp,
-                                    fontWeight: FontWeight.w800,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                                 SizedBox(height: 2.h),
                                 Text(
-                                  'We are working hard to serve you better.',
-                                  style: GoogleFonts.outfit(
+                                  'We are working hard to enhance your experience',
+                                  style: GoogleFonts.poppins(
                                     color: const Color(0xFF64748B),
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: 11.5.sp,
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
                               ],
@@ -260,28 +285,28 @@ class UnderMaintenanceScreen extends StatelessWidget {
                       ),
                     ),
 
-                    SizedBox(height: 28.h),
+                    SizedBox(height: 26.h),
 
-                    // 6. Executive Action Button ("Try Later")
+                    // 6. Action Button ("Try Later" - Royal Purple Gradient)
                     GestureDetector(
                       onTap: () {
                         HapticFeedback.lightImpact();
                         SystemNavigator.pop();
                       },
                       child: Container(
-                        height: 50.h,
+                        height: 52.h,
                         width: double.infinity,
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
-                            colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                            colors: [Color(0xFF362187), Color(0xFF5B34C4)],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
-                          borderRadius: BorderRadius.circular(18.r),
+                          borderRadius: BorderRadius.circular(16.r),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
-                              blurRadius: 12,
+                              color: const Color(0xFF362187).withValues(alpha: 0.35),
+                              blurRadius: 14,
                               offset: const Offset(0, 4),
                             ),
                           ],
@@ -298,10 +323,10 @@ class UnderMaintenanceScreen extends StatelessWidget {
                               SizedBox(width: 8.w),
                               Text(
                                 'Try Later',
-                                style: GoogleFonts.outfit(
+                                style: GoogleFonts.poppins(
                                   color: Colors.white,
-                                  fontSize: 15.sp,
-                                  fontWeight: FontWeight.w800,
+                                  fontSize: 14.5.sp,
+                                  fontWeight: FontWeight.w700,
                                   letterSpacing: 0.3,
                                 ),
                               ),

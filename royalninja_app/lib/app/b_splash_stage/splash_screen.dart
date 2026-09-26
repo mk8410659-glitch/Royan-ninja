@@ -155,13 +155,25 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
                       builder: (context, child) {
                         return Transform.translate(
                           offset: Offset(0, _floatAnimation.value),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(24.r),
+                          child: Container(
+                            width: 135.w,
+                            height: 135.w,
+                            padding: EdgeInsets.all(10.w),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(30.r),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: const Color(0xFF8B5CF6).withValues(alpha: 0.5),
+                                  blurRadius: 30,
+                                  spreadRadius: 3,
+                                  offset: const Offset(0, 8),
+                                ),
+                              ],
+                            ),
                             child: Image.asset(
-                              'assets/icons/LOGO_SPLASHS.png',
-                              width: 120.w,
-                              height: 120.w,
-                              fit: BoxFit.cover,
+                              'assets/icons_2/Battle ninja.png',
+                              fit: BoxFit.contain,
                             ),
                           ),
                         );
@@ -171,15 +183,25 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
                     SizedBox(height: 24.h),
 
                     // App Title
-                    Text(
-                      'royal_ninja',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'Neogen',
-                        color: const Color(0xFFAB31DE),
-                        fontSize: 28.sp,
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: 0.2,
+                    ShaderMask(
+                      shaderCallback: (bounds) => const LinearGradient(
+                        colors: [
+                          Color(0xFF5B21B6), // Deep Royal Purple
+                          Color(0xFF7C3AED), // Vibrant Royal Violet
+                          Color(0xFF9333EA), // Bright Electric Violet
+                          Color(0xFFA855F7), // Accent Lilac
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ).createShader(bounds),
+                      child: Text(
+                        'royal_ninja',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.russoOne(
+                          color: Colors.white,
+                          fontSize: 34.sp,
+                          letterSpacing: 1.5,
+                        ),
                       ),
                     ),
 
@@ -190,10 +212,10 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
                       'PLAY GAMES',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
-                        color: const Color(0xFFA78BFA),
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 1.6,
+                        color: const Color(0xFF6D28D9),
+                        fontSize: 12.5.sp,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 2.8,
                       ),
                     ),
 
@@ -300,9 +322,9 @@ class _SplashFuturisticCyberLoaderState extends State<_SplashFuturisticCyberLoad
         Text(
           'LOADING...',
           style: GoogleFonts.poppins(
-            color: const Color(0xFFA78BFA).withValues(alpha: 0.8),
+            color: const Color(0xFF7C3AED),
             fontSize: 10.sp,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w700,
             letterSpacing: 2.5,
           ),
         ),

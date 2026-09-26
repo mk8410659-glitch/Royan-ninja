@@ -109,7 +109,7 @@ class ReadTskScreen extends HookConsumerWidget {
         backgroundColor: Colors.white,
         body: SafeArea(
           child: RefreshIndicator(
-            color: const Color(0xFFAB31DE),
+            color: const Color(0xFF362187),
             backgroundColor: Colors.white,
             onRefresh: () async {
               if (userId.trim().isNotEmpty) {
@@ -152,7 +152,7 @@ class ReadTskScreen extends HookConsumerWidget {
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                      color: const Color(0xFF362187).withValues(alpha: 0.08),
                                       blurRadius: 10,
                                       offset: const Offset(0, 3),
                                     ),
@@ -160,7 +160,7 @@ class ReadTskScreen extends HookConsumerWidget {
                                 ),
                                 child: Icon(
                                   Icons.arrow_back_rounded,
-                                  color: const Color(0xFFAB31DE),
+                                  color: const Color(0xFF362187),
                                   size: 22.sp,
                                 ),
                               ),
@@ -207,14 +207,14 @@ class ReadTskScreen extends HookConsumerWidget {
                                   children: [
                                     Icon(
                                       Icons.help_outline_rounded,
-                                      color: const Color(0xFFAB31DE),
+                                      color: const Color(0xFF362187),
                                       size: 15.sp,
                                     ),
                                     SizedBox(width: 5.w),
                                     Text(
                                       'How To?',
                                       style: GoogleFonts.outfit(
-                                        color: const Color(0xFFAB31DE),
+                                        color: const Color(0xFF362187),
                                         fontSize: 12.sp,
                                         fontWeight: FontWeight.w700,
                                       ),
@@ -282,7 +282,7 @@ class ReadTskScreen extends HookConsumerWidget {
                               width: 3.5.w,
                               height: 14.h,
                               decoration: BoxDecoration(
-                                color: const Color(0xFFAB31DE),
+                                color: const Color(0xFF362187),
                                 borderRadius: BorderRadius.circular(2.r),
                               ),
                             ),
@@ -343,7 +343,7 @@ class ReadTskScreen extends HookConsumerWidget {
         children: [
           Icon(
             Icons.menu_book_rounded,
-            color: const Color(0xFFAB31DE),
+            color: const Color(0xFF362187),
             size: 36.sp,
           ),
           SizedBox(height: 10.h),
@@ -387,7 +387,7 @@ class ReadTskScreen extends HookConsumerWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+            color: const Color(0xFF362187).withValues(alpha: 0.08),
             blurRadius: 14,
             offset: const Offset(0, 4),
           ),
@@ -413,7 +413,7 @@ class ReadTskScreen extends HookConsumerWidget {
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                      color: const Color(0xFF362187).withValues(alpha: 0.08),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),
@@ -421,13 +421,13 @@ class ReadTskScreen extends HookConsumerWidget {
                 ),
                 alignment: Alignment.center,
                 child: Image.asset(
-                  'assets/icons/reaadnowo.png',
+                  'assets/icons_2/book (1).png',
                   width: 38.w,
                   height: 38.w,
                   fit: BoxFit.contain,
                   errorBuilder: (_, __, ___) => Icon(
                     Icons.auto_stories_rounded,
-                    color: const Color(0xFFAB31DE),
+                    color: const Color(0xFF362187),
                     size: 28.sp,
                   ),
                 ),
@@ -460,14 +460,14 @@ class ReadTskScreen extends HookConsumerWidget {
                             children: [
                               Icon(
                                 Icons.timer_outlined,
-                                color: const Color(0xFFAB31DE),
+                                color: const Color(0xFF362187),
                                 size: 13.sp,
                               ),
                               SizedBox(width: 4.w),
                               Text(
                                 _formatDuration(offer.trackingTime),
                                 style: GoogleFonts.outfit(
-                                  color: const Color(0xFFAB31DE),
+                                  color: const Color(0xFF362187),
                                   fontSize: 11.sp,
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -491,7 +491,7 @@ class ReadTskScreen extends HookConsumerWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Image.asset(
-                                'assets/icons/coin.png',
+                                'assets/icons_2/coin.png',
                                 width: 14.w,
                                 height: 14.w,
                                 fit: BoxFit.contain,
@@ -500,7 +500,7 @@ class ReadTskScreen extends HookConsumerWidget {
                               Text(
                                 '+${offer.coins.formatCoins()}',
                                 style: GoogleFonts.outfit(
-                                  color: const Color(0xFFAB31DE),
+                                  color: const Color(0xFF362187),
                                   fontSize: 11.5.sp,
                                   fontWeight: FontWeight.w800,
                                 ),
@@ -552,12 +552,12 @@ class ReadTskScreen extends HookConsumerWidget {
               height: 50.h,
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
-                  colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                  colors: [Color(0xFF5B34C4), Color(0xFF362187)],
                 ),
                 borderRadius: BorderRadius.circular(25.r),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
+                    color: const Color(0xFF362187).withValues(alpha: 0.35),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -608,7 +608,7 @@ class ReadTskScreen extends HookConsumerWidget {
           child: Text(
             '$number',
             style: GoogleFonts.outfit(
-              color: const Color(0xFFAB31DE),
+              color: const Color(0xFF362187),
               fontSize: 10.sp,
               fontWeight: FontWeight.w800,
             ),
@@ -729,7 +729,7 @@ class ReadTskScreen extends HookConsumerWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(10.r),
                 child: Image.asset(
-                  'assets/icons/reaadnowo.png',
+                  'assets/icons_2/book (1).png',
                   width: 38.w,
                   height: 38.w,
                   fit: BoxFit.contain,
@@ -743,7 +743,7 @@ class ReadTskScreen extends HookConsumerWidget {
                     alignment: Alignment.center,
                     child: Icon(
                       Icons.auto_stories_rounded,
-                      color: const Color(0xFFAB31DE),
+                      color: const Color(0xFF362187),
                       size: 20.sp,
                     ),
                   ),
@@ -784,7 +784,7 @@ class ReadTskScreen extends HookConsumerWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Image.asset(
-                      'assets/icons/coin.png',
+                      'assets/icons_2/coin.png',
                       width: 13.w,
                       height: 13.w,
                       fit: BoxFit.contain,

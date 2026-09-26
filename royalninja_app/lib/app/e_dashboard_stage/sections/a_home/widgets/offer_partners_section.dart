@@ -541,7 +541,7 @@ class OfferPartnersSection extends HookConsumerWidget {
                 child: Transform.rotate(
                   angle: -0.25,
                   child: Image.asset(
-                    'assets/icons/coin.png',
+                    'assets/icons_2/coin.png',
                     width: 16.w,
                     height: 16.w,
                     fit: BoxFit.contain,

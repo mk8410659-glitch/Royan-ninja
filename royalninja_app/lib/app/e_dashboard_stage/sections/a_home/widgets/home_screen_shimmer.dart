@@ -4,7 +4,7 @@ import '../../../../../widgets/common/shimmer_tag.dart';
 
 const Color _shimmerBase = Color(0xFFF1F5F9);
 const Color _shimmerHighlight = Color(0xFFE2E8F0);
-const Color _shimmerAccentViolet = Color(0xFFAB31DE);
+const Color _shimmerAccentViolet = Color(0xFF362187);
 
 class HomeScreenShimmer extends StatelessWidget {
   const HomeScreenShimmer({super.key});

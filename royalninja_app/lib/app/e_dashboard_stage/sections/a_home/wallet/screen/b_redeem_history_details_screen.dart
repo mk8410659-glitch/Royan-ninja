@@ -85,7 +85,7 @@ class RedeemHistoryDetailsScreen extends StatelessWidget {
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                  color: const Color(0xFF362187).withValues(alpha: 0.08),
                                   blurRadius: 10,
                                   offset: const Offset(0, 3),
                                 ),
@@ -93,7 +93,7 @@ class RedeemHistoryDetailsScreen extends StatelessWidget {
                             ),
                             child: Icon(
                               Icons.arrow_back_rounded,
-                              color: const Color(0xFFAB31DE),
+                              color: const Color(0xFF362187),
                               size: 22.sp,
                             ),
                           ),
@@ -126,14 +126,14 @@ class RedeemHistoryDetailsScreen extends StatelessWidget {
                             height: 80.w,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: const Color(0xFFFAF5FF),
+                              color: const Color(0xFFF6F4FE),
                               border: Border.all(
-                                color: const Color(0xFFF3E8FF),
+                                color: const Color(0xFFE9E3FE),
                                 width: 2,
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFAB31DE).withValues(alpha: 0.10),
+                                  color: const Color(0xFF362187).withValues(alpha: 0.10),
                                   blurRadius: 16,
                                   offset: const Offset(0, 4),
                                 ),
@@ -189,7 +189,7 @@ class RedeemHistoryDetailsScreen extends StatelessWidget {
                                   offset: const Offset(0, 6),
                                 ),
                                 BoxShadow(
-                                  color: const Color(0xFFAB31DE).withValues(alpha: 0.04),
+                                  color: const Color(0xFF362187).withValues(alpha: 0.04),
                                   blurRadius: 10,
                                   offset: const Offset(0, 4),
                                 ),
@@ -281,7 +281,7 @@ class RedeemHistoryDetailsScreen extends StatelessWidget {
                                     context,
                                     labelColor: const Color(0xFF64748B),
                                     valueColor: const Color(0xFF1E1B4B),
-                                    iconColor: const Color(0xFFAB31DE),
+                                    iconColor: const Color(0xFF362187),
                                   ),
                                 ],
 
@@ -342,10 +342,10 @@ class RedeemHistoryDetailsScreen extends StatelessWidget {
                                     width: double.infinity,
                                     padding: EdgeInsets.all(14.w),
                                     decoration: BoxDecoration(
-                                      color: const Color(0xFFFAF5FF),
+                                      color: const Color(0xFFF6F4FE),
                                       borderRadius: BorderRadius.circular(18.r),
                                       border: Border.all(
-                                        color: const Color(0xFFAB31DE).withValues(alpha: 0.28),
+                                        color: const Color(0xFF362187).withValues(alpha: 0.28),
                                         width: 1.2,
                                       ),
                                     ),
@@ -362,7 +362,7 @@ class RedeemHistoryDetailsScreen extends StatelessWidget {
                                                 color: Colors.white,
                                                 borderRadius: BorderRadius.circular(8.r),
                                                 border: Border.all(
-                                                  color: const Color(0xFFAB31DE).withValues(alpha: 0.2),
+                                                  color: const Color(0xFF362187).withValues(alpha: 0.2),
                                                   width: 1,
                                                 ),
                                               ),
@@ -371,7 +371,7 @@ class RedeemHistoryDetailsScreen extends StatelessWidget {
                                                   : Icon(
                                                       Icons.card_giftcard_rounded,
                                                       size: 14.sp,
-                                                      color: const Color(0xFFAB31DE),
+                                                      color: const Color(0xFF362187),
                                                     ),
                                             ),
                                             SizedBox(width: 8.w),
@@ -404,7 +404,7 @@ class RedeemHistoryDetailsScreen extends StatelessWidget {
                                                 child: Text(
                                                   cleanCode,
                                                   style: GoogleFonts.outfit(
-                                                    color: const Color(0xFFAB31DE),
+                                                    color: const Color(0xFF362187),
                                                     fontSize: 16.sp,
                                                     fontWeight: FontWeight.w800,
                                                     letterSpacing: 1.0,
@@ -437,7 +437,7 @@ class RedeemHistoryDetailsScreen extends StatelessWidget {
                                                 child: Container(
                                                   padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
                                                   decoration: BoxDecoration(
-                                                    color: const Color(0xFFAB31DE),
+                                                    color: const Color(0xFF362187),
                                                     borderRadius: BorderRadius.circular(8.r),
                                                   ),
                                                   child: Row(
@@ -490,8 +490,8 @@ class RedeemHistoryDetailsScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
                             colors: [
-                              Color(0xFFE39FFF),
-                              Color(0xFFAB31DE),
+                              Color(0xFF4C2CA3),
+                              Color(0xFF362187),
                             ],
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
@@ -499,7 +499,7 @@ class RedeemHistoryDetailsScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16.r),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.28),
+                              color: const Color(0xFF362187).withValues(alpha: 0.28),
                               blurRadius: 10,
                               offset: const Offset(0, 4),
                             ),

@@ -295,7 +295,7 @@ class OfferwallScreen extends HookConsumerWidget {
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                      color: const Color(0xFF362187).withValues(alpha: 0.08),
                                       blurRadius: 10,
                                       offset: const Offset(0, 3),
                                     ),
@@ -303,7 +303,7 @@ class OfferwallScreen extends HookConsumerWidget {
                                 ),
                                 child: Icon(
                                   Icons.arrow_back_rounded,
-                                  color: const Color(0xFFAB31DE),
+                                  color: const Color(0xFF362187),
                                   size: 22.sp,
                                 ),
                               ),
@@ -342,12 +342,12 @@ class OfferwallScreen extends HookConsumerWidget {
                               color: const Color(0xFFFAF5FF),
                               borderRadius: BorderRadius.circular(16.r),
                               border: Border.all(
-                                color: const Color(0xFFE39FFF).withValues(alpha: 0.6),
+                                color: const Color(0xFF5B34C4).withValues(alpha: 0.6),
                                 width: 1,
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFAB31DE).withValues(alpha: 0.06),
+                                  color: const Color(0xFF362187).withValues(alpha: 0.06),
                                   blurRadius: 8,
                                   offset: const Offset(0, 2),
                                 ),
@@ -358,14 +358,14 @@ class OfferwallScreen extends HookConsumerWidget {
                               children: [
                                 Icon(
                                   Icons.help_outline_rounded,
-                                  color: const Color(0xFFAB31DE),
+                                  color: const Color(0xFF362187),
                                   size: 14.sp,
                                 ),
                                 SizedBox(width: 5.w),
                                 Text(
                                   'How To?',
                                   style: GoogleFonts.outfit(
-                                    color: const Color(0xFFAB31DE),
+                                    color: const Color(0xFF362187),
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w700,
                                   ),
@@ -393,7 +393,7 @@ class OfferwallScreen extends HookConsumerWidget {
                           await ref.read(SplashService.appDataProvider.future);
                         } catch (_) {}
                       },
-                      color: const Color(0xFFAB31DE),
+                      color: const Color(0xFF362187),
                       backgroundColor: Colors.white,
                       child: GridView.builder(
                         controller: scrollController,
@@ -403,9 +403,9 @@ class OfferwallScreen extends HookConsumerWidget {
                         padding: EdgeInsets.fromLTRB(14.w, 4.h, 14.w, 40.h),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
-                          mainAxisSpacing: 12.h,
+                          mainAxisSpacing: 14.h,
                           crossAxisSpacing: 10.w,
-                          childAspectRatio: 1.42,
+                          childAspectRatio: 0.93,
                         ),
                         itemCount: currentList.length,
                         itemBuilder: (context, index) {
@@ -432,7 +432,7 @@ class OfferwallScreen extends HookConsumerWidget {
 }
 
 // -----------------------------------------------------------------------------
-// EXECUTIVE 2-CARD WIDE HORIZONTAL OFFERWALL CARD
+// EXECUTIVE 2-CARD WIDE HORIZONTAL OFFERWALL CARD (HOT OFFERS RECTANGLE 62/63/FRAME 27 THEMED)
 // -----------------------------------------------------------------------------
 class OfferwallExecutiveCard extends HookWidget {
   const OfferwallExecutiveCard({
@@ -454,9 +454,15 @@ class OfferwallExecutiveCard extends HookWidget {
   Widget build(BuildContext context) {
     final isPressed = useState(false);
     final theme = getOfferwallTheme(offerwall.name);
-    final palette = _themePalettes[index % _themePalettes.length];
     final subtitle = getOfferwallSubtitle(offerwall.name);
     final isLocked = !offerwall.enabled;
+
+    // Alternating Hot Offers Left/Right Theme:
+    // Left card (index % 2 == 0): Yellow front (#FFF100), Purple base (#362187)
+    // Right card (index % 2 == 1): Purple front (#362187), Yellow base (#FFF100)
+    final bool isPurpleTheme = (index % 2 == 1);
+    const Color yellowColor = Color(0xFFFFF100);
+    const Color purpleColor = Color(0xFF362187);
 
     String displayName = offerwall.name;
     if (displayName.toLowerCase() == 'sushiads') {
@@ -507,318 +513,322 @@ class OfferwallExecutiveCard extends HookWidget {
         scale: isPressed.value ? 0.94 : 1.0,
         duration: const Duration(milliseconds: 100),
         curve: Curves.easeOutCubic,
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(18.r),
-            border: Border.all(
-              color: const Color(0xFFF1F5F9),
-              width: 1.2,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0xFF0F172A).withValues(alpha: 0.04),
-                blurRadius: 10,
-                offset: const Offset(0, 3),
-              ),
-              BoxShadow(
-                color: palette.accentArrowColor.withValues(alpha: 0.05),
-                blurRadius: 6,
-                offset: const Offset(0, 2),
-              ),
-            ],
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(18.r),
-            child: Stack(
-              children: [
-                // 1. Right Pastel Outer Glow Layer
-                Positioned(
-                  right: 0,
-                  top: 0,
-                  bottom: 0,
-                  width: 78.w,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: palette.outerGlowColor.withValues(alpha: 0.65),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(70.r),
-                        bottomLeft: Radius.circular(70.r),
-                        topRight: Radius.circular(18.r),
-                        bottomRight: Radius.circular(18.r),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final cardWidth = constraints.maxWidth;
+            final cardHeight = constraints.maxHeight;
+            final uperCardWidth = cardWidth * (425.0 / 467.0);
+            final rightStripWidth = cardWidth - uperCardWidth;
+
+            return SizedBox(
+              width: cardWidth,
+              height: cardHeight,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  // 1. Base Main Card: Rectangle 62.png
+                  Positioned(
+                    left: 0,
+                    top: 0,
+                    width: cardWidth,
+                    height: cardHeight,
+                    child: isPurpleTheme
+                        ? ColorFiltered(
+                            colorFilter: const ColorFilter.mode(yellowColor, BlendMode.srcIn),
+                            child: Image.asset(
+                              'assets/icons_2/Rectangle 62.png',
+                              fit: BoxFit.fill,
+                              filterQuality: FilterQuality.high,
+                            ),
+                          )
+                        : ColorFiltered(
+                            colorFilter: const ColorFilter.mode(purpleColor, BlendMode.srcIn),
+                            child: Image.asset(
+                              'assets/icons_2/Rectangle 62.png',
+                              fit: BoxFit.fill,
+                              filterQuality: FilterQuality.high,
+                            ),
+                          ),
+                  ),
+
+                  // 2. Right Vertical "HOT" Text positioned at bottom right space
+                  Positioned(
+                    right: 2.w,
+                    bottom: 22.h,
+                    width: rightStripWidth + 4.w,
+                    height: 58.h,
+                    child: Center(
+                      child: Transform.rotate(
+                        angle: 0.14,
+                        child: RotatedBox(
+                          quarterTurns: 1,
+                          child: Text(
+                            'HOT',
+                            style: GoogleFonts.poppins(
+                              color: isPurpleTheme ? purpleColor : yellowColor,
+                              fontSize: 11.5.sp,
+                              fontWeight: FontWeight.w900,
+                              letterSpacing: 2.2,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
 
-                // 2. Right Pastel Inner Arch Dome Layer
-                Positioned(
-                  right: 0,
-                  top: 0,
-                  bottom: 0,
-                  width: 66.w,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: palette.innerDomeColor,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(80.r),
-                        bottomLeft: Radius.circular(70.r),
-                        topRight: Radius.circular(18.r),
-                        bottomRight: Radius.circular(18.r),
-                      ),
-                    ),
+                  // 3. Front Card (Middle Layer): Rectangle 63.png
+                  Positioned(
+                    left: 0,
+                    top: 0,
+                    width: uperCardWidth,
+                    height: cardHeight,
+                    child: isPurpleTheme
+                        ? ColorFiltered(
+                            colorFilter: const ColorFilter.mode(purpleColor, BlendMode.srcIn),
+                            child: Image.asset(
+                              'assets/icons_2/Rectangle 63.png',
+                              fit: BoxFit.fill,
+                              filterQuality: FilterQuality.high,
+                            ),
+                          )
+                        : ColorFiltered(
+                            colorFilter: const ColorFilter.mode(yellowColor, BlendMode.srcIn),
+                            child: Image.asset(
+                              'assets/icons_2/Rectangle 63.png',
+                              fit: BoxFit.fill,
+                              filterQuality: FilterQuality.high,
+                            ),
+                          ),
                   ),
-                ),
 
-                // 3. Right Side Offerwall Specific Brand Logo Image (Replaces Panda Icon!)
-                Positioned(
-                  right: 4.w,
-                  top: 0,
-                  bottom: 0,
-                  width: 58.w,
-                  child: Center(
-                    child: (offerwall.config?.iconUrl.isNotEmpty ?? false)
-                        ? Image.network(
-                            offerwall.config!.iconUrl,
-                            height: 48.h,
-                            fit: BoxFit.contain,
-                            errorBuilder: (_, __, ___) => Image.asset(
-                              offerwall.logoImage,
-                              height: 48.h,
-                              fit: BoxFit.contain,
-                              errorBuilder: (_, __, ___) => Image.asset(
-                                theme.bgAsset,
-                                height: 48.h,
-                                fit: BoxFit.contain,
-                                errorBuilder: (_, __, ___) => Icon(
-                                  Icons.local_offer_rounded,
-                                  color: palette.accentArrowColor,
-                                  size: 32.sp,
+                  // 4. Top White Frame (Top Layer): Frame 27.png
+                  Positioned(
+                    left: 6.w,
+                    top: 7.h,
+                    width: (uperCardWidth - 12.w).clamp(0.0, double.infinity),
+                    height: 65.h,
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                          child: Image.asset(
+                            'assets/icons_2/Frame 27.png',
+                            fit: BoxFit.fill,
+                            filterQuality: FilterQuality.high,
+                          ),
+                        ),
+                        Positioned.fill(
+                          child: Padding(
+                            padding: EdgeInsets.all(4.w),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(14.r),
+                              child: Container(
+                                color: Colors.white,
+                                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+                                child: Center(
+                                  child: _buildPartnerLogo(offerwall, theme),
                                 ),
                               ),
                             ),
-                          )
-                        : Image.asset(
-                            offerwall.logoImage,
-                            height: 48.h,
-                            fit: BoxFit.contain,
-                            errorBuilder: (_, __, ___) => Image.asset(
-                              theme.bgAsset,
-                              height: 48.h,
-                              fit: BoxFit.contain,
-                              errorBuilder: (_, __, ___) => Icon(
-                                Icons.local_offer_rounded,
-                                color: palette.accentArrowColor,
-                                size: 32.sp,
-                              ),
-                            ),
                           ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
 
-                // 4. Foreground Content Layout (Un-truncated Name & Subtitle + Arrow CTA)
-                Padding(
-                  padding: EdgeInsets.fromLTRB(10.w, 10.h, 8.w, 8.h),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // Top Row: Small Logo Container + Title & Subtitle Column
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Small Logo Container
-                          Container(
-                            width: 32.w,
-                            height: 32.w,
-                            padding: EdgeInsets.all(4.w),
-                            decoration: BoxDecoration(
-                              color: palette.logoBadgeBg,
-                              borderRadius: BorderRadius.circular(9.r),
-                              border: Border.all(
-                                color: palette.outerGlowColor,
-                                width: 0.8,
-                              ),
-                            ),
-                            child: (offerwall.config?.iconUrl.isNotEmpty ?? false)
-                                ? Image.network(
-                                    offerwall.config!.iconUrl,
-                                    fit: BoxFit.contain,
-                                    errorBuilder: (_, __, ___) => Image.asset(
-                                      offerwall.logoImage,
-                                      fit: BoxFit.contain,
-                                      errorBuilder: (_, __, ___) => Image.asset(
-                                        theme.bgAsset,
-                                        fit: BoxFit.contain,
-                                        errorBuilder: (_, __, ___) => Icon(
-                                          Icons.grid_view_rounded,
-                                          color: palette.accentArrowColor,
-                                          size: 16.w,
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                : Image.asset(
-                                    offerwall.logoImage,
-                                    fit: BoxFit.contain,
-                                    errorBuilder: (_, __, ___) => Image.asset(
-                                      theme.bgAsset,
-                                      fit: BoxFit.contain,
-                                      errorBuilder: (_, __, ___) => Icon(
-                                        Icons.grid_view_rounded,
-                                        color: palette.accentArrowColor,
-                                        size: 16.w,
-                                      ),
-                                    ),
-                                  ),
-                          ),
-
-                          SizedBox(width: 6.w),
-
-                          // Full Un-truncated Title & Subtitle Column
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsets.only(right: 36.w),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    displayName,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: GoogleFonts.outfit(
-                                      color: isLocked ? const Color(0xFF94A3B8) : const Color(0xFF1E1B4B),
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w800,
-                                      height: 1.15,
-                                      letterSpacing: -0.2,
-                                    ),
-                                  ),
-                                  SizedBox(height: 2.h),
-                                  Text(
-                                    subtitle,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: GoogleFonts.outfit(
-                                      color: const Color(0xFF64748B),
-                                      fontSize: 9.5.sp,
-                                      fontWeight: FontWeight.w400,
-                                      height: 1.15,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      // Bottom Row: Arrow Circle Button
-                      Container(
-                        width: 24.w,
-                        height: 24.w,
+                  // 5. Subtle Lock Indicator if locked
+                  if (isLocked)
+                    Positioned(
+                      top: 10.h,
+                      right: (cardWidth - uperCardWidth) + 9.w,
+                      child: Container(
+                        padding: EdgeInsets.all(3.5.w),
                         decoration: BoxDecoration(
+                          color: const Color(0xFF0F172A).withValues(alpha: 0.65),
                           shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.lock_rounded,
                           color: Colors.white,
-                          border: Border.all(
-                            color: offerwall.enabled
-                                ? palette.outerGlowColor
-                                : const Color(0xFFE2E8F0),
-                            width: 1,
+                          size: 11.sp,
+                        ),
+                      ),
+                    ),
+
+                  // 6. Card Body Content (Below Frame 27, within uperCardWidth)
+                  Positioned(
+                    left: 4.w,
+                    width: (uperCardWidth - 8.w).clamp(0.0, double.infinity),
+                    top: 76.h,
+                    bottom: 6.h,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        // Partner Name / Title
+                        Text(
+                          displayName,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                            color: isPurpleTheme ? yellowColor : purpleColor,
+                            fontSize: 11.sp,
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: -0.2,
+                            height: 1.05,
                           ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: palette.accentArrowColor.withValues(alpha: 0.12),
-                              blurRadius: 4,
-                              offset: const Offset(0, 1.5),
+                        ),
+
+                        // Subtitle / Description
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 2.w),
+                          child: Text(
+                            subtitle,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.poppins(
+                              color: isPurpleTheme
+                                  ? Colors.white.withValues(alpha: 0.85)
+                                  : const Color(0xFF362187).withValues(alpha: 0.75),
+                              fontSize: 7.5.sp,
+                              fontWeight: FontWeight.w500,
+                              height: 1.05,
+                            ),
+                          ),
+                        ),
+
+                        // Win Upto Coins Row
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Win upto ',
+                              style: GoogleFonts.poppins(
+                                color: isPurpleTheme
+                                    ? Colors.white.withValues(alpha: 0.9)
+                                    : purpleColor,
+                                fontSize: 9.sp,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Text(
+                              'Coins',
+                              style: GoogleFonts.poppins(
+                                color: isPurpleTheme ? yellowColor : purpleColor,
+                                fontSize: 9.5.sp,
+                              ),
+                            ),
+                            SizedBox(width: 3.w),
+                            Image.asset(
+                              'assets/icons_2/coin.png',
+                              width: 11.w,
+                              height: 11.w,
+                              errorBuilder: (_, __, ___) => Icon(
+                                Icons.monetization_on_rounded,
+                                color: const Color(0xFFF59E0B),
+                                size: 11.sp,
+                              ),
                             ),
                           ],
                         ),
-                        child: Center(
-                          child: Icon(
-                            offerwall.enabled
-                                ? Icons.arrow_forward_rounded
-                                : Icons.lock_rounded,
-                            color: offerwall.enabled ? palette.accentArrowColor : const Color(0xFF94A3B8),
-                            size: 13.sp,
+
+                        // Action Button (Start / Locked)
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 4.h),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: isPurpleTheme
+                                  ? (isLocked
+                                      ? [const Color(0xFF64748B), const Color(0xFF475569)]
+                                      : [const Color(0xFFFFEA79), const Color(0xFFFFB800)])
+                                  : (isLocked
+                                      ? [const Color(0xFF64748B), const Color(0xFF475569)]
+                                      : [const Color(0xFF5B34C4), const Color(0xFF362187)]),
+                            ),
+                            borderRadius: BorderRadius.circular(14.r),
+                            border: Border.all(
+                              color: isPurpleTheme
+                                  ? Colors.white.withValues(alpha: 0.8)
+                                  : const Color(0xFF8B5CF6).withValues(alpha: 0.6),
+                              width: 0.8,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: (isPurpleTheme
+                                        ? (isLocked ? Colors.black26 : const Color(0xFFFF9E00))
+                                        : (isLocked ? Colors.black26 : const Color(0xFF362187)))
+                                    .withValues(alpha: 0.45),
+                                blurRadius: 5,
+                                offset: const Offset(0, 2),
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                isLocked ? 'Locked' : 'Start',
+                                style: GoogleFonts.poppins(
+                                  color: isPurpleTheme && !isLocked
+                                      ? const Color(0xFF24125C)
+                                      : Colors.white,
+                                  fontSize: 9.5.sp,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              SizedBox(width: 4.w),
+                              Icon(
+                                isLocked ? Icons.lock_rounded : Icons.arrow_forward_rounded,
+                                color: isPurpleTheme && !isLocked
+                                    ? const Color(0xFF24125C)
+                                    : Colors.white,
+                                size: 11.sp,
+                              ),
+                            ],
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
+                ],
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPartnerLogo(OfferwallProvider offerwall, OfferwallTheme theme) {
+    final hasIconUrl = (offerwall.config?.iconUrl.isNotEmpty ?? false);
+    if (hasIconUrl) {
+      return Image.network(
+        offerwall.config!.iconUrl,
+        fit: BoxFit.contain,
+        errorBuilder: (_, __, ___) => _buildFallbackLogo(offerwall, theme),
+      );
+    }
+    return _buildFallbackLogo(offerwall, theme);
+  }
+
+  Widget _buildFallbackLogo(OfferwallProvider offerwall, OfferwallTheme theme) {
+    return Image.asset(
+      offerwall.logoImage,
+      fit: BoxFit.contain,
+      errorBuilder: (_, __, ___) => Image.asset(
+        theme.bgAsset,
+        fit: BoxFit.contain,
+        errorBuilder: (_, __, ___) => Icon(
+          Icons.local_offer_rounded,
+          color: const Color(0xFF362187),
+          size: 26.sp,
         ),
       ),
     );
   }
 }
 
-// Unique Pastel Color Palette for Each Card
-class _CardThemePalette {
-  final Color outerGlowColor;
-  final Color innerDomeColor;
-  final Color logoBadgeBg;
-  final Color accentArrowColor;
-
-  const _CardThemePalette({
-    required this.outerGlowColor,
-    required this.innerDomeColor,
-    required this.logoBadgeBg,
-    required this.accentArrowColor,
-  });
-}
-
-final List<_CardThemePalette> _themePalettes = const [
-  // 1. Purple Lavender Theme
-  _CardThemePalette(
-    outerGlowColor: Color(0xFFF3E8FF),
-    innerDomeColor: Color(0xFFF0E5FF),
-    logoBadgeBg: Color(0xFFF8F5FF),
-    accentArrowColor: Color(0xFF9333EA),
-  ),
-  // 2. Soft Sky Blue Theme
-  _CardThemePalette(
-    outerGlowColor: Color(0xFFE0F2FE),
-    innerDomeColor: Color(0xFFBAE6FD),
-    logoBadgeBg: Color(0xFFF0F9FF),
-    accentArrowColor: Color(0xFF0284C7),
-  ),
-  // 3. Golden Amber Theme
-  _CardThemePalette(
-    outerGlowColor: Color(0xFFFEF3C7),
-    innerDomeColor: Color(0xFFFDE68A),
-    logoBadgeBg: Color(0xFFFFFBEB),
-    accentArrowColor: Color(0xFFD97706),
-  ),
-  // 4. Rose Pink Theme
-  _CardThemePalette(
-    outerGlowColor: Color(0xFFFCE7F3),
-    innerDomeColor: Color(0xFFFBCFE8),
-    logoBadgeBg: Color(0xFFFDF2F8),
-    accentArrowColor: Color(0xFFDB2777),
-  ),
-  // 5. Mint Emerald Theme
-  _CardThemePalette(
-    outerGlowColor: Color(0xFFD1FAE5),
-    innerDomeColor: Color(0xFFA7F3D0),
-    logoBadgeBg: Color(0xFFECFDF5),
-    accentArrowColor: Color(0xFF059669),
-  ),
-  // 6. Indigo Violet Theme
-  _CardThemePalette(
-    outerGlowColor: Color(0xFFE0E7FF),
-    innerDomeColor: Color(0xFFC7D2FE),
-    logoBadgeBg: Color(0xFFEEF2FF),
-    accentArrowColor: Color(0xFF4F46E5),
-  ),
-  // 7. Peach Coral Theme
-  _CardThemePalette(
-    outerGlowColor: Color(0xFFFFEDD5),
-    innerDomeColor: Color(0xFFFED7AA),
-    logoBadgeBg: Color(0xFFFFF7ED),
-    accentArrowColor: Color(0xFFEA580C),
-  ),
-];

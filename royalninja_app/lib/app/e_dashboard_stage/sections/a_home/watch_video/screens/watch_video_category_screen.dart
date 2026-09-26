@@ -73,7 +73,7 @@ class WatchVideoCategoryScreen extends ConsumerWidget {
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                  color: const Color(0xFF362187).withValues(alpha: 0.08),
                                   blurRadius: 10,
                                   offset: const Offset(0, 3),
                                 ),
@@ -81,7 +81,7 @@ class WatchVideoCategoryScreen extends ConsumerWidget {
                             ),
                             child: Icon(
                               Icons.arrow_back_rounded,
-                              color: const Color(0xFFAB31DE),
+                              color: const Color(0xFF362187),
                               size: 22.sp,
                             ),
                           ),
@@ -123,7 +123,7 @@ class WatchVideoCategoryScreen extends ConsumerWidget {
                             }
 
                             return RefreshIndicator(
-                              color: const Color(0xFFAB31DE),
+                              color: const Color(0xFF362187),
                               backgroundColor: Colors.white,
                               onRefresh: () async {
                                 final p = watchVideoProvider((

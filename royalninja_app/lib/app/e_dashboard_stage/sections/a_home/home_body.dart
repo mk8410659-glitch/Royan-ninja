@@ -649,12 +649,12 @@ class _HomeTopHeaderCard extends HookConsumerWidget {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
+                                color: const Color(0xFF362187).withValues(alpha: 0.35),
                                 width: 1.5,
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFAB31DE).withValues(alpha: 0.15),
+                                  color: const Color(0xFF362187).withValues(alpha: 0.15),
                                   blurRadius: 8,
                                   offset: const Offset(0, 3),
                                 ),
@@ -673,7 +673,7 @@ class _HomeTopHeaderCard extends HookConsumerWidget {
                                       alignment: Alignment.center,
                                       child: Icon(
                                         Icons.person_rounded,
-                                        color: const Color(0xFFAB31DE),
+                                        color: const Color(0xFF362187),
                                         size: 24.sp,
                                       ),
                                     ),
@@ -757,7 +757,7 @@ class _HomeTopHeaderCard extends HookConsumerWidget {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFFAB31DE).withValues(alpha: 0.12),
+                        color: const Color(0xFF362187).withValues(alpha: 0.12),
                         blurRadius: 10,
                         offset: const Offset(0, 3),
                       ),
@@ -774,13 +774,13 @@ class _HomeTopHeaderCard extends HookConsumerWidget {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: const LinearGradient(
-                            colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                            colors: [Color(0xFF5B34C4), Color(0xFF362187)],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.40),
+                              color: const Color(0xFF362187).withValues(alpha: 0.40),
                               blurRadius: 6,
                               offset: const Offset(0, 2),
                             ),
@@ -989,10 +989,9 @@ class _PlayGamesHeroBanner extends HookConsumerWidget {
                         'Daily Challenge',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.russoOne(
                           color: Colors.white,
-                          fontSize: 15.5.sp,
-                          fontWeight: FontWeight.w700,
+                          fontSize: 15.sp,
                           letterSpacing: 0.2,
                           height: 1.15,
                         ),
@@ -1338,8 +1337,8 @@ class _GlossyButtonPainter extends CustomPainter {
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [
-          Color(0xFFE39FFF), // Light lavender
-          Color(0xFFAB31DE), // Rich brand purple
+          Color(0xFF5B34C4), // Light lavender
+          Color(0xFF362187), // Rich brand purple
         ],
       ).createShader(rect)
       ..style = PaintingStyle.fill;
@@ -1701,7 +1700,7 @@ class _HomeQuickShortcutGridState extends State<_HomeQuickShortcutGrid> {
               label: 'Hot Offers',
               iconData: Icons.task_alt_rounded,
               badgeText: 'HOT',
-              iconColors: const [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+              iconColors: const [Color(0xFF5B34C4), Color(0xFF362187)],
               onTap: () {
                 HapticFeedback.lightImpact();
                 AutoRouter.of(context).push(

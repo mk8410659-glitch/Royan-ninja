@@ -437,17 +437,17 @@ class _MatchingPartnerScreenState extends ConsumerState<MatchingPartnerScreen>
                                       width: 40.w,
                                       height: 40.w,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFFAF5FF),
+                                        color: const Color(0xFFF5F3FF),
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                          color: const Color(0xFFF3E8FF),
+                                          color: const Color(0xFFEDE9FE),
                                           width: 1.0,
                                         ),
                                       ),
                                       child: Center(
                                         child: Icon(
                                           Icons.arrow_back_rounded,
-                                          color: const Color(0xFFAB31DE),
+                                          color: const Color(0xFF7C3AED),
                                           size: 20.sp,
                                         ),
                                       ),
@@ -455,10 +455,9 @@ class _MatchingPartnerScreenState extends ConsumerState<MatchingPartnerScreen>
                                   ),
                                   Text(
                                     _isMatchFound ? 'MATCH FOUND!' : 'MATCHMAKING',
-                                    style: GoogleFonts.outfit(
+                                    style: GoogleFonts.russoOne(
                                       color: const Color(0xFF1E1B4B),
                                       fontSize: 18.5.sp,
-                                      fontWeight: FontWeight.w900,
                                       letterSpacing: 0.5,
                                     ),
                                   ),
@@ -480,7 +479,7 @@ class _MatchingPartnerScreenState extends ConsumerState<MatchingPartnerScreen>
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: const Color(0xFFAB31DE).withValues(alpha: 0.06),
+                                      color: const Color(0xFF7C3AED).withValues(alpha: 0.06),
                                       blurRadius: 10,
                                       offset: const Offset(0, 3),
                                     ),
@@ -491,16 +490,15 @@ class _MatchingPartnerScreenState extends ConsumerState<MatchingPartnerScreen>
                                   children: [
                                     Icon(
                                       Icons.sports_esports_rounded,
-                                      color: const Color(0xFFAB31DE),
+                                      color: const Color(0xFF7C3AED),
                                       size: 16.sp,
                                     ),
                                     SizedBox(width: 8.w),
                                     Text(
                                       widget.roomTitle.toUpperCase(),
-                                      style: GoogleFonts.outfit(
+                                      style: GoogleFonts.russoOne(
                                         color: const Color(0xFF1E1B4B),
                                         fontSize: 12.sp,
-                                        fontWeight: FontWeight.w800,
                                         letterSpacing: 0.8,
                                       ),
                                     ),

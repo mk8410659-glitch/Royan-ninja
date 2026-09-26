@@ -236,58 +236,102 @@ class HomeDailyTaskSection extends HookConsumerWidget {
                             ),
                           ),
 
-                          // Crisp Foreground: Daily Check-in Text
+                          // Crisp Foreground: Daily Check-in Content & Action Button
                           Positioned(
-                            right: bannerWidth * 0.08,
+                            left: yellowWidth + 12.w,
+                            right: 14.w,
                             top: 0,
                             bottom: 0,
-                            child: Center(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Daily',
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 20.sp,
-                                      fontWeight: FontWeight.w900,
-                                      color: Colors.white,
-                                      shadows: [
-                                        const Shadow(
-                                          color: Color(0xFFFFF100),
-                                          offset: Offset(0, 1.8),
-                                        ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      'Daily ',
+                                      style: GoogleFonts.russoOne(
+                                        fontSize: 14.sp,
+                                        color: Colors.white,
+                                        letterSpacing: 0.2,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Check-In',
+                                      style: GoogleFonts.russoOne(
+                                        fontSize: 14.sp,
+                                        color: const Color(0xFFFFF100),
+                                        letterSpacing: 0.2,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 1.h),
+                                Text(
+                                  streakClaimed ? 'Streak claimed for today!' : 'Earn free daily bonus coins',
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 8.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: const Color(0xFFC4B5FD),
+                                  ),
+                                ),
+                                SizedBox(height: 6.h),
+                                Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 4.5.h),
+                                  decoration: BoxDecoration(
+                                    gradient: const LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Color(0xFFFFEA79),
+                                        Color(0xFFFFB800),
                                       ],
                                     ),
+                                    borderRadius: BorderRadius.circular(14.r),
+                                    border: Border.all(
+                                      color: Colors.white.withValues(alpha: 0.8),
+                                      width: 0.8,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: const Color(0xFFFF9E00).withValues(alpha: 0.45),
+                                        blurRadius: 6,
+                                        offset: const Offset(0, 2),
+                                      ),
+                                    ],
                                   ),
-                                  Container(
-                                    width: 48.w,
-                                    height: 2.2.h,
-                                    margin: EdgeInsets.only(top: 1.h, bottom: 2.h),
-                                    color: const Color(0xFFFFF100),
-                                  ),
-                                  Text(
-                                    'Check-in',
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 20.sp,
-                                      fontWeight: FontWeight.w900,
-                                      color: const Color(0xFFFFF100),
-                                      shadows: [
-                                        const Shadow(
-                                          color: Color(0xFFFFF100),
-                                          offset: Offset(0, 1.8),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        streakClaimed ? Icons.check_circle_rounded : Icons.calendar_today_rounded,
+                                        size: 10.5.sp,
+                                        color: const Color(0xFF24125C),
+                                      ),
+                                      SizedBox(width: 4.w),
+                                      Text(
+                                        streakClaimed ? 'Claimed' : 'Check In',
+                                        style: GoogleFonts.russoOne(
+                                          color: const Color(0xFF24125C),
+                                          fontSize: 9.sp,
+                                          letterSpacing: 0.2,
+                                        ),
+                                      ),
+                                      if (!streakClaimed) ...[
+                                        SizedBox(width: 3.w),
+                                        Icon(
+                                          Icons.arrow_forward_rounded,
+                                          size: 9.5.sp,
+                                          color: const Color(0xFF24125C),
                                         ),
                                       ],
-                                    ),
+                                    ],
                                   ),
-                                  Container(
-                                    width: 80.w,
-                                    height: 2.2.h,
-                                    margin: EdgeInsets.only(top: 1.h),
-                                    color: const Color(0xFFFFF100),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
@@ -327,10 +371,9 @@ class HomeDailyTaskSection extends HookConsumerWidget {
                 ),
                 child: Text(
                   'Regular Offers',
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.russoOne(
                     color: Colors.white,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w700,
+                    fontSize: 13.5.sp,
                     letterSpacing: 0.2,
                   ),
                 ),
@@ -349,11 +392,11 @@ class HomeDailyTaskSection extends HookConsumerWidget {
                   children: [
                     Expanded(
                       child: _RegularOfferCard(
-                        title: 'Ninja Catch',
-                        subtitle: 'Play & earn coins',
-                        coins: 500,
+                        title: 'Ninja Runner',
+                        subtitle: 'Run, jump & earn',
+                        coins: '100k+',
                         circleContent: Image.asset(
-                          'assets/icons/panda1.png',
+                          'assets/icons_2/Battle ninja.png',
                           fit: BoxFit.contain,
                           filterQuality: FilterQuality.high,
                         ),
@@ -377,7 +420,7 @@ class HomeDailyTaskSection extends HookConsumerWidget {
                       child: _RegularOfferCard(
                         title: 'Super Offers',
                         subtitle: 'Complete & earn coins',
-                        coins: 500,
+                        coins: '100k+',
                         circleContent: Image.asset(
                           'assets/icons_2/Group 87.png',
                           fit: BoxFit.contain,
@@ -410,7 +453,7 @@ class HomeDailyTaskSection extends HookConsumerWidget {
                       child: _RegularOfferCard(
                         title: 'Play Games',
                         subtitle: 'Play & earn coins',
-                        coins: 500,
+                        coins: '100k+',
                         circleContent: Image.asset(
                           'assets/icons/playtimegame.png',
                           fit: BoxFit.contain,
@@ -438,7 +481,7 @@ class HomeDailyTaskSection extends HookConsumerWidget {
                       child: _RegularOfferCard(
                         title: 'Watch Video',
                         subtitle: 'Watch & earn coins',
-                        coins: 500,
+                        coins: '100k+',
                         circleContent: Lottie.asset(
                           'assets/icons/Audio And Video Animation.json',
                           fit: BoxFit.contain,
@@ -485,7 +528,7 @@ class HomeDailyTaskSection extends HookConsumerWidget {
 class _RegularOfferCard extends StatelessWidget {
   final String title;
   final String subtitle;
-  final int coins;
+  final String coins;
   final Widget? circleContent;
   final VoidCallback? onTap;
 
@@ -563,11 +606,10 @@ class _RegularOfferCard extends StatelessWidget {
                       textAlign: TextAlign.center,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.poppins(
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.w700,
+                      style: GoogleFonts.russoOne(
+                        fontSize: 12.5.sp,
                         color: Colors.white,
-                        letterSpacing: 0.1,
+                        letterSpacing: 0.2,
                       ),
                     ),
                     SizedBox(height: 2.h),
@@ -597,13 +639,13 @@ class _RegularOfferCard extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Image.asset(
-                          'assets/icons/coin.png',
+                          'assets/icons_2/coin.png',
                           width: 11.w,
                           height: 11.w,
                         ),
                         SizedBox(width: 3.w),
                         Text(
-                          '$coins',
+                          coins,
                           style: GoogleFonts.poppins(
                             fontSize: 11.5.sp,
                             fontWeight: FontWeight.w800,
@@ -616,12 +658,12 @@ class _RegularOfferCard extends StatelessWidget {
                 ),
               ),
 
-              // 4. Yellow Arrow Button in bottom-right notch (moved outward & down)
+              // 4. Yellow Arrow Button in bottom-right notch (moved 2mm outward)
               Positioned(
-                right: -5.w,
-                bottom: -5.h,
-                width: 29.w,
-                height: 29.w,
+                right: -0.5.w,
+                bottom: 0.h,
+                width: 22.w,
+                height: 22.w,
                 child: Image.asset(
                   'assets/icons_2/arrow_button.png',
                   fit: BoxFit.contain,
@@ -951,7 +993,7 @@ class _HotSpecialOfferCard extends StatelessWidget {
                                         ),
                                         SizedBox(width: 4.w),
                                         Image.asset(
-                                          'assets/icons/coin.png',
+                                          'assets/icons_2/coin.png',
                                           height: 14.sp,
                                           width: 14.sp,
                                         ),
@@ -1278,7 +1320,7 @@ class DailyTaskHorizontalCard extends StatelessWidget {
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
                                             Image.asset(
-                                              'assets/icons/coin.png',
+                                              'assets/icons_2/coin.png',
                                               height: 15.sp,
                                               width: 15.sp,
                                             ),
@@ -1583,7 +1625,7 @@ class DailyTaskGridCard extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Image.asset(
-                                  'assets/icons/coin.png',
+                                  'assets/icons_2/coin.png',
                                   height: 15.sp,
                                   width: 15.sp,
                                 ),
@@ -2302,7 +2344,7 @@ class _HomeDailyTaskItemCard extends StatelessWidget {
                           style: GoogleFonts.poppins(
                             color: isPurpleTheme
                                 ? Colors.white.withValues(alpha: 0.85)
-                                : const Color(0xFF5B4300),
+                                : const Color(0xFF362187).withValues(alpha: 0.75),
                             fontSize: 7.sp,
                             fontWeight: FontWeight.w500,
                             height: 1.05,
@@ -2316,16 +2358,26 @@ class _HomeDailyTaskItemCard extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            'Win upto ${item.coins.toInt()}',
+                            'Win upto ',
                             style: GoogleFonts.poppins(
-                              color: isPurpleTheme ? Colors.white : purpleColor,
+                              color: isPurpleTheme
+                                  ? Colors.white.withValues(alpha: 0.9)
+                                  : purpleColor,
                               fontSize: 9.sp,
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Text(
+                            '${item.coins.toInt()}',
+                            style: GoogleFonts.poppins(
+                              color: isPurpleTheme ? yellowColor : purpleColor,
+                              fontSize: 9.5.sp,
+                              fontWeight: FontWeight.w800,
                             ),
                           ),
                           SizedBox(width: 3.w),
                           Image.asset(
-                            'assets/icons/coin.png',
+                            'assets/icons_2/coin.png',
                             width: 11.w,
                             height: 11.w,
                             errorBuilder: (_, __, ___) => Icon(
@@ -2339,13 +2391,34 @@ class _HomeDailyTaskItemCard extends StatelessWidget {
 
                       // Claim / View All Button
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 11.w, vertical: 3.h),
+                        padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 4.h),
                         decoration: BoxDecoration(
-                          color: isPurpleTheme ? yellowColor : purpleColor,
-                          borderRadius: BorderRadius.circular(12.r),
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: isPurpleTheme
+                                ? [
+                                    const Color(0xFFFFEA79),
+                                    const Color(0xFFFFB800),
+                                  ]
+                                : [
+                                    const Color(0xFF5B34C4),
+                                    const Color(0xFF362187),
+                                  ],
+                          ),
+                          borderRadius: BorderRadius.circular(14.r),
+                          border: Border.all(
+                            color: isPurpleTheme
+                                ? Colors.white.withValues(alpha: 0.8)
+                                : const Color(0xFF8B5CF6).withValues(alpha: 0.6),
+                            width: 0.8,
+                          ),
                           boxShadow: [
                             BoxShadow(
-                              color: (isPurpleTheme ? yellowColor : purpleColor).withValues(alpha: 0.35),
+                              color: (isPurpleTheme
+                                      ? const Color(0xFFFF9E00)
+                                      : const Color(0xFF362187))
+                                  .withValues(alpha: 0.45),
                               blurRadius: 5,
                               offset: const Offset(0, 2),
                             ),
@@ -2368,7 +2441,7 @@ class _HomeDailyTaskItemCard extends StatelessWidget {
                                   if (!isViewAllButton && !isPurpleTheme) ...[
                                     Icon(
                                       Icons.card_giftcard_rounded,
-                                      color: yellowColor,
+                                      color: const Color(0xFFFFF100),
                                       size: 9.5.sp,
                                     ),
                                     SizedBox(width: 3.w),
@@ -2376,11 +2449,21 @@ class _HomeDailyTaskItemCard extends StatelessWidget {
                                   Text(
                                     isViewAllButton ? 'View All' : 'Claim',
                                     style: GoogleFonts.poppins(
-                                      color: isPurpleTheme ? purpleColor : yellowColor,
+                                      color: isPurpleTheme
+                                          ? const Color(0xFF24125C)
+                                          : const Color(0xFFFFF100),
                                       fontSize: 8.5.sp,
-                                      fontWeight: FontWeight.w700,
+                                      fontWeight: FontWeight.w800,
                                       letterSpacing: 0.2,
                                     ),
+                                  ),
+                                  SizedBox(width: 2.5.w),
+                                  Icon(
+                                    Icons.arrow_forward_rounded,
+                                    color: isPurpleTheme
+                                        ? const Color(0xFF24125C)
+                                        : const Color(0xFFFFF100),
+                                    size: 8.sp,
                                   ),
                                 ],
                               ),

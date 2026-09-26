@@ -20,7 +20,7 @@ class AccountBlockedScreen extends StatelessWidget {
           statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.dark,
           statusBarBrightness: Brightness.light,
-          systemNavigationBarColor: Colors.white,
+          systemNavigationBarColor: Color(0xFFF8FAFC),
           systemNavigationBarIconBrightness: Brightness.dark,
         ),
         child: Scaffold(
@@ -29,7 +29,7 @@ class AccountBlockedScreen extends StatelessWidget {
             child: Center(
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,16 +39,16 @@ class AccountBlockedScreen extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 6.h),
                       decoration: BoxDecoration(
                         color: const Color(0xFFFEF2F2),
-                        borderRadius: BorderRadius.circular(20.r),
+                        borderRadius: BorderRadius.circular(100.r),
                         border: Border.all(
                           color: const Color(0xFFFCA5A5),
                           width: 1.2,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFEF4444).withValues(alpha: 0.08),
-                            blurRadius: 8,
-                            offset: const Offset(0, 2),
+                            color: const Color(0xFFEF4444).withValues(alpha: 0.10),
+                            blurRadius: 10,
+                            offset: const Offset(0, 3),
                           ),
                         ],
                       ),
@@ -56,132 +56,137 @@ class AccountBlockedScreen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Container(
-                            width: 8.w,
-                            height: 8.w,
+                            width: 7.w,
+                            height: 7.w,
                             decoration: const BoxDecoration(
-                              color: Color(0xFFEF4444),
+                              color: Color(0xFFDC2626),
                               shape: BoxShape.circle,
                             ),
                           ),
-                          SizedBox(width: 8.w),
+                          SizedBox(width: 7.w),
                           Text(
                             'ACCOUNT SUSPENDED',
-                            style: GoogleFonts.outfit(
-                              fontSize: 11.sp,
-                              fontWeight: FontWeight.w800,
+                            style: GoogleFonts.poppins(
+                              fontSize: 10.5.sp,
+                              fontWeight: FontWeight.w700,
                               color: const Color(0xFFDC2626),
-                              letterSpacing: 0.5,
+                              letterSpacing: 0.6,
                             ),
                           ),
                         ],
-                      ),
-                    ),
-
-                    SizedBox(height: 24.h),
-
-                    // 2. Blocked User Hero Artwork (assets/icons/blokced.png)
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0xFFEF4444).withValues(alpha: 0.12),
-                            blurRadius: 30,
-                            spreadRadius: 10,
-                          ),
-                        ],
-                      ),
-                      child: Image.asset(
-                        'assets/icons/blokced.png',
-                        width: 230.w,
-                        height: 230.w,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-
-                    SizedBox(height: 24.h),
-
-                    // 3. Headline & Subtitle
-                    Text(
-                      'Account Blocked!',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.outfit(
-                        color: const Color(0xFF1E1B4B),
-                        fontSize: 26.sp,
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: -0.3,
-                      ),
-                    ),
-
-                    SizedBox(height: 8.h),
-
-                    Text(
-                      'Your account has been suspended due to security policy violations or unusual activities. Please contact support to submit an appeal.',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.outfit(
-                        color: const Color(0xFF64748B),
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.w500,
-                        height: 1.4,
                       ),
                     ),
 
                     SizedBox(height: 28.h),
 
+                    // 2. Blocked User Hero Artwork (assets/icons_2/account_blocked.png)
+                    Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0xFF362187).withValues(alpha: 0.12),
+                            blurRadius: 36,
+                            spreadRadius: 8,
+                            offset: const Offset(0, 8),
+                          ),
+                        ],
+                      ),
+                      child: Image.asset(
+                        'assets/icons_2/Account blocked screen.jpg',
+                        width: 220.w,
+                        height: 220.w,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+
+                    SizedBox(height: 28.h),
+
+                    // 3. Headline & Subtitle
+                    Text(
+                      'Account Blocked',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.poppins(
+                        color: const Color(0xFF1E1B4B),
+                        fontSize: 23.sp,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: -0.3,
+                      ),
+                    ),
+
+                    SizedBox(height: 10.h),
+
+                    Text(
+                      'Your account has been suspended due to security policy violations or unusual activity. Please contact support to submit an appeal.',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.poppins(
+                        color: const Color(0xFF64748B),
+                        fontSize: 12.5.sp,
+                        fontWeight: FontWeight.w400,
+                        height: 1.5,
+                      ),
+                    ),
+
+                    SizedBox(height: 26.h),
+
                     // 4. Info Card: Access Restricted Status
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFFEF2F2),
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(18.r),
                         border: Border.all(
-                          color: const Color(0xFFFCA5A5),
+                          color: const Color(0xFFF1F5F9),
                           width: 1.2,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFEF4444).withValues(alpha: 0.05),
-                            blurRadius: 10,
-                            offset: const Offset(0, 3),
+                            color: const Color(0xFF362187).withValues(alpha: 0.06),
+                            blurRadius: 16,
+                            offset: const Offset(0, 4),
                           ),
                         ],
                       ),
                       child: Row(
                         children: [
                           Container(
-                            width: 40.w,
-                            height: 40.w,
-                            decoration: const BoxDecoration(
-                              color: Color(0xFFFEE2E2),
-                              shape: BoxShape.circle,
+                            width: 42.w,
+                            height: 42.w,
+                            decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                colors: [Color(0xFFDC2626), Color(0xFFEF4444)],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              borderRadius: BorderRadius.circular(12.r),
                             ),
                             alignment: Alignment.center,
                             child: Icon(
                               Icons.lock_person_rounded,
-                              color: const Color(0xFFDC2626),
+                              color: Colors.white,
                               size: 20.sp,
                             ),
                           ),
-                          SizedBox(width: 12.w),
+                          SizedBox(width: 14.w),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   'Access Restricted',
-                                  style: GoogleFonts.outfit(
+                                  style: GoogleFonts.poppins(
                                     color: const Color(0xFF1E1B4B),
                                     fontSize: 13.5.sp,
-                                    fontWeight: FontWeight.w800,
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
                                 SizedBox(height: 2.h),
                                 Text(
-                                  'Reach out to our support team for help',
-                                  style: GoogleFonts.outfit(
+                                  'Our support team is available to assist you',
+                                  style: GoogleFonts.poppins(
                                     color: const Color(0xFF64748B),
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: 11.5.sp,
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
                               ],
@@ -203,20 +208,20 @@ class AccountBlockedScreen extends StatelessWidget {
                         );
                       },
                       child: Container(
-                        height: 50.h,
+                        height: 52.h,
                         width: double.infinity,
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
-                            colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                            colors: [Color(0xFF362187), Color(0xFF5B34C4)],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
-                          borderRadius: BorderRadius.circular(18.r),
+                          borderRadius: BorderRadius.circular(16.r),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
-                              blurRadius: 12,
-                              offset: const Offset(0, 4),
+                              color: const Color(0xFF362187).withValues(alpha: 0.35),
+                              blurRadius: 14,
+                              offset: const Offset(0, 5),
                             ),
                           ],
                         ),
@@ -232,10 +237,10 @@ class AccountBlockedScreen extends StatelessWidget {
                               SizedBox(width: 8.w),
                               Text(
                                 'Contact Support',
-                                style: GoogleFonts.outfit(
+                                style: GoogleFonts.poppins(
                                   color: Colors.white,
-                                  fontSize: 15.sp,
-                                  fontWeight: FontWeight.w800,
+                                  fontSize: 14.5.sp,
+                                  fontWeight: FontWeight.w700,
                                   letterSpacing: 0.3,
                                 ),
                               ),
@@ -258,7 +263,7 @@ class AccountBlockedScreen extends StatelessWidget {
                       ),
                       child: Text(
                         'Close Application',
-                        style: GoogleFonts.outfit(
+                        style: GoogleFonts.poppins(
                           color: const Color(0xFF94A3B8),
                           fontSize: 12.5.sp,
                           fontWeight: FontWeight.w600,

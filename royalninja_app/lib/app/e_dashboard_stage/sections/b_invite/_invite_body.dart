@@ -86,7 +86,7 @@ class InviteBody extends HookConsumerWidget {
             decoration: BoxDecoration(
               gradient: isSelected
                   ? const LinearGradient(
-                      colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                      colors: [Color(0xFF4C2CA3), Color(0xFF362187)],
                     )
                   : null,
               color: isSelected ? null : Colors.transparent,
@@ -94,7 +94,7 @@ class InviteBody extends HookConsumerWidget {
               boxShadow: isSelected
                   ? [
                       BoxShadow(
-                        color: const Color(0xFFAB31DE).withValues(alpha: 0.3),
+                        color: const Color(0xFF362187).withValues(alpha: 0.25),
                         blurRadius: 8,
                         offset: const Offset(0, 3),
                       ),
@@ -163,15 +163,15 @@ class InviteBody extends HookConsumerWidget {
                             height: 48.h,
                             padding: EdgeInsets.all(4.w),
                             decoration: BoxDecoration(
-                              color: const Color(0xFFFAF5FF),
+                              color: const Color(0xFFF6F4FE),
                               borderRadius: BorderRadius.circular(18.r),
                               border: Border.all(
-                                color: const Color(0xFFE9D5FF),
+                                color: const Color(0xFFE9E3FE),
                                 width: 1.2,
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFAB31DE).withValues(alpha: 0.06),
+                                  color: const Color(0xFF362187).withValues(alpha: 0.06),
                                   blurRadius: 10,
                                   offset: const Offset(0, 2),
                                 ),

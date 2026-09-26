@@ -33,7 +33,7 @@ class OnboardingScreen extends HookWidget {
 
   static const List<_IntroSlideData> _slides = [
     _IntroSlideData(
-      imageAsset: 'assets/icons/panda1.png',
+      imageAsset: 'assets/icons_2/Battle ninja.png',
       tag: 'DISCOVER & PLAY',
       title: 'PLAY EXCITING\nGAMES & TASKS',
       description:
@@ -47,7 +47,7 @@ class OnboardingScreen extends HookWidget {
           'Complete exciting offerwalls, fun game tasks, and super offers to unlock new achievements!',
     ),
     _IntroSlideData(
-      imageAsset: 'assets/icons/panda invite.png',
+      imageAsset: 'assets/icons_2/Battle ninja.png',
       tag: 'INVITE & SHARE',
       title: 'INVITE FRIENDS &\nGET BONUSES',
       description:
@@ -117,18 +117,18 @@ class OnboardingScreen extends HookWidget {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 13.h),
           decoration: BoxDecoration(
-            color: isSelected ? const Color(0xFFFAF5FF) : Colors.white,
+            color: isSelected ? const Color(0xFFF3E8FF) : Colors.white,
             borderRadius: BorderRadius.circular(18.r),
             border: Border.all(
-              color: isSelected ? const Color(0xFFAB31DE) : const Color(0xFFE2E8F0),
-              width: isSelected ? 1.5 : 1,
+              color: isSelected ? const Color(0xFF7C3AED) : const Color(0xFFE2E8F0),
+              width: isSelected ? 1.8 : 1.2,
             ),
             boxShadow: [
               BoxShadow(
                 color: isSelected
-                    ? const Color(0xFFAB31DE).withValues(alpha: 0.1)
-                    : Colors.black.withValues(alpha: 0.02),
-                blurRadius: 10,
+                    ? const Color(0xFF7C3AED).withValues(alpha: 0.18)
+                    : Colors.black.withValues(alpha: 0.03),
+                blurRadius: isSelected ? 12 : 8,
                 offset: const Offset(0, 3),
               ),
             ],
@@ -140,11 +140,11 @@ class OnboardingScreen extends HookWidget {
                 width: 44.w,
                 height: 44.w,
                 decoration: BoxDecoration(
-                  color: isSelected ? const Color(0xFFF3E8FF) : const Color(0xFFF1F5F9),
+                  color: isSelected ? const Color(0xFFEDE9FE) : const Color(0xFFF1F5F9),
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: isSelected ? const Color(0xFFE9D5FF) : const Color(0xFFE2E8F0),
-                    width: 1,
+                    color: isSelected ? const Color(0xFFC4B5FD) : const Color(0xFFE2E8F0),
+                    width: 1.2,
                   ),
                 ),
                 alignment: Alignment.center,
@@ -172,18 +172,18 @@ class OnboardingScreen extends HookWidget {
                   children: [
                     Text(
                       '${lang.languageName.tr()} (${lang.languageName.caps()})',
-                      style: GoogleFonts.outfit(
-                        color: isSelected ? const Color(0xFFAB31DE) : const Color(0xFF1E1B4B),
-                        fontWeight: isSelected ? FontWeight.w800 : FontWeight.w700,
+                      style: GoogleFonts.russoOne(
+                        color: isSelected ? const Color(0xFF6D28D9) : const Color(0xFF1E1B4B),
                         fontSize: 14.5.sp,
+                        letterSpacing: 0.2,
                       ),
                     ),
                     SizedBox(height: 2.h),
                     Text(
                       lang.countryName,
-                      style: GoogleFonts.outfit(
+                      style: GoogleFonts.poppins(
                         color: isSelected
-                            ? const Color(0xFFAB31DE).withValues(alpha: 0.8)
+                            ? const Color(0xFF7C3AED)
                             : const Color(0xFF64748B),
                         fontSize: 11.5.sp,
                         fontWeight: FontWeight.w500,
@@ -201,7 +201,7 @@ class OnboardingScreen extends HookWidget {
                   shape: BoxShape.circle,
                   gradient: isSelected
                       ? const LinearGradient(
-                          colors: [Color(0xFFBA54EC), Color(0xFFAB31DE)],
+                          colors: [Color(0xFFA855F7), Color(0xFF7C3AED)],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         )
@@ -214,7 +214,7 @@ class OnboardingScreen extends HookWidget {
                   boxShadow: isSelected
                       ? [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.3),
+                            color: const Color(0xFF7C3AED).withValues(alpha: 0.35),
                             blurRadius: 6,
                             offset: const Offset(0, 2),
                           ),
@@ -266,18 +266,27 @@ class OnboardingScreen extends HookWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0xFFE39FFF),
-                  Color(0xFFAB31DE),
+                  Color(0xFFA855F7),
+                  Color(0xFF7C3AED),
+                  Color(0xFF5B21B6),
                 ],
               ),
               borderRadius: BorderRadius.circular(26.r),
+              border: Border.all(
+                color: const Color(0xFFC084FC).withValues(alpha: 0.6),
+                width: 1.4,
+              ),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFFAB31DE).withValues(
-                    alpha: isButtonPressed.value ? 0.25 : 0.45,
+                  color: const Color(0xFF7C3AED).withValues(
+                    alpha: isButtonPressed.value ? 0.35 : 0.60,
                   ),
-                  blurRadius: isButtonPressed.value ? 8 : 16,
-                  offset: Offset(0, isButtonPressed.value ? 2 : 5),
+                  blurRadius: isButtonPressed.value ? 10 : 20,
+                  offset: Offset(0, isButtonPressed.value ? 3 : 6),
+                ),
+                BoxShadow(
+                  color: const Color(0xFFA855F7).withValues(alpha: 0.25),
+                  blurRadius: 14,
                 ),
               ],
             ),
@@ -286,10 +295,9 @@ class OnboardingScreen extends HookWidget {
               children: [
                 Text(
                   label.toUpperCase(),
-                  style: GoogleFonts.outfit(
+                  style: GoogleFonts.russoOne(
                     color: Colors.white,
                     fontSize: 15.sp,
-                    fontWeight: FontWeight.w700,
                     letterSpacing: 0.8,
                   ),
                 ),
@@ -320,17 +328,17 @@ class OnboardingScreen extends HookWidget {
                   Text(
                     'Select Language',
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.outfit(
+                    style: GoogleFonts.russoOne(
                       color: const Color(0xFF1E1B4B),
                       fontSize: 22.sp,
-                      fontWeight: FontWeight.w800,
+                      letterSpacing: 0.3,
                     ),
                   ),
                   SizedBox(height: 4.h),
                   Text(
                     'Choose your preferred language for the app',
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.outfit(
+                    style: GoogleFonts.poppins(
                       color: const Color(0xFF64748B),
                       fontSize: 13.sp,
                       fontWeight: FontWeight.w500,
@@ -389,11 +397,11 @@ class OnboardingScreen extends HookWidget {
                     child: Container(
                       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 7.h),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFF3E8FF),
+                        color: const Color(0xFFEDE9FE),
                         borderRadius: BorderRadius.circular(20.r),
                         border: Border.all(
-                          color: const Color(0xFFE9D5FF),
-                          width: 1,
+                          color: const Color(0xFFDDD6FE),
+                          width: 1.2,
                         ),
                       ),
                       child: Row(
@@ -401,10 +409,9 @@ class OnboardingScreen extends HookWidget {
                         children: [
                           Text(
                             'SKIP',
-                            style: GoogleFonts.outfit(
-                              color: const Color(0xFFAB31DE),
+                            style: GoogleFonts.russoOne(
+                              color: const Color(0xFF7C3AED),
                               fontSize: 12.sp,
-                              fontWeight: FontWeight.w800,
                               letterSpacing: 0.8,
                             ),
                           ),
@@ -412,7 +419,7 @@ class OnboardingScreen extends HookWidget {
                           Icon(
                             Icons.arrow_forward_ios_rounded,
                             size: 11.sp,
-                            color: const Color(0xFFAB31DE),
+                            color: const Color(0xFF7C3AED),
                           ),
                         ],
                       ),
@@ -451,19 +458,19 @@ class OnboardingScreen extends HookWidget {
                             vertical: 5.h,
                           ),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFF3E8FF),
+                            color: const Color(0xFFEDE9FE),
                             borderRadius: BorderRadius.circular(12.r),
                             border: Border.all(
-                              color: const Color(0xFFE9D5FF),
-                              width: 1,
+                              color: const Color(0xFFC4B5FD),
+                              width: 1.2,
                             ),
                           ),
                           child: Text(
                             slide.tag,
-                            style: GoogleFonts.pressStart2p(
-                              color: const Color(0xFFAB31DE),
-                              fontSize: 9.sp,
-                              letterSpacing: 0.5,
+                            style: GoogleFonts.russoOne(
+                              color: const Color(0xFF6D28D9),
+                              fontSize: 10.5.sp,
+                              letterSpacing: 0.6,
                             ),
                           ),
                         ),
@@ -474,11 +481,11 @@ class OnboardingScreen extends HookWidget {
                         Text(
                           slide.title,
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.outfit(
-                            fontSize: 25.sp,
-                            fontWeight: FontWeight.w800,
+                          style: GoogleFonts.russoOne(
+                            fontSize: 24.sp,
                             color: const Color(0xFF1E1B4B),
                             height: 1.2,
+                            letterSpacing: 0.4,
                           ),
                         ),
 
@@ -488,11 +495,11 @@ class OnboardingScreen extends HookWidget {
                         Text(
                           slide.description,
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.outfit(
+                          style: GoogleFonts.poppins(
                             fontSize: 13.sp,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w400,
                             color: const Color(0xFF64748B),
-                            height: 1.4,
+                            height: 1.45,
                           ),
                         ),
 
@@ -510,13 +517,13 @@ class OnboardingScreen extends HookWidget {
                               height: 8.w,
                               decoration: BoxDecoration(
                                 color: isCurrent
-                                    ? const Color(0xFFAB31DE)
+                                    ? const Color(0xFF7C3AED)
                                     : const Color(0xFFCBD5E1),
                                 borderRadius: BorderRadius.circular(4.r),
                                 boxShadow: isCurrent
                                     ? [
                                         BoxShadow(
-                                          color: const Color(0xFFAB31DE).withValues(alpha: 0.4),
+                                          color: const Color(0xFF7C3AED).withValues(alpha: 0.45),
                                           blurRadius: 8,
                                           spreadRadius: 1,
                                         ),

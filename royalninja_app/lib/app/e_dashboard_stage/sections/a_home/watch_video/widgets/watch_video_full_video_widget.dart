@@ -93,7 +93,7 @@ class _WatchVideoFullVideoWidgetState extends State<WatchVideoFullVideoWidget> {
             ),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                color: const Color(0xFF362187).withValues(alpha: 0.08),
                 blurRadius: 10,
                 offset: const Offset(0, 3),
               ),
@@ -248,7 +248,7 @@ class _WatchVideoFullVideoWidgetState extends State<WatchVideoFullVideoWidget> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Image.asset(
-                                'assets/icons/coin.png',
+                                'assets/icons_2/coin.png',
                                 width: 14.w,
                                 height: 14.w,
                                 fit: BoxFit.contain,
@@ -277,14 +277,14 @@ class _WatchVideoFullVideoWidgetState extends State<WatchVideoFullVideoWidget> {
                           decoration: BoxDecoration(
                             gradient: const LinearGradient(
                               colors: [
-                                Color(0xFFE39FFF),
-                                Color(0xFFAB31DE),
+                                Color(0xFF4C2CA3),
+                                Color(0xFF362187),
                               ],
                             ),
                             borderRadius: BorderRadius.circular(14.r),
                             boxShadow: [
                               BoxShadow(
-                                color: const Color(0xFFAB31DE).withValues(alpha: 0.30),
+                                color: const Color(0xFF362187).withValues(alpha: 0.30),
                                 blurRadius: 6,
                                 offset: const Offset(0, 2),
                               ),

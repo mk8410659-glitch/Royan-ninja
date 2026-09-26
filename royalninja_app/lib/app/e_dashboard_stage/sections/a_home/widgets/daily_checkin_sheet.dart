@@ -255,12 +255,12 @@ class DailyCheckInPopup extends HookConsumerWidget {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15.r),
                                 border: Border.all(
-                                  color: const Color(0xFFF1F5F9),
+                                  color: const Color(0xFF362187).withValues(alpha: 0.12),
                                   width: 1.2,
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                    color: const Color(0xFF362187).withValues(alpha: 0.08),
                                     blurRadius: 10,
                                     offset: const Offset(0, 3),
                                   ),
@@ -268,7 +268,7 @@ class DailyCheckInPopup extends HookConsumerWidget {
                               ),
                               child: Icon(
                                 Icons.arrow_back_rounded,
-                                color: const Color(0xFFAB31DE),
+                                color: const Color(0xFF362187),
                                 size: 22.sp,
                               ),
                             ),
@@ -294,18 +294,18 @@ class DailyCheckInPopup extends HookConsumerWidget {
                         padding: EdgeInsets.all(20.r),
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
-                            colors: [Color(0xFFFAF5FF), Color(0xFFFFFFFF)],
+                            colors: [Color(0xFFF5F3FF), Color(0xFFFFFFFF)],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
                           borderRadius: BorderRadius.circular(22.r),
                           border: Border.all(
-                            color: const Color(0xFFF1F5F9),
+                            color: const Color(0xFF362187).withValues(alpha: 0.12),
                             width: 1.2,
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                              color: const Color(0xFF362187).withValues(alpha: 0.06),
                               blurRadius: 14,
                               offset: const Offset(0, 4),
                             ),
@@ -313,35 +313,31 @@ class DailyCheckInPopup extends HookConsumerWidget {
                         ),
                         child: Column(
                           children: [
-                            // Flame Icon Container
+                            // 3D Daily Check-in Icon Container (Matching Home Screen Card)
                             Container(
-                              width: 54.w,
-                              height: 54.w,
+                              width: 56.w,
+                              height: 56.w,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
-                                color: const Color(0xFFFAF5FF),
+                                color: const Color(0xFFFFF9E6),
                                 borderRadius: BorderRadius.circular(18.r),
                                 border: Border.all(
-                                  color: const Color(0xFFF3E8FF),
+                                  color: const Color(0xFFFFB800).withValues(alpha: 0.5),
                                   width: 1.5,
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: const Color(0xFFAB31DE).withValues(alpha: 0.12),
+                                    color: const Color(0xFFFF9E00).withValues(alpha: 0.2),
                                     blurRadius: 10,
                                     offset: const Offset(0, 4),
                                   ),
                                 ],
                               ),
                               child: Image.asset(
-                                'assets/icons/fire (2).png',
-                                width: 32.w,
-                                height: 32.w,
+                                'assets/icons_2/daily_checkin.png',
+                                width: 36.w,
+                                height: 36.w,
                                 fit: BoxFit.contain,
-                                errorBuilder: (_, __, ___) => Text(
-                                  '🔥',
-                                  style: TextStyle(fontSize: 28.sp),
-                                ),
                               ),
                             ),
 
@@ -439,7 +435,7 @@ class DailyCheckInPopup extends HookConsumerWidget {
                     ),
                     child: const CircularProgressIndicator(
                       strokeWidth: 3.2,
-                      valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFA855F7)),
+                      valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF362187)),
                     ),
                   ),
                 ),
@@ -477,12 +473,12 @@ class DailyCheckInPopup extends HookConsumerWidget {
             child: Row(
               children: [
                 Image.asset(
-                  'assets/icons/coin.png',
+                  'assets/icons_2/coin.png',
                   width: 22.w,
                   height: 22.w,
                   fit: BoxFit.contain,
                   errorBuilder: (_, __, ___) => Image.asset(
-                    'assets/icons/coin.png',
+                    'assets/icons_2/coin.png',
                     width: 22.w,
                   ),
                 ),
@@ -528,31 +524,43 @@ class DailyCheckInPopup extends HookConsumerWidget {
                 height: 38.h,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFA855F7), // Purple Pill Button
-                  borderRadius: BorderRadius.circular(12.r),
+                  gradient: const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color(0xFFFFEA79),
+                      Color(0xFFFFB800),
+                    ],
+                  ),
+                  borderRadius: BorderRadius.circular(14.r),
+                  border: Border.all(
+                    color: Colors.white.withValues(alpha: 0.8),
+                    width: 0.8,
+                  ),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFFA855F7).withValues(alpha: 0.3),
+                      color: const Color(0xFFFF9E00).withValues(alpha: 0.45),
                       blurRadius: 6,
-                      offset: const Offset(0, 3),
+                      offset: const Offset(0, 2),
                     ),
                   ],
                 ),
                 child: isClaiming
-                    ? SizedBox(
+                    ? const SizedBox(
                         width: 16,
                         height: 16,
                         child: CircularProgressIndicator(
                           strokeWidth: 2.0,
-                          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                          valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF24125C)),
                         ),
                       )
                     : Text(
                         'Watch Ad',
-                        style: GoogleFonts.outfit(
-                          color: Colors.white,
-                          fontSize: 13.5.sp,
-                          fontWeight: FontWeight.w600,
+                        style: GoogleFonts.poppins(
+                          color: const Color(0xFF24125C),
+                          fontSize: 13.sp,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 0.2,
                         ),
                       ),
               ),
@@ -609,7 +617,7 @@ class _TvAdIconPainter extends CustomPainter {
 
     // Paint for TV Outline & Antenna
     final tvPaint = Paint()
-      ..color = const Color(0xFFE5D0FA) // Soft light lavender outline
+      ..color = const Color(0xFF362187)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2.0
       ..strokeCap = StrokeCap.round
@@ -640,7 +648,7 @@ class _TvAdIconPainter extends CustomPainter {
       text: TextSpan(
         text: 'AD',
         style: GoogleFonts.outfit(
-          color: const Color(0xFF9333EA), // Bold purple
+          color: const Color(0xFF362187),
           fontSize: (size.width * 0.34).sp,
           fontWeight: FontWeight.w900,
           letterSpacing: -0.2,

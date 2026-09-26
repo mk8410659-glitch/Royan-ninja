@@ -1,19 +1,18 @@
 import 'dart:async';
 import 'dart:math';
 
-
 import 'package:auto_route/annotations.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import '../../../../../services/analytics_service.dart';
+import '../../../../../widgets/common/custom_toast.dart';
 import '../../../../b_splash_stage/splash_service.dart';
 import '../../../provider/dashboard_provider.dart';
-import '../../../../../widgets/common/custom_toast.dart';
 import 'diamond_catch_provider.dart';
 import 'game_popup.dart';
 
@@ -21,7 +20,29 @@ import 'game_popup.dart';
 // 1. DATA STRUCTURES & PARTICLES
 // ==========================================
 
+enum HapticFeedbackType { light, medium, heavy }
 
+enum RoadEntityType {
+  coin, // Royal Gold Coin (+5 score)
+  gem, // Diamond (+10 score)
+  hurdle, // Ground Road Barricade (-1 chance)
+}
+
+class _RoadEntity {
+  final int lane; // -1: Left, 0: Center, 1: Right
+  double z; // Distance: 0.0 (horizon) -> 1.0 (player) -> 1.15+ (behind player)
+  final RoadEntityType type;
+  final int points;
+  bool isCollected = false;
+  bool hasHit = false;
+
+  _RoadEntity({
+    required this.lane,
+    required this.z,
+    required this.type,
+    this.points = 0,
+  });
+}
 
 class _SparkParticle {
   double x;
@@ -29,7 +50,7 @@ class _SparkParticle {
   double vx;
   double vy;
   Color color;
-  double life;
+  double life = 1.0;
   double size;
 
   _SparkParticle({
@@ -38,7 +59,6 @@ class _SparkParticle {
     required this.vx,
     required this.vy,
     required this.color,
-    this.life = 1.0,
     required this.size,
   });
 }
@@ -48,21 +68,19 @@ class _FloatingScore {
   double y;
   final String text;
   final Color color;
-  double opacity;
-  double life;
+  double opacity = 1.0;
+  double life = 1.0;
 
   _FloatingScore({
     required this.x,
     required this.y,
     required this.text,
     required this.color,
-    this.opacity = 1.0,
-    this.life = 1.0,
   });
 }
 
 // ==========================================
-// 2. MAIN DIAMOND CATCH SCREEN
+// 2. MAIN NINJA ROAD RUNNER SCREEN
 // ==========================================
 
 @RoutePage()
@@ -90,40 +108,47 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   final Random _random = Random();
 
+  // 3-Lane Road Runner Player State
+  int _currentLane = 0; // -1: Left, 0: Center, 1: Right
+  double _ninjaLaneX = 0.0; // Smoothly interpolates to _currentLane
+  bool _isJumping = false;
+  double _jumpY = 0.0; // Height above road surface in pixels
+  double _jumpVy = 0.0; // Jump velocity
+  double _runStep = 0.0; // Running stride animation counter
+  double _roadScrollZ = 0.0; // Perspective road lines scrolling
+  int _invulnerableTimer = 0; // Brief grace period after impact
+  int _shakeTimer = 0; // Screen shake timer on collision
+  static const double _roadSpeed = 0.016; // Entity advance speed per frame (~60 FPS)
 
-
-  // Falling Catcher Game State
-  double _pandaX = 0.5;
-  final List<_FallingItem> _fallingItems = [];
+  // Road Entities (Coins, Gems, Hurdles)
+  final List<_RoadEntity> _roadEntities = [];
   int _spawnCounter = 0;
+  int _nextSpawnInterval = 45;
+
+  // Countdown & Flow
   bool _isCountingDown = false;
   int _countdownNumber = 3;
-
-  // Game Progress State
   bool _gameStarted = false;
   bool _isGameOver = false;
   bool _isGameWon = false;
+
+  // Score & Chances (100% Preserved Logic)
   int _score = 0;
   int _targetScore = 100;
-  int _movesLeft = 18;
-  int _comboCount = 0;
+  int _movesLeft = 5;
 
   // Settings
-  bool _isSoundOn = true;
-  bool _isVibrateOn = true;
+  final bool _isVibrateOn = true;
 
-  // Visual Effects Lists
+  // Visual Effects
   final List<_SparkParticle> _sparks = [];
   final List<_FloatingScore> _floatingScores = [];
 
-  // Animation Controllers
+  // Controllers
   late AnimationController _gameLoopController;
   late AnimationController _startScreenEntranceController;
   late AnimationController _buttonPulseController;
   late Animation<double> _buttonScaleAnimation;
-  late AnimationController _scorePopController;
-  late AnimationController _basketBounceController;
-  late Animation<double> _basketScaleAnimation;
   late AnimationController _countdownAnimController;
   late Animation<double> _countdownScaleAnim;
 
@@ -134,10 +159,8 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
     super.initState();
     WidgetsBinding.instance.addObserver(this);
 
-    // Hide status bar for immersive full-screen game experience
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 
-    // Pre-fetch Diamond Catch daily limits so Redis & server state are ready immediately
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (widget.userId.isNotEmpty) {
         ref.read(diamondCatchVerifierProvider(widget.userId));
@@ -158,20 +181,6 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
       CurvedAnimation(parent: _buttonPulseController, curve: Curves.easeInOut),
     );
 
-    _scorePopController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 250),
-    );
-
-    _basketBounceController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 140),
-    );
-    _basketScaleAnimation = TweenSequence<double>([
-      TweenSequenceItem(tween: Tween<double>(begin: 1.0, end: 1.18).chain(CurveTween(curve: Curves.easeOutCubic)), weight: 50),
-      TweenSequenceItem(tween: Tween<double>(begin: 1.18, end: 1.0).chain(CurveTween(curve: Curves.easeInCubic)), weight: 50),
-    ]).animate(_basketBounceController);
-
     _countdownAnimController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 400),
@@ -180,12 +189,10 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
       CurvedAnimation(parent: _countdownAnimController, curve: Curves.elasticOut),
     );
 
-
-
     _gameLoopController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 16),
-    )..addListener(_updateGameParticles);
+    )..addListener(_updateGameFrame);
     _gameLoopController.repeat();
 
     _setupNewGameRound();
@@ -194,7 +201,6 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
-    // Restore status bar on exit
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
@@ -202,17 +208,15 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
         statusBarIconBrightness: Brightness.light,
       ),
     );
-    _basketBounceController.dispose();
     _countdownAnimController.dispose();
     _gameLoopController.dispose();
     _startScreenEntranceController.dispose();
     _buttonPulseController.dispose();
-    _scorePopController.dispose();
     super.dispose();
   }
 
   // ==========================================
-  // 3. GAME INITIALIZATION & BOARD SETUP
+  // 3. TARGET SCORE & SETUP (PRESERVED)
   // ==========================================
 
   void _pickRandomTargetScore() {
@@ -237,21 +241,28 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
       scoresList = [10, 20, 30];
     }
 
-    // Pick exact target score set in admin
     final chosen = scoresList[_random.nextInt(scoresList.length)];
     _targetScore = chosen > 0 ? chosen : 10;
   }
 
   void _setupNewGameRound() {
     _pickRandomTargetScore();
-    _movesLeft = 5; // 18 Chances / Lives
+    _movesLeft = 5;
     _score = 0;
-    _comboCount = 0;
     _isGameOver = false;
     _isGameWon = false;
-    _pandaX = 0.5;
-    _fallingItems.clear();
+    _currentLane = 0;
+    _ninjaLaneX = 0.0;
+    _isJumping = false;
+    _jumpY = 0.0;
+    _jumpVy = 0.0;
+    _runStep = 0.0;
+    _roadScrollZ = 0.0;
+    _invulnerableTimer = 0;
+    _shakeTimer = 0;
+    _roadEntities.clear();
     _spawnCounter = 0;
+    _nextSpawnInterval = 40;
   }
 
   void _startGame() {
@@ -260,7 +271,7 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
       CustomToast.showToast(context, msg: 'Today game limit over, come tomorrow!');
       return;
     }
-    AnalyticsService.logCustomEvent('ninja_catch_game_started');
+    AnalyticsService.logCustomEvent('ninja_runner_game_started');
     _triggerHaptic(HapticFeedbackType.medium);
     _setupNewGameRound();
 
@@ -285,7 +296,6 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
         _triggerHaptic(HapticFeedbackType.light);
         _countdownAnimController.forward(from: 0.0);
       } else {
-        // Countdown finished! Game starts!
         timer.cancel();
         setState(() {
           _isCountingDown = false;
@@ -293,6 +303,30 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
         _triggerHaptic(HapticFeedbackType.heavy);
       }
     });
+  }
+
+  // ==========================================
+  // 4. TEMPLE RUN / SUBWAY SURFERS CONTROLS
+  // ==========================================
+
+  void _changeLane(int direction) {
+    if (_isGameOver || _isGameWon || _isCountingDown || !_gameStarted) return;
+    final int nextLane = (_currentLane + direction).clamp(-1, 1);
+    if (nextLane != _currentLane) {
+      _currentLane = nextLane;
+      _triggerHaptic(HapticFeedbackType.light);
+      if (mounted) setState(() {});
+    }
+  }
+
+  void _jump() {
+    if (_isGameOver || _isGameWon || _isCountingDown || !_gameStarted) return;
+    if (!_isJumping) {
+      _isJumping = true;
+      _jumpVy = 13.5;
+      _triggerHaptic(HapticFeedbackType.light);
+      if (mounted) setState(() {});
+    }
   }
 
   void _triggerHaptic(HapticFeedbackType type) {
@@ -311,11 +345,10 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
   }
 
   // ==========================================
-  // 6. VICTORY & GAME OVER HANDLERS
+  // 5. VICTORY & GAME OVER HANDLERS
   // ==========================================
 
   void _onGameWon() {
-    // Victory celebration sparks
     for (int i = 0; i < 45; i++) {
       final angle = _random.nextDouble() * 2 * pi;
       final speed = 3.0 + _random.nextDouble() * 9.0;
@@ -330,7 +363,6 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
         ),
       );
     }
-
     _showResultPopup(isWin: true);
   }
 
@@ -357,13 +389,14 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
                   _movesLeft = max(_movesLeft, 0) + 5;
                   _isGameOver = false;
                   _gameStarted = true;
+                  _invulnerableTimer = 45;
                 });
               }
             : null,
         onRestart: () {
           setState(() {
             _setupNewGameRound();
-            _gameStarted = false; // Returns to Diamond Catch Splash/Start Screen
+            _gameStarted = false;
           });
         },
         onHome: () {
@@ -376,33 +409,31 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
   }
 
   // ==========================================
-  // 7. PARTICLES & VISUAL EFFECTS
+  // 6. PARTICLES & VISUAL EFFECTS
   // ==========================================
 
   static const List<Color> _neonPalette = [
-    Color(0xFF38BDF8), // Cyan
-    Color(0xFF818CF8), // Indigo
-    Color(0xFFA855F7), // Purple
-    Color(0xFFC084FC), // Lilac
-    Color(0xFFE879F9), // Fuchsia
-    Color(0xFFFBBF24), // Amber Gold
-    Color(0xFF34D399), // Emerald
+    Color(0xFF38BDF8),
+    Color(0xFF818CF8),
+    Color(0xFFA855F7),
+    Color(0xFFC084FC),
+    Color(0xFFE879F9),
+    Color(0xFFFBBF24),
+    Color(0xFF34D399),
   ];
 
-
-
   static const List<Color> _diamondShatterPalette = [
-    Color(0xFF38BDF8), // Bright Cyan Diamond
-    Color(0xFFE0F2FE), // Pure Crystal White
-    Color(0xFF7DD3FC), // Light Sky Blue
-    Color(0xFFFFD700), // Sparkling Gold
-    Color(0xFFFFFFFF), // Pure Specular White
+    Color(0xFF38BDF8),
+    Color(0xFFE0F2FE),
+    Color(0xFF7DD3FC),
+    Color(0xFFFFD700),
+    Color(0xFFFFFFFF),
   ];
 
   void _spawnDiamondShatterSparks(double originX, double originY) {
-    if (_sparks.length > 22) return;
+    if (_sparks.length > 30) return;
     for (int i = 0; i < 10; i++) {
-      final angle = -pi / 2 + (_random.nextDouble() - 0.5) * 1.5; // Upward crystal shatter burst!
+      final angle = (_random.nextDouble() - 0.5) * 2 * pi;
       final speed = 3.5 + _random.nextDouble() * 6.5;
       _sparks.add(
         _SparkParticle(
@@ -418,9 +449,9 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
   }
 
   void _spawnCatchSparks(double originX, double originY, Color color) {
-    if (_sparks.length > 20) return;
+    if (_sparks.length > 25) return;
     for (int i = 0; i < 8; i++) {
-      final angle = -pi / 2 + (_random.nextDouble() - 0.5) * 1.2;
+      final angle = -pi / 2 + (_random.nextDouble() - 0.5) * 1.5;
       final speed = 3.5 + _random.nextDouble() * 5.5;
       _sparks.add(
         _SparkParticle(
@@ -440,111 +471,208 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
     _floatingScores.add(
       _FloatingScore(
         x: originX,
-        y: originY - 20,
+        y: originY - 15,
         text: text,
         color: color,
       ),
     );
   }
 
-  void _updateGameParticles() {
+  // ==========================================
+  // 7. ROAD RUNNER GAME LOOP (PERSPECTIVE 3D)
+  // ==========================================
+
+  void _updateGameFrame() {
     if (!mounted) return;
 
     bool stateChanged = false;
 
-    // Update sparks
+    // 1. Update sparks
     for (int i = _sparks.length - 1; i >= 0; i--) {
       final s = _sparks[i];
       s.x += s.vx;
       s.y += s.vy;
-      s.vy += 0.25; // gravity
+      s.vy += 0.22;
       s.life -= 0.045;
       if (s.life <= 0) {
         _sparks.removeAt(i);
       }
     }
 
-    // Update floating score texts
+    // 2. Update floating score texts
     for (int i = _floatingScores.length - 1; i >= 0; i--) {
       final f = _floatingScores[i];
       f.y -= 1.0;
-      f.life -= 0.04;
+      f.life -= 0.038;
       f.opacity = (f.life * 1.5).clamp(0.0, 1.0);
       if (f.life <= 0) {
         _floatingScores.removeAt(i);
       }
     }
 
-    // FALLING ROYAL NINJA CATCHER PHYSICS & COLLISION
+    // 3. Road Runner Gameplay Frame
     if (_gameStarted && !_isCountingDown && !_isGameOver && !_isGameWon) {
-      _spawnCounter++;
-      // Spawn new falling item every ~28 ticks
-      if (_spawnCounter >= 28) {
-        _spawnCounter = 0;
-        final bool isBomb = _random.nextDouble() < 0.24; // 24% bomb, 76% diamond
-        final double speed = 0.007 + _random.nextDouble() * 0.008;
-        _fallingItems.add(_FallingItem(
-          x: 0.10 + _random.nextDouble() * 0.80,
-          y: 0.0,
-          speed: speed,
-          isBomb: isBomb,
-          points: isBomb ? 0 : 10,
-        ));
+      stateChanged = true;
+
+      _runStep += 1.0;
+      _roadScrollZ = (_roadScrollZ + 0.04) % 1.0;
+
+      // Smooth lane switching interpolation (Subway Surfers feel)
+      _ninjaLaneX += (_currentLane - _ninjaLaneX) * 0.24;
+
+      // Jump Physics
+      if (_isJumping) {
+        _jumpY += _jumpVy;
+        _jumpVy -= 0.85; // Gravity
+        if (_jumpY <= 0.0) {
+          _jumpY = 0.0;
+          _jumpVy = 0.0;
+          _isJumping = false;
+          _triggerHaptic(HapticFeedbackType.light);
+        }
       }
 
-      final double boardWidth = 0.92.sw;
-      final double boardHeight = 0.58.sh;
+      if (_invulnerableTimer > 0) _invulnerableTimer--;
+      if (_shakeTimer > 0) _shakeTimer--;
 
-      for (int i = _fallingItems.length - 1; i >= 0; i--) {
-        final item = _fallingItems[i];
-        item.y += item.speed;
+      // Spawning road entities (Coins, Gems, Hurdles)
+      _spawnCounter++;
+      if (_spawnCounter >= _nextSpawnInterval) {
+        _spawnCounter = 0;
+        _nextSpawnInterval = 38 + _random.nextInt(26);
 
-        // Accurate Catch Collision Check Visible Right In Front of Panda Basket
-        if (item.y >= 0.82 && item.y <= 0.90) {
-          if ((item.x - _pandaX).abs() <= 0.15) {
-            // CAUGHT ACCURATELY INSIDE BASKET!
-            _fallingItems.removeAt(i);
+        final int patternRoll = _random.nextInt(100);
 
-            final px = 0.04.sw + item.x * boardWidth;
-            final py = 0.28.sh + item.y * boardHeight;
+        if (patternRoll < 35) {
+          // Pattern A: Hurdle on one lane + Coins on another lane
+          final int hurdleLane = _random.nextInt(3) - 1;
+          _roadEntities.add(_RoadEntity(
+            lane: hurdleLane,
+            z: 0.0,
+            type: RoadEntityType.hurdle,
+          ));
+          final int coinLane = (hurdleLane == 0) ? (_random.nextBool() ? 1 : -1) : 0;
+          _roadEntities.add(_RoadEntity(
+            lane: coinLane,
+            z: 0.0,
+            type: RoadEntityType.coin,
+            points: 5,
+          ));
+        } else if (patternRoll < 65) {
+          // Pattern B: Arc of 2 Coins on center or side lane
+          final int coinLane = _random.nextInt(3) - 1;
+          _roadEntities.add(_RoadEntity(
+            lane: coinLane,
+            z: 0.0,
+            type: RoadEntityType.coin,
+            points: 5,
+          ));
+          _roadEntities.add(_RoadEntity(
+            lane: coinLane,
+            z: -0.18, // slightly behind for streaming line of coins
+            type: RoadEntityType.coin,
+            points: 5,
+          ));
+        } else if (patternRoll < 85) {
+          // Pattern C: Rare High Gem (+10) on a random lane
+          final int gemLane = _random.nextInt(3) - 1;
+          _roadEntities.add(_RoadEntity(
+            lane: gemLane,
+            z: 0.0,
+            type: RoadEntityType.gem,
+            points: 10,
+          ));
+        } else {
+          // Pattern D: Dual Hurdles on 2 lanes (Must find the 1 open lane or jump!)
+          final int openLane = _random.nextInt(3) - 1;
+          for (int l = -1; l <= 1; l++) {
+            if (l != openLane) {
+              _roadEntities.add(_RoadEntity(
+                lane: l,
+                z: 0.0,
+                type: RoadEntityType.hurdle,
+              ));
+            }
+          }
+          _roadEntities.add(_RoadEntity(
+            lane: openLane,
+            z: 0.0,
+            type: RoadEntityType.coin,
+            points: 5,
+          ));
+        }
+      }
 
-            if (item.isBomb) {
-              // BOMB CAUGHT! Deduct chance
-              _movesLeft--;
-              stateChanged = true;
-              _triggerHaptic(HapticFeedbackType.heavy);
-              _spawnCatchScore(px, py, "-1 CHANCE", const Color(0xFFFF4D4D));
-              _spawnCatchSparks(px, py, const Color(0xFFFF4D4D));
+      // Advance Road Entities & Collision Check
+      for (int i = _roadEntities.length - 1; i >= 0; i--) {
+        final entity = _roadEntities[i];
+        entity.z += _roadSpeed;
 
-              if (_movesLeft <= 0) {
-                _isGameOver = true;
-                _onGameOver();
-              }
-            } else {
-              // GEM CAUGHT! Add +10 score
-              _score += item.points;
-              stateChanged = true;
-              _triggerHaptic(HapticFeedbackType.light);
-              _spawnCatchScore(px, py, "+10", const Color(0xFFFFD700));
-              _spawnDiamondShatterSparks(px, py);
+        // Collision Zone: When entity reaches near the player's plane (z in [0.82, 0.98])
+        if (!entity.isCollected && !entity.hasHit) {
+          if (entity.z >= 0.82 && entity.z <= 0.98) {
+            final double laneDistance = (entity.lane - _ninjaLaneX).abs();
+            if (laneDistance < 0.48) {
+              final double screenMidX = 0.5.sw;
+              final double entityScreenX = screenMidX + entity.lane * 110.w;
+              final double entityScreenY = 0.76.sh;
 
-              if (_score >= _targetScore) {
-                _isGameWon = true;
-                _onGameWon();
+              if (entity.type == RoadEntityType.coin) {
+                entity.isCollected = true;
+                _score += entity.points;
+                _triggerHaptic(HapticFeedbackType.light);
+                _spawnCatchSparks(entityScreenX, entityScreenY, const Color(0xFFFFD700));
+                _spawnCatchScore(entityScreenX, entityScreenY, "+${entity.points}", const Color(0xFFFFE082));
+
+                if (_score >= _targetScore) {
+                  _isGameWon = true;
+                  _onGameWon();
+                }
+              } else if (entity.type == RoadEntityType.gem) {
+                entity.isCollected = true;
+                _score += entity.points;
+                _triggerHaptic(HapticFeedbackType.light);
+                _spawnDiamondShatterSparks(entityScreenX, entityScreenY);
+                _spawnCatchScore(entityScreenX, entityScreenY, "+${entity.points}", const Color(0xFF38BDF8));
+
+                if (_score >= _targetScore) {
+                  _isGameWon = true;
+                  _onGameWon();
+                }
+              } else if (entity.type == RoadEntityType.hurdle) {
+                // If player is jumping high enough, they successfully LEAP over the hurdle!
+                if (_jumpY > 26.h) {
+                  // Leaped over hurdle!
+                  entity.hasHit = true;
+                  _spawnCatchSparks(entityScreenX, entityScreenY, const Color(0xFF4ADE80));
+                } else if (_invulnerableTimer <= 0) {
+                  // Hurdle impact!
+                  entity.hasHit = true;
+                  _movesLeft--;
+                  _invulnerableTimer = 45;
+                  _shakeTimer = 9;
+                  _triggerHaptic(HapticFeedbackType.heavy);
+                  _spawnCatchSparks(entityScreenX, entityScreenY, const Color(0xFFFF3333));
+                  _spawnCatchScore(entityScreenX, entityScreenY, "-1 CHANCE", const Color(0xFFFF4D4D));
+
+                  if (_movesLeft <= 0) {
+                    _isGameOver = true;
+                    _onGameOver();
+                  }
+                }
               }
             }
-            continue;
           }
         }
 
-        // Missed item off bottom
-        if (item.y > 1.05) {
-          _fallingItems.removeAt(i);
+        // Remove entity once it passes behind the player
+        if (entity.z > 1.25) {
+          _roadEntities.removeAt(i);
         }
       }
     }
 
-    if (stateChanged) {
+    if (stateChanged && mounted) {
       setState(() {});
     }
   }
@@ -579,32 +707,32 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
           statusBarBrightness: Brightness.dark,
         ),
         child: Scaffold(
-          backgroundColor: const Color(0xFF101010),
+          backgroundColor: const Color(0xFF0F172A),
           body: Stack(
             children: [
-              // 1. Full Cartoon Nature Background Image (assets/icons/bg.png) - 100% Pure & Bright
+              // 1. Japanese Pagoda Sunset Background (assets/icons_2/ninja_runner_bg.jpg)
               Positioned.fill(
                 child: Image.asset(
-                  'assets/icons/bg.png',
+                  'assets/icons_2/ninja_runner_bg.jpg',
                   fit: BoxFit.cover,
                 ),
               ),
 
-              // 4. Safe Area Foreground Content
+              // 2. Safe Area Foreground
               SafeArea(
                 child: Column(
                   children: [
                     _buildHeader(userGems),
                     Expanded(
                       child: _gameStarted
-                          ? _buildGameBoard()
+                          ? _build3DGameBoard()
                           : _buildStartScreen(userGems),
                     ),
                   ],
                 ),
               ),
 
-              // 5. Particle FX Overlay
+              // 3. Particle FX Overlay
               Positioned.fill(
                 child: IgnorePointer(
                   child: CustomPaint(
@@ -616,14 +744,12 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
                 ),
               ),
 
-              // 6. 100% Fullscreen 3D Cartoon 3-2-1 Countdown Overlay (Blocks ALL Taps & Gestures)
+              // 4. 100% Fullscreen 3D Cartoon 3-2-1 Countdown Overlay
               if (_isCountingDown)
                 Positioned.fill(
                   child: GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTap: () {},
-                    onPanStart: (_) {},
-                    onPanUpdate: (_) {},
                     child: Container(
                       color: Colors.black.withValues(alpha: 0.55),
                       child: Center(
@@ -632,7 +758,6 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
                           child: Stack(
                             alignment: Alignment.center,
                             children: [
-                              // 3D Shadow Stroke Outline
                               Text(
                                 '$_countdownNumber',
                                 style: GoogleFonts.fredoka(
@@ -644,14 +769,13 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
                                     ..color = const Color(0xFF3E1C03),
                                 ),
                               ),
-                              // Glossy Candy Gradient Text
                               ShaderMask(
                                 shaderCallback: (bounds) => const LinearGradient(
                                   colors: [
-                                    Color(0xFFFFFFFF), // White Specular Shine
-                                    Color(0xFFFFE082), // Soft Amber
-                                    Color(0xFFFFB300), // Rich Gold
-                                    Color(0xFFE65100), // Deep Warm Orange
+                                    Color(0xFFFFFFFF),
+                                    Color(0xFFFFE082),
+                                    Color(0xFFFFB300),
+                                    Color(0xFFE65100),
                                   ],
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
@@ -680,13 +804,12 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
   }
 
   Widget _buildHeader(int userGems) {
-    if (_gameStarted) return SizedBox(height: 8.h);
+    if (_gameStarted) return SizedBox(height: 6.h);
     return Padding(
       padding: EdgeInsets.fromLTRB(16.w, 12.h, 16.w, 4.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // 3D Cartoon Custom Back Button
           _PopScaleButton(
             onTap: () {
               _triggerHaptic(HapticFeedbackType.light);
@@ -697,16 +820,16 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
                   colors: [
-                    Color(0xFFF87171), // Top Gloss Red
-                    Color(0xFFEF4444), // Vibrant Red
-                    Color(0xFFB91C1C), // Deep 3D Shadow Red
+                    Color(0xFFF87171),
+                    Color(0xFFEF4444),
+                    Color(0xFFB91C1C),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: const Color(0xFFFFD700), // Gold Rim
+                  color: const Color(0xFFFFD700),
                   width: 2.0,
                 ),
                 boxShadow: [
@@ -724,8 +847,6 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
               ),
             ),
           ),
-
-          // Top-Right "YOUR GEMS" Badge Card
           Container(
             padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
             decoration: BoxDecoration(
@@ -773,294 +894,503 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
   }
 
   // ==========================================
-  // 9. GAME BOARD & HUD (CANDY CRUSH STYLE)
+  // 9. 3D TEMPLE RUN / SUBWAY SURFERS BOARD
   // ==========================================
 
-  Widget _buildGameBoard() {
+  Widget _build3DGameBoard() {
     final double targetProgress = (_score / _targetScore).clamp(0.0, 1.0);
+    final double shakeOffset = _shakeTimer > 0 ? (_random.nextDouble() - 0.5) * 8.0 : 0.0;
 
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
-      child: Column(
-        children: [
-          SizedBox(height: 6.h),
+    return Transform.translate(
+      offset: Offset(shakeOffset, 0),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 12.w),
+        child: Column(
+          children: [
+            SizedBox(height: 4.h),
 
-          // 3D Cartoon Wooden HUD Banner with Integrated Back Button
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [
-                  Color(0xFF6E370F), // Top Wood Highlight
-                  Color(0xFF8B4513), // Mid Warm Wood
-                  Color(0xFF532809), // Bottom Wood Shadow
+            // 3D Cartoon Wooden HUD Banner
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [
+                    Color(0xFF6E370F),
+                    Color(0xFF8B4513),
+                    Color(0xFF532809),
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+                borderRadius: BorderRadius.circular(20.r),
+                border: Border.all(
+                  color: const Color(0xFFFFD700),
+                  width: 2.2,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.6),
+                    blurRadius: 16,
+                    offset: const Offset(0, 6),
+                  ),
                 ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
               ),
-              borderRadius: BorderRadius.circular(20.r),
-              border: Border.all(
-                color: const Color(0xFFFFD700), // Gold Beveled Rim
-                width: 2.2,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.6),
-                  blurRadius: 16,
-                  offset: const Offset(0, 6),
-                ),
-                BoxShadow(
-                  color: const Color(0xFFFFD700).withValues(alpha: 0.3),
-                  blurRadius: 12,
-                ),
-              ],
-            ),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    // 3D Cartoon Custom Back Button inside HUD Banner
-                    _PopScaleButton(
-                      onTap: () {
-                        if (_isCountingDown) return;
-                        _triggerHaptic(HapticFeedbackType.light);
-                        setState(() {
-                          _gameStarted = false;
-                        });
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(right: 6.w),
-                        padding: EdgeInsets.all(7.r),
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [
-                              Color(0xFFF87171), // Top Gloss Red
-                              Color(0xFFEF4444), // Vibrant Red
-                              Color(0xFFB91C1C), // Deep 3D Shadow Red
-                            ],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      _PopScaleButton(
+                        onTap: () {
+                          if (_isCountingDown) return;
+                          _triggerHaptic(HapticFeedbackType.light);
+                          setState(() {
+                            _gameStarted = false;
+                          });
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(right: 6.w),
+                          padding: EdgeInsets.all(7.r),
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [
+                                Color(0xFFF87171),
+                                Color(0xFFEF4444),
+                                Color(0xFFB91C1C),
+                              ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            ),
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: const Color(0xFFFFD700),
+                              width: 1.8,
+                            ),
                           ),
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: const Color(0xFFFFD700), // Gold Rim
-                            width: 1.8,
+                          child: Icon(
+                            Icons.arrow_back_rounded,
+                            color: Colors.white,
+                            size: 18.sp,
                           ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withValues(alpha: 0.5),
-                              blurRadius: 6,
-                              offset: const Offset(0, 3),
+                        ),
+                      ),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            _buildHudStat(
+                              label: 'TARGET SCORE',
+                              value: '$_score / $_targetScore',
+                              color: const Color(0xFFFFD700),
+                              icon: Icons.emoji_events_rounded,
+                            ),
+                            _buildHudStat(
+                              label: 'CHANCE',
+                              value: '$_movesLeft',
+                              color: _movesLeft <= 1
+                                  ? const Color(0xFFFF4D4D)
+                                  : const Color(0xFF4ADE80),
+                              icon: Icons.favorite_rounded,
                             ),
                           ],
                         ),
-                        child: Icon(
-                          Icons.arrow_back_rounded,
-                          color: Colors.white,
-                          size: 18.sp,
-                        ),
                       ),
-                    ),
-
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          // Target Box
-                          _buildHudStat(
-                            label: 'TARGET SCORE',
-                            value: '$_score / $_targetScore',
-                            color: const Color(0xFFFFD700),
-                            icon: Icons.emoji_events_rounded,
-                          ),
-
-                          // Chances Box
-                          _buildHudStat(
-                            label: 'CHANCE',
-                            value: '$_movesLeft',
-                            color: _movesLeft <= 1 ? const Color(0xFFFF4D4D) : const Color(0xFF4ADE80),
-                            icon: Icons.favorite_rounded,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-
-                SizedBox(height: 10.h),
-
-                // 3D Candy Lime Progress Bar Slot
-                Container(
-                  padding: EdgeInsets.all(2.r),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF2C1607),
-                    borderRadius: BorderRadius.circular(10.r),
-                    border: Border.all(
-                      color: const Color(0xFF8B4513),
-                      width: 1.0,
-                    ),
+                    ],
                   ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.r),
-                    child: Container(
-                      height: 10.h,
-                      color: const Color(0xFF1E0E04),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: AnimatedFractionallySizedBox(
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.easeOutCubic,
-                          widthFactor: targetProgress,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                colors: [
-                                  Color(0xFFFEF08A), // Top Candy Gloss
-                                  Color(0xFFBEF264), // Bright Lime
-                                  Color(0xFF22C55E), // Vivid Green
-                                  Color(0xFF15803D), // Bottom Green Base
-                                ],
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                stops: [0.0, 0.25, 0.70, 1.0],
-                              ),
-                              borderRadius: BorderRadius.circular(8.r),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: const Color(0xFF22C55E).withValues(alpha: 0.9),
-                                  blurRadius: 8,
-                                  spreadRadius: 1,
+                  SizedBox(height: 8.h),
+                  Container(
+                    padding: EdgeInsets.all(2.r),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF2C1607),
+                      borderRadius: BorderRadius.circular(10.r),
+                      border: Border.all(
+                        color: const Color(0xFF8B4513),
+                        width: 1.0,
+                      ),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.r),
+                      child: Container(
+                        height: 9.h,
+                        color: const Color(0xFF1E0E04),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: AnimatedFractionallySizedBox(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeOutCubic,
+                            widthFactor: targetProgress,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                  colors: [
+                                    Color(0xFFFEF08A),
+                                    Color(0xFFBEF264),
+                                    Color(0xFF22C55E),
+                                    Color(0xFF15803D),
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
                                 ),
-                              ],
+                                borderRadius: BorderRadius.circular(8.r),
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
 
-          SizedBox(height: 16.h),
+            SizedBox(height: 8.h),
 
-          // Full-Screen Unboxed Falling Game Play Area
-          Expanded(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final double areaWidth = constraints.maxWidth;
-                final double areaHeight = constraints.maxHeight;
+            // 3D Perspective Road Play Area with Swipe Support
+            Expanded(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final double w = constraints.maxWidth;
+                  final double h = constraints.maxHeight;
 
-                return GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onPanStart: (details) {
-                    final dx = details.localPosition.dx;
-                    _pandaX = (dx / areaWidth).clamp(0.08, 0.92);
-                  },
-                  onPanUpdate: (details) {
-                    final dx = details.localPosition.dx;
-                    _pandaX = (dx / areaWidth).clamp(0.08, 0.92);
-                  },
-                  child: AnimatedBuilder(
-                    animation: _gameLoopController,
-                    builder: (context, child) {
-                      return Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          // 1. Panda Basket Mascot at Bottom (Steady & Smooth)
-                          Positioned(
-                            left: _pandaX * areaWidth - 120.w,
-                            bottom: 0.h,
-                            child: Image.asset(
-                              'assets/icons/diamondcatchpnda.png',
-                              width: 240.w,
-                              height: 240.w,
-                              fit: BoxFit.contain,
-                              errorBuilder: (_, __, ___) => Image.asset(
-                                'assets/icons/panda1.png',
-                                width: 190.w,
-                                height: 190.w,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                          ),
+                  final double horizonY = h * 0.22;
+                  final double roadTopWidth = w * 0.28;
+                  final double roadBottomWidth = w * 0.94;
+                  final double playerY = h * 0.78;
 
-                          // 2. Render Falling Items (Diamonds & Bombs - Rendered IN FRONT of Panda)
-                          for (final item in _fallingItems)
-                            Positioned(
-                              left: item.x * areaWidth - 22.w,
-                              top: item.y * areaHeight - 22.w,
-                              child: item.isBomb
-                                  ? Container(
-                                      width: 44.w,
-                                      height: 44.w,
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        '💣',
-                                        style: TextStyle(fontSize: 32.sp),
-                                      ),
-                                    )
-                                  : Image.asset(
-                                      'assets/icons/gems.png',
-                                      width: 44.w,
-                                      height: 44.w,
-                                      fit: BoxFit.contain,
-                                      errorBuilder: (_, __, ___) => Icon(
-                                        Icons.diamond_rounded,
-                                        color: const Color(0xFF38BDF8),
-                                        size: 34.sp,
-                                      ),
-                                    ),
-                            ),
+                  // Mascot coordinates
+                  final double ninjaX = (w / 2) + (_ninjaLaneX * (roadBottomWidth / 3) * 0.94);
+                  final double ninjaY = playerY - _jumpY;
+                  final double shadowWidth = (52.w * (1.0 - (_jumpY / 120.0)).clamp(0.35, 1.0));
+                  final double shadowOpacity = (0.45 * (1.0 - (_jumpY / 120.0)).clamp(0.15, 0.45));
 
-                          // 3. Drag Guide Instruction Pill (shows initially)
-                          if (_score == 0)
-                            Positioned(
-                              bottom: 115.h,
-                              left: 0,
-                              right: 0,
-                              child: Center(
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 6.h),
-                                  decoration: BoxDecoration(
-                                    color: Colors.black.withValues(alpha: 0.75),
-                                    borderRadius: BorderRadius.circular(16.r),
-                                    border: Border.all(
-                                      color: const Color(0xFFFFD700),
-                                      width: 1.2,
-                                    ),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Icon(Icons.touch_app_rounded, color: const Color(0xFFFFD700), size: 14.sp),
-                                      SizedBox(width: 6.w),
-                                      Text(
-                                        'Drag Ninja to catch Gems! Avoid 💣!',
-                                        style: GoogleFonts.fredoka(
-                                          fontSize: 10.5.sp,
-                                          fontWeight: FontWeight.w700,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                        ],
-                      );
+                  // Ninja dynamic tilt during lane transitions
+                  final double ninjaTilt = (_currentLane - _ninjaLaneX) * 0.32;
+                  final bool isFlashing = _invulnerableTimer > 0 && (_invulnerableTimer % 6 < 3);
+
+                  return GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onPanEnd: (details) {
+                      final dx = details.velocity.pixelsPerSecond.dx;
+                      final dy = details.velocity.pixelsPerSecond.dy;
+
+                      if (dy < -250) {
+                        // Swipe Up -> Jump!
+                        _jump();
+                      } else if (dx < -180) {
+                        // Swipe Left -> Move Left Lane
+                        _changeLane(-1);
+                      } else if (dx > 180) {
+                        // Swipe Right -> Move Right Lane
+                        _changeLane(1);
+                      }
                     },
-                  ),
-                );
-              },
-            ),
-          ),
+                    onTapUp: (details) {
+                      final tapX = details.localPosition.dx;
+                      if (tapX < w * 0.35) {
+                        _changeLane(-1);
+                      } else if (tapX > w * 0.65) {
+                        _changeLane(1);
+                      } else {
+                        _jump();
+                      }
+                    },
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        // 1. Perspective 3-Lane Road Canvas
+                        Positioned.fill(
+                          child: CustomPaint(
+                            painter: _PerspectiveRoadPainter(
+                              horizonY: horizonY,
+                              topWidth: roadTopWidth,
+                              bottomWidth: roadBottomWidth,
+                              scrollZ: _roadScrollZ,
+                            ),
+                          ),
+                        ),
 
-          SizedBox(height: 14.h),
+                        // 2. Road Entities (Coins, Gems, Hurdles) sorted from back to front
+                        for (final entity in _roadEntities)
+                          if (!entity.isCollected && entity.z >= 0.0 && entity.z <= 1.15)
+                            _buildProjectedEntity(entity, w, horizonY, playerY, roadTopWidth, roadBottomWidth),
+
+                        // 3. Ninja Road Shadow
+                        Positioned(
+                          left: ninjaX - shadowWidth / 2,
+                          top: playerY + 36.h,
+                          child: Container(
+                            width: shadowWidth,
+                            height: 12.h,
+                            decoration: BoxDecoration(
+                              color: Colors.black.withValues(alpha: shadowOpacity),
+                              borderRadius: BorderRadius.all(Radius.elliptical(shadowWidth, 12.h)),
+                            ),
+                          ),
+                        ),
+
+                        // 4. Hero Mascot: Battle Ninja
+                        Positioned(
+                          left: ninjaX - 38.w,
+                          top: ninjaY - 38.w + sin(_runStep * 0.35) * 3.5.h,
+                          child: Opacity(
+                            opacity: isFlashing ? 0.35 : 1.0,
+                            child: Transform.rotate(
+                              angle: ninjaTilt,
+                              child: Image.asset(
+                                'assets/icons_2/Battle ninja.png',
+                                width: 76.w,
+                                height: 76.w,
+                                fit: BoxFit.contain,
+                                errorBuilder: (_, __, ___) => Image.asset(
+                                  'assets/icons/loginicon.png',
+                                  width: 76.w,
+                                  height: 76.w,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        // 5. Initial Swipe Guide
+                        if (_score == 0)
+                          Positioned(
+                            top: 8.h,
+                            left: 0,
+                            right: 0,
+                            child: Center(
+                              child: Container(
+                                padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 6.h),
+                                decoration: BoxDecoration(
+                                  color: Colors.black.withValues(alpha: 0.75),
+                                  borderRadius: BorderRadius.circular(16.r),
+                                  border: Border.all(
+                                    color: const Color(0xFFFFD700),
+                                    width: 1.2,
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(Icons.swipe_rounded, color: const Color(0xFFFFD700), size: 14.sp),
+                                    SizedBox(width: 6.w),
+                                    Text(
+                                      'Swipe ◀ ▶ to change lane • Swipe ▲ to Jump!',
+                                      style: GoogleFonts.fredoka(
+                                        fontSize: 10.5.sp,
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+
+            SizedBox(height: 6.h),
+
+            // On-Screen 3D Arcade Control Buttons (Left | Jump | Right)
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // Left Lane Button
+                  Expanded(
+                    child: _PopScaleButton(
+                      onTap: () => _changeLane(-1),
+                      child: _buildArcadeControlButton(
+                        icon: Icons.arrow_back_rounded,
+                        label: 'LEFT',
+                        gradientColors: [const Color(0xFF38BDF8), const Color(0xFF0284C7)],
+                        borderColor: const Color(0xFFBAE6FD),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(width: 12.w),
+
+                  // Jump Button
+                  Expanded(
+                    flex: 1,
+                    child: _PopScaleButton(
+                      onTap: _jump,
+                      child: _buildArcadeControlButton(
+                        icon: Icons.arrow_upward_rounded,
+                        label: 'JUMP',
+                        gradientColors: [const Color(0xFFFFD54F), const Color(0xFFEA580C)],
+                        borderColor: const Color(0xFFFED7AA),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(width: 12.w),
+
+                  // Right Lane Button
+                  Expanded(
+                    child: _PopScaleButton(
+                      onTap: () => _changeLane(1),
+                      child: _buildArcadeControlButton(
+                        icon: Icons.arrow_forward_rounded,
+                        label: 'RIGHT',
+                        gradientColors: [const Color(0xFF38BDF8), const Color(0xFF0284C7)],
+                        borderColor: const Color(0xFFBAE6FD),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            SizedBox(height: 6.h),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildArcadeControlButton({
+    required IconData icon,
+    required String label,
+    required List<Color> gradientColors,
+    required Color borderColor,
+  }) {
+    return Container(
+      height: 48.h,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: gradientColors,
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+        borderRadius: BorderRadius.circular(16.r),
+        border: Border.all(
+          color: borderColor,
+          width: 1.8,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.45),
+            blurRadius: 8,
+            offset: const Offset(0, 4),
+          ),
         ],
       ),
+      child: Center(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, color: Colors.white, size: 20.sp),
+            SizedBox(width: 4.w),
+            Text(
+              label,
+              style: GoogleFonts.fredoka(
+                color: Colors.white,
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w900,
+                letterSpacing: 0.5,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildProjectedEntity(
+    _RoadEntity entity,
+    double areaWidth,
+    double horizonY,
+    double playerY,
+    double roadTopWidth,
+    double roadBottomWidth,
+  ) {
+    final double z = entity.z.clamp(0.0, 1.15);
+    final double scale = (0.26 + z * 0.74).clamp(0.25, 1.1);
+
+    // Quadratic perspective projection curve
+    final double y = horizonY + (playerY - horizonY) * (z * z * 1.05);
+    final double roadW = roadTopWidth + (roadBottomWidth - roadTopWidth) * z;
+    final double laneWidth = roadW / 3;
+    final double x = (areaWidth / 2) + (entity.lane * laneWidth);
+
+    final double baseSize = (entity.type == RoadEntityType.hurdle ? 44.w : 38.w);
+    final double renderSize = baseSize * scale;
+
+    Widget content;
+    switch (entity.type) {
+      case RoadEntityType.coin:
+        content = Image.asset(
+          'assets/icons_2/coin.png',
+          width: renderSize,
+          height: renderSize,
+          fit: BoxFit.contain,
+          errorBuilder: (_, __, ___) => Icon(
+            Icons.monetization_on_rounded,
+            color: const Color(0xFFFFD700),
+            size: renderSize,
+          ),
+        );
+        break;
+
+      case RoadEntityType.gem:
+        content = Image.asset(
+          'assets/icons/gems.png',
+          width: renderSize,
+          height: renderSize,
+          fit: BoxFit.contain,
+          errorBuilder: (_, __, ___) => Icon(
+            Icons.diamond_rounded,
+            color: const Color(0xFF38BDF8),
+            size: renderSize,
+          ),
+        );
+        break;
+
+      case RoadEntityType.hurdle:
+        content = Container(
+          width: renderSize * 1.25,
+          height: renderSize * 0.85,
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [Color(0xFF8B5E3C), Color(0xFF4A2810)],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+            borderRadius: BorderRadius.circular(6.r * scale),
+            border: Border.all(
+              color: const Color(0xFFFFCC80),
+              width: 1.5 * scale,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.5),
+                blurRadius: 6 * scale,
+                offset: Offset(0, 3 * scale),
+              ),
+            ],
+          ),
+          child: Center(
+            child: Text(
+              '⚠️',
+              style: TextStyle(fontSize: 16.sp * scale),
+            ),
+          ),
+        );
+        break;
+    }
+
+    return Positioned(
+      left: x - (renderSize / 2),
+      top: y - (renderSize / 2),
+      child: content,
     );
   }
 
@@ -1124,12 +1454,10 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
             children: [
               const Spacer(flex: 2),
 
-              // 1. Panda Mascot & 3D DIAMOND CATCH Logo Composite (Panda above with bottom fade)
               Stack(
                 alignment: Alignment.bottomCenter,
                 clipBehavior: Clip.none,
                 children: [
-                  // Fading Panda Mascot Icon on Top
                   Padding(
                     padding: EdgeInsets.only(bottom: 24.h),
                     child: ShaderMask(
@@ -1143,7 +1471,7 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
                       },
                       blendMode: BlendMode.dstIn,
                       child: Image.asset(
-                        'assets/icons/panda1.png',
+                        'assets/icons_2/Battle ninja.png',
                         width: 200.w,
                         height: 200.w,
                         fit: BoxFit.contain,
@@ -1156,19 +1484,16 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
                       ),
                     ),
                   ),
-
-                  // 3D Cartoon Game Logo Text (DIAMOND CATCH) Overlapping Faded Bottom
                   Stack(
                     alignment: Alignment.center,
                     children: [
-                      // 3D Shadow Stroke Outline
                       Text(
-                        'NINJA CATCH',
+                        'NINJA RUNNER',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.fredoka(
                           fontSize: 32.sp,
                           fontWeight: FontWeight.w900,
-                          letterSpacing: 2.2,
+                          letterSpacing: 2.0,
                           height: 1.1,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
@@ -1176,27 +1501,26 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
                             ..color = const Color(0xFF3E1C03),
                         ),
                       ),
-                      // Glossy Top Text
                       ShaderMask(
                         shaderCallback: (bounds) => const LinearGradient(
                           colors: [
-                            Color(0xFFFFFFFF), // White Specular Shine
-                            Color(0xFFFFF176), // Bright Yellow
-                            Color(0xFFFFB300), // Rich Gold
-                            Color(0xFFFB8C00), // Warm Orange Base
+                            Color(0xFFFFFFFF),
+                            Color(0xFFFFF176),
+                            Color(0xFFFFB300),
+                            Color(0xFFFB8C00),
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           stops: [0.0, 0.35, 0.75, 1.0],
                         ).createShader(bounds),
                         child: Text(
-                          'NINJA CATCH',
+                          'NINJA RUNNER',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.fredoka(
                             fontSize: 32.sp,
                             fontWeight: FontWeight.w900,
                             color: Colors.white,
-                            letterSpacing: 2.2,
+                            letterSpacing: 2.0,
                             height: 1.1,
                           ),
                         ),
@@ -1208,7 +1532,6 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
 
               SizedBox(height: 8.h),
 
-              // 3D Wooden Slogan Ribbon
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 5.h),
                 decoration: BoxDecoration(
@@ -1229,21 +1552,66 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
                   ],
                 ),
                 child: Text(
-                  'SWIPE • CLEAR GRID • WIN GEMS',
+                  'SWIPE LANES • JUMP HURDLES • WIN GEMS',
                   style: GoogleFonts.fredoka(
-                    fontSize: 10.sp,
+                    fontSize: 9.5.sp,
                     fontWeight: FontWeight.w800,
                     color: const Color(0xFFFFECB3),
-                    letterSpacing: 0.8,
+                    letterSpacing: 0.7,
                   ),
                 ),
               ),
 
-              SizedBox(height: 28.h),
+              SizedBox(height: 20.h),
 
-              SizedBox(height: 26.h),
+              // Rules Card
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+                decoration: BoxDecoration(
+                  color: Colors.black.withValues(alpha: 0.65),
+                  borderRadius: BorderRadius.circular(16.r),
+                  border: Border.all(
+                    color: const Color(0xFFFFD700).withValues(alpha: 0.6),
+                    width: 1.2,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.5),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _buildRulePill(
+                      icon: '💎',
+                      label: '+10 Gem',
+                      color: const Color(0xFF38BDF8),
+                    ),
+                    _buildRulePill(
+                      icon: '🪙',
+                      label: '+5 Coin',
+                      color: const Color(0xFFFFD700),
+                    ),
+                    _buildRulePill(
+                      icon: '⚠️',
+                      label: 'Jump Hurdle',
+                      color: const Color(0xFFFF6B6B),
+                    ),
+                    _buildRulePill(
+                      icon: '◀ ▶',
+                      label: '3 Lanes',
+                      color: const Color(0xFF4ADE80),
+                    ),
+                  ],
+                ),
+              ),
 
-              // 4. GIANT 3D Arcade Play Button
+              SizedBox(height: 22.h),
+
+              // GIANT 3D Arcade Play Button
               ScaleTransition(
                 scale: _buttonScaleAnimation,
                 child: Padding(
@@ -1259,10 +1627,10 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
                           colors: [
-                            Color(0xFF86EFAC), // Top Candy Gloss
-                            Color(0xFF22C55E), // Vibrant Mid Green
-                            Color(0xFF16A34A), // Rich Green
-                            Color(0xFF15803D), // Bottom 3D Bevel Shadow
+                            Color(0xFF86EFAC),
+                            Color(0xFF22C55E),
+                            Color(0xFF16A34A),
+                            Color(0xFF15803D),
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -1329,13 +1697,134 @@ class _DiamondCatchScreenState extends ConsumerState<DiamondCatchScreen>
       ),
     );
   }
+
+  Widget _buildRulePill({
+    required String icon,
+    required String label,
+    required Color color,
+  }) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(icon, style: TextStyle(fontSize: 18.sp)),
+        SizedBox(height: 3.h),
+        Text(
+          label,
+          style: GoogleFonts.fredoka(
+            fontSize: 10.sp,
+            fontWeight: FontWeight.w700,
+            color: color,
+          ),
+        ),
+      ],
+    );
+  }
 }
 
 // ==========================================
-// 11. CUSTOM PAINTERS & POP BUTTON WIDGETS
+// 11. PERSPECTIVE 3-LANE ROAD PAINTER
 // ==========================================
 
+class _PerspectiveRoadPainter extends CustomPainter {
+  final double horizonY;
+  final double topWidth;
+  final double bottomWidth;
+  final double scrollZ;
 
+  _PerspectiveRoadPainter({
+    required this.horizonY,
+    required this.topWidth,
+    required this.bottomWidth,
+    required this.scrollZ,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final double midX = size.width / 2;
+    final double bottomY = size.height;
+
+    // 1. Draw Road Base Trapezoid (Subway Surfers / Temple Run 3-lane road)
+    final roadPath = Path()
+      ..moveTo(midX - topWidth / 2, horizonY)
+      ..lineTo(midX + topWidth / 2, horizonY)
+      ..lineTo(midX + bottomWidth / 2, bottomY)
+      ..lineTo(midX - bottomWidth / 2, bottomY)
+      ..close();
+
+    final roadPaint = Paint()
+      ..shader = const LinearGradient(
+        colors: [
+          Color(0xFF1E293B), // Dark slate near horizon
+          Color(0xFF0F172A), // Deep navy asphalt
+          Color(0xFF020617), // Road foreground
+        ],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      ).createShader(Rect.fromLTWH(0, horizonY, size.width, bottomY - horizonY));
+    canvas.drawPath(roadPath, roadPaint);
+
+    // 2. Neon Golden Side Curbs
+    final curbPaint = Paint()
+      ..color = const Color(0xFFFFD700)
+      ..strokeWidth = 3.5
+      ..style = PaintingStyle.stroke;
+
+    // Left curb
+    canvas.drawLine(
+      Offset(midX - topWidth / 2, horizonY),
+      Offset(midX - bottomWidth / 2, bottomY),
+      curbPaint,
+    );
+    // Right curb
+    canvas.drawLine(
+      Offset(midX + topWidth / 2, horizonY),
+      Offset(midX + bottomWidth / 2, bottomY),
+      curbPaint,
+    );
+
+    // 3. Streaming Horizontal Cross-Ties (Creates depth & forward speed sensation!)
+    final tiePaint = Paint()
+      ..color = Colors.white.withValues(alpha: 0.14)
+      ..strokeWidth = 2.0;
+
+    for (int i = 0; i < 9; i++) {
+      final double z = (i / 9.0 + scrollZ) % 1.0;
+      final double y = horizonY + (bottomY - horizonY) * (z * z);
+      final double w = topWidth + (bottomWidth - topWidth) * z;
+      canvas.drawLine(
+        Offset(midX - w / 2, y),
+        Offset(midX + w / 2, y),
+        tiePaint,
+      );
+    }
+
+    // 4. Two Dashed Lane Dividers (Splits road into Left, Center, Right lanes)
+    final laneDividerPaint = Paint()
+      ..color = const Color(0xFF38BDF8).withValues(alpha: 0.70)
+      ..strokeWidth = 2.5;
+
+    for (int l = -1; l <= 1; l += 2) {
+      for (int i = 0; i < 8; i++) {
+        final double z1 = (i / 8.0 + scrollZ) % 1.0;
+        final double z2 = (z1 + 0.055).clamp(0.0, 1.0);
+
+        final double y1 = horizonY + (bottomY - horizonY) * (z1 * z1);
+        final double y2 = horizonY + (bottomY - horizonY) * (z2 * z2);
+
+        final double w1 = topWidth + (bottomWidth - topWidth) * z1;
+        final double w2 = topWidth + (bottomWidth - topWidth) * z2;
+
+        final double laneX1 = midX + (l * (w1 / 6));
+        final double laneX2 = midX + (l * (w2 / 6));
+
+        canvas.drawLine(Offset(laneX1, y1), Offset(laneX2, y2), laneDividerPaint);
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _PerspectiveRoadPainter oldDelegate) => true;
+}
 
 class _ParticleOverlayPainter extends CustomPainter {
   final List<_SparkParticle> sparks;
@@ -1348,7 +1837,6 @@ class _ParticleOverlayPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // Draw Sparks
     for (final s in sparks) {
       final paint = Paint()
         ..color = s.color.withValues(alpha: (s.life * 1.5).clamp(0.0, 1.0))
@@ -1356,7 +1844,6 @@ class _ParticleOverlayPainter extends CustomPainter {
       canvas.drawCircle(Offset(s.x, s.y), s.size * s.life, paint);
     }
 
-    // Draw Floating Scores
     for (final f in floatingScores) {
       final textSpan = TextSpan(
         text: f.text,
@@ -1396,12 +1883,10 @@ class _PopScaleButton extends StatefulWidget {
   const _PopScaleButton({
     required this.onTap,
     required this.child,
-    this.scaleDown = 0.92,
   });
 
   final VoidCallback onTap;
   final Widget child;
-  final double scaleDown;
 
   @override
   State<_PopScaleButton> createState() => _PopScaleButtonState();
@@ -1426,29 +1911,11 @@ class _PopScaleButtonState extends State<_PopScaleButton> {
         setState(() => _isPressed = false);
       },
       child: AnimatedScale(
-        scale: _isPressed ? widget.scaleDown : 1.0,
+        scale: _isPressed ? 0.92 : 1.0,
         duration: const Duration(milliseconds: 120),
         curve: Curves.easeInOutBack,
         child: widget.child,
       ),
     );
   }
-}
-
-enum HapticFeedbackType { light, medium, heavy }
-
-class _FallingItem {
-  double x;
-  double y;
-  final double speed;
-  final bool isBomb;
-  final int points;
-
-  _FallingItem({
-    required this.x,
-    required this.y,
-    required this.speed,
-    required this.isBomb,
-    this.points = 5,
-  });
 }

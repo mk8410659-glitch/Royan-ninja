@@ -84,7 +84,7 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
       child: Scaffold(
         backgroundColor: Colors.white,
         body: RefreshIndicator(
-          color: const Color(0xFFAB31DE),
+          color: const Color(0xFF362187),
           backgroundColor: Colors.white,
           edgeOffset: topPadding + 60.h,
           onRefresh: () async {
@@ -125,7 +125,7 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                              color: const Color(0xFF362187).withValues(alpha: 0.08),
                               blurRadius: 10,
                               offset: const Offset(0, 3),
                             ),
@@ -133,7 +133,7 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
                         ),
                         child: Icon(
                           Icons.arrow_back_rounded,
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           size: 22.sp,
                         ),
                       ),
@@ -161,10 +161,10 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
                 Container(
                   padding: EdgeInsets.all(4.r),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFFAF5FF),
+                    color: const Color(0xFFF6F4FE),
                     borderRadius: BorderRadius.circular(16.r),
                     border: Border.all(
-                      color: const Color(0xFFF3E8FF),
+                      color: const Color(0xFFE9E3FE),
                       width: 1.2,
                     ),
                   ),
@@ -213,7 +213,7 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.history_toggle_off_rounded, color: const Color(0xFFAB31DE), size: 48.sp),
+                              Icon(Icons.history_toggle_off_rounded, color: const Color(0xFF362187), size: 48.sp),
                               SizedBox(height: 12.h),
                               Text(
                                 _activeTab == 1
@@ -271,14 +271,14 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
                             borderRadius: BorderRadius.circular(18.r),
                             border: Border.all(
                               color: isExpanded
-                                  ? const Color(0xFFAB31DE)
+                                  ? const Color(0xFF362187)
                                   : const Color(0xFFF1F5F9),
                               width: isExpanded ? 1.5 : 1.2,
                             ),
                             boxShadow: [
                               BoxShadow(
                                 color: isExpanded
-                                    ? const Color(0xFFAB31DE).withValues(alpha: 0.12)
+                                    ? const Color(0xFF362187).withValues(alpha: 0.12)
                                     : Colors.black.withValues(alpha: 0.04),
                                 blurRadius: 10,
                                 offset: const Offset(0, 3),
@@ -555,14 +555,14 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
                                                 padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.5.h),
                                                 decoration: BoxDecoration(
                                                   gradient: const LinearGradient(
-                                                    colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                                                    colors: [Color(0xFF4C2CA3), Color(0xFF362187)],
                                                     begin: Alignment.topCenter,
                                                     end: Alignment.bottomCenter,
                                                   ),
                                                   borderRadius: BorderRadius.circular(12.r),
                                                   boxShadow: [
                                                     BoxShadow(
-                                                      color: const Color(0xFFAB31DE).withValues(alpha: 0.30),
+                                                      color: const Color(0xFF362187).withValues(alpha: 0.30),
                                                       blurRadius: 6,
                                                       offset: const Offset(0, 2),
                                                     ),
@@ -572,7 +572,7 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
                                                   mainAxisSize: MainAxisSize.min,
                                                   children: [
                                                     Image.asset(
-                                                      'assets/icons/coin.png',
+                                                      'assets/icons_2/coin.png',
                                                       width: 13.w,
                                                       height: 13.w,
                                                       fit: BoxFit.contain,
@@ -600,10 +600,10 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
                                         width: double.infinity,
                                         padding: EdgeInsets.symmetric(vertical: 7.5.h),
                                         decoration: BoxDecoration(
-                                          color: const Color(0xFFFAF5FF),
+                                          color: const Color(0xFFF6F4FE),
                                           borderRadius: BorderRadius.circular(10.r),
                                           border: Border.all(
-                                            color: isExpanded ? const Color(0xFFE9D5FF) : const Color(0xFFF3E8FF),
+                                            color: isExpanded ? const Color(0xFFE9E3FE) : const Color(0xFFE9E3FE),
                                             width: 1.0,
                                           ),
                                         ),
@@ -613,7 +613,7 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
                                             Text(
                                               isExpanded ? 'Hide Details' : 'View All',
                                               style: GoogleFonts.outfit(
-                                                color: const Color(0xFFAB31DE),
+                                                color: const Color(0xFF362187),
                                                 fontSize: 12.sp,
                                                 fontWeight: FontWeight.w800,
                                                 letterSpacing: 0.3,
@@ -622,7 +622,7 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
                                             SizedBox(width: 4.w),
                                             Icon(
                                               isExpanded ? Icons.keyboard_arrow_up_rounded : Icons.keyboard_arrow_down_rounded,
-                                              color: const Color(0xFFAB31DE),
+                                              color: const Color(0xFF362187),
                                               size: 16.sp,
                                             ),
                                           ],
@@ -708,7 +708,7 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
                                     child: Text(
                                       'OTHER RANKERS',
                                       style: GoogleFonts.outfit(
-                                        color: const Color(0xFFAB31DE),
+                                        color: const Color(0xFF362187),
                                         fontSize: 11.sp,
                                         fontWeight: FontWeight.w800,
                                         letterSpacing: 0.8,
@@ -728,10 +728,10 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
                                       margin: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
                                       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 9.h),
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFFAF5FF),
+                                        color: const Color(0xFFF6F4FE),
                                         borderRadius: BorderRadius.circular(12.r),
                                         border: Border.all(
-                                          color: const Color(0xFFF3E8FF),
+                                          color: const Color(0xFFE9E3FE),
                                           width: 1.0,
                                         ),
                                       ),
@@ -749,7 +749,7 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
                                             child: Text(
                                               '#$rank',
                                               style: GoogleFonts.outfit(
-                                                color: const Color(0xFFAB31DE),
+                                                color: const Color(0xFF362187),
                                                 fontSize: 11.sp,
                                                 fontWeight: FontWeight.w900,
                                               ),
@@ -771,7 +771,7 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
                                                 : Text(
                                                     name.substring(0, name.isNotEmpty ? 1 : 0).toUpperCase(),
                                                     style: GoogleFonts.outfit(
-                                                      color: const Color(0xFFAB31DE),
+                                                      color: const Color(0xFF362187),
                                                       fontWeight: FontWeight.bold,
                                                     ),
                                                   ),
@@ -814,7 +814,7 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
                                                 color: Colors.white,
                                                 borderRadius: BorderRadius.circular(8.r),
                                                 border: Border.all(
-                                                  color: const Color(0xFFF3E8FF),
+                                                  color: const Color(0xFFE9E3FE),
                                                   width: 1,
                                                 ),
                                               ),
@@ -822,7 +822,7 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
                                                   Image.asset(
-                                                    'assets/icons/coin.png',
+                                                    'assets/icons_2/coin.png',
                                                     height: 13.w,
                                                     width: 13.w,
                                                     fit: BoxFit.contain,
@@ -831,7 +831,7 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
                                                   Text(
                                                     '+${_formatCoins(coins)}',
                                                     style: GoogleFonts.outfit(
-                                                      color: const Color(0xFFAB31DE),
+                                                      color: const Color(0xFF362187),
                                                       fontSize: 11.5.sp,
                                                       fontWeight: FontWeight.w900,
                                                     ),
@@ -886,7 +886,7 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
           decoration: BoxDecoration(
             gradient: isSelected
                 ? const LinearGradient(
-                    colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                    colors: [Color(0xFF4C2CA3), Color(0xFF362187)],
                   )
                 : null,
             color: isSelected ? null : Colors.transparent,
@@ -894,7 +894,7 @@ class _BattleLeaderboardHistoryScreenState extends State<BattleLeaderboardHistor
             boxShadow: isSelected
                 ? [
                     BoxShadow(
-                      color: const Color(0xFFAB31DE).withValues(alpha: 0.25),
+                      color: const Color(0xFF362187).withValues(alpha: 0.25),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),
@@ -1034,11 +1034,11 @@ class _HistoryPodiumBlock extends StatelessWidget {
           margin: EdgeInsets.only(top: isCenter ? 8.h : 18.h),
           padding: EdgeInsets.only(bottom: 5.h),
           decoration: BoxDecoration(
-            color: const Color(0xFFC88BE2),
+            color: const Color(0xFF4C2CA3),
             borderRadius: BorderRadius.circular(16.r),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFFAB31DE).withValues(alpha: isCenter ? 0.15 : 0.08),
+                color: const Color(0xFF362187).withValues(alpha: isCenter ? 0.15 : 0.08),
                 blurRadius: isCenter ? 12 : 6,
                 offset: const Offset(0, 3),
               ),
@@ -1079,12 +1079,12 @@ class _HistoryPodiumBlock extends StatelessWidget {
                       ),
                       child: ClipOval(
                         child: Container(
-                          color: const Color(0xFFFAF5FF),
+                          color: const Color(0xFFF6F4FE),
                           child: (() {
                             if (!hasPlayer) {
                               return Icon(
                                 Icons.person_rounded,
-                                color: const Color(0xFFAB31DE),
+                                color: const Color(0xFF362187),
                                 size: rank == 1 ? 22.sp : 18.sp,
                               );
                             }
@@ -1098,7 +1098,7 @@ class _HistoryPodiumBlock extends StatelessWidget {
                                     child: Text(
                                       name.substring(0, name.isNotEmpty ? 1 : 0).toUpperCase(),
                                       style: GoogleFonts.outfit(
-                                        color: const Color(0xFFAB31DE),
+                                        color: const Color(0xFF362187),
                                         fontSize: rank == 1 ? 15.sp : 13.sp,
                                         fontWeight: FontWeight.w900,
                                       ),
@@ -1149,7 +1149,7 @@ class _HistoryPodiumBlock extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Image.asset(
-                        'assets/icons/coin.png',
+                        'assets/icons_2/coin.png',
                         width: 11.w,
                         height: 11.w,
                         fit: BoxFit.contain,

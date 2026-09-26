@@ -67,7 +67,7 @@ class BattleArenaScreen extends HookConsumerWidget {
                   refreshCounter.value++;
                   await Future.delayed(const Duration(milliseconds: 700));
                 },
-                color: const Color(0xFFAB31DE),
+                color: const Color(0xFF362187),
                 backgroundColor: Colors.white,
                 child: LayoutBuilder(
                   builder: (context, constraints) {
@@ -145,11 +145,11 @@ class BattleArenaScreen extends HookConsumerWidget {
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
                                                   gradient: const LinearGradient(
-                                                    colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                                                    colors: [Color(0xFF5B34C4), Color(0xFF362187)],
                                                   ),
                                                   boxShadow: [
                                                     BoxShadow(
-                                                      color: const Color(0xFFAB31DE).withValues(alpha: 0.18),
+                                                      color: const Color(0xFF362187).withValues(alpha: 0.18),
                                                       blurRadius: 10,
                                                       offset: const Offset(0, 3),
                                                     ),
@@ -161,7 +161,7 @@ class BattleArenaScreen extends HookConsumerWidget {
                                                       ? NetworkImage(photoUrl)
                                                       : null,
                                                   child: photoUrl.isEmpty
-                                                      ? Icon(Icons.person_rounded, color: const Color(0xFFAB31DE), size: 18.sp)
+                                                      ? Icon(Icons.person_rounded, color: const Color(0xFF362187), size: 18.sp)
                                                       : null,
                                                 ),
                                               ),
@@ -244,7 +244,7 @@ class BattleArenaScreen extends HookConsumerWidget {
                                           ),
                                           boxShadow: [
                                             BoxShadow(
-                                              color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                              color: const Color(0xFF362187).withValues(alpha: 0.10),
                                               blurRadius: 10,
                                               offset: const Offset(0, 3),
                                             ),
@@ -252,7 +252,7 @@ class BattleArenaScreen extends HookConsumerWidget {
                                         ),
                                         child: Icon(
                                           Icons.arrow_back_rounded,
-                                          color: const Color(0xFFAB31DE),
+                                          color: const Color(0xFF362187),
                                           size: 22.sp,
                                         ),
                                       ),
@@ -271,8 +271,8 @@ class BattleArenaScreen extends HookConsumerWidget {
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: [
-                                        const Color(0xFFAB31DE).withValues(alpha: 0.22),
-                                        const Color(0xFFE39FFF).withValues(alpha: 0.08),
+                                        const Color(0xFF362187).withValues(alpha: 0.22),
+                                        const Color(0xFF5B34C4).withValues(alpha: 0.08),
                                         Colors.white.withValues(alpha: 0.0),
                                       ],
                                       begin: Alignment.topCenter,
@@ -374,10 +374,10 @@ class BattleArenaScreen extends HookConsumerWidget {
                                                 },
                                                 blendMode: BlendMode.dstIn,
                                                 child: Image.asset(
-                                                  'assets/icons/battle.png',
+                                                  'assets/icons_2/Battle ninja.png',
                                                   fit: BoxFit.contain,
                                                   errorBuilder: (_, __, ___) => Image.asset(
-                                                    'assets/icons/battle game.png',
+                                                    'assets/icons/battle.png',
                                                     fit: BoxFit.contain,
                                                     errorBuilder: (_, __, ___) => Icon(
                                                       Icons.sports_esports_rounded,
@@ -430,7 +430,7 @@ class BattleArenaScreen extends HookConsumerWidget {
                                                   mainAxisSize: MainAxisSize.min,
                                                   children: [
                                                     Image.asset(
-                                                      'assets/icons/coin.png',
+                                                      'assets/icons_2/coin.png',
                                                       width: 17.w,
                                                       height: 17.w,
                                                       fit: BoxFit.contain,
@@ -868,7 +868,7 @@ class _BattleTabViewState extends State<_BattleTabView> {
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFAB31DE).withValues(alpha: 0.05),
+            color: const Color(0xFF7C3AED).withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 3),
           ),
@@ -879,31 +879,30 @@ class _BattleTabViewState extends State<_BattleTabView> {
           Container(
             width: 60.w,
             height: 60.w,
-            decoration: BoxDecoration(
-              color: const Color(0xFFFAF5FF),
+            decoration: const BoxDecoration(
+              color: Color(0xFFF5F3FF),
               shape: BoxShape.circle,
             ),
             alignment: Alignment.center,
             child: Icon(
               Icons.sports_esports_rounded,
-              color: const Color(0xFFAB31DE),
+              color: const Color(0xFF7C3AED),
               size: 32.sp,
             ),
           ),
           SizedBox(height: 14.h),
           Text(
             title,
-            style: GoogleFonts.outfit(
+            style: GoogleFonts.russoOne(
               color: const Color(0xFF1E1B4B),
               fontSize: 16.sp,
-              fontWeight: FontWeight.w800,
             ),
           ),
           SizedBox(height: 6.h),
           Text(
             subtitle,
             textAlign: TextAlign.center,
-            style: GoogleFonts.outfit(
+            style: GoogleFonts.poppins(
               color: const Color(0xFF64748B),
               fontSize: 12.5.sp,
             ),
@@ -939,23 +938,23 @@ class _FilterChip extends StatelessWidget {
           gradient: isSelected
               ? const LinearGradient(
                   colors: [
-                    Color(0xFFE39FFF),
-                    Color(0xFFAB31DE),
+                    Color(0xFF7C3AED),
+                    Color(0xFF6D28D9),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 )
               : null,
-          color: isSelected ? null : const Color(0xFFFAF5FF),
+          color: isSelected ? null : Colors.white,
           borderRadius: BorderRadius.circular(14.r),
           border: Border.all(
-            color: isSelected ? Colors.transparent : const Color(0xFFE39FFF).withValues(alpha: 0.5),
+            color: isSelected ? Colors.transparent : const Color(0xFFDDD6FE),
             width: 1,
           ),
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: const Color(0xFFAB31DE).withValues(alpha: 0.25),
+                    color: const Color(0xFF7C3AED).withValues(alpha: 0.25),
                     blurRadius: 8,
                     offset: const Offset(0, 3),
                   ),
@@ -965,10 +964,9 @@ class _FilterChip extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           label,
-          style: GoogleFonts.outfit(
+          style: GoogleFonts.russoOne(
             color: isSelected ? Colors.white : const Color(0xFF1E1B4B),
             fontSize: 12.5.sp,
-            fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
           ),
         ),
       ),
@@ -1083,7 +1081,7 @@ class _BattleRoomCardState extends State<_BattleRoomCard> with SingleTickerProvi
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFAB31DE).withValues(alpha: 0.06),
+            color: const Color(0xFF7C3AED).withValues(alpha: 0.06),
             blurRadius: 14,
             offset: const Offset(0, 4),
           ),
@@ -1110,16 +1108,16 @@ class _BattleRoomCardState extends State<_BattleRoomCard> with SingleTickerProvi
                         width: 42.w,
                         height: 42.w,
                         decoration: BoxDecoration(
-                          color: const Color(0xFFFAF5FF),
+                          color: const Color(0xFFF5F3FF),
                           borderRadius: BorderRadius.circular(13.r),
                           border: Border.all(
-                            color: const Color(0xFFF3E8FF),
+                            color: const Color(0xFFEDE9FE),
                             width: 1.0,
                           ),
                         ),
                         child: Icon(
                           Icons.sports_esports_rounded,
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF7C3AED),
                           size: 22.sp,
                         ),
                       ),
@@ -1241,7 +1239,7 @@ class _BattleRoomCardState extends State<_BattleRoomCard> with SingleTickerProvi
                                 children: [
                                   if (!isFree) ...[
                                     Image.asset(
-                                      'assets/icons/coin.png',
+                                      'assets/icons_2/coin.png',
                                       width: 13.w,
                                       height: 13.w,
                                       fit: BoxFit.contain,
@@ -1301,7 +1299,7 @@ class _BattleRoomCardState extends State<_BattleRoomCard> with SingleTickerProvi
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Image.asset(
-                                    'assets/icons/coin.png',
+                                    'assets/icons_2/coin.png',
                                     width: 13.w,
                                     height: 13.w,
                                     fit: BoxFit.contain,
@@ -1357,14 +1355,14 @@ class _BattleRoomCardState extends State<_BattleRoomCard> with SingleTickerProvi
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                           colors: [
-                            Color(0xFFE39FFF),
-                            Color(0xFFAB31DE),
+                            Color(0xFF7C3AED),
+                            Color(0xFF6D28D9),
                           ],
                         ),
                         borderRadius: BorderRadius.circular(23.r),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
+                            color: const Color(0xFF7C3AED).withValues(alpha: 0.35),
                             blurRadius: 12,
                             offset: const Offset(0, 4),
                           ),
@@ -1376,10 +1374,9 @@ class _BattleRoomCardState extends State<_BattleRoomCard> with SingleTickerProvi
                         children: [
                           Text(
                             'JOIN BATTLE',
-                            style: GoogleFonts.outfit(
+                            style: GoogleFonts.russoOne(
                               color: Colors.white,
                               fontSize: 14.sp,
-                              fontWeight: FontWeight.w800,
                               letterSpacing: 0.6,
                             ),
                           ),
@@ -1500,17 +1497,17 @@ class _MyHistoryTabViewState extends State<_MyHistoryTabView> {
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: LinearGradient(
-                            colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                            colors: [Color(0xFF7C3AED), Color(0xFF6D28D9)],
                           ),
                         ),
                         child: CircleAvatar(
                           radius: 30.r,
-                          backgroundColor: const Color(0xFFFAF5FF),
+                          backgroundColor: const Color(0xFFF5F3FF),
                           backgroundImage: photoUrl.isNotEmpty
                               ? NetworkImage(photoUrl)
                               : null,
                           child: photoUrl.isEmpty
-                              ? Icon(Icons.person_rounded, color: const Color(0xFFAB31DE), size: 28.sp)
+                              ? Icon(Icons.person_rounded, color: const Color(0xFF7C3AED), size: 28.sp)
                               : null,
                         ),
                       ),
@@ -1571,7 +1568,7 @@ class _MyHistoryTabViewState extends State<_MyHistoryTabView> {
                                 Text(
                                   badge.title,
                                   style: GoogleFonts.outfit(
-                                    color: const Color(0xFFAB31DE),
+                                    color: const Color(0xFF7C3AED),
                                     fontSize: 11.sp,
                                     fontWeight: FontWeight.w800,
                                   ),
@@ -1658,7 +1655,7 @@ class _MyHistoryTabViewState extends State<_MyHistoryTabView> {
                   child: _buildWhiteStatCard(
                     iconWidget: Icon(
                       Icons.sports_esports_rounded,
-                      color: const Color(0xFFAB31DE),
+                      color: const Color(0xFF7C3AED),
                       size: 18.sp,
                     ),
                     value: '$totalMatches',
@@ -1734,7 +1731,7 @@ class _MyHistoryTabViewState extends State<_MyHistoryTabView> {
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFAB31DE).withValues(alpha: 0.05),
+                    color: const Color(0xFF7C3AED).withValues(alpha: 0.05),
                     blurRadius: 10,
                     offset: const Offset(0, 3),
                   ),
@@ -1759,7 +1756,7 @@ class _MyHistoryTabViewState extends State<_MyHistoryTabView> {
                   _buildMenuDivider(),
                   _buildMenuTile(
                     icon: Icons.history_rounded,
-                    iconColor: const Color(0xFFAB31DE),
+                    iconColor: const Color(0xFF7C3AED),
                     title: 'Match History',
                     subtitle: 'Review all your past battles & scores',
                     onTap: () {
@@ -2144,13 +2141,13 @@ class _BattleElevatedActiveButton extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Color(0xFFE39FFF),
-                Color(0xFFAB31DE),
+                Color(0xFF7C3AED),
+                Color(0xFF6D28D9),
               ],
             ),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFFAB31DE).withValues(alpha: 0.40),
+                color: const Color(0xFF7C3AED).withValues(alpha: 0.40),
                 blurRadius: 10,
                 offset: const Offset(0, 3),
               ),
@@ -2239,7 +2236,7 @@ class _BattleNotchedNavPainter extends CustomPainter {
     final path = _buildBattleNotchedPath(size, cx);
 
     final shadowPaint = Paint()
-      ..color = const Color(0xFFAB31DE).withValues(alpha: 0.10)
+      ..color = const Color(0xFF7C3AED).withValues(alpha: 0.10)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 10);
     canvas.drawPath(path, shadowPaint);
 

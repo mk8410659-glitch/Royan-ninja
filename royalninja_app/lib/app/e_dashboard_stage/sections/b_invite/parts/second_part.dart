@@ -90,7 +90,7 @@ class InviteSecondPart extends HookConsumerWidget {
               children: [
                 Icon(
                   Icons.hub_rounded,
-                  color: const Color(0xFFAB31DE),
+                  color: const Color(0xFF362187),
                   size: 19.sp,
                 ),
                 SizedBox(width: 8.w),
@@ -123,8 +123,8 @@ class InviteSecondPart extends HookConsumerWidget {
           title: 'Level 1',
           subtitle: 'Direct referrals',
           iconData: Icons.people_alt_rounded,
-          iconBgColor: Color(0xFFF3E8FF),
-          themeColor: Color(0xFFAB31DE),
+          iconBgColor: Color(0xFFE9E3FE),
+          themeColor: Color(0xFF362187),
         ),
 
         // Level 2 (Indirect Referrals)
@@ -157,10 +157,10 @@ class InviteSecondPart extends HookConsumerWidget {
         Container(
           padding: EdgeInsets.all(4.w),
           decoration: BoxDecoration(
-            color: const Color(0xFFFAF5FF),
+            color: const Color(0xFFF6F4FE),
             borderRadius: BorderRadius.circular(14.r),
             border: Border.all(
-              color: const Color(0xFFE9D5FF),
+              color: const Color(0xFFE9E3FE),
               width: 1,
             ),
           ),
@@ -188,7 +188,7 @@ class InviteSecondPart extends HookConsumerWidget {
                     decoration: BoxDecoration(
                       gradient: isSelected
                           ? const LinearGradient(
-                              colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                              colors: [Color(0xFF4C2CA3), Color(0xFF362187)],
                             )
                           : null,
                       color: isSelected ? null : Colors.transparent,
@@ -196,7 +196,7 @@ class InviteSecondPart extends HookConsumerWidget {
                       boxShadow: isSelected
                           ? [
                               BoxShadow(
-                                color: const Color(0xFFAB31DE).withValues(alpha: 0.3),
+                                color: const Color(0xFF362187).withValues(alpha: 0.25),
                                 blurRadius: 8,
                                 offset: const Offset(0, 2),
                               ),
@@ -257,10 +257,10 @@ class InviteSecondPart extends HookConsumerWidget {
               return Container(
                 padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFAF5FF),
+                  color: const Color(0xFFF6F4FE),
                   borderRadius: BorderRadius.circular(16.r),
                   border: Border.all(
-                    color: const Color(0xFFE9D5FF),
+                    color: const Color(0xFFE9E3FE),
                     width: 1,
                   ),
                 ),
@@ -273,14 +273,14 @@ class InviteSecondPart extends HookConsumerWidget {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10.r),
                         border: Border.all(
-                          color: const Color(0xFFE9D5FF),
+                          color: const Color(0xFFE9E3FE),
                           width: 1,
                         ),
                       ),
                       alignment: Alignment.center,
                       child: Icon(
                         icon,
-                        color: const Color(0xFFAB31DE),
+                        color: const Color(0xFF362187),
                         size: 18.sp,
                       ),
                     ),
@@ -304,13 +304,13 @@ class InviteSecondPart extends HookConsumerWidget {
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 1.5.h),
                             decoration: BoxDecoration(
-                              color: const Color(0xFFF3E8FF),
+                              color: const Color(0xFFE9E3FE),
                               borderRadius: BorderRadius.circular(4.r),
                             ),
                             child: Text(
                               '+$commission% Extra',
                               style: GoogleFonts.outfit(
-                                color: const Color(0xFFAB31DE),
+                                color: const Color(0xFF362187),
                                 fontSize: 9.5.sp,
                                 fontWeight: FontWeight.w800,
                               ),
@@ -344,12 +344,12 @@ class InviteSecondPart extends HookConsumerWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(22.r),
         border: Border.all(
-          color: const Color(0xFFE9D5FF),
+          color: const Color(0xFFE9E3FE),
           width: 1.2,
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+            color: const Color(0xFF362187).withValues(alpha: 0.08),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -364,13 +364,13 @@ class InviteSecondPart extends HookConsumerWidget {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF3E8FF),
+                    color: const Color(0xFFE9E3FE),
                     borderRadius: BorderRadius.circular(20.r),
                   ),
                   child: Text(
                     '3-TIER SQUAD PERKS',
                     style: GoogleFonts.outfit(
-                      color: const Color(0xFFAB31DE),
+                      color: const Color(0xFF362187),
                       fontSize: 9.5.sp,
                       fontWeight: FontWeight.w800,
                       letterSpacing: 0.6,
@@ -405,16 +405,16 @@ class InviteSecondPart extends HookConsumerWidget {
             width: 64.w,
             height: 64.w,
             decoration: BoxDecoration(
-              color: const Color(0xFFFAF5FF),
+              color: const Color(0xFFF6F4FE),
               shape: BoxShape.circle,
               border: Border.all(
-                color: const Color(0xFFE9D5FF),
+                color: const Color(0xFFE9E3FE),
                 width: 1,
               ),
             ),
             alignment: Alignment.center,
             child: Image.asset(
-              'assets/icons/panda invite.png',
+              'assets/icons_2/Battle ninja.png',
               width: 52.w,
               height: 52.w,
               fit: BoxFit.contain,
@@ -491,7 +491,7 @@ class _ModernLevelTierCard extends ConsumerWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(16.r),
             border: Border.all(
-              color: const Color(0xFFE9D5FF),
+              color: const Color(0xFFE9E3FE),
               width: 1.2,
             ),
             boxShadow: [

@@ -187,26 +187,26 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
             ? const Color(0xFFFFD700)
             : const Color(0xFFFF4D4D);
         bgGradient = isWin
-            ? const [Color(0xFF6E370F), Color(0xFF8B4513), Color(0xFF532809)]
-            : const [Color(0xFF532809), Color(0xFF3E1C03), Color(0xFF241002)];
+            ? const [Color(0xFF241442), Color(0xFF150B28), Color(0xFF0C0618)]
+            : const [Color(0xFF2E0D17), Color(0xFF1D060D), Color(0xFF0F0206)];
         orbGradient = isWin
-            ? const [Color(0xFFFEF08A), Color(0xFFFBBF24), Color(0xFFD97706)]
-            : const [Color(0xFFF87171), Color(0xFFEF4444), Color(0xFFB91C1C)];
+            ? const [Color(0xFFFFEA79), Color(0xFFFFB703), Color(0xFFFB8500)]
+            : const [Color(0xFFFDA4AF), Color(0xFFF43F5E), Color(0xFFBE123C)];
         orbBorderColor = isWin
             ? const Color(0xFFFFD700)
             : const Color(0xFFFF4D4D);
         orbShadowColor = isWin
-            ? const Color(0xFFFFD700).withValues(alpha: 0.50)
-            : const Color(0xFFEF4444).withValues(alpha: 0.50);
+            ? const Color(0xFFFFD700).withValues(alpha: 0.55)
+            : const Color(0xFFF43F5E).withValues(alpha: 0.55);
         arcColors = isWin
             ? [
                 const Color(0xFFFFD700).withValues(alpha: 0.35),
-                const Color(0xFFD97706).withValues(alpha: 0.20),
+                const Color(0xFFFB8500).withValues(alpha: 0.20),
                 Colors.transparent,
               ]
             : [
-                const Color(0xFFEF4444).withValues(alpha: 0.35),
-                const Color(0xFFB91C1C).withValues(alpha: 0.20),
+                const Color(0xFFF43F5E).withValues(alpha: 0.35),
+                const Color(0xFFBE123C).withValues(alpha: 0.20),
                 Colors.transparent,
               ];
         closeBtnColors = const [Color(0xFFF87171), Color(0xFFEF4444), Color(0xFFB91C1C)];
@@ -214,14 +214,14 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
         break;
 
       case _PopupState.finishToUnlock:
-        borderColor = const Color(0xFFFFD700);
-        bgGradient = const [Color(0xFF6E370F), Color(0xFF8B4513), Color(0xFF532809)];
-        orbGradient = const [Color(0xFFFEF08A), Color(0xFFFBBF24), Color(0xFFD97706)];
-        orbBorderColor = const Color(0xFFFFD700);
-        orbShadowColor = const Color(0xFFFFD700).withValues(alpha: 0.50);
+        borderColor = const Color(0xFFA78BFA);
+        bgGradient = const [Color(0xFF241442), Color(0xFF150B28), Color(0xFF0C0618)];
+        orbGradient = const [Color(0xFFC084FC), Color(0xFF9333EA), Color(0xFF6B21A8)];
+        orbBorderColor = const Color(0xFFA78BFA);
+        orbShadowColor = const Color(0xFF9333EA).withValues(alpha: 0.50);
         arcColors = [
-          const Color(0xFFFFD700).withValues(alpha: 0.35),
-          const Color(0xFFD97706).withValues(alpha: 0.20),
+          const Color(0xFFA78BFA).withValues(alpha: 0.35),
+          const Color(0xFF7C3AED).withValues(alpha: 0.20),
           Colors.transparent,
         ];
         closeBtnColors = const [Color(0xFFF87171), Color(0xFFEF4444), Color(0xFFB91C1C)];
@@ -230,13 +230,13 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
 
       case _PopupState.taskFailed:
         borderColor = const Color(0xFFFF4D4D);
-        bgGradient = const [Color(0xFF532809), Color(0xFF3E1C03), Color(0xFF241002)];
-        orbGradient = const [Color(0xFFF87171), Color(0xFFEF4444), Color(0xFFB91C1C)];
+        bgGradient = const [Color(0xFF2E0D17), Color(0xFF1D060D), Color(0xFF0F0206)];
+        orbGradient = const [Color(0xFFFDA4AF), Color(0xFFF43F5E), Color(0xFFBE123C)];
         orbBorderColor = const Color(0xFFFF4D4D);
-        orbShadowColor = const Color(0xFFEF4444).withValues(alpha: 0.50);
+        orbShadowColor = const Color(0xFFF43F5E).withValues(alpha: 0.50);
         arcColors = [
-          const Color(0xFFEF4444).withValues(alpha: 0.35),
-          const Color(0xFFB91C1C).withValues(alpha: 0.20),
+          const Color(0xFFF43F5E).withValues(alpha: 0.35),
+          const Color(0xFFBE123C).withValues(alpha: 0.20),
           Colors.transparent,
         ];
         closeBtnColors = const [Color(0xFFF87171), Color(0xFFEF4444), Color(0xFFB91C1C)];
@@ -245,7 +245,7 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
 
       case _PopupState.taskSuccess:
         borderColor = const Color(0xFF4ADE80);
-        bgGradient = const [Color(0xFF14532D), Color(0xFF0F3E22), Color(0xFF0A2916)];
+        bgGradient = const [Color(0xFF0B3320), Color(0xFF051C11), Color(0xFF020E08)];
         orbGradient = const [Color(0xFF86EFAC), Color(0xFF22C55E), Color(0xFF15803D)];
         orbBorderColor = const Color(0xFF4ADE80);
         orbShadowColor = const Color(0xFF22C55E).withValues(alpha: 0.50);
@@ -353,7 +353,7 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
                         foreground: Paint()
                           ..style = PaintingStyle.stroke
                           ..strokeWidth = 4.5
-                          ..color = const Color(0xFF3E1C03),
+                          ..color = isWin ? const Color(0xFF120626) : const Color(0xFF1A050B),
                       ),
                     ),
                     // Inner text
@@ -463,7 +463,7 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
                 ScaleTransition(
                   scale: _star1Anim,
                   child: Icon(Icons.star_rounded,
-                      color: const Color(0xFFFFECB3), size: 30.sp),
+                      color: const Color(0xFFFFD54F), size: 30.sp),
                 ),
                 ScaleTransition(
                   scale: _star2Anim,
@@ -476,7 +476,7 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
                 ScaleTransition(
                   scale: _star3Anim,
                   child: Icon(Icons.star_rounded,
-                      color: const Color(0xFFFFECB3), size: 30.sp),
+                      color: const Color(0xFFFFD54F), size: 30.sp),
                 ),
               ],
             ),
@@ -538,7 +538,7 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
           ),
           child: Center(
             child: Image.asset(
-              'assets/icons/panda1.png',
+              'assets/icons_2/Battle ninja.png',
               width: 85.w,
               height: 85.w,
               fit: BoxFit.contain,
@@ -559,22 +559,37 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
             width: double.infinity,
             padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 12.w),
             decoration: BoxDecoration(
-              color: const Color(0xFF2C1607),
+              gradient: const LinearGradient(
+                colors: [Color(0xFF2C1952), Color(0xFF1C0E36)],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
               borderRadius: BorderRadius.circular(16.r),
               border: Border.all(
-                color: const Color(0xFF8B4513),
-                width: 1.2,
+                color: const Color(0xFFFFD700).withValues(alpha: 0.50),
+                width: 1.3,
               ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.45),
+                  blurRadius: 10,
+                  offset: const Offset(0, 3),
+                ),
+                BoxShadow(
+                  color: const Color(0xFFFFD700).withValues(alpha: 0.12),
+                  blurRadius: 12,
+                ),
+              ],
             ),
             child: Column(
               children: [
                 Text(
                   'REACHED SCORE',
                   style: GoogleFonts.fredoka(
-                    color: const Color(0xFFFFD700),
+                    color: const Color(0xFFFFE082),
                     fontSize: 11.5.sp,
                     fontWeight: FontWeight.w700,
-                    letterSpacing: 0.5,
+                    letterSpacing: 0.8,
                   ),
                 ),
                 SizedBox(height: 2.h),
@@ -582,8 +597,14 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
                   '${widget.score}',
                   style: GoogleFonts.fredoka(
                     color: Colors.white,
-                    fontSize: 22.sp,
+                    fontSize: 24.sp,
                     fontWeight: FontWeight.w900,
+                    shadows: [
+                      Shadow(
+                        color: const Color(0xFFFFD700).withValues(alpha: 0.5),
+                        blurRadius: 8,
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -608,12 +629,12 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
                         Color(0xFF166534),
                       ]
                     : const [
-                        Color(0xFFFEF08A), // Gloss Yellow
-                        Color(0xFFBEF264), // Bright Lime
-                        Color(0xFF22C55E), // Candy Green
-                        Color(0xFF15803D), // Dark Green Shadow
+                        Color(0xFFBFFFC7),
+                        Color(0xFF4ADE80),
+                        Color(0xFF16A34A),
+                        Color(0xFF14532D),
                       ],
-                shadowColor: const Color(0xFF15803D).withValues(alpha: 0.70),
+                shadowColor: const Color(0xFF14532D).withValues(alpha: 0.75),
                 prefix: _isClaimed
                     ? Icon(Icons.check_circle_rounded,
                         color: Colors.white, size: 20.sp)
@@ -638,14 +659,14 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
                     height: 22.w,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.white,
+                      color: const Color(0xFF0F172A),
                       border: Border.all(
-                        color: Colors.black,
+                        color: const Color(0xFFFFD700),
                         width: 1.5,
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.35),
+                          color: Colors.black.withValues(alpha: 0.45),
                           blurRadius: 5,
                           offset: const Offset(0, 2),
                         ),
@@ -655,7 +676,7 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
                     child: Text(
                       'AD',
                       style: GoogleFonts.fredoka(
-                        color: Colors.black,
+                        color: const Color(0xFFFFD700),
                         fontSize: 9.sp,
                         fontWeight: FontWeight.w900,
                         height: 1.0,
@@ -674,12 +695,12 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
                 title: 'RESUME',
                 isLoading: _isAdLoading,
                 fillColors: const [
-                  Color(0xFFF87171),
-                  Color(0xFFEF4444),
-                  Color(0xFFB91C1C),
-                  Color(0xFF991B1B),
+                  Color(0xFFFDA4AF),
+                  Color(0xFFF43F5E),
+                  Color(0xFFBE123C),
+                  Color(0xFF881337),
                 ],
-                shadowColor: const Color(0xFF7F1D1D).withValues(alpha: 0.70),
+                shadowColor: const Color(0xFF881337).withValues(alpha: 0.75),
                 prefix: Icon(
                   Icons.play_arrow_rounded,
                   color: Colors.white,
@@ -695,14 +716,14 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
                   height: 22.w,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.white,
+                    color: const Color(0xFF0F172A),
                     border: Border.all(
-                      color: Colors.black,
+                      color: const Color(0xFFFFD700),
                       width: 1.5,
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.35),
+                        color: Colors.black.withValues(alpha: 0.45),
                         blurRadius: 5,
                         offset: const Offset(0, 2),
                       ),
@@ -712,7 +733,7 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
                   child: Text(
                     'AD',
                     style: GoogleFonts.fredoka(
-                      color: Colors.black,
+                      color: const Color(0xFFFFD700),
                       fontSize: 9.sp,
                       fontWeight: FontWeight.w900,
                       height: 1.0,
@@ -737,20 +758,29 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
             height: 46.h,
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                colors: [Color(0xFFFEF08A), Color(0xFFFBBF24), Color(0xFFF59E0B), Color(0xFFB45309)],
+                colors: [
+                  Color(0xFF818CF8),
+                  Color(0xFF6366F1),
+                  Color(0xFF4F46E5),
+                  Color(0xFF3730A3),
+                ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
               borderRadius: BorderRadius.circular(16.r),
               border: Border.all(
-                color: const Color(0xFFFFD700),
+                color: const Color(0xFFA5B4FC),
                 width: 1.5,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.4),
-                  blurRadius: 8,
+                  color: const Color(0xFF3730A3).withValues(alpha: 0.7),
+                  blurRadius: 10,
                   offset: const Offset(0, 4),
+                ),
+                BoxShadow(
+                  color: const Color(0xFF6366F1).withValues(alpha: 0.35),
+                  blurRadius: 12,
                 ),
               ],
             ),
@@ -765,9 +795,9 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
                   'PLAY AGAIN',
                   style: GoogleFonts.fredoka(
                     color: Colors.white,
-                    fontSize: 14.sp,
+                    fontSize: 14.5.sp,
                     fontWeight: FontWeight.w800,
-                    letterSpacing: 0.5,
+                    letterSpacing: 0.8,
                   ),
                 ),
               ],
@@ -792,7 +822,7 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
       children: [
         // 1. Tag
         Text(
-          'Ninja Catch',
+          'Ninja Runner',
           textAlign: TextAlign.center,
           style: GoogleFonts.fredoka(
             color: const Color(0xFFDDD6FE),
@@ -1080,7 +1110,7 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          'Ninja Catch',
+          'Ninja Runner',
           textAlign: TextAlign.center,
           style: GoogleFonts.fredoka(
             color: const Color(0xFFA7F3D0),
@@ -1133,7 +1163,7 @@ class _GameResultPopupState extends ConsumerState<GameResultPopup>
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 4.w),
           child: Text(
-            'You\'ve successfully completed Ninja Catch and earned gems—keep going!',
+            'You\'ve successfully completed Ninja Runner and earned gems—keep going!',
             textAlign: TextAlign.center,
             style: GoogleFonts.fredoka(
               color: const Color(0xFFCBD5E1),

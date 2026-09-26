@@ -218,7 +218,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                     alignment: Alignment.center,
                     child: Icon(
                       Icons.task_alt_rounded,
-                      color: const Color(0xFFAB31DE),
+                      color: const Color(0xFF362187),
                       size: 20.sp,
                     ),
                   ),
@@ -252,14 +252,14 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       colors: [
-                        Color(0xFFE39FFF),
-                        Color(0xFFAB31DE),
+                        Color(0xFF5B34C4),
+                        Color(0xFF362187),
                       ],
                     ),
                     borderRadius: BorderRadius.circular(12.r),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFFAB31DE).withValues(alpha: 0.25),
+                        color: const Color(0xFF362187).withValues(alpha: 0.25),
                         blurRadius: 8,
                         offset: const Offset(0, 3),
                       ),
@@ -560,7 +560,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                      color: const Color(0xFF362187).withValues(alpha: 0.10),
                                       blurRadius: 10,
                                       offset: const Offset(0, 3),
                                     ),
@@ -568,7 +568,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                                 ),
                                 child: Icon(
                                   Icons.arrow_back_rounded,
-                                  color: const Color(0xFFAB31DE),
+                                  color: const Color(0xFF362187),
                                   size: 22.sp,
                                 ),
                               ),
@@ -602,7 +602,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Icon(Icons.cloud_off_rounded, color: const Color(0xFFAB31DE), size: 48.sp),
+                                  Icon(Icons.cloud_off_rounded, color: const Color(0xFF362187), size: 48.sp),
                                   SizedBox(height: 14.h),
                                   Text(
                                     'Connection Error',
@@ -629,8 +629,8 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                                       decoration: BoxDecoration(
                                         gradient: const LinearGradient(
                                           colors: [
-                                            Color(0xFFE39FFF),
-                                            Color(0xFFAB31DE),
+                                            Color(0xFF5B34C4),
+                                            Color(0xFF362187),
                                           ],
                                         ),
                                         borderRadius: BorderRadius.circular(12.r),
@@ -657,7 +657,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Icon(Icons.event_busy_rounded, color: const Color(0xFFAB31DE), size: 48.sp),
+                                      Icon(Icons.event_busy_rounded, color: const Color(0xFF362187), size: 48.sp),
                                       SizedBox(height: 14.h),
                                       Text(
                                         'Daily Challenge Inactive',
@@ -691,7 +691,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                             final progressPercent = challengeData.overallProgressPercent.clamp(0.0, 1.0);
 
                             return RefreshIndicator(
-                              color: const Color(0xFFAB31DE),
+                              color: const Color(0xFF362187),
                               backgroundColor: Colors.white,
                               onRefresh: () async {
                                 ref.invalidate(dailyChallengeProvider(userId));
@@ -822,7 +822,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
             offset: const Offset(0, 6),
           ),
           BoxShadow(
-            color: const Color(0xFFAB31DE).withValues(alpha: 0.06),
+            color: const Color(0xFF362187).withValues(alpha: 0.08),
             blurRadius: 12,
             offset: const Offset(0, 8),
           ),
@@ -867,7 +867,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
               width: 90.w,
               child: Center(
                 child: Image.asset(
-                  'assets/icons/coin.png',
+                  'assets/icons_2/coin.png',
                   fit: BoxFit.contain,
                 ),
               ),
@@ -926,8 +926,8 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                             decoration: BoxDecoration(
                               gradient: const LinearGradient(
                                 colors: [
-                                  Color(0xFFF59E0B),
-                                  Color(0xFFD97706),
+                                  Color(0xFFFFF100),
+                                  Color(0xFFFFB800),
                                 ],
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
@@ -935,7 +935,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                               borderRadius: BorderRadius.circular(20.r),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFD97706).withValues(alpha: 0.35),
+                                  color: const Color(0xFFFFB800).withValues(alpha: 0.35),
                                   blurRadius: 8,
                                   offset: const Offset(0, 3),
                                 ),
@@ -947,7 +947,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Image.asset(
-                                        'assets/icons/coin.png',
+                                        'assets/icons_2/coin.png',
                                         width: 16.sp,
                                         height: 16.sp,
                                         fit: BoxFit.contain,
@@ -956,7 +956,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                                       Text(
                                         'CLAIM +${data.rewardCoins}',
                                         style: GoogleFonts.outfit(
-                                          color: Colors.white,
+                                          color: const Color(0xFF24125C),
                                           fontSize: 11.5.sp,
                                           fontWeight: FontWeight.w900,
                                           letterSpacing: 0.3,
@@ -1019,7 +1019,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                         TextSpan(
                           text: '+${data.rewardCoins} Coins',
                           style: GoogleFonts.outfit(
-                            color: const Color(0xFFAB31DE),
+                            color: const Color(0xFF362187),
                             fontSize: 20.sp,
                             fontWeight: FontWeight.w900,
                             letterSpacing: -0.3,
@@ -1066,7 +1066,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                       Text(
                         '${(progress * 100).toInt()}% Complete',
                         style: GoogleFonts.outfit(
-                          color: isDone ? const Color(0xFF16A34A) : const Color(0xFFAB31DE),
+                          color: isDone ? const Color(0xFF16A34A) : const Color(0xFF362187),
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w800,
                         ),
@@ -1097,7 +1097,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                           gradient: LinearGradient(
                             colors: isDone
                                 ? [const Color(0xFF34D399), const Color(0xFF059669)]
-                                : [const Color(0xFFE39FFF), const Color(0xFFAB31DE)],
+                                : [const Color(0xFF5B34C4), const Color(0xFF362187)],
                           ),
                         ),
                       ),
@@ -1140,7 +1140,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFAB31DE).withValues(alpha: 0.05),
+                    color: const Color(0xFF362187).withValues(alpha: 0.05),
                     blurRadius: 12,
                     offset: const Offset(0, 4),
                   ),
@@ -1152,10 +1152,10 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                     width: 40.w,
                     height: 40.w,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFFAF5FF),
+                      color: const Color(0xFFF5F3FF),
                       borderRadius: BorderRadius.circular(14.r),
                       border: Border.all(
-                        color: const Color(0xFFF3E8FF),
+                        color: const Color(0xFFEDE9FE),
                         width: 1,
                       ),
                     ),
@@ -1165,7 +1165,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                       fit: BoxFit.contain,
                       errorBuilder: (_, __, ___) => const Icon(
                         Icons.task_alt_rounded,
-                        color: Color(0xFFAB31DE),
+                        color: Color(0xFF362187),
                         size: 20,
                       ),
                     ),
@@ -1203,7 +1203,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                             SizedBox(width: 3.w),
                             Icon(
                               Icons.info_outline_rounded,
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.6),
+                              color: const Color(0xFF362187).withValues(alpha: 0.6),
                               size: 11.sp,
                             ),
                           ],
@@ -1335,8 +1335,8 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                 ShaderMask(
                   shaderCallback: (bounds) => const LinearGradient(
                     colors: [
-                      Color(0xFFE39FFF),
-                      Color(0xFFAB31DE),
+                      Color(0xFF5B34C4),
+                      Color(0xFF362187),
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
@@ -1361,7 +1361,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                       TextSpan(
                         text: 'Tasks',
                         style: GoogleFonts.outfit(
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           fontSize: 16.5.sp,
                           fontWeight: FontWeight.w800,
                         ),
@@ -1374,17 +1374,17 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
             Container(
               padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
               decoration: BoxDecoration(
-                color: const Color(0xFFFAF5FF),
+                color: const Color(0xFFF5F3FF),
                 borderRadius: BorderRadius.circular(10.r),
                 border: Border.all(
-                  color: const Color(0xFFE39FFF).withValues(alpha: 0.4),
+                  color: const Color(0xFF5B34C4).withValues(alpha: 0.3),
                   width: 1,
                 ),
               ),
               child: Text(
                 '${challengeData.completedTasksCount}/${challengeData.totalTasksCount} Complete',
                 style: GoogleFonts.outfit(
-                  color: const Color(0xFFAB31DE),
+                  color: const Color(0xFF362187),
                   fontSize: 11.5.sp,
                   fontWeight: FontWeight.w800,
                 ),
@@ -1408,7 +1408,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
           decoration: BoxDecoration(
             gradient: const LinearGradient(
               colors: [
-                Color(0xFFAB31DE),
+                Color(0xFF362187),
                 Colors.transparent,
               ],
             ),
@@ -1436,7 +1436,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
           Icon(
             Icons.assignment_late_outlined,
             size: 40.sp,
-            color: const Color(0xFFAB31DE),
+            color: const Color(0xFF362187),
           ),
           SizedBox(height: 10.h),
           Text(
@@ -1487,7 +1487,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
           BoxShadow(
             color: isComplete
                 ? const Color(0xFF16A34A).withValues(alpha: 0.06)
-                : const Color(0xFFAB31DE).withValues(alpha: 0.07),
+                : const Color(0xFF362187).withValues(alpha: 0.07),
             blurRadius: 14,
             offset: const Offset(0, 4),
           ),
@@ -1504,9 +1504,9 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
               height: 48.w,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: isComplete ? const Color(0xFFDCFCE7) : const Color(0xFFFAF5FF),
+                color: isComplete ? const Color(0xFFDCFCE7) : const Color(0xFFF5F3FF),
                 border: Border.all(
-                  color: isComplete ? const Color(0xFF86EFAC) : const Color(0xFFF3E8FF),
+                  color: isComplete ? const Color(0xFF86EFAC) : const Color(0xFFEDE9FE),
                   width: 1.2,
                 ),
               ),
@@ -1516,7 +1516,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                 fit: BoxFit.contain,
                 errorBuilder: (_, __, ___) => Icon(
                   Icons.emoji_events_rounded,
-                  color: isComplete ? const Color(0xFF15803D) : const Color(0xFFAB31DE),
+                  color: isComplete ? const Color(0xFF15803D) : const Color(0xFF362187),
                   size: 22.sp,
                 ),
               ),
@@ -1576,7 +1576,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                                   gradient: LinearGradient(
                                     colors: isComplete
                                         ? [const Color(0xFF34D399), const Color(0xFF059669)]
-                                        : [const Color(0xFFE39FFF), const Color(0xFFAB31DE)],
+                                        : [const Color(0xFF5B34C4), const Color(0xFF362187)],
                                   ),
                                 ),
                               ),
@@ -1588,7 +1588,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                       Text(
                         '$current/$target',
                         style: GoogleFonts.outfit(
-                          color: isComplete ? const Color(0xFF16A34A) : const Color(0xFFAB31DE),
+                          color: isComplete ? const Color(0xFF16A34A) : const Color(0xFF362187),
                           fontSize: 11.5.sp,
                           fontWeight: FontWeight.w800,
                         ),
@@ -1638,8 +1638,8 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       colors: [
-                        Color(0xFFE39FFF),
-                        Color(0xFFAB31DE),
+                        Color(0xFF5B34C4),
+                        Color(0xFF362187),
                       ],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
@@ -1647,7 +1647,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
                     borderRadius: BorderRadius.circular(12.r),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFFAB31DE).withValues(alpha: 0.22),
+                        color: const Color(0xFF362187).withValues(alpha: 0.25),
                         blurRadius: 6,
                         offset: const Offset(0, 2),
                       ),
@@ -1690,7 +1690,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
         children: [
           Row(
             children: [
-              Icon(Icons.info_outline_rounded, color: const Color(0xFFAB31DE), size: 18.sp),
+              Icon(Icons.info_outline_rounded, color: const Color(0xFF362187), size: 18.sp),
               SizedBox(width: 6.w),
               Text(
                 'How Daily Challenge Works',
@@ -1717,7 +1717,7 @@ class _DailyChallengeScreenState extends ConsumerState<DailyChallengeScreen>
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('• ', style: TextStyle(color: const Color(0xFFAB31DE), fontSize: 14.sp, fontWeight: FontWeight.bold)),
+          Text('• ', style: TextStyle(color: const Color(0xFF362187), fontSize: 14.sp, fontWeight: FontWeight.bold)),
           Expanded(
             child: Text(
               text,

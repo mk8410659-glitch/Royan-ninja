@@ -519,7 +519,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                              color: const Color(0xFF362187).withValues(alpha: 0.08),
                               blurRadius: 10,
                               offset: const Offset(0, 3),
                             ),
@@ -527,7 +527,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                         ),
                         child: Icon(
                           Icons.arrow_back_rounded,
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           size: 22.sp,
                         ),
                       ),
@@ -551,7 +551,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                 child: LayoutBuilder(
                   builder: (context, constraints) {
                     return RefreshIndicator(
-                      color: const Color(0xFFAB31DE),
+                      color: const Color(0xFF362187),
                       onRefresh: _fetchFreshRoomData,
                       child: SingleChildScrollView(
                         physics: const AlwaysScrollableScrollPhysics(
@@ -576,7 +576,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: const Color(0xFFAB31DE).withValues(alpha: 0.06),
+                                      color: const Color(0xFF362187).withValues(alpha: 0.06),
                                       blurRadius: 12,
                                       offset: const Offset(0, 4),
                                     ),
@@ -693,7 +693,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
           decoration: BoxDecoration(
             gradient: isSelected
                 ? const LinearGradient(
-                    colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                    colors: [Color(0xFF5B34C4), Color(0xFF362187)],
                   )
                 : null,
             color: isSelected ? null : Colors.transparent,
@@ -701,7 +701,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
             boxShadow: isSelected
                 ? [
                     BoxShadow(
-                      color: const Color(0xFFAB31DE).withValues(alpha: 0.25),
+                      color: const Color(0xFF362187).withValues(alpha: 0.25),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),
@@ -771,7 +771,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
               ),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFFAB31DE).withValues(alpha: 0.06),
+                  color: const Color(0xFF362187).withValues(alpha: 0.06),
                   blurRadius: 10,
                   offset: const Offset(0, 3),
                 ),
@@ -780,12 +780,12 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
             child: Column(
               children: [
                 Image.asset(
-                  'assets/icons/battle.png',
+                  'assets/icons_2/Battle ninja.png',
                   height: 72.h,
                   fit: BoxFit.contain,
                   errorBuilder: (_, __, ___) => Icon(
                     Icons.emoji_events_rounded,
-                    color: const Color(0xFFAB31DE),
+                    color: const Color(0xFF362187),
                     size: 32.sp,
                   ),
                 ),
@@ -828,7 +828,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                     children: [
                       Row(
                         children: [
-                          Icon(Icons.timer_outlined, color: const Color(0xFFAB31DE), size: 15.sp),
+                          Icon(Icons.timer_outlined, color: const Color(0xFF362187), size: 15.sp),
                           SizedBox(width: 6.w),
                           Text(
                             '${durationSec}s duration',
@@ -843,7 +843,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                       Container(height: 14.h, width: 1, color: const Color(0xFFE9D5FF)),
                       Row(
                         children: [
-                          Icon(Icons.group_outlined, color: const Color(0xFFAB31DE), size: 15.sp),
+                          Icon(Icons.group_outlined, color: const Color(0xFF362187), size: 15.sp),
                           SizedBox(width: 6.w),
                           Text(
                             '$capacity players room',
@@ -885,7 +885,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
             ),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFFAB31DE).withValues(alpha: 0.06),
+                color: const Color(0xFF362187).withValues(alpha: 0.06),
                 blurRadius: 10,
                 offset: const Offset(0, 3),
               ),
@@ -912,7 +912,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Image.asset(
-                          'assets/icons/coin.png',
+                          'assets/icons_2/coin.png',
                           height: 20.sp,
                           width: 20.sp,
                         ),
@@ -965,7 +965,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.bolt_rounded, color: const Color(0xFFAB31DE), size: 15.sp),
+                          Icon(Icons.bolt_rounded, color: const Color(0xFF362187), size: 15.sp),
                           SizedBox(width: 3.w),
                           Text(
                             '${durationSec}s',
@@ -1007,7 +1007,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Image.asset(
-                          'assets/icons/coin.png',
+                          'assets/icons_2/coin.png',
                           height: 20.sp,
                           width: 20.sp,
                         ),
@@ -1062,7 +1062,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, color: const Color(0xFFAB31DE), size: 16.sp),
+          Icon(icon, color: const Color(0xFF362187), size: 16.sp),
           SizedBox(width: 8.w),
           Text(
             label,
@@ -1122,7 +1122,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
           'RANK DISTRIBUTION',
           style: GoogleFonts.outfit(
             fontSize: 11.sp,
-            color: const Color(0xFFAB31DE),
+            color: const Color(0xFF362187),
             fontWeight: FontWeight.w800,
             letterSpacing: 0.8,
           ),
@@ -1191,7 +1191,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Image.asset(
-                        'assets/icons/coin.png',
+                        'assets/icons_2/coin.png',
                         height: 13.w,
                         width: 13.w,
                         fit: BoxFit.contain,
@@ -1654,7 +1654,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFFAB31DE).withValues(alpha: 0.12),
+                      color: const Color(0xFF362187).withValues(alpha: 0.12),
                       blurRadius: 14,
                       offset: const Offset(0, 3),
                     ),
@@ -1677,7 +1677,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                           ),
                           child: Icon(
                             Icons.hourglass_top_rounded,
-                            color: const Color(0xFFAB31DE),
+                            color: const Color(0xFF362187),
                             size: 18.sp,
                           ),
                         ),
@@ -1725,7 +1725,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                             style: GoogleFonts.outfit(
                               fontSize: 11.5.sp,
                               fontWeight: FontWeight.w800,
-                              color: const Color(0xFFAB31DE),
+                              color: const Color(0xFF362187),
                             ),
                           ),
                         ),
@@ -1748,7 +1748,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                         child: Container(
                           decoration: BoxDecoration(
                             gradient: const LinearGradient(
-                              colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                              colors: [Color(0xFF5B34C4), Color(0xFF362187)],
                             ),
                             borderRadius: BorderRadius.circular(4.r),
                           ),
@@ -1811,12 +1811,12 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                           gradient: const LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
-                            colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                            colors: [Color(0xFF5B34C4), Color(0xFF362187)],
                           ),
                           borderRadius: BorderRadius.circular(12.r),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.26),
+                              color: const Color(0xFF362187).withValues(alpha: 0.26),
                               blurRadius: 6,
                               offset: const Offset(0, 2),
                             ),
@@ -1858,8 +1858,8 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
                   colors: [
-                    Color(0xFFE39FFF),
-                    Color(0xFFAB31DE),
+                    Color(0xFF5B34C4),
+                    Color(0xFF362187),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -1867,7 +1867,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                 borderRadius: BorderRadius.circular(16.r),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFAB31DE).withValues(alpha: 0.32),
+                    color: const Color(0xFF362187).withValues(alpha: 0.32),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -1985,7 +1985,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               gradient: LinearGradient(
-                colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                colors: [Color(0xFF5B34C4), Color(0xFF362187)],
               ),
             ),
             alignment: Alignment.center,
@@ -2057,7 +2057,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                   SizedBox(height: 16.h),
                   Icon(
                     Icons.download_for_offline_rounded,
-                    color: const Color(0xFFAB31DE),
+                    color: const Color(0xFF362187),
                     size: 42.sp,
                   ),
                   SizedBox(height: 8.h),
@@ -2220,7 +2220,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                                 },
                           style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.symmetric(vertical: 13.h),
-                            backgroundColor: const Color(0xFFAB31DE),
+                            backgroundColor: const Color(0xFF362187),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12.r),
                             ),
@@ -2303,7 +2303,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFFAB31DE).withValues(alpha: 0.15),
+                        color: const Color(0xFF362187).withValues(alpha: 0.15),
                         blurRadius: 16,
                         offset: const Offset(0, 4),
                       ),
@@ -2318,7 +2318,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                         gradient: LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
-                          colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                          colors: [Color(0xFF5B34C4), Color(0xFF362187)],
                         ),
                       ),
                       child: Icon(
@@ -2376,12 +2376,12 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                       Container(
                         padding: EdgeInsets.all(8.w),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFAB31DE).withValues(alpha: 0.12),
+                          color: const Color(0xFF362187).withValues(alpha: 0.12),
                           borderRadius: BorderRadius.circular(10.r),
                         ),
                         child: Icon(
                           Icons.tips_and_updates_rounded,
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           size: 20.sp,
                         ),
                       ),
@@ -2456,12 +2456,12 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                             gradient: const LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
-                              colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                              colors: [Color(0xFF5B34C4), Color(0xFF362187)],
                             ),
                             borderRadius: BorderRadius.circular(14.r),
                             boxShadow: [
                               BoxShadow(
-                                color: const Color(0xFFAB31DE).withValues(alpha: 0.3),
+                                color: const Color(0xFF362187).withValues(alpha: 0.3),
                                 blurRadius: 8,
                                 offset: const Offset(0, 3),
                               ),
@@ -2554,7 +2554,7 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
                 Row(
                   children: [
                     Image.asset(
-                      'assets/icons/coin.png',
+                      'assets/icons_2/coin.png',
                       width: 14.w,
                       height: 14.w,
                     ),
@@ -2613,11 +2613,11 @@ class _BattleRoomDetailsScreenState extends ConsumerState<BattleRoomDetailsScree
         ),
       ),
       primaryButtonText: 'COLLECT COINS',
-      primaryButtonColor: const Color(0xFFAB31DE),
+      primaryButtonColor: const Color(0xFF362187),
       primaryButtonGradient: const LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
-        colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+        colors: [Color(0xFF5B34C4), Color(0xFF362187)],
       ),
       onPrimaryTap: () {
         Navigator.of(context).popUntil((route) => route.isFirst);

@@ -181,7 +181,7 @@ class PromoCodeScreen extends HookConsumerWidget {
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                  color: const Color(0xFF362187).withValues(alpha: 0.08),
                                   blurRadius: 10,
                                   offset: const Offset(0, 3),
                                 ),
@@ -189,7 +189,7 @@ class PromoCodeScreen extends HookConsumerWidget {
                             ),
                             child: Icon(
                               Icons.arrow_back_rounded,
-                              color: const Color(0xFFAB31DE),
+                              color: const Color(0xFF362187),
                               size: 22.sp,
                             ),
                           ),
@@ -221,7 +221,7 @@ class PromoCodeScreen extends HookConsumerWidget {
                       padding: EdgeInsets.all(20.r),
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [Color(0xFFFAF5FF), Color(0xFFFFFFFF)],
+                          colors: [Color(0xFFF6F4FE), Color(0xFFFFFFFF)],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
@@ -232,7 +232,7 @@ class PromoCodeScreen extends HookConsumerWidget {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                            color: const Color(0xFF362187).withValues(alpha: 0.08),
                             blurRadius: 14,
                             offset: const Offset(0, 4),
                           ),
@@ -248,15 +248,15 @@ class PromoCodeScreen extends HookConsumerWidget {
                                 height: 46.w,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFFAF5FF),
+                                  color: const Color(0xFFF6F4FE),
                                   borderRadius: BorderRadius.circular(16.r),
                                   border: Border.all(
-                                    color: const Color(0xFFF3E8FF),
+                                    color: const Color(0xFFE9E3FE),
                                     width: 1.5,
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: const Color(0xFFAB31DE).withValues(alpha: 0.10),
+                                      color: const Color(0xFF362187).withValues(alpha: 0.10),
                                       blurRadius: 8,
                                       offset: const Offset(0, 3),
                                     ),
@@ -264,7 +264,7 @@ class PromoCodeScreen extends HookConsumerWidget {
                                 ),
                                 child: Icon(
                                   Icons.confirmation_num_rounded,
-                                  color: const Color(0xFFAB31DE),
+                                  color: const Color(0xFF362187),
                                   size: 24.sp,
                                 ),
                               ),
@@ -311,7 +311,7 @@ class PromoCodeScreen extends HookConsumerWidget {
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFAB31DE).withValues(alpha: 0.05),
+                                  color: const Color(0xFF362187).withValues(alpha: 0.05),
                                   blurRadius: 8,
                                   offset: const Offset(0, 3),
                                 ),
@@ -324,7 +324,7 @@ class PromoCodeScreen extends HookConsumerWidget {
                                   child: TextFormField(
                                     controller: promoCodeCon,
                                     textCapitalization: TextCapitalization.characters,
-                                    cursorColor: const Color(0xFFAB31DE),
+                                    cursorColor: const Color(0xFF362187),
                                     style: GoogleFonts.outfit(
                                       color: const Color(0xFF1E1B4B),
                                       fontSize: 15.sp,
@@ -390,7 +390,7 @@ class PromoCodeScreen extends HookConsumerWidget {
                                     alignment: Alignment.center,
                                     child: Icon(
                                       Icons.content_paste_rounded,
-                                      color: const Color(0xFFAB31DE),
+                                      color: const Color(0xFF362187),
                                       size: 20.sp,
                                     ),
                                   ),
@@ -422,8 +422,8 @@ class PromoCodeScreen extends HookConsumerWidget {
                               decoration: BoxDecoration(
                                 gradient: const LinearGradient(
                                   colors: [
-                                    Color(0xFFE39FFF),
-                                    Color(0xFFAB31DE),
+                                    Color(0xFF4C2CA3),
+                                    Color(0xFF362187),
                                   ],
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
@@ -431,7 +431,7 @@ class PromoCodeScreen extends HookConsumerWidget {
                                 borderRadius: BorderRadius.circular(25.r),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
+                                    color: const Color(0xFF362187).withValues(alpha: 0.35),
                                     blurRadius: 10,
                                     offset: const Offset(0, 4),
                                   ),
@@ -496,7 +496,7 @@ class PromoCodeScreen extends HookConsumerWidget {
                         child: const Center(
                           child: CircularProgressIndicator(
                             strokeWidth: 2.5,
-                            valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFAB31DE)),
+                            valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF362187)),
                           ),
                         ),
                       ),
@@ -559,7 +559,7 @@ class PromoCodeScreen extends HookConsumerWidget {
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFAB31DE).withValues(alpha: 0.05),
+                                  color: const Color(0xFF362187).withValues(alpha: 0.05),
                                   blurRadius: 8,
                                   offset: const Offset(0, 2),
                                 ),
@@ -573,10 +573,10 @@ class PromoCodeScreen extends HookConsumerWidget {
                                   height: 40.w,
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFFFAF5FF),
+                                    color: const Color(0xFFF6F4FE),
                                     borderRadius: BorderRadius.circular(12.r),
                                     border: Border.all(
-                                      color: const Color(0xFFF3E8FF),
+                                      color: const Color(0xFFE9E3FE),
                                       width: 1.0,
                                     ),
                                   ),
@@ -587,7 +587,7 @@ class PromoCodeScreen extends HookConsumerWidget {
                                     fit: BoxFit.contain,
                                     errorBuilder: (_, __, ___) => Icon(
                                       Icons.card_giftcard_rounded,
-                                      color: const Color(0xFFAB31DE),
+                                      color: const Color(0xFF362187),
                                       size: 22.sp,
                                     ),
                                   ),
@@ -632,7 +632,7 @@ class PromoCodeScreen extends HookConsumerWidget {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Image.asset(
-                                        'assets/icons/coin.png',
+                                        'assets/icons_2/coin.png',
                                         width: 14.w,
                                         height: 14.w,
                                         fit: BoxFit.contain,
@@ -677,7 +677,7 @@ class PromoCodeScreen extends HookConsumerWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
-                        colors: [Color(0xFFFAF5FF), Color(0xFFF3E8FF)],
+                        colors: [Color(0xFFF6F4FE), Color(0xFFE9E3FE)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
@@ -688,7 +688,7 @@ class PromoCodeScreen extends HookConsumerWidget {
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFFAB31DE).withValues(alpha: 0.12),
+                          color: const Color(0xFF362187).withValues(alpha: 0.12),
                           blurRadius: 14,
                           offset: const Offset(0, 4),
                         ),
@@ -711,7 +711,7 @@ class PromoCodeScreen extends HookConsumerWidget {
                             ),
                             boxShadow: [
                               BoxShadow(
-                                color: const Color(0xFFAB31DE).withValues(alpha: 0.10),
+                                color: const Color(0xFF362187).withValues(alpha: 0.10),
                                 blurRadius: 8,
                                 offset: const Offset(0, 2),
                               ),
@@ -770,12 +770,12 @@ class PromoCodeScreen extends HookConsumerWidget {
                             padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 8.h),
                             decoration: BoxDecoration(
                               gradient: const LinearGradient(
-                                colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                                colors: [Color(0xFF4C2CA3), Color(0xFF362187)],
                               ),
                               borderRadius: BorderRadius.circular(14.r),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFAB31DE).withValues(alpha: 0.3),
+                                  color: const Color(0xFF362187).withValues(alpha: 0.3),
                                   blurRadius: 6,
                                   offset: const Offset(0, 2),
                                 ),

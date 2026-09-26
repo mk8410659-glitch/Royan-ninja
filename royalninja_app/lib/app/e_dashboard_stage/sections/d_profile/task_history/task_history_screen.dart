@@ -69,7 +69,7 @@ class TaskHistoryScreen extends HookConsumerWidget {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                              color: const Color(0xFF362187).withValues(alpha: 0.08),
                               blurRadius: 10,
                               offset: const Offset(0, 3),
                             ),
@@ -77,7 +77,7 @@ class TaskHistoryScreen extends HookConsumerWidget {
                         ),
                         child: Icon(
                           Icons.arrow_back_rounded,
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           size: 22.sp,
                         ),
                       ),
@@ -101,7 +101,7 @@ class TaskHistoryScreen extends HookConsumerWidget {
               // 2. Main Scrollable Body
               Expanded(
                 child: RefreshIndicator(
-                  color: const Color(0xFFAB31DE),
+                  color: const Color(0xFF362187),
                   backgroundColor: Colors.white,
                   onRefresh: () async {
                     ref.invalidate(rewardHistoryProvider(userId));
@@ -186,7 +186,7 @@ class TaskHistoryScreen extends HookConsumerWidget {
                             ),
                           ),
                           loading: () => const Center(
-                            child: LoadingInfoWidget(color: Color(0xFFAB31DE)),
+                            child: LoadingInfoWidget(color: Color(0xFF362187)),
                           ),
                         ),
                   ),
@@ -211,16 +211,16 @@ class TaskHistoryScreen extends HookConsumerWidget {
               width: 68.w,
               height: 68.w,
               decoration: BoxDecoration(
-                color: const Color(0xFFFAF5FF),
+                color: const Color(0xFFF6F4FE),
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: const Color(0xFFE9D5FF),
+                  color: const Color(0xFFE9E3FE),
                   width: 1.2,
                 ),
               ),
               child: Icon(
                 Icons.receipt_long_rounded,
-                color: const Color(0xFFAB31DE),
+                color: const Color(0xFF362187),
                 size: 30.sp,
               ),
             ),

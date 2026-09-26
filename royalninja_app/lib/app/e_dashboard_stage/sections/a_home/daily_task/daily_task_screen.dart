@@ -87,7 +87,7 @@ class DailyTaskScreen extends HookConsumerWidget {
             // 2. Main Scrollable Feed
             Positioned.fill(
               child: RefreshIndicator(
-                color: const Color(0xFFAB31DE),
+                color: const Color(0xFF362187),
                 backgroundColor: Colors.white,
                 edgeOffset: topPadding + 60.h,
                 onRefresh: () async {
@@ -143,7 +143,7 @@ class DailyTaskScreen extends HookConsumerWidget {
                                               ),
                                               boxShadow: [
                                                 BoxShadow(
-                                                  color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                                  color: const Color(0xFF362187).withValues(alpha: 0.08),
                                                   blurRadius: 10,
                                                   offset: const Offset(0, 3),
                                                 ),
@@ -151,7 +151,7 @@ class DailyTaskScreen extends HookConsumerWidget {
                                             ),
                                             child: Icon(
                                               Icons.arrow_back_rounded,
-                                              color: const Color(0xFFAB31DE),
+                                              color: const Color(0xFF362187),
                                               size: 22.sp,
                                             ),
                                           ),
@@ -195,7 +195,7 @@ class DailyTaskScreen extends HookConsumerWidget {
                                           ),
                                           boxShadow: [
                                             BoxShadow(
-                                              color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                              color: const Color(0xFF362187).withValues(alpha: 0.08),
                                               blurRadius: 10,
                                               offset: const Offset(0, 3),
                                             ),
@@ -204,7 +204,7 @@ class DailyTaskScreen extends HookConsumerWidget {
                                         child: Center(
                                           child: Icon(
                                             Icons.history_rounded,
-                                            color: const Color(0xFFAB31DE),
+                                            color: const Color(0xFF362187),
                                             size: 20.sp,
                                           ),
                                         ),
@@ -400,23 +400,23 @@ class _FilterChip extends StatelessWidget {
           gradient: isSelected
               ? const LinearGradient(
                   colors: [
-                    Color(0xFFE39FFF),
-                    Color(0xFFAB31DE),
+                    Color(0xFF5B34C4),
+                    Color(0xFF362187),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 )
               : null,
-          color: isSelected ? null : const Color(0xFFFAF5FF),
+          color: isSelected ? null : const Color(0xFFF8F7FF),
           borderRadius: BorderRadius.circular(14.r),
           border: Border.all(
-            color: isSelected ? Colors.transparent : const Color(0xFFE39FFF).withValues(alpha: 0.5),
+            color: isSelected ? Colors.transparent : const Color(0xFF362187).withValues(alpha: 0.15),
             width: 1,
           ),
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: const Color(0xFFAB31DE).withValues(alpha: 0.25),
+                    color: const Color(0xFF362187).withValues(alpha: 0.28),
                     blurRadius: 8,
                     offset: const Offset(0, 3),
                   ),
@@ -469,9 +469,9 @@ class _DailyTaskCardWidgetState extends State<_DailyTaskCardWidget> {
 
     if (dailyReset) {
       tagText = 'Daily Refresh';
-      bgColor = const Color(0xFFFAF5FF);
-      borderColor = const Color(0xFFE39FFF).withValues(alpha: 0.6);
-      textColor = const Color(0xFFAB31DE);
+      bgColor = const Color(0xFFF5F3FF);
+      borderColor = const Color(0xFF362187).withValues(alpha: 0.25);
+      textColor = const Color(0xFF362187);
     } else if (cleanCat.contains('game') || cleanCat.contains('ludo') || cleanCat.contains('play')) {
       tagText = 'Games';
       bgColor = const Color(0xFFFEF9C3);
@@ -489,9 +489,9 @@ class _DailyTaskCardWidgetState extends State<_DailyTaskCardWidget> {
       textColor = const Color(0xFFDB2777);
     } else if (category.isNotEmpty) {
       tagText = category.trim();
-      bgColor = const Color(0xFFFAF5FF);
-      borderColor = const Color(0xFFE39FFF).withValues(alpha: 0.5);
-      textColor = const Color(0xFFAB31DE);
+      bgColor = const Color(0xFFF5F3FF);
+      borderColor = const Color(0xFF362187).withValues(alpha: 0.2);
+      textColor = const Color(0xFF362187);
     }
 
     return Container(
@@ -552,7 +552,7 @@ class _DailyTaskCardWidgetState extends State<_DailyTaskCardWidget> {
                 offset: const Offset(0, 4),
               ),
               BoxShadow(
-                color: const Color(0xFFAB31DE).withValues(alpha: 0.04),
+                color: const Color(0xFF362187).withValues(alpha: 0.04),
                 blurRadius: 8,
                 offset: const Offset(0, 3),
               ),
@@ -566,10 +566,10 @@ class _DailyTaskCardWidgetState extends State<_DailyTaskCardWidget> {
                 width: 54.w,
                 height: 54.w,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFAF5FF),
+                  color: const Color(0xFFF5F3FF),
                   borderRadius: BorderRadius.circular(16.r),
                   border: Border.all(
-                    color: const Color(0xFFF3E8FF),
+                    color: const Color(0xFF362187).withValues(alpha: 0.12),
                     width: 1,
                   ),
                 ),
@@ -686,10 +686,10 @@ class _DailyTaskCardWidgetState extends State<_DailyTaskCardWidget> {
                           height: 30.h,
                           padding: EdgeInsets.symmetric(horizontal: 10.w),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFFAF5FF),
+                            color: const Color(0xFFFFFBEB),
                             borderRadius: BorderRadius.circular(15.r),
                             border: Border.all(
-                              color: const Color(0xFFF3E8FF),
+                              color: const Color(0xFFFDE68A),
                               width: 1,
                             ),
                           ),
@@ -697,7 +697,7 @@ class _DailyTaskCardWidgetState extends State<_DailyTaskCardWidget> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Image.asset(
-                                'assets/icons/coin.png',
+                                'assets/icons_2/coin.png',
                                 width: 16.sp,
                                 height: 16.sp,
                                 fit: BoxFit.contain,
@@ -706,7 +706,7 @@ class _DailyTaskCardWidgetState extends State<_DailyTaskCardWidget> {
                               Text(
                                 displayCoins.formatCoins(),
                                 style: GoogleFonts.outfit(
-                                  color: const Color(0xFFAB31DE),
+                                  color: const Color(0xFF24125C),
                                   fontSize: 13.sp,
                                   fontWeight: FontWeight.w800,
                                 ),
@@ -717,21 +717,21 @@ class _DailyTaskCardWidgetState extends State<_DailyTaskCardWidget> {
 
                         SizedBox(width: 8.w),
 
-                        // Light Purple Circle Arrow Button (Matching Screenshot)
+                        // Royal Ninja Circle Arrow Button
                         Container(
                           width: 26.w,
                           height: 26.w,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: const Color(0xFFFAF5FF),
+                            color: const Color(0xFF362187),
                             border: Border.all(
-                              color: const Color(0xFFF3E8FF),
+                              color: const Color(0xFF4C2CA3),
                               width: 1,
                             ),
                           ),
                           child: Icon(
                             Icons.arrow_forward_rounded,
-                            color: const Color(0xFFAB31DE),
+                            color: const Color(0xFFFFF100),
                             size: 13.sp,
                           ),
                         ),

@@ -75,12 +75,12 @@ class CustomToast {
                       ),
                       borderRadius: BorderRadius.circular(24.r),
                       border: Border.all(
-                        color: const Color(0xFFE39FFF).withValues(alpha: 0.6),
+                        color: const Color(0xFFA78BFA).withValues(alpha: 0.6),
                         width: 1.2,
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
+                          color: const Color(0xFF7C3AED).withValues(alpha: 0.35),
                           offset: const Offset(0, 4),
                           blurRadius: 14,
                         ),
@@ -406,15 +406,15 @@ class CustomToast {
           child: Container(
             padding: EdgeInsets.fromLTRB(20.w, 12.h, 20.w, 24.h),
           decoration: BoxDecoration(
-            color: const Color(0xFF161C15), // Dark Sage Charcoal
+            color: Colors.white,
             borderRadius: BorderRadius.vertical(top: Radius.circular(28.r)),
             border: Border.all(
-              color: const Color(0xFF607456).withValues(alpha: 0.4),
+              color: const Color(0xFFEDE9FE),
               width: 1.2,
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.5),
+                color: Colors.black.withValues(alpha: 0.1),
                 blurRadius: 20,
                 offset: const Offset(0, -6),
               ),
@@ -429,7 +429,7 @@ class CustomToast {
                 width: 48.w,
                 margin: EdgeInsets.only(bottom: 18.h),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF607456).withValues(alpha: 0.4),
+                  color: const Color(0xFFE2E8F0),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
               ),
@@ -440,12 +440,12 @@ class CustomToast {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: const Color(0xFF607456),
+                    color: const Color(0xFF7C3AED),
                     width: 2,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF607456).withValues(alpha: 0.35),
+                      color: const Color(0xFF7C3AED).withValues(alpha: 0.25),
                       blurRadius: 16,
                       spreadRadius: 2,
                     ),
@@ -464,10 +464,9 @@ class CustomToast {
               Text(
                 name.isEmpty ? 'User' : name,
                 textAlign: TextAlign.center,
-                style: GoogleFonts.poppins(
-                  color: Colors.white,
+                style: GoogleFonts.russoOne(
+                  color: const Color(0xFF1E1B4B),
                   fontSize: 18.sp,
-                  fontWeight: FontWeight.w700,
                 ),
               ),
 
@@ -477,7 +476,7 @@ class CustomToast {
                 email,
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(
-                  color: const Color(0xFFA6B7A2),
+                  color: const Color(0xFF64748B),
                   fontSize: 12.sp,
                 ),
               ),
@@ -488,10 +487,10 @@ class CustomToast {
               Container(
                 padding: EdgeInsets.all(14.w),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF222B21), // Card Tint
+                  color: const Color(0xFFF5F3FF),
                   borderRadius: BorderRadius.circular(18.r),
                   border: Border.all(
-                    color: const Color(0xFF607456).withValues(alpha: 0.35),
+                    color: const Color(0xFFEDE9FE),
                     width: 1.0,
                   ),
                 ),
@@ -503,12 +502,12 @@ class CustomToast {
                         Container(
                           padding: EdgeInsets.all(8.w),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF161C15),
+                            color: const Color(0xFFEDE9FE),
                             borderRadius: BorderRadius.circular(10.r),
                           ),
                           child: Icon(
                             Icons.badge_rounded,
-                            color: const Color(0xFF607456),
+                            color: const Color(0xFF7C3AED),
                             size: 18.sp,
                           ),
                         ),
@@ -520,14 +519,14 @@ class CustomToast {
                               Text(
                                 'User ID',
                                 style: GoogleFonts.poppins(
-                                  color: const Color(0xFFA6B7A2),
+                                  color: const Color(0xFF64748B),
                                   fontSize: 10.5.sp,
                                 ),
                               ),
                               Text(
                                 userId,
                                 style: GoogleFonts.poppins(
-                                  color: Colors.white,
+                                  color: const Color(0xFF1E1B4B),
                                   fontSize: 12.5.sp,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -544,10 +543,10 @@ class CustomToast {
                           child: Container(
                             padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
                             decoration: BoxDecoration(
-                              color: const Color(0xFF607456).withValues(alpha: 0.2),
+                              color: const Color(0xFFEDE9FE),
                               borderRadius: BorderRadius.circular(8.r),
                               border: Border.all(
-                                color: const Color(0xFF607456).withValues(alpha: 0.4),
+                                color: const Color(0xFFDDD6FE),
                                 width: 1,
                               ),
                             ),
@@ -555,14 +554,14 @@ class CustomToast {
                               children: [
                                 Icon(
                                   Icons.copy_rounded,
-                                  color: const Color(0xFF607456),
+                                  color: const Color(0xFF7C3AED),
                                   size: 13.sp,
                                 ),
                                 SizedBox(width: 4.w),
                                 Text(
                                   'Copy',
                                   style: GoogleFonts.poppins(
-                                    color: const Color(0xFF607456),
+                                    color: const Color(0xFF7C3AED),
                                     fontSize: 11.sp,
                                     fontWeight: FontWeight.w700,
                                   ),
@@ -573,27 +572,27 @@ class CustomToast {
                         ),
                       ],
                     ),
-                    Divider(color: Colors.white.withValues(alpha: 0.08), height: 20.h),
+                    Divider(color: const Color(0xFFEDE9FE), height: 20.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Account Status',
                           style: GoogleFonts.poppins(
-                            color: const Color(0xFFA6B7A2),
+                            color: const Color(0xFF64748B),
                             fontSize: 12.sp,
                           ),
                         ),
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF607456).withValues(alpha: 0.2),
+                            color: const Color(0xFFDCFCE7),
                             borderRadius: BorderRadius.circular(12.r),
                           ),
                           child: Text(
                             'Active ✓',
                             style: GoogleFonts.poppins(
-                              color: const Color(0xFF607456),
+                              color: const Color(0xFF16A34A),
                               fontSize: 11.sp,
                               fontWeight: FontWeight.w700,
                             ),
@@ -617,9 +616,8 @@ class CustomToast {
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
                         colors: [
-                          Color(0xFF7B9570),
-                          Color(0xFF607456),
-                          Color(0xFF475840),
+                          Color(0xFF7C3AED),
+                          Color(0xFF6D28D9),
                         ],
                       ),
                       borderRadius: BorderRadius.circular(16.r),
@@ -627,10 +625,9 @@ class CustomToast {
                     alignment: Alignment.center,
                     child: Text(
                       'Done',
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.russoOne(
                         color: Colors.white,
                         fontSize: 14.sp,
-                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
@@ -679,7 +676,7 @@ class CustomToast {
 
               Icon(
                 Icons.check_circle_rounded,
-                color: const Color(0xFF15803D),
+                color: const Color(0xFF7C3AED),
                 size: 54.sp,
               ),
 
@@ -687,10 +684,9 @@ class CustomToast {
 
               Text(
                 'account-deleted-title'.tr(),
-                style: GoogleFonts.orbitron(
+                style: GoogleFonts.russoOne(
                   color: const Color(0xFF0F172A),
                   fontSize: 18.sp,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
 
@@ -699,7 +695,7 @@ class CustomToast {
               Text(
                 'account-deleted-message'.tr(),
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                   color: const Color(0xFF64748B),
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w500,
@@ -717,14 +713,14 @@ class CustomToast {
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
                         colors: [
-                          Color(0xFF15803D),
-                          Color(0xFF22C55E),
+                          Color(0xFF7C3AED),
+                          Color(0xFF6D28D9),
                         ],
                       ),
                       borderRadius: BorderRadius.circular(16.r),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF15803D).withValues(alpha: 0.2),
+                          color: const Color(0xFF7C3AED).withValues(alpha: 0.25),
                           blurRadius: 10,
                           offset: const Offset(0, 4),
                         ),
@@ -733,10 +729,9 @@ class CustomToast {
                     alignment: Alignment.center,
                     child: Text(
                       'OK',
-                      style: GoogleFonts.orbitron(
+                      style: GoogleFonts.russoOne(
                         color: Colors.white,
                         fontSize: 13.5.sp,
-                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -1583,19 +1578,19 @@ class _DeviceLimitPopupDialog extends StatelessWidget {
                     shape: BoxShape.circle,
                     gradient: LinearGradient(
                       colors: [
-                        const Color(0xFFE39FFF).withValues(alpha: 0.20),
-                        const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                        const Color(0xFFDDD6FE).withValues(alpha: 0.20),
+                        const Color(0xFF7C3AED).withValues(alpha: 0.08),
                       ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
                     border: Border.all(
-                      color: const Color(0xFFE39FFF).withValues(alpha: 0.4),
+                      color: const Color(0xFFDDD6FE).withValues(alpha: 0.4),
                       width: 1.5,
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFFAB31DE).withValues(alpha: 0.15),
+                        color: const Color(0xFF7C3AED).withValues(alpha: 0.15),
                         blurRadius: 20,
                         spreadRadius: 4,
                       ),
@@ -1610,7 +1605,7 @@ class _DeviceLimitPopupDialog extends StatelessWidget {
                       errorBuilder: (_, __, ___) => Icon(
                         Icons.phonelink_lock_rounded,
                         size: 46.sp,
-                        color: const Color(0xFFAB31DE),
+                        color: const Color(0xFF7C3AED),
                       ),
                     ),
                   ),
@@ -1705,7 +1700,7 @@ class _DeviceLimitPopupDialog extends StatelessWidget {
                             Icon(
                               Icons.verified_user_rounded,
                               size: 15.sp,
-                              color: const Color(0xFFAB31DE),
+                              color: const Color(0xFF7C3AED),
                             ),
                             SizedBox(width: 6.w),
                             Text(
@@ -1774,14 +1769,14 @@ class _DeviceLimitPopupDialog extends StatelessWidget {
                     height: 48.h,
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
-                        colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                        colors: [Color(0xFF7C3AED), Color(0xFF6D28D9)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
                       borderRadius: BorderRadius.circular(18.r),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
+                          color: const Color(0xFF7C3AED).withValues(alpha: 0.35),
                           blurRadius: 12,
                           offset: const Offset(0, 4),
                         ),
@@ -1790,10 +1785,9 @@ class _DeviceLimitPopupDialog extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Text(
                       'Understood',
-                      style: GoogleFonts.outfit(
+                      style: GoogleFonts.russoOne(
                         color: Colors.white,
                         fontSize: 15.sp,
-                        fontWeight: FontWeight.w800,
                         letterSpacing: 0.3,
                       ),
                     ),

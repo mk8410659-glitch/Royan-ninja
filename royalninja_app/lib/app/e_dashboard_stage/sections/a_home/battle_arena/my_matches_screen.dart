@@ -91,7 +91,7 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: RefreshIndicator(
-          color: const Color(0xFFAB31DE),
+          color: const Color(0xFF7C3AED),
           backgroundColor: Colors.white,
           edgeOffset: topPadding + 60.h,
           onRefresh: _loadData,
@@ -129,7 +129,7 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                              color: const Color(0xFF7C3AED).withValues(alpha: 0.08),
                               blurRadius: 10,
                               offset: const Offset(0, 3),
                             ),
@@ -137,7 +137,7 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
                         ),
                         child: Icon(
                           Icons.arrow_back_rounded,
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF7C3AED),
                           size: 22.sp,
                         ),
                       ),
@@ -145,10 +145,9 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
                     SizedBox(width: 12.w),
                     Text(
                       'My Matches',
-                      style: GoogleFonts.outfit(
+                      style: GoogleFonts.russoOne(
                         color: const Color(0xFF1E1B4B),
                         fontSize: 18.5.sp,
-                        fontWeight: FontWeight.w900,
                         letterSpacing: -0.2,
                       ),
                     ),
@@ -166,10 +165,10 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
                 Container(
                   padding: EdgeInsets.all(4.r),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFFAF5FF),
+                    color: const Color(0xFFF5F3FF),
                     borderRadius: BorderRadius.circular(16.r),
                     border: Border.all(
-                      color: const Color(0xFFF3E8FF),
+                      color: const Color(0xFFEDE9FE),
                       width: 1.2,
                     ),
                   ),
@@ -225,12 +224,12 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
         color: Colors.white,
         borderRadius: BorderRadius.circular(18.r),
         border: Border.all(
-          color: const Color(0xFFF1F5F9),
+          color: const Color(0xFFEDE9FE),
           width: 1.2,
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFAB31DE).withValues(alpha: 0.06),
+            color: const Color(0xFF7C3AED).withValues(alpha: 0.06),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -243,7 +242,7 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
               _buildStatItem(
                 label: 'TOTAL BATTLES',
                 value: '$totalMatches',
-                valueColor: const Color(0xFFAB31DE),
+                valueColor: const Color(0xFF7C3AED),
                 icon: Icons.sports_esports_rounded,
               ),
               Container(
@@ -298,19 +297,18 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFFAF5FF),
+                    color: const Color(0xFFF5F3FF),
                     borderRadius: BorderRadius.circular(8.r),
                     border: Border.all(
-                      color: const Color(0xFFF3E8FF),
+                      color: const Color(0xFFEDE9FE),
                       width: 1.0,
                     ),
                   ),
                   child: Text(
                     '${winRate.toStringAsFixed(1)}% WIN RATE',
-                    style: GoogleFonts.outfit(
-                      color: const Color(0xFFAB31DE),
-                      fontSize: 11.sp,
-                      fontWeight: FontWeight.w900,
+                    style: GoogleFonts.russoOne(
+                      color: const Color(0xFF7C3AED),
+                      fontSize: 10.5.sp,
                       letterSpacing: 0.3,
                     ),
                   ),
@@ -339,10 +337,9 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
               SizedBox(width: 5.w),
               Text(
                 value,
-                style: GoogleFonts.outfit(
+                style: GoogleFonts.russoOne(
                   color: valueColor,
                   fontSize: 20.sp,
-                  fontWeight: FontWeight.w900,
                 ),
               ),
             ],
@@ -385,7 +382,7 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
           decoration: BoxDecoration(
             gradient: isSelected
                 ? const LinearGradient(
-                    colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                    colors: [Color(0xFF7C3AED), Color(0xFF6D28D9)],
                   )
                 : null,
             color: isSelected ? null : Colors.transparent,
@@ -393,7 +390,7 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
             boxShadow: isSelected
                 ? [
                     BoxShadow(
-                      color: const Color(0xFFAB31DE).withValues(alpha: 0.25),
+                      color: const Color(0xFF7C3AED).withValues(alpha: 0.25),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),
@@ -411,10 +408,9 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
               SizedBox(width: 6.w),
               Text(
                 label,
-                style: GoogleFonts.outfit(
+                style: GoogleFonts.russoOne(
                   color: isSelected ? Colors.white : const Color(0xFF64748B),
-                  fontSize: 12.5.sp,
-                  fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
+                  fontSize: 12.sp,
                   letterSpacing: 0.3,
                 ),
               ),
@@ -464,7 +460,7 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
         final int netPrize = (m['netPrizeAwarded'] as num?)?.toInt() ?? (entryFee * 2);
 
         final Color statusColor = isTie
-            ? const Color(0xFFAB31DE)
+            ? const Color(0xFF7C3AED)
             : (isWinner ? const Color(0xFF10B981) : const Color(0xFFEF4444));
         final String statusLabel = isTie ? 'DRAW' : (isWinner ? 'VICTORY' : 'DEFEAT');
 
@@ -477,7 +473,7 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
               color: isWinner
                   ? const Color(0xFF10B981).withValues(alpha: 0.35)
                   : (isTie
-                      ? const Color(0xFFAB31DE).withValues(alpha: 0.35)
+                      ? const Color(0xFF7C3AED).withValues(alpha: 0.35)
                       : const Color(0xFFF1F5F9)),
               width: isWinner || isTie ? 1.4 : 1.2,
             ),
@@ -579,7 +575,7 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
                         children: [
                           CircleAvatar(
                             radius: 17.r,
-                            backgroundColor: const Color(0xFFFAF5FF),
+                            backgroundColor: const Color(0xFFF5F3FF),
                             child: myAvatar.isNotEmpty && myAvatar != 'null'
                                 ? ClipOval(
                                     child: AvatarInternetImage(
@@ -589,9 +585,8 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
                                   )
                                 : Text(
                                     myName.substring(0, myName.isNotEmpty ? 1 : 0).toUpperCase(),
-                                    style: GoogleFonts.outfit(
-                                      color: const Color(0xFFAB31DE),
-                                      fontWeight: FontWeight.bold,
+                                    style: GoogleFonts.russoOne(
+                                      color: const Color(0xFF7C3AED),
                                     ),
                                   ),
                           ),
@@ -613,7 +608,7 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
                                 Text(
                                   '$myScore Pts',
                                   style: GoogleFonts.outfit(
-                                    color: const Color(0xFFAB31DE),
+                                    color: const Color(0xFF7C3AED),
                                     fontSize: 11.5.sp,
                                     fontWeight: FontWeight.w700,
                                   ),
@@ -629,19 +624,18 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 9.w, vertical: 4.h),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFFAF5FF),
+                        color: const Color(0xFFF5F3FF),
                         borderRadius: BorderRadius.circular(8.r),
                         border: Border.all(
-                          color: const Color(0xFFF3E8FF),
+                          color: const Color(0xFFEDE9FE),
                           width: 1.0,
                         ),
                       ),
                       child: Text(
                         'VS',
-                        style: GoogleFonts.outfit(
-                          color: const Color(0xFFAB31DE),
+                        style: GoogleFonts.russoOne(
+                          color: const Color(0xFF7C3AED),
                           fontSize: 10.5.sp,
-                          fontWeight: FontWeight.w900,
                         ),
                       ),
                     ),
@@ -679,7 +673,7 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
                           SizedBox(width: 8.w),
                           CircleAvatar(
                             radius: 17.r,
-                            backgroundColor: const Color(0xFFFAF5FF),
+                            backgroundColor: const Color(0xFFF5F3FF),
                             child: oppAvatar.isNotEmpty && oppAvatar != 'null'
                                 ? ClipOval(
                                     child: AvatarInternetImage(
@@ -689,9 +683,8 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
                                   )
                                 : Text(
                                     oppFullName.substring(0, oppFullName.isNotEmpty ? 1 : 0).toUpperCase(),
-                                    style: GoogleFonts.outfit(
-                                      color: const Color(0xFFAB31DE),
-                                      fontWeight: FontWeight.bold,
+                                    style: GoogleFonts.russoOne(
+                                      color: const Color(0xFF7C3AED),
                                     ),
                                   ),
                           ),
@@ -729,7 +722,7 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Image.asset(
-                              'assets/icons/coin.png',
+                              'assets/icons_2/coin.png',
                               width: 13.w,
                               height: 13.w,
                               fit: BoxFit.contain,
@@ -750,13 +743,13 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 9.w, vertical: 3.h),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFAB31DE).withValues(alpha: 0.12),
+                          color: const Color(0xFF7C3AED).withValues(alpha: 0.12),
                           borderRadius: BorderRadius.circular(6.r),
                         ),
                         child: Text(
                           'Refunded $entryFee Coins',
                           style: GoogleFonts.outfit(
-                            color: const Color(0xFFAB31DE),
+                            color: const Color(0xFF7C3AED),
                             fontSize: 11.sp,
                             fontWeight: FontWeight.w800,
                           ),
@@ -896,25 +889,35 @@ class _MyMatchesScreenState extends State<MyMatchesScreen> {
       padding: EdgeInsets.symmetric(vertical: 40.h),
       child: Column(
         children: [
-          Icon(
-            icon,
-            color: const Color(0xFFAB31DE),
-            size: 48.sp,
-          ),
-          SizedBox(height: 12.h),
-          Text(
-            title,
-            style: GoogleFonts.outfit(
-              color: const Color(0xFF1E1B4B),
-              fontSize: 15.sp,
-              fontWeight: FontWeight.w800,
+          Container(
+            padding: EdgeInsets.all(16.r),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF5F3FF),
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: const Color(0xFFEDE9FE),
+                width: 1.5,
+              ),
+            ),
+            child: Icon(
+              icon,
+              color: const Color(0xFF7C3AED),
+              size: 40.sp,
             ),
           ),
-          SizedBox(height: 4.h),
+          SizedBox(height: 14.h),
+          Text(
+            title,
+            style: GoogleFonts.russoOne(
+              color: const Color(0xFF1E1B4B),
+              fontSize: 15.sp,
+            ),
+          ),
+          SizedBox(height: 5.h),
           Text(
             subtitle,
             textAlign: TextAlign.center,
-            style: GoogleFonts.outfit(
+            style: GoogleFonts.poppins(
               color: const Color(0xFF64748B),
               fontSize: 12.sp,
               fontWeight: FontWeight.w500,

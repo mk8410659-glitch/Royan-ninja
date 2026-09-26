@@ -287,12 +287,12 @@ class _TopHeroHeaderSection extends StatelessWidget {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(15.r),
                         border: Border.all(
-                          color: const Color(0xFFF1F5F9),
+                          color: const Color(0xFF362187).withValues(alpha: 0.12),
                           width: 1.2,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                            color: const Color(0xFF362187).withValues(alpha: 0.08),
                             blurRadius: 10,
                             offset: const Offset(0, 3),
                           ),
@@ -300,7 +300,7 @@ class _TopHeroHeaderSection extends StatelessWidget {
                       ),
                       child: Icon(
                         Icons.arrow_back_rounded,
-                        color: const Color(0xFFAB31DE),
+                        color: const Color(0xFF362187),
                         size: 22.sp,
                       ),
                     ),
@@ -337,15 +337,15 @@ class _TopHeroHeaderSection extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 9.w, vertical: 4.h),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFFAF5FF),
+                    color: const Color(0xFFF5F3FF),
                     borderRadius: BorderRadius.circular(10.r),
                     border: Border.all(
-                      color: const Color(0xFFE39FFF).withValues(alpha: 0.8),
+                      color: const Color(0xFF362187).withValues(alpha: 0.25),
                       width: 1,
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFFAB31DE).withValues(alpha: 0.12),
+                        color: const Color(0xFF362187).withValues(alpha: 0.08),
                         blurRadius: 6,
                         offset: const Offset(0, 2),
                       ),
@@ -356,14 +356,14 @@ class _TopHeroHeaderSection extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.autorenew_rounded,
-                        color: const Color(0xFFAB31DE),
+                        color: const Color(0xFF362187),
                         size: 14.sp,
                       ),
                       SizedBox(width: 4.w),
                       Text(
                         'Daily Refresh',
                         style: GoogleFonts.outfit(
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           fontSize: 10.5.sp,
                           fontWeight: FontWeight.w800,
                         ),
@@ -383,10 +383,10 @@ class _TopHeroHeaderSection extends StatelessWidget {
             width: double.infinity,
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
-              color: const Color(0xFFFAF5FF),
+              color: const Color(0xFFF5F3FF),
               borderRadius: BorderRadius.circular(22.r),
               border: Border.all(
-                color: const Color(0xFFF3E8FF),
+                color: const Color(0xFF362187).withValues(alpha: 0.12),
                 width: 1.2,
               ),
               boxShadow: [
@@ -396,7 +396,7 @@ class _TopHeroHeaderSection extends StatelessWidget {
                   offset: const Offset(0, 3),
                 ),
                 BoxShadow(
-                  color: const Color(0xFFAB31DE).withValues(alpha: 0.04),
+                  color: const Color(0xFF362187).withValues(alpha: 0.05),
                   blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),
@@ -404,42 +404,34 @@ class _TopHeroHeaderSection extends StatelessWidget {
             ),
             child: Stack(
               children: [
-                // 1. CLEARLY VISIBLE BACKGROUND ICON (assets/icons/daily task blur.png enlarged with light depth blur & 50% opacity)
+                // 1. Right 3D Gold Coin Background Glow Asset
                 Positioned(
-                  right: -14.w,
-                  top: -12.h,
-                  bottom: -12.h,
-                  width: 160.w,
+                  right: -10.w,
+                  top: -6.h,
+                  bottom: -6.h,
+                  width: 125.w,
                   child: ImageFiltered(
-                    imageFilter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
+                    imageFilter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
                     child: Opacity(
-                      opacity: 0.5,
+                      opacity: 0.35,
                       child: Image.asset(
-                        'assets/icons/daily task blur.png',
-                        fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) => Image.asset(
-                          'assets/icons/coin.png',
-                          fit: BoxFit.cover,
-                        ),
+                        'assets/icons_2/coin.png',
+                        fit: BoxFit.contain,
                       ),
                     ),
                   ),
                 ),
 
-                // 2. CRISP FOREGROUND 3D BUCKET ASSET
+                // 2. CRISP FOREGROUND 3D GOLD COIN ASSET
                 Positioned(
-                  right: -6.w,
-                  top: -2.h,
-                  bottom: -2.h,
-                  width: 135.w,
+                  right: 4.w,
+                  top: 8.h,
+                  bottom: 8.h,
+                  width: 95.w,
                   child: Image.asset(
-                    'assets/icons/daily task blur.png',
+                    'assets/icons_2/coin.png',
                     fit: BoxFit.contain,
                     alignment: Alignment.centerRight,
-                    errorBuilder: (_, __, ___) => Image.asset(
-                      'assets/icons/coin.png',
-                      fit: BoxFit.contain,
-                    ),
                   ),
                 ),
 
@@ -532,7 +524,7 @@ class _TopHeroHeaderSection extends StatelessWidget {
                                       children: [
                                         Icon(
                                           Icons.file_download_outlined,
-                                          color: const Color(0xFF9333EA),
+                                          color: const Color(0xFF362187),
                                           size: 13.sp,
                                         ),
                                         SizedBox(width: 2.w),
@@ -550,17 +542,17 @@ class _TopHeroHeaderSection extends StatelessWidget {
                                     Container(
                                       padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 1.5.h),
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFFAF5FF),
+                                        color: const Color(0xFFF5F3FF),
                                         borderRadius: BorderRadius.circular(6.r),
                                         border: Border.all(
-                                          color: const Color(0xFFE39FFF).withValues(alpha: 0.6),
+                                          color: const Color(0xFF362187).withValues(alpha: 0.2),
                                           width: 0.8,
                                         ),
                                       ),
                                       child: Text(
                                         item.offerCategory.trim(),
                                         style: GoogleFonts.outfit(
-                                          color: const Color(0xFFAB31DE),
+                                          color: const Color(0xFF362187),
                                           fontSize: 9.5.sp,
                                           fontWeight: FontWeight.w800,
                                         ),
@@ -662,7 +654,7 @@ class _PromoBannerStrip extends StatelessWidget {
         children: [
           // Left Gold Coins Graphic
           Image.asset(
-            'assets/icons/coin.png',
+            'assets/icons_2/coin.png',
             width: 32.w,
             height: 32.w,
             fit: BoxFit.contain,
@@ -686,7 +678,7 @@ class _PromoBannerStrip extends StatelessWidget {
                 Text(
                   '${displayCoins.formatCoins()} Coins!',
                   style: GoogleFonts.outfit(
-                    color: const Color(0xFF1E1B4B),
+                    color: const Color(0xFF24125C),
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w800,
                     letterSpacing: -0.2,
@@ -698,7 +690,7 @@ class _PromoBannerStrip extends StatelessWidget {
 
           // Right Gold Coins Graphic Stack
           Image.asset(
-            'assets/icons/coin.png',
+            'assets/icons_2/coin.png',
             width: 36.w,
             height: 36.w,
             fit: BoxFit.contain,
@@ -869,10 +861,10 @@ class _TaskStepperRoadmapCard extends StatelessWidget {
                   width: 36.w,
                   height: 36.w,
                   decoration: BoxDecoration(
-                    color: isCompleted ? const Color(0xFFDCFCE7) : const Color(0xFFFAF5FF),
+                    color: isCompleted ? const Color(0xFFDCFCE7) : const Color(0xFFF5F3FF),
                     borderRadius: BorderRadius.circular(12.r),
                     border: Border.all(
-                      color: isCompleted ? const Color(0xFF86EFAC) : const Color(0xFFF3E8FF),
+                      color: isCompleted ? const Color(0xFF86EFAC) : const Color(0xFF362187).withValues(alpha: 0.15),
                       width: 1,
                     ),
                   ),
@@ -886,7 +878,7 @@ class _TaskStepperRoadmapCard extends StatelessWidget {
                       : Text(
                           '${step.stepNumber}',
                           style: GoogleFonts.outfit(
-                            color: const Color(0xFF9333EA),
+                            color: const Color(0xFF362187),
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w800,
                           ),
@@ -939,14 +931,18 @@ class _TaskStepperRoadmapCard extends StatelessWidget {
                             Container(
                               padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 2.5.h),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFFEF3C7),
+                                color: const Color(0xFFFFFBEB),
                                 borderRadius: BorderRadius.circular(10.r),
+                                border: Border.all(
+                                  color: const Color(0xFFFDE68A),
+                                  width: 0.8,
+                                ),
                               ),
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Image.asset(
-                                    'assets/icons/coin.png',
+                                    'assets/icons_2/coin.png',
                                     width: 11.sp,
                                     height: 11.sp,
                                     fit: BoxFit.contain,
@@ -955,7 +951,7 @@ class _TaskStepperRoadmapCard extends StatelessWidget {
                                   Text(
                                     '${(step.coins > 0 ? step.coins : item.coins).formatCoins()} Coins',
                                     style: GoogleFonts.outfit(
-                                      color: const Color(0xFF78350F),
+                                      color: const Color(0xFF24125C),
                                       fontSize: 10.sp,
                                       fontWeight: FontWeight.w800,
                                     ),
@@ -1034,10 +1030,10 @@ class _DisclaimerCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
       decoration: BoxDecoration(
-        color: const Color(0xFFFAF5FF),
+        color: const Color(0xFFF5F3FF),
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
-          color: const Color(0xFFF3E8FF),
+          color: const Color(0xFF362187).withValues(alpha: 0.12),
           width: 1,
         ),
       ),
@@ -1048,7 +1044,7 @@ class _DisclaimerCard extends StatelessWidget {
             children: [
               Icon(
                 Icons.info_outline_rounded,
-                color: const Color(0xFFAB31DE),
+                color: const Color(0xFF362187),
                 size: 15.sp,
               ),
               SizedBox(width: 6.w),
@@ -1073,7 +1069,7 @@ class _DisclaimerCard extends StatelessWidget {
                     Text(
                       '• ',
                       style: GoogleFonts.outfit(
-                        color: const Color(0xFFAB31DE),
+                        color: const Color(0xFF362187),
                         fontSize: 11.sp,
                       ),
                     ),
@@ -1673,7 +1669,7 @@ class _BottomTaskActionBar extends HookConsumerWidget {
                       Expanded(
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFFAB31DE),
+                            backgroundColor: const Color(0xFF362187),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
                             padding: EdgeInsets.symmetric(vertical: 12.h),
                           ),
@@ -1769,8 +1765,8 @@ class _BottomTaskActionBar extends HookConsumerWidget {
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       colors: [
-                        Color(0xFFE39FFF),
-                        Color(0xFFAB31DE),
+                        Color(0xFF5B34C4),
+                        Color(0xFF362187),
                       ],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
@@ -1778,7 +1774,7 @@ class _BottomTaskActionBar extends HookConsumerWidget {
                     borderRadius: BorderRadius.circular(26.r),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
+                        color: const Color(0xFF362187).withValues(alpha: 0.35),
                         blurRadius: 12,
                         offset: const Offset(0, 4),
                       ),
@@ -1792,14 +1788,14 @@ class _BottomTaskActionBar extends HookConsumerWidget {
                             Container(
                               padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
                               decoration: BoxDecoration(
-                                color: Colors.white.withValues(alpha: 0.25),
+                                color: Colors.white.withValues(alpha: 0.2),
                                 borderRadius: BorderRadius.circular(16.r),
                               ),
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Image.asset(
-                                    'assets/icons/coin.png',
+                                    'assets/icons_2/coin.png',
                                     width: 16.sp,
                                     height: 16.sp,
                                     fit: BoxFit.contain,
@@ -2035,14 +2031,14 @@ class _BottomTaskActionBar extends HookConsumerWidget {
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       colors: [
-                        Color(0xFF7E22CE),
-                        Color(0xFF9333EA),
+                        Color(0xFF5B34C4),
+                        Color(0xFF362187),
                       ],
                     ),
                     borderRadius: BorderRadius.circular(25.r),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFF9333EA).withValues(alpha: 0.3),
+                        color: const Color(0xFF362187).withValues(alpha: 0.3),
                         blurRadius: 10,
                         offset: const Offset(0, 4),
                       ),

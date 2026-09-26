@@ -57,7 +57,7 @@ class LeaderboardBody extends HookConsumerWidget {
             // 2. Main Scrollable Content
             Positioned.fill(
               child: RefreshIndicator(
-                color: const Color(0xFFAB31DE),
+                color: const Color(0xFF362187),
                 backgroundColor: Colors.white,
                 edgeOffset: topPadding + 60.h,
                 onRefresh: () async {
@@ -99,7 +99,7 @@ class LeaderboardBody extends HookConsumerWidget {
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                    color: const Color(0xFF362187).withValues(alpha: 0.08),
                                     blurRadius: 10,
                                     offset: const Offset(0, 3),
                                   ),
@@ -107,7 +107,7 @@ class LeaderboardBody extends HookConsumerWidget {
                               ),
                               child: Icon(
                                 Icons.arrow_back_rounded,
-                                color: const Color(0xFFAB31DE),
+                                color: const Color(0xFF362187),
                                 size: 22.sp,
                               ),
                             ),
@@ -259,7 +259,7 @@ class LeaderboardBody extends HookConsumerWidget {
                 height: 70.h,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: const Color(0xFFE39FFF).withValues(alpha: 0.20),
+                  color: const Color(0xFF4C2CA3).withValues(alpha: 0.15),
                 ),
               ),
               // Golden 3D Trophy Image / Icon
@@ -316,10 +316,10 @@ class LeaderboardBody extends HookConsumerWidget {
       height: 48.h,
       padding: EdgeInsets.all(4.w),
       decoration: BoxDecoration(
-        color: const Color(0xFFFAF5FF),
+        color: const Color(0xFFF6F4FE),
         borderRadius: BorderRadius.circular(24.r),
         border: Border.all(
-          color: const Color(0xFFF3E8FF),
+          color: const Color(0xFFE9E3FE),
           width: 1.2,
         ),
       ),
@@ -375,8 +375,8 @@ class LeaderboardBody extends HookConsumerWidget {
             gradient: isSelected
                 ? const LinearGradient(
                     colors: [
-                      Color(0xFFE39FFF),
-                      Color(0xFFAB31DE),
+                      Color(0xFF4C2CA3),
+                      Color(0xFF362187),
                     ],
                   )
                 : null,
@@ -385,7 +385,7 @@ class LeaderboardBody extends HookConsumerWidget {
             boxShadow: isSelected
                 ? [
                     BoxShadow(
-                      color: const Color(0xFFAB31DE).withValues(alpha: 0.3),
+                      color: const Color(0xFF362187).withValues(alpha: 0.25),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),
@@ -446,10 +446,10 @@ class LeaderboardBody extends HookConsumerWidget {
         return Container(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
           decoration: BoxDecoration(
-            color: const Color(0xFFFAF5FF),
+            color: const Color(0xFFF6F4FE),
             borderRadius: BorderRadius.circular(100.r),
             border: Border.all(
-              color: const Color(0xFFF3E8FF),
+              color: const Color(0xFFE9E3FE),
               width: 1.2,
             ),
           ),
@@ -458,7 +458,7 @@ class LeaderboardBody extends HookConsumerWidget {
             children: [
               Icon(
                 Icons.access_time_filled_rounded,
-                color: const Color(0xFFAB31DE),
+                color: const Color(0xFF362187),
                 size: 15.sp,
               ),
               SizedBox(width: 6.w),
@@ -577,11 +577,11 @@ class LeaderboardBody extends HookConsumerWidget {
           margin: EdgeInsets.only(top: isCenter ? 10.h : 20.h),
           padding: EdgeInsets.only(bottom: 6.h),
           decoration: BoxDecoration(
-            color: const Color(0xFFC88BE2),
+            color: const Color(0xFF4C2CA3),
             borderRadius: BorderRadius.circular(20.r),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFFAB31DE).withValues(alpha: isCenter ? 0.15 : 0.08),
+                color: const Color(0xFF362187).withValues(alpha: isCenter ? 0.15 : 0.08),
                 blurRadius: isCenter ? 14 : 8,
                 offset: const Offset(0, 4),
               ),
@@ -670,7 +670,7 @@ class LeaderboardBody extends HookConsumerWidget {
                     if (isReferralTab) ...[
                       Icon(
                         Icons.people_alt_rounded,
-                        color: const Color(0xFFAB31DE),
+                        color: const Color(0xFF362187),
                         size: 13.sp,
                       ),
                       SizedBox(width: 4.w),
@@ -733,7 +733,7 @@ class LeaderboardBody extends HookConsumerWidget {
           Text(
             'Reward',
             style: GoogleFonts.outfit(
-              color: const Color(0xFFAB31DE),
+              color: const Color(0xFF362187),
               fontSize: 12.sp,
               fontWeight: FontWeight.w700,
             ),
@@ -774,13 +774,13 @@ class LeaderboardBody extends HookConsumerWidget {
             height: 26.w,
             alignment: Alignment.center,
             decoration: const BoxDecoration(
-              color: Color(0xFFFAF5FF),
+              color: Color(0xFFF6F4FE),
               shape: BoxShape.circle,
             ),
             child: Text(
               '$rank',
               style: GoogleFonts.outfit(
-                color: const Color(0xFFAB31DE),
+                color: const Color(0xFF362187),
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w800,
               ),
@@ -870,15 +870,15 @@ class LeaderboardBody extends HookConsumerWidget {
       ),
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
       decoration: BoxDecoration(
-        color: const Color(0xFFFAF5FF),
+        color: const Color(0xFFF6F4FE),
         borderRadius: BorderRadius.circular(22.r),
         border: Border.all(
-          color: const Color(0xFFE9D5FF),
+          color: const Color(0xFFE9E3FE),
           width: 1.5,
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFAB31DE).withValues(alpha: 0.12),
+            color: const Color(0xFF362187).withValues(alpha: 0.12),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -890,7 +890,7 @@ class LeaderboardBody extends HookConsumerWidget {
           Text(
             userRank > 0 ? '$userRank' : '-',
             style: GoogleFonts.outfit(
-              color: const Color(0xFFAB31DE),
+              color: const Color(0xFF362187),
               fontSize: 22.sp,
               fontWeight: FontWeight.w900,
             ),
@@ -905,7 +905,7 @@ class LeaderboardBody extends HookConsumerWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                color: const Color(0xFFAB31DE),
+                color: const Color(0xFF362187),
                 width: 1.5,
               ),
             ),
@@ -930,7 +930,7 @@ class LeaderboardBody extends HookConsumerWidget {
                 Text(
                   'You',
                   style: GoogleFonts.outfit(
-                    color: const Color(0xFFAB31DE),
+                    color: const Color(0xFF362187),
                     fontSize: 15.sp,
                     fontWeight: FontWeight.w800,
                   ),
@@ -955,7 +955,7 @@ class LeaderboardBody extends HookConsumerWidget {
               Text(
                 '$score',
                 style: GoogleFonts.outfit(
-                  color: const Color(0xFFAB31DE),
+                  color: const Color(0xFF362187),
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w800,
                 ),

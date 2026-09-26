@@ -79,7 +79,7 @@ class FollowScreen extends HookConsumerWidget {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFFAB31DE).withValues(alpha: 0.06),
+                              color: const Color(0xFF362187).withValues(alpha: 0.06),
                               blurRadius: 8,
                               offset: const Offset(0, 2),
                             ),
@@ -112,7 +112,7 @@ class FollowScreen extends HookConsumerWidget {
               // Scrollable Body Content
               Expanded(
                 child: RefreshIndicator(
-                  color: const Color(0xFFAB31DE),
+                  color: const Color(0xFF362187),
                   backgroundColor: const Color(0xFFFAF5FF),
                   onRefresh: () async {
                     ref.invalidate(SplashService.appDataProvider);
@@ -154,7 +154,7 @@ class FollowScreen extends HookConsumerWidget {
                               ),
                               child: Icon(
                                 Icons.hub_rounded,
-                                color: const Color(0xFFAB31DE),
+                                color: const Color(0xFF362187),
                                 size: 16.sp,
                               ),
                             ),
@@ -226,7 +226,7 @@ class FollowScreen extends HookConsumerWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFAB31DE).withValues(alpha: 0.06),
+            color: const Color(0xFF362187).withValues(alpha: 0.06),
             blurRadius: 12,
             offset: const Offset(0, 3),
           ),
@@ -239,14 +239,14 @@ class FollowScreen extends HookConsumerWidget {
             height: 52.w,
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                colors: [Color(0xFF5B34C4), Color(0xFF362187)],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
               borderRadius: BorderRadius.circular(16.r),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFFAB31DE).withValues(alpha: 0.25),
+                  color: const Color(0xFF362187).withValues(alpha: 0.25),
                   blurRadius: 8,
                   offset: const Offset(0, 3),
                 ),
@@ -373,7 +373,7 @@ class _SocialPlatformCard extends HookConsumerWidget {
         case 'instagram':
           return const Color(0xFFDB2777);
         default:
-          return const Color(0xFFAB31DE);
+          return const Color(0xFF362187);
       }
     }
 
@@ -473,7 +473,7 @@ class _SocialPlatformCard extends HookConsumerWidget {
             ),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFFAB31DE).withValues(alpha: 0.05),
+                color: const Color(0xFF362187).withValues(alpha: 0.05),
                 blurRadius: 10,
                 offset: const Offset(0, 3),
               ),
@@ -557,7 +557,7 @@ class _SocialPlatformCard extends HookConsumerWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Image.asset(
-                              'assets/icons/coin.png',
+                              'assets/icons_2/coin.png',
                               width: 13.w,
                               height: 13.w,
                               fit: BoxFit.contain,
@@ -599,7 +599,7 @@ class _SocialPlatformCard extends HookConsumerWidget {
                         width: 12.w,
                         height: 12.w,
                         child: const CircularProgressIndicator(
-                          color: Color(0xFFAB31DE),
+                          color: Color(0xFF362187),
                           strokeWidth: 2,
                         ),
                       ),
@@ -607,7 +607,7 @@ class _SocialPlatformCard extends HookConsumerWidget {
                       Text(
                         'Verifying...',
                         style: GoogleFonts.outfit(
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           fontSize: 11.5.sp,
                           fontWeight: FontWeight.w700,
                         ),
@@ -620,12 +620,12 @@ class _SocialPlatformCard extends HookConsumerWidget {
                   padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
-                      colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                      colors: [Color(0xFF5B34C4), Color(0xFF362187)],
                     ),
                     borderRadius: BorderRadius.circular(20.r),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFFAB31DE).withValues(alpha: 0.3),
+                        color: const Color(0xFF362187).withValues(alpha: 0.3),
                         blurRadius: 8,
                         offset: const Offset(0, 3),
                       ),
@@ -669,7 +669,7 @@ class _SocialPlatformCard extends HookConsumerWidget {
                       Text(
                         'Open',
                         style: GoogleFonts.outfit(
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w800,
                         ),
@@ -677,7 +677,7 @@ class _SocialPlatformCard extends HookConsumerWidget {
                       SizedBox(width: 4.w),
                       Icon(
                         Icons.open_in_new_rounded,
-                        color: const Color(0xFFAB31DE),
+                        color: const Color(0xFF362187),
                         size: 12.sp,
                       ),
                     ],

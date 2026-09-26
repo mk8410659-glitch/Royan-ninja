@@ -87,7 +87,7 @@ class InviteFirstPart extends HookConsumerWidget {
           children: [
             // Panda Hero Illustration (panda invite.png)
             Image.asset(
-              'assets/icons/panda invite.png',
+              'assets/icons_2/Battle ninja.png',
               height: 165.h,
               fit: BoxFit.contain,
             ),
@@ -119,10 +119,10 @@ class InviteFirstPart extends HookConsumerWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 11.h),
               decoration: BoxDecoration(
-                color: const Color(0xFFFAF5FF),
+                color: const Color(0xFFF6F4FE),
                 borderRadius: BorderRadius.circular(16.r),
                 border: Border.all(
-                  color: const Color(0xFFE9D5FF),
+                  color: const Color(0xFFE9E3FE),
                   width: 1.2,
                 ),
               ),
@@ -130,7 +130,7 @@ class InviteFirstPart extends HookConsumerWidget {
                 children: [
                   Icon(
                     Icons.link_rounded,
-                    color: const Color(0xFFAB31DE),
+                    color: const Color(0xFF362187),
                     size: 19.sp,
                   ),
                   SizedBox(width: 8.w),
@@ -164,12 +164,12 @@ class InviteFirstPart extends HookConsumerWidget {
                       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 7.h),
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                          colors: [Color(0xFF4C2CA3), Color(0xFF362187)],
                         ),
                         borderRadius: BorderRadius.circular(10.r),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.3),
+                            color: const Color(0xFF362187).withValues(alpha: 0.3),
                             blurRadius: 6,
                             offset: const Offset(0, 2),
                           ),
@@ -195,7 +195,7 @@ class InviteFirstPart extends HookConsumerWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(14.r),
                 border: Border.all(
-                  color: const Color(0xFFE9D5FF),
+                  color: const Color(0xFFE9E3FE),
                   width: 1,
                 ),
               ),
@@ -203,7 +203,7 @@ class InviteFirstPart extends HookConsumerWidget {
                 children: [
                   Icon(
                     Icons.vpn_key_rounded,
-                    color: const Color(0xFFAB31DE),
+                    color: const Color(0xFF362187),
                     size: 17.sp,
                   ),
                   SizedBox(width: 8.w),
@@ -234,10 +234,10 @@ class InviteFirstPart extends HookConsumerWidget {
                     child: Container(
                       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFF3E8FF),
+                        color: const Color(0xFFE9E3FE),
                         borderRadius: BorderRadius.circular(8.r),
                         border: Border.all(
-                          color: const Color(0xFFE9D5FF),
+                          color: const Color(0xFFE9E3FE),
                           width: 1,
                         ),
                       ),
@@ -245,14 +245,14 @@ class InviteFirstPart extends HookConsumerWidget {
                         children: [
                           Icon(
                             Icons.copy_rounded,
-                            color: const Color(0xFFAB31DE),
+                            color: const Color(0xFF362187),
                             size: 13.sp,
                           ),
                           SizedBox(width: 4.w),
                           Text(
                             'Copy',
                             style: GoogleFonts.outfit(
-                              color: const Color(0xFFAB31DE),
+                              color: const Color(0xFF362187),
                               fontSize: 11.5.sp,
                               fontWeight: FontWeight.w800,
                             ),
@@ -278,12 +278,12 @@ class InviteFirstPart extends HookConsumerWidget {
                 height: 48.h,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
-                    colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                    colors: [Color(0xFF4C2CA3), Color(0xFF362187)],
                   ),
                   borderRadius: BorderRadius.circular(24.r),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
+                      color: const Color(0xFF362187).withValues(alpha: 0.35),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -352,7 +352,22 @@ class InviteFirstPart extends HookConsumerWidget {
 
                 // More Social
                 _buildSocialIconItem(
-                  assetPath: 'assets/icons/social-media.png',
+                  customIcon: Container(
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: LinearGradient(
+                        colors: [Color(0xFF5B34C4), Color(0xFF362187)],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                    ),
+                    alignment: Alignment.center,
+                    child: Icon(
+                      Icons.share_rounded,
+                      color: Colors.white,
+                      size: 15.sp,
+                    ),
+                  ),
                   label: 'More',
                   onTap: () {
                     AnalyticsService.logShareReferral(method: 'more_social');
@@ -431,17 +446,17 @@ class InviteFirstPart extends HookConsumerWidget {
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 5.h),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFFAF5FF),
+                    color: const Color(0xFFF6F4FE),
                     borderRadius: BorderRadius.circular(100.r),
                     border: Border.all(
-                      color: const Color(0xFFE9D5FF),
+                      color: const Color(0xFFE9E3FE),
                       width: 1,
                     ),
                   ),
                   child: Text(
                     showAllMissions.value ? 'Show Less' : 'View All',
                     style: GoogleFonts.outfit(
-                      color: const Color(0xFFAB31DE),
+                      color: const Color(0xFF362187),
                       fontSize: 11.5.sp,
                       fontWeight: FontWeight.w800,
                     ),
@@ -488,11 +503,11 @@ class InviteFirstPart extends HookConsumerWidget {
                             shape: BoxShape.circle,
                             color: isUnlocked
                                 ? const Color(0xFFDCFCE7)
-                                : const Color(0xFFFAF5FF),
+                                : const Color(0xFFF6F4FE),
                             border: Border.all(
                               color: isUnlocked
                                   ? const Color(0xFF22C55E)
-                                  : const Color(0xFFE9D5FF),
+                                  : const Color(0xFFE9E3FE),
                               width: 2,
                             ),
                           ),
@@ -512,7 +527,7 @@ class InviteFirstPart extends HookConsumerWidget {
                             margin: EdgeInsets.symmetric(vertical: 2.h),
                             color: isUnlocked
                                 ? const Color(0xFF22C55E)
-                                : const Color(0xFFE9D5FF),
+                                : const Color(0xFFE9E3FE),
                           ),
                       ],
                     ),
@@ -556,12 +571,12 @@ class InviteFirstPart extends HookConsumerWidget {
                           decoration: BoxDecoration(
                             color: isUnlocked
                                 ? const Color(0xFFF0FDF4)
-                                : const Color(0xFFFAF5FF),
+                                : const Color(0xFFF6F4FE),
                             borderRadius: BorderRadius.circular(16.r),
                             border: Border.all(
                               color: isUnlocked
                                   ? const Color(0xFFBBF7D0)
-                                  : const Color(0xFFE9D5FF),
+                                  : const Color(0xFFE9E3FE),
                               width: 1.2,
                             ),
                           ),
@@ -578,7 +593,7 @@ class InviteFirstPart extends HookConsumerWidget {
                                   border: Border.all(
                                     color: isUnlocked
                                         ? const Color(0xFF86EFAC)
-                                        : const Color(0xFFE9D5FF),
+                                        : const Color(0xFFE9E3FE),
                                     width: 1,
                                   ),
                                 ),
@@ -641,7 +656,7 @@ class InviteFirstPart extends HookConsumerWidget {
                                   Text(
                                     '+${formatCompact(reward)}',
                                     style: GoogleFonts.outfit(
-                                      color: const Color(0xFFAB31DE),
+                                      color: const Color(0xFF362187),
                                       fontSize: 13.5.sp,
                                       fontWeight: FontWeight.w800,
                                     ),
@@ -685,15 +700,15 @@ class InviteFirstPart extends HookConsumerWidget {
           width: double.infinity,
           padding: EdgeInsets.all(16.w),
           decoration: BoxDecoration(
-            color: const Color(0xFFFAF5FF),
+            color: const Color(0xFFF6F4FE),
             borderRadius: BorderRadius.circular(20.r),
             border: Border.all(
-              color: const Color(0xFFE9D5FF),
+              color: const Color(0xFFE9E3FE),
               width: 1.2,
             ),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFFAB31DE).withValues(alpha: 0.05),
+                color: const Color(0xFF362187).withValues(alpha: 0.05),
                 blurRadius: 10,
                 offset: const Offset(0, 3),
               ),
@@ -779,10 +794,10 @@ class InviteFirstPart extends HookConsumerWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
       decoration: BoxDecoration(
-        color: const Color(0xFFFAF5FF),
+        color: const Color(0xFFF6F4FE),
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
-          color: const Color(0xFFE9D5FF),
+          color: const Color(0xFFE9E3FE),
           width: 1.2,
         ),
       ),
@@ -866,7 +881,8 @@ class InviteFirstPart extends HookConsumerWidget {
   }
 
   Widget _buildSocialIconItem({
-    required String assetPath,
+    String? assetPath,
+    Widget? customIcon,
     required String label,
     required VoidCallback onTap,
   }) {
@@ -882,24 +898,25 @@ class InviteFirstPart extends HookConsumerWidget {
             height: 48.w,
             padding: EdgeInsets.all(10.w),
             decoration: BoxDecoration(
-              color: const Color(0xFFFAF5FF),
+              color: const Color(0xFFF6F4FE),
               shape: BoxShape.circle,
               border: Border.all(
-                color: const Color(0xFFE9D5FF),
+                color: const Color(0xFFE9E3FE),
                 width: 1.2,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                  color: const Color(0xFF362187).withValues(alpha: 0.08),
                   blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),
               ],
             ),
-            child: Image.asset(
-              assetPath,
-              fit: BoxFit.contain,
-            ),
+            child: customIcon ??
+                Image.asset(
+                  assetPath!,
+                  fit: BoxFit.contain,
+                ),
           ),
           SizedBox(height: 4.h),
           Text(
@@ -933,11 +950,11 @@ class InviteFirstPart extends HookConsumerWidget {
             width: 38.w,
             height: 38.w,
             decoration: BoxDecoration(
-              color: const Color(0xFFF3E8FF),
+              color: const Color(0xFFE9E3FE),
               borderRadius: BorderRadius.circular(12.r),
             ),
             alignment: Alignment.center,
-            child: Icon(icon, color: const Color(0xFFAB31DE), size: 19.sp),
+            child: Icon(icon, color: const Color(0xFF362187), size: 19.sp),
           ),
           SizedBox(width: 12.w),
           Expanded(
@@ -947,7 +964,7 @@ class InviteFirstPart extends HookConsumerWidget {
                 Text(
                   'STEP $step',
                   style: GoogleFonts.outfit(
-                    color: const Color(0xFFAB31DE),
+                    color: const Color(0xFF362187),
                     fontSize: 10.sp,
                     fontWeight: FontWeight.w800,
                     letterSpacing: 0.5,
@@ -988,10 +1005,10 @@ class InviteFirstPart extends HookConsumerWidget {
       width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       decoration: BoxDecoration(
-        color: const Color(0xFFFAF5FF),
+        color: const Color(0xFFF6F4FE),
         borderRadius: BorderRadius.circular(20.r),
         border: Border.all(
-          color: const Color(0xFFE9D5FF),
+          color: const Color(0xFFE9E3FE),
           width: 1.2,
         ),
       ),
@@ -1026,14 +1043,14 @@ class InviteFirstPart extends HookConsumerWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(12.r),
                     border: Border.all(
-                      color: const Color(0xFFE9D5FF),
+                      color: const Color(0xFFE9E3FE),
                       width: 1,
                     ),
                   ),
                   alignment: Alignment.center,
                   child: TextField(
                     controller: codeController,
-                    cursorColor: const Color(0xFFAB31DE),
+                    cursorColor: const Color(0xFF362187),
                     style: GoogleFonts.outfit(
                       color: const Color(0xFF1E1B4B),
                       fontSize: 13.sp,
@@ -1091,12 +1108,12 @@ class InviteFirstPart extends HookConsumerWidget {
                   padding: EdgeInsets.symmetric(horizontal: 20.w),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
-                      colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                      colors: [Color(0xFF4C2CA3), Color(0xFF362187)],
                     ),
                     borderRadius: BorderRadius.circular(12.r),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFFAB31DE).withValues(alpha: 0.3),
+                        color: const Color(0xFF362187).withValues(alpha: 0.3),
                         blurRadius: 6,
                         offset: const Offset(0, 2),
                       ),

@@ -154,7 +154,7 @@ class WatchVideoDetailsScreen extends HookWidget {
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                  color: const Color(0xFF362187).withValues(alpha: 0.08),
                                   blurRadius: 10,
                                   offset: const Offset(0, 3),
                                 ),
@@ -162,7 +162,7 @@ class WatchVideoDetailsScreen extends HookWidget {
                             ),
                             child: Icon(
                               Icons.arrow_back_rounded,
-                              color: const Color(0xFFAB31DE),
+                              color: const Color(0xFF362187),
                               size: 22.sp,
                             ),
                           ),
@@ -252,7 +252,7 @@ class WatchVideoDetailsScreen extends HookWidget {
                       child: Text(
                         categoryLabel,
                         style: GoogleFonts.outfit(
-                          color: const Color(0xFFAB31DE),
+                          color: const Color(0xFF362187),
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w700,
                         ),
@@ -294,7 +294,7 @@ class WatchVideoDetailsScreen extends HookWidget {
                       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [Color(0xFFFAF5FF), Color(0xFFFFFFFF)],
+                          colors: [Color(0xFFF6F4FE), Color(0xFFFFFFFF)],
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                         ),
@@ -305,7 +305,7 @@ class WatchVideoDetailsScreen extends HookWidget {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.06),
+                            color: const Color(0xFF362187).withValues(alpha: 0.06),
                             blurRadius: 10,
                             offset: const Offset(0, 3),
                           ),
@@ -322,12 +322,12 @@ class WatchVideoDetailsScreen extends HookWidget {
                                   height: 38.w,
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFFF3E8FF),
+                                    color: const Color(0xFFE9E3FE),
                                     shape: BoxShape.circle,
                                   ),
                                   child: Icon(
                                     Icons.access_time_filled_rounded,
-                                    color: const Color(0xFFAB31DE),
+                                    color: const Color(0xFF362187),
                                     size: 20.sp,
                                   ),
                                 ),
@@ -380,7 +380,7 @@ class WatchVideoDetailsScreen extends HookWidget {
                                     shape: BoxShape.circle,
                                   ),
                                   child: Image.asset(
-                                    'assets/icons/coin.png',
+                                    'assets/icons_2/coin.png',
                                     width: 22.w,
                                     height: 22.w,
                                     fit: BoxFit.contain,
@@ -411,7 +411,7 @@ class WatchVideoDetailsScreen extends HookWidget {
                       width: double.infinity,
                       padding: EdgeInsets.all(18.r),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFFAF5FF),
+                        color: const Color(0xFFF6F4FE),
                         borderRadius: BorderRadius.circular(22.r),
                         border: Border.all(
                           color: const Color(0xFFF1F5F9),
@@ -419,7 +419,7 @@ class WatchVideoDetailsScreen extends HookWidget {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.05),
+                            color: const Color(0xFF362187).withValues(alpha: 0.05),
                             blurRadius: 10,
                             offset: const Offset(0, 3),
                           ),
@@ -522,10 +522,10 @@ class WatchVideoDetailsScreen extends HookWidget {
                       width: double.infinity,
                       padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFFAF5FF),
+                        color: const Color(0xFFF6F4FE),
                         borderRadius: BorderRadius.circular(14.r),
                         border: Border.all(
-                          color: const Color(0xFFF3E8FF),
+                          color: const Color(0xFFE9E3FE),
                           width: 1.2,
                         ),
                       ),
@@ -533,7 +533,7 @@ class WatchVideoDetailsScreen extends HookWidget {
                         children: [
                           Icon(
                             Icons.auto_awesome_rounded,
-                            color: const Color(0xFFAB31DE),
+                            color: const Color(0xFF362187),
                             size: 18.sp,
                           ),
                           SizedBox(width: 10.w),
@@ -604,8 +604,8 @@ class WatchVideoDetailsScreen extends HookWidget {
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
                           colors: [
-                            Color(0xFFE39FFF),
-                            Color(0xFFAB31DE),
+                            Color(0xFF4C2CA3),
+                            Color(0xFF362187),
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -613,7 +613,7 @@ class WatchVideoDetailsScreen extends HookWidget {
                         borderRadius: BorderRadius.circular(26.r),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
+                            color: const Color(0xFF362187).withValues(alpha: 0.35),
                             blurRadius: 12,
                             offset: const Offset(0, 4),
                           ),
@@ -698,13 +698,13 @@ class WatchVideoDetailsScreen extends HookWidget {
                 height: 28.w,
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
-                  color: Color(0xFFF3E8FF),
+                  color: Color(0xFFE9E3FE),
                   shape: BoxShape.circle,
                 ),
                 child: Text(
                   stepNum,
                   style: GoogleFonts.outfit(
-                    color: const Color(0xFFAB31DE),
+                    color: const Color(0xFF362187),
                     fontSize: 13.sp,
                     fontWeight: FontWeight.w800,
                   ),
@@ -715,7 +715,7 @@ class WatchVideoDetailsScreen extends HookWidget {
                   child: Container(
                     width: 1.5.w,
                     margin: EdgeInsets.symmetric(vertical: 4.h),
-                    color: const Color(0xFFE9D5FF),
+                    color: const Color(0xFFE9E3FE),
                   ),
                 ),
             ],
@@ -1027,7 +1027,7 @@ class _VideoVerificationScreenState extends State<VideoVerificationScreen> {
                                       ),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                                          color: const Color(0xFF362187).withValues(alpha: 0.08),
                                           blurRadius: 10,
                                           offset: const Offset(0, 3),
                                         ),
@@ -1035,7 +1035,7 @@ class _VideoVerificationScreenState extends State<VideoVerificationScreen> {
                                     ),
                                     child: Icon(
                                       Icons.arrow_back_rounded,
-                                      color: const Color(0xFFAB31DE),
+                                      color: const Color(0xFF362187),
                                       size: 22.sp,
                                     ),
                                   ),
@@ -1064,7 +1064,7 @@ class _VideoVerificationScreenState extends State<VideoVerificationScreen> {
                                     Container(
                                       padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 3.h),
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFAB31DE),
+                                        color: const Color(0xFF362187),
                                         borderRadius: BorderRadius.circular(6.r),
                                       ),
                                       child: Text(
@@ -1106,10 +1106,10 @@ class _VideoVerificationScreenState extends State<VideoVerificationScreen> {
                               child: Container(
                                 height: 160.h,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFFAF5FF),
+                                  color: const Color(0xFFF6F4FE),
                                   borderRadius: BorderRadius.circular(20.r),
                                   border: Border.all(
-                                    color: const Color(0xFFE9D5FF),
+                                    color: const Color(0xFFE9E3FE),
                                     width: 1.5,
                                   ),
                                 ),
@@ -1127,7 +1127,7 @@ class _VideoVerificationScreenState extends State<VideoVerificationScreen> {
                                         children: [
                                           Icon(
                                             Icons.cloud_upload_rounded,
-                                            color: const Color(0xFFAB31DE),
+                                            color: const Color(0xFF362187),
                                             size: 36.sp,
                                           ),
                                           SizedBox(height: 8.h),
@@ -1155,7 +1155,7 @@ class _VideoVerificationScreenState extends State<VideoVerificationScreen> {
                                     Container(
                                       padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 3.h),
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFAB31DE),
+                                        color: const Color(0xFF362187),
                                         borderRadius: BorderRadius.circular(6.r),
                                       ),
                                       child: Text(
@@ -1205,7 +1205,7 @@ class _VideoVerificationScreenState extends State<VideoVerificationScreen> {
                               ),
                               child: TextField(
                                 controller: _controller,
-                                cursorColor: const Color(0xFFAB31DE),
+                                cursorColor: const Color(0xFF362187),
                                 style: GoogleFonts.outfit(
                                   color: const Color(0xFF1E1B4B),
                                   fontSize: 14.sp,
@@ -1244,12 +1244,12 @@ class _VideoVerificationScreenState extends State<VideoVerificationScreen> {
                                 height: 50.h,
                                 decoration: BoxDecoration(
                                   gradient: const LinearGradient(
-                                    colors: [Color(0xFFE39FFF), Color(0xFFAB31DE)],
+                                    colors: [Color(0xFF4C2CA3), Color(0xFF362187)],
                                   ),
                                   borderRadius: BorderRadius.circular(25.r),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: const Color(0xFFAB31DE).withValues(alpha: 0.35),
+                                      color: const Color(0xFF362187).withValues(alpha: 0.35),
                                       blurRadius: 10,
                                       offset: const Offset(0, 4),
                                     ),

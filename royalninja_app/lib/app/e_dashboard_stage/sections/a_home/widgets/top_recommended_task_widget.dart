@@ -155,7 +155,7 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Image.asset(
-                        'assets/icons/coin.png',
+                        'assets/icons_2/coin.png',
                         width: 13.w,
                         height: 13.w,
                         fit: BoxFit.contain,
@@ -401,7 +401,7 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Ninja Catch',
+                    'Ninja Runner',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.poppins(
@@ -503,7 +503,7 @@ class TopRecommendedTaskWidget extends StatelessWidget {
                     },
                     blendMode: BlendMode.dstIn,
                     child: Image.asset(
-                      'assets/icons/panda1.png',
+                      'assets/icons_2/Battle ninja.png',
                       fit: BoxFit.contain,
                       errorBuilder: (_, __, ___) => Icon(
                         Icons.extension_rounded,

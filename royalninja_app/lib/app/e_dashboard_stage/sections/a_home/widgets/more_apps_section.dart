@@ -39,13 +39,53 @@ class MoreAppsSection extends HookConsumerWidget {
     final bool hasMoreThanThree = apps.length > 3;
     final displayApps = hasMoreThanThree ? apps.take(3).toList() : apps;
 
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          // List of More App Cards (Exact matching screenshot design)
-          ListView.separated(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Section Header: "More Apps" Capsule: Rectangle 85.png
+        Padding(
+          padding: EdgeInsets.only(top: 10.h, bottom: 12.h),
+          child: Row(
+            children: [
+              SizedBox(
+                width: 148.w,
+                height: 31.h,
+                child: Stack(
+                  alignment: Alignment.centerLeft,
+                  children: [
+                    Image.asset(
+                      'assets/icons_2/Rectangle 85.png',
+                      width: 148.w,
+                      height: 31.h,
+                      fit: BoxFit.fill,
+                      filterQuality: FilterQuality.high,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 14.w),
+                      child: Text(
+                        'More Apps',
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0.2,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        // List of More App Cards (Exact matching screenshot design)
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ListView.separated(
             shrinkWrap: true,
             padding: EdgeInsets.zero,
             physics: const NeverScrollableScrollPhysics(),
@@ -167,7 +207,9 @@ class MoreAppsSection extends HookConsumerWidget {
           ],
         ],
       ),
-    );
+    ),
+  ],
+);
   }
 
   Widget _buildFallbackCircleIcon(int index) {
@@ -232,20 +274,27 @@ class _MoreAppHomeCardState extends State<_MoreAppHomeCard> {
         duration: const Duration(milliseconds: 120),
         curve: Curves.easeInOutBack,
         child: Container(
-          height: 68.h,
+          height: 72.h,
           width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
+          padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(16.r),
+            gradient: const LinearGradient(
+              colors: [
+                Color(0xFF362187),
+                Color(0xFF0D0821),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            borderRadius: BorderRadius.circular(18.r),
             border: Border.all(
-              color: const Color(0xFF7640FE).withValues(alpha: 0.12),
-              width: 1.0,
+              color: Colors.white.withValues(alpha: 0.14),
+              width: 1.2,
             ),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFF7640FE).withValues(alpha: 0.04),
-                blurRadius: 10,
+                color: const Color(0xFF0D0821).withValues(alpha: 0.40),
+                blurRadius: 14,
                 offset: const Offset(0, 4),
               ),
             ],
@@ -253,19 +302,26 @@ class _MoreAppHomeCardState extends State<_MoreAppHomeCard> {
           child: Row(
             children: [
               // Left: Rounded App Icon
-              SizedBox(
+              Container(
                 width: 44.w,
                 height: 44.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(13.r),
+                  border: Border.all(
+                    color: Colors.white.withValues(alpha: 0.15),
+                    width: 1.2,
+                  ),
+                ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.r),
                   child: Image.network(
                     widget.app.appLogo,
                     fit: BoxFit.cover,
                     errorBuilder: (_, __, ___) => Container(
-                      color: const Color(0xFFEADBFF),
+                      color: const Color(0xFF382366),
                       child: Icon(
                         Icons.sports_esports_rounded,
-                        color: const Color(0xFF7C3AED),
+                        color: const Color(0xFFC084FC),
                         size: 24.sp,
                       ),
                     ),
@@ -289,9 +345,9 @@ class _MoreAppHomeCardState extends State<_MoreAppHomeCard> {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: GoogleFonts.poppins(
-                              color: const Color(0xFF1E1B4B),
-                              fontSize: 13.sp,
-                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                              fontSize: 13.5.sp,
+                              fontWeight: FontWeight.w700,
                               letterSpacing: 0.1,
                             ),
                           ),
@@ -301,17 +357,17 @@ class _MoreAppHomeCardState extends State<_MoreAppHomeCard> {
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 1.5.h),
                             decoration: BoxDecoration(
-                              color: const Color(0xFF7C3AED).withValues(alpha: 0.15),
+                              color: const Color(0xFFFFF100).withValues(alpha: 0.18),
                               borderRadius: BorderRadius.circular(4.r),
                               border: Border.all(
-                                color: const Color(0xFF7C3AED).withValues(alpha: 0.3),
+                                color: const Color(0xFFFFF100).withValues(alpha: 0.5),
                                 width: 0.8,
                               ),
                             ),
                             child: Text(
                               'AD',
                               style: GoogleFonts.poppins(
-                                color: const Color(0xFF7C3AED),
+                                color: const Color(0xFFFFF100),
                                 fontSize: 8.sp,
                                 fontWeight: FontWeight.w700,
                                 letterSpacing: 0.5,
@@ -327,7 +383,7 @@ class _MoreAppHomeCardState extends State<_MoreAppHomeCard> {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.poppins(
-                        color: const Color(0xFF475569),
+                        color: Colors.white.withValues(alpha: 0.70),
                         fontSize: 9.sp,
                         fontWeight: FontWeight.w400,
                       ),
@@ -338,14 +394,14 @@ class _MoreAppHomeCardState extends State<_MoreAppHomeCard> {
 
               SizedBox(width: 10.w),
 
-              // Right: Visit Button (Vibrant Purple Gradient Pill with White Text & Arrow)
+              // Right: Visit Button (Gold Gradient Pill with Dark Purple Text & Arrow)
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 6.h),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [
-                      Color(0xFF5635C7),
-                      Color(0xFF362187),
+                      Color(0xFFFFEA79),
+                      Color(0xFFFFB800),
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
@@ -353,7 +409,7 @@ class _MoreAppHomeCardState extends State<_MoreAppHomeCard> {
                   borderRadius: BorderRadius.circular(100.r),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF362187).withValues(alpha: 0.35),
+                      color: const Color(0xFFFF9E00).withValues(alpha: 0.35),
                       blurRadius: 6,
                       offset: const Offset(0, 2),
                     ),
@@ -365,7 +421,7 @@ class _MoreAppHomeCardState extends State<_MoreAppHomeCard> {
                     Text(
                       'Visit',
                       style: GoogleFonts.poppins(
-                        color: Colors.white,
+                        color: const Color(0xFF24125C),
                         fontSize: 11.sp,
                         fontWeight: FontWeight.w700,
                         letterSpacing: 0.2,
@@ -374,7 +430,7 @@ class _MoreAppHomeCardState extends State<_MoreAppHomeCard> {
                     SizedBox(width: 3.w),
                     Icon(
                       Icons.arrow_outward_rounded,
-                      color: Colors.white,
+                      color: const Color(0xFF24125C),
                       size: 12.5.sp,
                     ),
                   ],

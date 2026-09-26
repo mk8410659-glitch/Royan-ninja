@@ -118,7 +118,7 @@ class ProfileBody extends HookConsumerWidget {
                                     offset: const Offset(0, 8),
                                   ),
                                   BoxShadow(
-                                    color: const Color(0xFFAB31DE).withValues(alpha: 0.04),
+                                    color: const Color(0xFF362187).withValues(alpha: 0.04),
                                     blurRadius: 16,
                                     offset: const Offset(0, 4),
                                   ),
@@ -174,10 +174,10 @@ class ProfileBody extends HookConsumerWidget {
                                         child: Container(
                                           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
                                           decoration: BoxDecoration(
-                                            color: const Color(0xFFFAF5FF),
+                                            color: const Color(0xFFF6F4FE),
                                             borderRadius: BorderRadius.circular(12.r),
                                             border: Border.all(
-                                              color: const Color(0xFFAB31DE).withValues(alpha: 0.25),
+                                              color: const Color(0xFF362187).withValues(alpha: 0.20),
                                               width: 1,
                                             ),
                                           ),
@@ -195,7 +195,7 @@ class ProfileBody extends HookConsumerWidget {
                                               Text(
                                                 userId.length > 8 ? '${userId.substring(0, 8)}...' : userId,
                                                 style: GoogleFonts.outfit(
-                                                  color: const Color(0xFFAB31DE),
+                                                  color: const Color(0xFF362187),
                                                   fontSize: 11.sp,
                                                   fontWeight: FontWeight.w700,
                                                 ),
@@ -203,7 +203,7 @@ class ProfileBody extends HookConsumerWidget {
                                               SizedBox(width: 4.w),
                                               Icon(
                                                 Icons.copy_rounded,
-                                                color: const Color(0xFFAB31DE),
+                                                color: const Color(0xFF362187),
                                                 size: 11.sp,
                                               ),
                                             ],
@@ -219,10 +219,10 @@ class ProfileBody extends HookConsumerWidget {
                                   Container(
                                     padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 6.w),
                                     decoration: BoxDecoration(
-                                      color: const Color(0xFFFAF5FF),
+                                      color: const Color(0xFFF6F4FE),
                                       borderRadius: BorderRadius.circular(20.r),
                                       border: Border.all(
-                                        color: const Color(0xFFF3E8FF),
+                                        color: const Color(0xFFE9E3FE),
                                         width: 1.2,
                                       ),
                                     ),
@@ -255,7 +255,7 @@ class ProfileBody extends HookConsumerWidget {
                                                       child: Text(
                                                         coins.formatK(),
                                                         style: GoogleFonts.outfit(
-                                                          color: const Color(0xFFAB31DE),
+                                                          color: const Color(0xFF362187),
                                                           fontSize: 16.sp,
                                                           fontWeight: FontWeight.w900,
                                                           letterSpacing: -0.3,
@@ -313,7 +313,7 @@ class ProfileBody extends HookConsumerWidget {
                                                       child: Text(
                                                         '$gems',
                                                         style: GoogleFonts.outfit(
-                                                          color: const Color(0xFFAB31DE),
+                                                          color: const Color(0xFF362187),
                                                           fontSize: 16.sp,
                                                           fontWeight: FontWeight.w900,
                                                           letterSpacing: -0.3,
@@ -378,7 +378,7 @@ class ProfileBody extends HookConsumerWidget {
                                                       child: Text(
                                                         badge.title,
                                                         style: GoogleFonts.outfit(
-                                                          color: const Color(0xFFAB31DE),
+                                                          color: const Color(0xFF362187),
                                                           fontSize: 15.sp,
                                                           fontWeight: FontWeight.w900,
                                                           letterSpacing: -0.2,
@@ -418,8 +418,8 @@ class ProfileBody extends HookConsumerWidget {
                                     decoration: BoxDecoration(
                                       gradient: const LinearGradient(
                                         colors: [
-                                          Color(0xFFE39FFF),
-                                          Color(0xFFAB31DE),
+                                          Color(0xFF4C2CA3),
+                                          Color(0xFF362187),
                                         ],
                                         begin: Alignment.centerLeft,
                                         end: Alignment.centerRight,
@@ -427,7 +427,7 @@ class ProfileBody extends HookConsumerWidget {
                                       borderRadius: BorderRadius.circular(18.r),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: const Color(0xFFAB31DE).withValues(alpha: 0.28),
+                                          color: const Color(0xFF362187).withValues(alpha: 0.28),
                                           blurRadius: 10,
                                           offset: const Offset(0, 4),
                                         ),
@@ -507,7 +507,7 @@ class ProfileBody extends HookConsumerWidget {
                                             child: Text(
                                               'Apply Code',
                                               style: GoogleFonts.outfit(
-                                                color: const Color(0xFFAB31DE),
+                                                color: const Color(0xFF362187),
                                                 fontSize: 11.5.sp,
                                                 fontWeight: FontWeight.w800,
                                               ),
@@ -556,11 +556,11 @@ class ProfileBody extends HookConsumerWidget {
                                                 borderColor: Colors.transparent,
                                               )
                                             : Container(
-                                                color: const Color(0xFFFAF5FF),
+                                                color: const Color(0xFFF6F4FE),
                                                 alignment: Alignment.center,
                                                 child: Icon(
                                                   Icons.person_rounded,
-                                                  color: const Color(0xFFAB31DE),
+                                                  color: const Color(0xFF362187),
                                                   size: 40.sp,
                                                 ),
                                               ),
@@ -789,7 +789,7 @@ class ProfileBody extends HookConsumerWidget {
       alignment: Alignment.centerLeft,
       child: Row(
         children: [
-          Icon(icon, color: const Color(0xFFAB31DE), size: 16.sp),
+          Icon(icon, color: const Color(0xFF362187), size: 16.sp),
           SizedBox(width: 6.w),
           Text(
             title,
@@ -822,20 +822,20 @@ class ProfileBody extends HookConsumerWidget {
         },
         child: Row(
           children: [
-            // Left Soft Lavender Squircle Icon Container
+            // Left Soft Squircle Icon Container
             Container(
               width: 44.w,
               height: 44.w,
               decoration: BoxDecoration(
-                color: const Color(0xFFFAF5FF),
+                color: const Color(0xFFF6F4FE),
                 borderRadius: BorderRadius.circular(14.r),
                 border: Border.all(
-                  color: const Color(0xFFF3E8FF),
+                  color: const Color(0xFFE9E3FE),
                   width: 1.2,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFAB31DE).withValues(alpha: 0.05),
+                    color: const Color(0xFF362187).withValues(alpha: 0.05),
                     blurRadius: 6,
                     offset: const Offset(0, 2),
                   ),
@@ -844,7 +844,7 @@ class ProfileBody extends HookConsumerWidget {
               alignment: Alignment.center,
               child: Icon(
                 icon,
-                color: const Color(0xFFAB31DE),
+                color: const Color(0xFF362187),
                 size: 20.sp,
               ),
             ),
@@ -992,7 +992,7 @@ void _showBadgeInfoDialog(BuildContext context, ProfileBadgeInfo currentBadge, i
     isScrollControlled: true,
     useSafeArea: true,
     builder: (ctx) {
-      const activePurple = Color(0xFFAB31DE);
+      const activePurple = Color(0xFF7C3AED);
 
       return Container(
         decoration: BoxDecoration(
@@ -1049,7 +1049,7 @@ void _showBadgeInfoDialog(BuildContext context, ProfileBadgeInfo currentBadge, i
                 width: double.infinity,
                 padding: EdgeInsets.all(14.w),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFAF5FF),
+                  color: const Color(0xFFF6F4FE),
                   borderRadius: BorderRadius.circular(18.r),
                   border: Border.all(
                     color: activePurple.withValues(alpha: 0.35),
@@ -1161,7 +1161,7 @@ void _showBadgeInfoDialog(BuildContext context, ProfileBadgeInfo currentBadge, i
                   padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 9.h),
                   decoration: BoxDecoration(
                     color: isCurrent
-                        ? const Color(0xFFFAF5FF)
+                        ? const Color(0xFFF6F4FE)
                         : const Color(0xFFF8FAFC),
                     borderRadius: BorderRadius.circular(14.r),
                     border: Border.all(
@@ -1204,7 +1204,7 @@ void _showBadgeInfoDialog(BuildContext context, ProfileBadgeInfo currentBadge, i
                               tier.description,
                               style: GoogleFonts.outfit(
                                 color: isCurrent
-                                    ? const Color(0xFFAB31DE)
+                                    ? const Color(0xFF362187)
                                     : (isUnlocked ? const Color(0xFF64748B) : const Color(0xFFCBD5E1)),
                                 fontSize: 10.5.sp,
                                 fontWeight: FontWeight.w400,
@@ -1239,8 +1239,8 @@ void _showBadgeInfoDialog(BuildContext context, ProfileBadgeInfo currentBadge, i
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       colors: [
-                        Color(0xFFE39FFF),
-                        Color(0xFFAB31DE),
+                        Color(0xFF4C2CA3),
+                        Color(0xFF362187),
                       ],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
@@ -1248,7 +1248,7 @@ void _showBadgeInfoDialog(BuildContext context, ProfileBadgeInfo currentBadge, i
                     borderRadius: BorderRadius.circular(14.r),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFFAB31DE).withValues(alpha: 0.28),
+                        color: const Color(0xFF362187).withValues(alpha: 0.28),
                         blurRadius: 8,
                         offset: const Offset(0, 3),
                       ),

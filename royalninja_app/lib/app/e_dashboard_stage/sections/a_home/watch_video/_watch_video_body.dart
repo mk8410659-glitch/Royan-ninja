@@ -79,7 +79,7 @@ class WatchVideoScreen extends HookConsumerWidget {
                 data: (List<DailyTaskModel> offers) {
                   if (offers.isEmpty) {
                     return RefreshIndicator(
-                      color: const Color(0xFFAB31DE),
+                      color: const Color(0xFF362187),
                       backgroundColor: Colors.white,
                       edgeOffset: topPadding + 60.h,
                       onRefresh: () async {
@@ -120,7 +120,7 @@ class WatchVideoScreen extends HookConsumerWidget {
                           .toList();
 
                   return RefreshIndicator(
-                    color: const Color(0xFFAB31DE),
+                    color: const Color(0xFF362187),
                     backgroundColor: Colors.white,
                     edgeOffset: topPadding + 60.h,
                     onRefresh: () async {
@@ -274,7 +274,7 @@ class WatchVideoScreen extends HookConsumerWidget {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFFAB31DE).withValues(alpha: 0.08),
+                        color: const Color(0xFF362187).withValues(alpha: 0.08),
                         blurRadius: 10,
                         offset: const Offset(0, 3),
                       ),
@@ -282,7 +282,7 @@ class WatchVideoScreen extends HookConsumerWidget {
                   ),
                   child: Icon(
                     Icons.arrow_back_rounded,
-                    color: const Color(0xFFAB31DE),
+                    color: const Color(0xFF362187),
                     size: 22.sp,
                   ),
                 ),
@@ -318,15 +318,15 @@ class WatchVideoScreen extends HookConsumerWidget {
                 vertical: 8.h,
               ),
               decoration: BoxDecoration(
-                color: const Color(0xFFFAF5FF),
+                color: const Color(0xFFF6F4FE),
                 borderRadius: BorderRadius.circular(14.r),
                 border: Border.all(
-                  color: const Color(0xFFF3E8FF),
+                  color: const Color(0xFFE9E3FE),
                   width: 1.2,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFAB31DE).withValues(alpha: 0.05),
+                    color: const Color(0xFF362187).withValues(alpha: 0.05),
                     blurRadius: 6,
                     offset: const Offset(0, 2),
                   ),
@@ -337,14 +337,14 @@ class WatchVideoScreen extends HookConsumerWidget {
                 children: [
                   Icon(
                     Icons.help_outline_rounded,
-                    color: const Color(0xFFAB31DE),
+                    color: const Color(0xFF362187),
                     size: 15.sp,
                   ),
                   SizedBox(width: 5.w),
                   Text(
                     'How To?',
                     style: GoogleFonts.outfit(
-                      color: const Color(0xFFAB31DE),
+                      color: const Color(0xFF362187),
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w800,
                     ),
@@ -386,8 +386,8 @@ class _FilterChip extends StatelessWidget {
           gradient: isSelected
               ? const LinearGradient(
                   colors: [
-                    Color(0xFFE39FFF),
-                    Color(0xFFAB31DE),
+                    Color(0xFF4C2CA3),
+                    Color(0xFF362187),
                   ],
                 )
               : null,
@@ -402,7 +402,7 @@ class _FilterChip extends StatelessWidget {
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: const Color(0xFFAB31DE).withValues(alpha: 0.3),
+                    color: const Color(0xFF362187).withValues(alpha: 0.3),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),
